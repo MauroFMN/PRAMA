@@ -115,8 +115,7 @@ include 'connexao.php';
                             $permitir = conectar();
                             $sql = "INSERT INTO `Pessoa`(`idPessoa`, `codTipoSnague`, `codGenero`, `codEstadoCivil`, `codProvincia`, `codDataNasc`, `nome`, `peso`, `ss`) VALUES (NULL,$_POST[nome],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])";
                             mysqli_query($permitir, $sql);
-                        }
-                        ?>
+                        } ?>
                         <div class="formRegElm">
                             <?php if ($_GET["p"] == "1") { ?> <h1>Registo de Paciente</h1> <?php } ?>
                             <?php if ($_GET["p"] == "2") { ?> <h1>Registo de Médico</h1> <?php } ?>
@@ -135,6 +134,8 @@ include 'connexao.php';
                                 <label for="nomeUH"><b>Nome da Unidade Hospitalar</b></label>
                                 <input type="text" placeholder="Escreva o Nome da Unidade Hospitalar" name="nomeUH" id="nomeUH">
                             <?php } ?> 
+                            <label for="tlf"><b>Telefone</b></label>
+                            <input type="tel" placeholder="Nº de Telefone" name="tlf" id="tlf" required>
                             <?php if ($_GET["p"] == "2") { ?>
                                 <br>
                                 <label for="nOrdem"><b>Nº da Ordem dos Médicos</b></label>
@@ -222,20 +223,15 @@ include 'connexao.php';
                             <?php } ?>
                             <label for="email"><b>Email</b></label>
                             <input type="text" placeholder="Insira o Email" name="email" id="email" style="width: 36%;">
-
-                            <label for="utilizador"><b>Nome de utilizador</b></label>
-                            <input type="text" placeholder="Insira o Nome de Utilizador" name="utilizador" id="utilizador" required style="width: 45%;">
-
                             <label for="password"><b>Password</b></label>
                             <input type="password" placeholder="Insira a Password" name="password" id="password" required style="width: 39%;">
-
                             <label for="password-repeat"><b>Confirme a Password</b></label>
                             <input type="password" placeholder="Insira Novamente a Password" name="password-repeat" id="password-repeat" required style="width: 38%;">
                             <hr>
                             <input type="submit" class="botao centro verde l" style="width: 100%;" value="Registar" name="fpaciente">
                         </div>
                     </form>
-                <?php}?>
+                <?php } ?>
             </div>
         </div>        
         <!-- Rorapé -->

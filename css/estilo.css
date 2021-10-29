@@ -1,15 +1,19 @@
-*, *:before, *:after{
-    box-sizing:border-box;
-}
-
-html, body {
-    font-family: "Times New Roman", sans-serif;
-    font-size:15px;
-    line-height:1.5;
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
 
-input[type=text], input[type=password] {
+html,
+body {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+input[type=text],
+input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0;
@@ -20,7 +24,9 @@ input[type=text], input[type=password] {
     border-radius: 7px;
 }
 
-input[type=date], input[type=tel], select{
+input[type=date],
+input[type=tel],
+select {
     padding: 10px;
     margin: 5px 0;
     border: none;
@@ -30,18 +36,23 @@ input[type=date], input[type=tel], select{
     display: inline-block;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=tel]:focus {
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=date]:focus,
+input[type=tel]:focus {
     background-color: #ddd;
     border: 3px solid #555;
     outline: none;
 }
 
-.contentor:before, .contentor:after, .coluna-padding:before, .coluna-padding:after .anha::after{
+.contentor:before,
+.contentor:after,
+.coluna-padding:before,
+.coluna-padding:after .anha::after {
     content: "";
     display: table;
     clear: both;
 }
-
 
 .centross {
     width: 100%;
@@ -49,7 +60,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     display: block;
     margin: auto;
     text-align: center!important;
-    padding:0.01em 16px;
+    padding: 0.01em 16px;
 }
 
 .navegador {
@@ -59,7 +70,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     width: 100%;
     overflow: hidden;
     background-color: #0072B5;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .navegador a {
@@ -103,7 +114,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     right: 0;
     background-color: #0072B5;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -116,7 +127,8 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     text-align: left;
 }
 
-.navegador a:hover:not(.ativo):not(:first-child), .dropdown:hover:not(.ativo) .dropbtn{
+.navegador a:hover:not(.ativo):not(:first-child),
+.dropdown:hover:not(.ativo) .dropbtn {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 0 49px 49px 0;
 }
@@ -139,19 +151,19 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     border-radius: 0 49px 49px 0;
 }
 
-.direita{
+.direita {
     float: right!important;
 }
 
 .cartao {
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .hide {
     display: none!important;
 }
 
-.hide.mostrar{
+.hide.mostrar {
     display: block!important
 }
 
@@ -174,12 +186,12 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     display: table
 }
 
-.rod-tela-login{
+.rod-tela-login {
     text-align: center;
     color: black;
 }
 
-.rod-tela-login a{
+.rod-tela-login a {
     text-decoration: none;
 }
 
@@ -210,7 +222,6 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     cursor: pointer;
     white-space: nowrap;
     border-radius: 7px;
-
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -219,7 +230,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     user-select: none;
 }
 
-.registo{
+.registo {
     display: none;
     position: fixed;
     z-index: 1;
@@ -233,7 +244,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     padding-top: 60px;
 }
 
-.formulario{
+.formulario {
     background-color: rgba(0, 0, 0, 0.6);
     margin: 5% auto 15% auto;
     border: 1px solid #888;
@@ -241,11 +252,11 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     border-radius: 7px;
 }
 
-.registo{
+.registo {
     color: white;
 }
 
-.registo span.fechar{
+.registo span.fechar {
     position: fixed;
     right: 25px;
     top: 0;
@@ -254,7 +265,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     cursor: pointer;
 }
 
-.registo a{
+.registo a {
     float: none;
     text-decoration: none;
     text-align: center;
@@ -262,19 +273,19 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     color: white;
 }
 
-.formRegElm{
+.formRegElm {
     padding: 10px;
 }
 
-.formRegElm h1{
+.formRegElm h1 {
     text-align: center;
 }
 
-.cab{
+.cab {
     display: none;
 }
 
-.cabElm{
+.cabElm {
     float: left;
     display: block;
     padding: 14px 16px;
@@ -292,31 +303,32 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: all 0.5s ease;
 }
 
-.snav.open{
+.snav.open {
     width: 250px;
 }
 
-.snav .logo{
+.snav .logo {
     height: 60px;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.snav .logo .icon1{
+.snav .logo .icon1 {
     opacity: 0;
     transition: all 0.5s ease;
 }
 
-.snav.open .logo .icon1, .snav.open .perfil .detalhesPerfil #fotoPerfil{
+.snav.open .logo .icon1,
+.snav.open .perfil .detalhesPerfil #fotoPerfil {
     opacity: 1;
 }
 
-.snav .perfil .detalhesPerfil #fotoPerfil{
+.snav .perfil .detalhesPerfil #fotoPerfil {
     opacity: 0;
 }
 
-.snav .logo #btnMenu{
+.snav .logo #btnMenu {
     position: absolute;
     top: 50%;
     right: 0;
@@ -331,11 +343,11 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: all 0.5s ease;
 }
 
-.snav.open .logo #btnMenu{
+.snav.open .logo #btnMenu {
     text-align: right;
 }
 
-.snav img{
+.snav img {
     height: 60px;
     font-size: 28px;
     text-align: center;
@@ -347,12 +359,12 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     height: 100%;
 }
 
-.snav .elLista{
+.snav .elLista {
     position: relative;
     margin: 8px 0;
 }
 
-.snav .elLista .nome{
+.snav .elLista .nome {
     position: absolute;
     top: -20px;
     left: calc(100% + 15px);
@@ -369,7 +381,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: 0s;
 }
 
-.snav .elLista:hover .nome{
+.snav .elLista:hover .nome {
     opacity: 1;
     pointer-events: auto;
     transition: all 0.4s ease;
@@ -377,11 +389,11 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transform: translateY(-50%);
 }
 
-.snav.open .elLista .nome{
+.snav.open .elLista .nome {
     display: none;
 }
 
-.snav .elLista a{
+.snav .elLista a {
     display: flex;
     height: 100%;
     width: 100%;
@@ -391,11 +403,11 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: all 0.4s ease;
 }
 
-.snav .elLista a:hover{
+.snav .elLista a:hover {
     background: #FFF;
 }
 
-.snav .elLista a .nomeLink{
+.snav .elLista a .nomeLink {
     color: #fff;
     font-size: 17px;
     font-weight: 400;
@@ -405,24 +417,25 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: 0.4s;
 }
 
-.snav.open .elLista a .nomeLink{
+.snav.open .elLista a .nomeLink {
     opacity: 1;
     pointer-events: auto;
 }
 
-.snav .elLista a:hover .nomeLink, .snav .elLista a:hover img{
+.snav .elLista a:hover .nomeLink,
+.snav .elLista a:hover img {
     transition: all 0.5s ease;
     color: #11101D;
 }
 
-.snav .elLista img{
+.snav .elLista img {
     height: 50px;
     line-height: 50px;
     font-size: 15px;
     border-radius: 12px;
 }
 
-.snav .elLista.perfil{
+.snav .elLista.perfil {
     position: fixed;
     height: 60px;
     width: 64px;
@@ -435,17 +448,17 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     box-shadow: -1px -4px 5px rgba(0, 0, 0, 0.3);
 }
 
-.snav.open .elLista.perfil{
+.snav.open .elLista.perfil {
     width: 250px;
 }
 
-.snav .elLista .detalhesPerfil{
+.snav .elLista .detalhesPerfil {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
 }
 
-.snav .elLista img{
+.snav .elLista img {
     height: 35px;
     width: 35px;
     object-fit: cover;
@@ -453,18 +466,19 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     margin-right: 10px;
 }
 
-.snav .elLista.perfil .nome, .snav .elLista.perfil .profissao{
+.snav .elLista.perfil .nome,
+.snav .elLista.perfil .profissao {
     font-size: 15px;
     font-weight: 400;
     color: #fff;
     white-space: nowrap;
 }
 
-.snav .elLista.perfil .profissao{
+.snav .elLista.perfil .profissao {
     font-size: 12px;
 }
 
-.snav .perfil #sair{
+.snav .perfil #sair {
     position: absolute;
     top: 50%;
     right: 0;
@@ -474,17 +488,17 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: all 0.5s ease;
 }
 
-.snav.open .perfil #sair{
+.snav.open .perfil #sair {
     /*    width: 50px;*/
     /*background: none;*/
 }
 
-.snav.open ~ .painel{
+.snav.open~.painel {
     left: 250px;
     width: calc(100% - 250px);
 }
 
-.snav a:hover:not(.ativo):not(:first-child){
+.snav a:hover:not(.ativo):not(:first-child) {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -493,21 +507,23 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
 }
 
 .french-blue {
-    color:#fff;
-    background-color:#0072B5;
+    color: #fff;
+    background-color: #0072B5;
 }
 
-.verde,.hover-verde:hover{
-    color:#fff!important;
-    background-color:#00a170!important;
+.verde,
+.hover-verde:hover {
+    color: #fff!important;
+    background-color: #00a170!important;
 }
 
-.hover-opacity:hover{
+.hover-opacity:hover {
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 25px;
 }
 
-.vermelho, hover-vermelho:hover {
+.vermelho,
+hover-vermelho:hover {
     color: #fff!important;
     background-color: #cc0000;
 }
@@ -516,15 +532,16 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     text-align: center;
 }
 
-.l{
-    font-size:18px!important;
+.l {
+    font-size: 18px!important;
 }
-.xl{
-    font-size:24px!important;
+
+.xl {
+    font-size: 24px!important;
 }
 
 .margem-superior {
-    margin-top:16px!important;
+    margin-top: 16px!important;
 }
 
 .largura-padding {
@@ -536,7 +553,8 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
 }
 
 @media screen and (max-width: 768px) {
-    .navegador a:not(:first-child), .dropdown .dropbtn {
+    .navegador a:not(:first-child),
+    .dropdown .dropbtn {
         display: none;
     }
     .navegador a.icon {
@@ -567,18 +585,44 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
         width: 100%;
         text-align: left;
     }
-    .cab{
+    .cab {
         position: relative;
     }
-    .cabElm{
+    .cabElm {
         float: none;
         display: block;
         text-align: center;
     }
-    .barraLateral a .nome{
+    .barraLateral a .nome {
         display: none;
     }
-    .snav li .nome{
+    .snav li .nome {
         display: none;
     }
+}
+
+.conteudoInterfaceUsuario {
+    padding: 200px 400px;
+    width: 100%;
+}
+
+.conteudoInterfaceUsuario h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.conteudoInterfaceUsuario .opcoes img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.conteudoInterfaceUsuario .opcoes h3,
+.conteudoInterfaceUsuario .opcoes p {
+    text-align: center;
+}
+
+.conteudoInterfaceUsuario .opcoes button {
+    margin: 0 auto;
+    width: 30%;
 }

@@ -18,7 +18,12 @@ window.onchange = function () {
 
 let snav = document.querySelector(".snav");
 let closeBtn = document.querySelector("#btnMenu");
+let searchBtn = document.querySelector(".bx-search");
 
 closeBtn.addEventListener("click", () => {
     snav.classList.toggle("open");
+});
+
+searchBtn.addEventListener("click", ()=>{
+  snav.classList.toggle("open");
 });

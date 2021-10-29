@@ -13,9 +13,9 @@ include 'connexao.php';
         <div class="navegador" id="myTopnav">
             <a href="#principal" id="logotipo"></a>
             <a href="#medicos" onclick="myFunction();"> Médicos </a>
-            <a href="unidadeshospitalares/index.php"> Hospitais </a>
-            <a href="pacientes/index.php"> Pacientes </a>
-            <a href="sobre/index.php"> Sobre </a>
+            <a href="#hospitais"> Hospitais </a>
+            <a href="#pacientes"> Pacientes </a>
+            <a href="#sobre"> Sobre </a>
             <a href="#Registo" class="direita" onclick="document.getElementById('reg').style.display = 'block';myFunction()"> Registar </a> 
             <a href="#Login" class="direita" onclick="document.getElementById('login').style.display = 'block';myFunction()">Entrar</a>
             <a href="javascript:void(0);" style="font-size: 15px;" class="icon" onclick="myFunction()">&#9776;</a>
@@ -44,25 +44,51 @@ include 'connexao.php';
                 </div>
             </div>
         </section>
-        <div>
-            <p>Informações sobre a plataforma e o que se pode encontrar nela</p>
-            <p>Informações para os médicos e as vantagens ao aderirem a plataforma</p>
-            <p>Informações para os pacientes e as vantagens ao aderirem a plataforma</p>
-            <p>Informações para os diretores das unidades hospitalares e as vantagens ao aderirem a plataforma</p>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="contentor info">
+            <h1 class="titulo">Atendimento mais rápido e eficiente</h1>
+            <div class="linha linhaEsq">
+                <div style="border-radius: 7px;">
+                    <img src="imagens/Unknown-8.png"style="width:500px; height: 300px;">
+                </div>
+                <div class="conteudo">
+                    <p>Com o PRAMA, os médicos conseguem acessar os dados e os resultados dos exames médicos de forma rápida e em qualquer local com um dispositivo conectado a internet, sem precisar realizar um atendimento prévio para entender o histórico do paciente</p>
+                    <p>O atendimento mais próximo e humanizado possível. O Médico consegue ter uma visão única e completa sobre cada paciente através do seu historico de consultas.</p>
+                    <p>Com o PRAMA é possivel gerir as consultas e essas informações são atualizadas em tempo real, permitindo o paciente confirme, remarque ou cancele sua consulta on-line – atualizando a agenda automaticamente.</p>
+                </div>
+            </div>
         </div>
-        <section id="medicos">
-            <div>
-                <h2>cabeçalho da secção dos Médicos</h2>
-                <p> A plataforma de telemedicina gratuíta. Mais tecnologia no acesso a saúde. </p>
+        <section id="medicos" style="background-color: whitesmoke;">
+            <h1 class="titulo">Como funciona para os médicos?</h1>
+            <div class="linha linhaDir">
+                <div class="conteudo">
+                    <p>Com o PRAMA, os médicos conseguem acessar os dados e os resultados dos exames médicos de forma rápida e em qualquer local com um dispositivo conectado a internet, sem precisar realizar um atendimento prévio para entender o histórico do paciente</p>
+                    <p>O atendimento mais próximo e humanizado possível. O Médico consegue ter uma visão única e completa sobre cada paciente através do seu historico de consultas.</p>
+                    <p>Com o PRAMA é possivel gerir as consultas e essas informações são atualizadas em tempo real, permitindo o paciente confirme, remarque ou cancele sua consulta on-line – atualizando a agenda automaticamente.</p>
+                </div>
+                <div style="margin-right: 5px;">
+                    <img src="imagens/Unknown.png"style="width:500px; height: 300px;">
+                </div>
             </div>
-            <div>
-                <h2></h2>
-            </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
-        <section id="hospitais">
+        <section class="centro">
+            <h1>Vantagens do PRAMA</h1>
+            <div class="icons-container">
+                <div class="icons">
+                    <p>Telemedicina para médicos, pacientes e unidades hospitalares</p>
+                </div>
+                <div class="icons">
+                    <p>Consultas por chat</p>
+                </div>
+                <div class="icons">
+                    <p>Acesso por computador, tablet e smarthphone</p>
+                </div>
+                <div class="icons">
+                    <p>Histórico de consultas completo dos pacientes</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hospitais" style="background-color: whitesmoke;">
             <div>
                 <h2>cabeçalho da secção dos hospitais</h2>
                 <p> A plataforma de telemedicina gratuíta. Mais tecnologia no acesso a saúde. </p>
@@ -81,7 +107,7 @@ include 'connexao.php';
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
-        <section id="sobre" class="sobre">
+        <section id="sobre" class="sobre" style="background-color: whitesmoke;">
             <h1 class=""> <span>Sobre</span> nós </h1>
             <div class="">
                 <div class="">
@@ -125,7 +151,7 @@ include 'connexao.php';
                                 <label><b> Dados do Diretor Geral</b></label><br>
                                 <hr>
                             <?php } ?>
-                            <label for="nome"><b>Nome Completo</b></label>
+                            <label for="nome"><b>Nome Completo</b>
                             <input type="text" placeholder="Insira o Nome Completo" name="nome" id="nome" required autofocus>
                             <?php if ($_GET["p"] == "3") { ?>
                                 <hr>
@@ -139,7 +165,7 @@ include 'connexao.php';
                             <?php if ($_GET["p"] == "2") { ?>
                                 <br>
                                 <label for="nOrdem"><b>Nº da Ordem dos Médicos</b></label>
-                                <input type="text" placeholder="Insira o Número da Ordem dos Médicos" name="nOrdem" id="nOrdem" style="width: 42%;">
+                                <input type="text" placeholder="Insira o Número da Ordem dos Médicos" name="nOrdem" id="nOrdem">
                                 <label for="esp"><b>Especialidade</b></label>
                                 <select id="esp" name="esp">
                                     <option value="">Selecione a Especialidade</option>
@@ -197,6 +223,7 @@ include 'connexao.php';
                                 </select>
                             <?php } ?>
                             <?php if ($_GET["p"] == "3") { ?>
+                                <br>
                                 <label for="sector"><b>Sector no SNS</b></label>
                                 <select id="sector" name="sector">
                                     <option value="publico">Sector Público</option>
@@ -204,6 +231,7 @@ include 'connexao.php';
                                     <option value="tradicional">Sector de Medicina Tradicional</option>
                                     <option value="deficicão" selected>Seleccione o sector da UH</option>
                                 </select>
+                                <br>
                                 <label for="subsector"><b>Subsector do SNS</b></label>
                                 <select name="subsector" id="subsector">
                                     <!-- Sector Público -->
@@ -219,16 +247,16 @@ include 'connexao.php';
                                 <br>
                                 <label for="npac">Nº de Pacientes atendidos Diáriamente</label>
                                 <input type="number" placeholder="Insira o nº" name="npac" id="npac">
-                                <br>
                             <?php } ?>
+                            <br>
                             <label for="email"><b>Email</b></label>
-                            <input type="text" placeholder="Insira o Email" name="email" id="email" style="width: 36%;">
+                            <input type="text" placeholder="Insira o Email" name="email" id="email">
                             <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="Insira a Password" name="password" id="password" required style="width: 39%;">
+                            <input type="password" placeholder="Insira a Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="A Password deve conter um número, uma letra minúscula e uma maiúscula no mínimo e tem que ter no mínimo 6 caracteres" required>
                             <label for="password-repeat"><b>Confirme a Password</b></label>
-                            <input type="password" placeholder="Insira Novamente a Password" name="password-repeat" id="password-repeat" required style="width: 38%;">
+                            <input type="password" placeholder="Insira Novamente a Password" name="password-repeat" id="password-repeat" required>
                             <hr>
-                            <input type="submit" class="botao centro verde l" style="width: 100%;" value="Registar" name="fpaciente">
+                            <input type="submit" class="botao verde l" style="width: 100%;" value="Registar" name="fpaciente">
                         </div>
                     </form>
                 <?php } ?>

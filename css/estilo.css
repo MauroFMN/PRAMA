@@ -42,6 +42,70 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     clear: both;
 }
 
+.contentor, .painel {
+    padding:0.01em 16px;
+}
+
+.titulo{
+    text-align: center;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: .4px;
+}
+
+.info, .medicos, .hospitais, .pacientes {
+    width: 100%;
+    overflow: hidden;
+}
+
+.linha{
+    display: inline-flex;  
+    font-size: 17px;
+    text-align: left;
+}
+
+.linhaEsq .conteudo{
+    margin-left: 25px;
+}
+
+.linhaEsq .conteudo p{
+    margin-left: 5px;
+}
+
+.linhaDir .conteudo{
+    margin-left: 15px;
+    margin-right: 20px;
+}
+
+.icons-container{
+    margin-left: 10px;
+    margin-right: 15px;
+    display: grid;
+    gap:2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+}
+
+.icons-container .icons{
+    border:2px solid black;
+    box-shadow: .5rem .5rem 0 rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    text-align: center;
+    padding: 2.5px;
+}
+
+.icons-container .icons h3{
+    font-size: 2rem;
+    color:black;
+    padding: .4rem 0;
+}
+
+.icons-container .icons p{
+    font-size: 1.7rem;
+    color:black;
+}
 
 .centross {
     width: 100%;
@@ -50,6 +114,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     margin: auto;
     text-align: center!important;
     padding:0.01em 16px;
+    color: white;
 }
 
 .navegador {
@@ -234,15 +299,15 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
 }
 
 .formulario{
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: #fefefe;
     margin: 5% auto 15% auto;
-    border: 1px solid #888;
-    width: 80%;
+    border: 1px solid black;
+    width: 60%;
     border-radius: 7px;
 }
 
 .registo{
-    color: white;
+    color: black;
 }
 
 .registo span.fechar{
@@ -252,6 +317,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    color: white!important;
 }
 
 .registo a{
@@ -263,7 +329,8 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
 }
 
 .formRegElm{
-    padding: 10px;
+    padding: 16px;
+    margin: 5px;
 }
 
 .formRegElm h1{
@@ -381,6 +448,47 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     display: none;
 }
 
+.snav input{
+    font-size: 15px;
+    color: black;
+    font-weight: 400;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    width: 35px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    background-color:#0072B5;
+}
+
+.snav.open input{
+    padding: 0 20px 0 50px;
+    width: 100%;
+    background: white;
+}
+
+.snav .bx-search{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    background-color:#0072B5;
+}
+
+.snav.open .bx-search{
+    background: none;
+}
+
+.snav.open .bx-search: hover{
+    background: none;
+}
+
+.snav .bx-search:hover{
+    background: white;
+}
+
 .snav .elLista a{
     display: flex;
     height: 100%;
@@ -453,11 +561,16 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     margin-right: 10px;
 }
 
-.snav .elLista.perfil .nome, .snav .elLista.perfil .profissao{
+.snav .elLista.perfil .nomePerfil, .snav .elLista.perfil .profissao{
     font-size: 15px;
     font-weight: 400;
-    color: #fff;
+    color: black;
     white-space: nowrap;
+    opacity: 0;
+}
+
+.snav.open .elLista.perfil .nomePerfil, .snav.open .elLista.perfil .profissao{
+    opacity: 1;
 }
 
 .snav .elLista.perfil .profissao{
@@ -474,14 +587,17 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     transition: all 0.5s ease;
 }
 
-.snav.open .perfil #sair{
-    /*    width: 50px;*/
-    /*background: none;*/
-}
-
-.snav.open ~ .painel{
+.snav.open .painel{
     left: 250px;
     width: calc(100% - 250px);
+}
+
+.painel .elementos{
+    display: inline-block;
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 18px;
 }
 
 .snav a:hover:not(.ativo):not(:first-child){
@@ -505,11 +621,6 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
 .hover-opacity:hover{
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 25px;
-}
-
-.vermelho, hover-vermelho:hover {
-    color: #fff!important;
-    background-color: #cc0000;
 }
 
 .centro {
@@ -580,5 +691,9 @@ input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, inpu
     }
     .snav li .nome{
         display: none;
+    }
+
+    .formulario{
+        width: 80%;
     }
 }

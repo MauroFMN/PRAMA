@@ -267,9 +267,9 @@ include 'connexao.php';
             </div>
         </div>        
         <!-- Rorapé -->
-        <footer class="contentor centro">  
-            <div class="xl">
-
+        <footer class="contentor centro french-blue">  
+            <div>
+                <span>&copy; Todos os direitos reservados à Universidade Metodista de Angola</span>
             </div>
         </footer>
         <script src="js/script.js"></script>

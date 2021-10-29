@@ -45,9 +45,9 @@ include 'connexao.php';
             </div>
         </section>
         <div class="contentor info">
-            <h1 class="titulo">Atendimento mais rápido e eficiente</h1>
+            <h1 class="titulo">Atendimento rápido e eficiente</h1>
             <div class="linha linhaEsq">
-                <div style="border-radius: 7px;">
+                <div class="imagem">
                     <img src="imagens/Unknown-8.png"style="width:500px; height: 300px;">
                 </div>
                 <div class="conteudo">
@@ -71,13 +71,13 @@ include 'connexao.php';
             </div>
         </section>
         <section class="centro">
-            <h1>Vantagens do PRAMA</h1>
+            <h1 class="titulo">Vantagens do PRAMA</h1>
             <div class="icons-container">
                 <div class="icons">
                     <p>Telemedicina para médicos, pacientes e unidades hospitalares</p>
                 </div>
                 <div class="icons">
-                    <p>Consultas por chat</p>
+                    <p>Consultas por chat em qualquer lucgar com internet</p>
                 </div>
                 <div class="icons">
                     <p>Acesso por computador, tablet e smarthphone</p>
@@ -87,34 +87,38 @@ include 'connexao.php';
                 </div>
             </div>
         </section>
-
         <section id="hospitais" style="background-color: whitesmoke;">
-            <div>
-                <h2>cabeçalho da secção dos hospitais</h2>
-                <p> A plataforma de telemedicina gratuíta. Mais tecnologia no acesso a saúde. </p>
+            <h1 class="titulo">Para as Unidades Hospitalares</h1>
+            <div class="linha linhaEsq">
+                <div style="margin-left: 15px;">
+                    <img src="imagens/Unknown-7.png"style="width:500px; height: 300px;">
+                </div>
+                <div class="conteudo">
+                    <p>Os diretores gerais podem registar as instituições que dirigem, os médicos e indicar os serviços de especialidades praticados.</p>
+                    <p>Permite contar com uma avaliação especializada à distância, cujo investimento é realizado conforme a necessidade</p>
+                </div>
             </div>
-            <p>conteúdo da secçãodos hospitais</p>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
         <section id="pacientes">
-            <div>
-                <h2>cabeçalho da secção dos Médicos</h2>
-                <p> A plataforma de telemedicina gratuíta. Mais tecnologia no acesso a saúde. </p> 
+            <h1 class="titulo">Vantagens para os Pacientes</h1>
+            <div class="linha linhaDir">
+                <div class="conteudo">
+                    <p>Qualquer clínica pode oferecer atendimento multidisciplinar. Afinal, o diagnóstico é feito à distância e por um especialista da área, que garante um diagnóstico mais preciso.</p>
+                    <p>Mesmo com a agenda preenchida, os pacientes conseguem falar com seus médicos ou ser atendidos onde estiverem e sem perder tempo com deslocamentos.</p>
+                    <p>Além disso, eles têm acesso à todos os especialistas inscritos na plataforma e ao histório das consultas que fica armazenado na base de dados do PRAMA, podendo ser consultado a qualquer momento.</p>
+                </div>
+                <div style="margin-right: 5px;">
+                    <img src="imagens/Unknown-10.png"style="width:500px; height: 300px;">
+                </div>
             </div>
-            <div>vantagens para os médicos</div>
-            <p>conteúdo da secçãodos médicos</p>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
         <section id="sobre" class="sobre" style="background-color: whitesmoke;">
-            <h1 class=""> <span>Sobre</span> nós </h1>
-            <div class="">
-                <div class="">
-                    <img src="" alt="">
+            <h1 class="titulo">Sobre Nós</h1>
+            <div class="linha linhaEsq">
+                <div style="margin-left: 15px;">
+                    <img src="imagens/Unknown-7.png"style="width:500px; height: 300px;">
                 </div>
-                <div class="">
-                    <h3>Nós cuidamos da sua saúde</h3>
+                <div class="conteudo">
                     <p>Somos uma plataforma de cuidados em saúde que valoriza os médicos, os pacientes e amplia o acesso à saúde, com atendimento humanizado.</p>
                     <p>Oferecemos tecnologia para atendimentos a pacientes por telemedicina e acompanhamento da adesão ao tratamento.</p>
                     <p>Com o PRAMA, é possível receber e analisar resultados de exames e fazer prescrições online. Tudo em um único lugar!</p>

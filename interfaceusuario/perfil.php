@@ -29,7 +29,7 @@
                 <span class="nome">Painel</span>
             </div>
             <div class="elLista">
-                <a href="perfil.php">
+                <a href="javascript:void(0);">
                     <img src="../icons/person-sharp - cópia.svg" alt="Perfil">
                     <span class="nomeLink">Perfil</span>
                 </a>
@@ -38,6 +38,7 @@
             <div class="elLista">
                 <a href="javascript:void(0);">
                     <img src="../icons/medical-outline - cópia.svg" alt="Consulta">
+
                     <span class="nomeLink">Consulta</span>
                 </a>
                 <span class="nome">Consulta</span>
@@ -62,45 +63,58 @@
         </div>
     </div>
     </div>
-    <div class="conteudoInterfaceUsuario">
-
-        <div class="row">
+    <div class="conteudoInterfaceUsuario perfilUsuario">
+    <div class="row">
             <div class="col-lg-12">
-                <h1>Bem vindo Mauro Neto</h1>
+                <h1>Dados do Utilizador</h1>
             </div>
 
         </div>
-
-        <div class="row mt-5 opcoes">
-            <div class="col-lg-6">
-                <div class="row">
-                    <img src="../imagens/fazerAgendamento.png" alt="Img" />
-                </div>
-                <div class="row">
-                    <h3 class="mt-3">Fazer Agendamento</h3>
-                </div>
-                <div class="row mt-3">
-                    <p>Faça agora um agendamento de consulta e garanta o seu bem estar e saúde.</p>
-                </div>
-                <div class="row mt-3">
-                    <button type="button" class="btn btn-primary">Agendar Consulta.</button>
-                </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Nome Completo: DJ Mauro Poster </p>
             </div>
-            <div class="col-lg-6">
-
-                <div class="row">
-                    <img src="../imagens/meusagendamentos.png" alt="Img" />
-                </div>
-                <div class="row">
-                    <h3 class="mt-3">Meus Agendamentos</h3>
-                </div>
-                <div class="row mt-3">
-                    <p>Tenha acesso aos seus agendamentos e não perca uma consulta.</p>
-                </div>
-                <div class="row mt-3">
-                    <button type="button" class="btn btn-primary">Ver Agendamentos.</button>
-                </div>
-
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Data de Nascimento: 19/09/XXXX </p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Género: Masculino </p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Estado Civil: Casado </p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Pai: Pai do DJ Mauro</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Mãe: Mãe do DJ MAURO</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Província: Luanda</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Município: Luanda</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Bairro: Cassenda</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Nº Rua: 16</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Nome Rua: Rua internacional das chapadas</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Email: djmauro@gmail.com</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Telefone: 948766894</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Nome Utilizador: DjMauro</p>
+            </div>
+            <div class="col-lg-12">
+                <p class="dadosUtilizador">Password: ***************</p>
             </div>
         </div>
         <script src="../js/script.js"></script>

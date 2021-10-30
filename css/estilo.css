@@ -728,6 +728,22 @@
                 width: 100%;
             }
             
+            .conteudoInterfaceUsuario.perfilUsuario {
+                padding: 100px 400px;
+                width: 100%;
+            }
+            
+            .imagemPerfil {
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+            }
+            
+            .dadosUtilizador {
+                font-size: 18px;
+                font-weight: 500;
+            }
+            
             .conteudoInterfaceUsuario h1 {
                 text-align: center;
                 width: 100%;

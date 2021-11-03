@@ -16,14 +16,14 @@ window.onchange = function () {
 
 };
 
-let snav = document.querySelector(".snav");
-let closeBtn = document.querySelector("#btnMenu");
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
 
-closeBtn.addEventListener("click", () => {
-    snav.classList.toggle("open");
+closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
 });
 
 searchBtn.addEventListener("click", ()=>{
-  snav.classList.toggle("open");
+  sidebar.classList.toggle("open");
 });

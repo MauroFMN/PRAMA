@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     <a href="#prescricoes">
-                        <i class="fas fa-file-medical-alt" ></i>
+                        <i class="fas fa-notes-medical"></i>
                         <span class="links_name">Prescrisções</span>
                     </a>
                     <span class="tooltip">Prescrisções</span>

@@ -23,16 +23,16 @@
                 <li>
                     <a href="#main">
                         <i class="fas fa-th-large"></i>
-                        <span class="links_name">Área Pessoal</span>
+                        <span class="links_name">Área de Trabalho</span>
                     </a>
-                    <span class="tooltip">Área Pessoal</span>
+                    <span class="tooltip">Área de Trabalho</span>
                 </li>
                 <li>
-                    <a href="#medicos">
-                        <i class="fas fa-user-md" ></i>
-                        <span class="links_name">Os Meus Médicos</span>
+                    <a href="#pacientes">
+                        <i class="fas fa-hospital-user"></i>
+                        <span class="links_name">Os Meus Pacientes</span>
                     </a>
-                    <span class="tooltip">Os Meus Médicos</span>
+                    <span class="tooltip">Os Meus Pacientes</span>
                 </li>
                 <li>
                     <a href="#perfil">
@@ -42,25 +42,18 @@
                     <span class="tooltip">Perfil</span>
                 </li>
                 <li>
-                    <a href="#prescricoes">
-                        <i class="fas fa-file-medical-alt" ></i>
-                        <span class="links_name">Prescrisções</span>
+                    <a href="#definições">
+                        <i class="fas fa-cog"></i>
+                        <span class="links_name">Definições</span>
                     </a>
-                    <span class="tooltip">Prescrisções</span>
-                </li>
-                <li>
-                    <a href="#historico">
-                        <i class="fas fa-archive" ></i>
-                        <span class="links_name">Histórico</span>
-                    </a>
-                    <span class="tooltip">Histórico</span>
+                    <span class="tooltip">definições</span>
                 </li>
                 <li class="profile">
                     <div class="profile-details">
                         <img src="" alt="">
                         <div class="name_job">
-                            <div class="name"><b>Mauro Neto</b></div>
-                            <div class="job">Dj</div>
+                            <div class="name"><b>Dr. Mauro Neto</b></div>
+                            <div class="job">Clinico Geral</div>
                         </div>
                     </div>
                     <a href="../index.php">
@@ -71,17 +64,15 @@
         </div>
         <section class="home-section" id="main">
             <div class="text">
-                <h2>Área Pessoal</h2>
+                <h2>Área de Trabalho</h2>
                 <div>
                     <a href="">Consulta</a>
-                    <a href="">Prescrições</a>
-                    <a href="">Histórico</a>
                 </div>
             </div>
         </section>
-        <section class="home-section" id="medicos">
+        <section class="home-section" id="pacientes">
             <div class="text">
-                <h2>Os Meus Médicos</h2>
+                <h2>Os Meus Pacientes</h2>
             </div>
         </section>
         <section class="home-section" id="perfil">
@@ -89,14 +80,9 @@
                 <h2>Perfil</h2>
             </div>
         </section>
-        <section class="home-section" id="prescricoes">
+        <section class="home-section" id="definições">
             <div class="text">
-                <h2>Prescrições</h2>
-            </div>
-        </section>
-        <section class="home-section" id="historico">
-            <div class="text">
-                <h2>Histórico</h2>
+                <h2>Definições</h2>
             </div>
         </section>
         <script src="../js/script.js"></script>

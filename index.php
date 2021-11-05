@@ -97,7 +97,7 @@ include 'connexao.php';
             </div>
             <div class="linha linhaEsq">
                 <div style="margin-left: 15px;">
-                    <img src="imagens/Unknown-7.png" style="width:500px; height: 300px;" alt>
+                    <img src="imagens/Unknown-7.png" style="width:500px; height: 300px;" alt="">
                 </div>
                 <div class="conteudo">
                     <p>Os diretores gerais podem registar as instituições que dirigem, os médicos e indicar os serviços de especialidades praticados.</p>
@@ -126,7 +126,7 @@ include 'connexao.php';
             </div>
             <div class="linha linhaEsq">
                 <div style="margin-left: 15px;">
-                    <img src="imagens/Unknown-7.png" style="width:500px; height: 300px;" alt="">
+                    <img src="imagens/images.jpeg" style="width:500px; height: 300px;" alt="">
                 </div>
                 <div class="conteudo">
                     <p>Somos uma plataforma de cuidados em saúde que valoriza os médicos, os pacientes e amplia o acesso à saúde, com atendimento humanizado.</p>
@@ -217,6 +217,7 @@ include 'connexao.php';
                             <input type="text" placeholder="Insira o Email" name="email" id="email">
                             <label for="password"><strong>Password</strong></label>
                             <input type="password" placeholder="Insira a Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="A Password deve conter um número, uma letra minúscula e uma maiúscula no mínimo e tem que ter no mínimo 6 caracteres" required>
+                            <div id="message">A password deve ter <strong id="letter">uma letra minúscula</strong>, <strong id="capital">uma maiúscula</strong>, <strong id="number">um número</strong> e deve ter no <strong id="length">mínimo 8 caracteres!</strong></div>
                             <label for="password-repeat"><strong>Confirme a Password</strong></label>
                             <input type="password" placeholder="Insira Novamente a Password" name="password-repeat" id="password-repeat" required>
                             <hr>

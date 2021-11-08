@@ -11,7 +11,7 @@
     $db_password,
     $db_db
   );
-    
+
   if ($mysqli->connect_error) {
     echo 'Errno: '.$mysqli->connect_errno;
     echo '<br>';

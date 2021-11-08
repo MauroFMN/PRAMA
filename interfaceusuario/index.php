@@ -7,6 +7,8 @@
     <title> Interface do Usuário </title>
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -64,46 +66,85 @@
     </div>
     <div class="conteudoInterfaceUsuario">
 
-        <div class="row">
+        <div class="row userNameTitle">
             <div class="col-lg-12">
                 <h1>Bem vindo Mauro Neto</h1>
             </div>
+        </div>
+
+        <div class="row mt-5">
+            <ul class="nav nav-tabs">
+                <li class="nav-item userNavItem">
+                    <a href="#primeiraTab" class="nav-link  active" role="tab" data-toggle="tab"> Consultas </a>
+                </li>
+                <li class="nav-item userNavItem">
+                    <a href="#segundaTab" class="nav-link " role="tab" data-toggle="tab"> Recibos </a>
+                </li>
+                <li class="nav-item userNavItem">
+                    <a href="#terceiraTab" class="nav-link " role="tab" data-toggle="tab"> Prescrições </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade mt-3 show active" role="tabpanel" id="primeiraTab">
+                    <div class="row mt-5 opcoes">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <img src="../imagens/fazerAgendamento.png" alt="Img" />
+                            </div>
+                            <div class="row">
+                                <h3 class="mt-3">Fazer Agendamento</h3>
+                            </div>
+                            <div class="row mt-3">
+                                <p>Faça agora um agendamento de consulta e garanta o seu bem estar e saúde.</p>
+                            </div>
+                            <div class="row mt-3">
+                                <button type="button" class="btn btn-primary">Agendar Consulta.</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="row">
+                                <img src="../imagens/meusagendamentos.png" alt="Img" />
+                            </div>
+                            <div class="row">
+                                <h3 class="mt-3">Meus Agendamentos</h3>
+                            </div>
+                            <div class="row mt-3">
+                                <p>Tenha acesso aos seus agendamentos e não perca uma consulta.</p>
+                            </div>
+                            <div class="row mt-3">
+                                <button type="button" class="btn btn-primary">Ver Agendamentos.</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade mt-3" role="tabpanel" id="segundaTab"> Sem Recibos Emitidos </div>
+                <div class="tab-pane fade mt-3" role="tabpanel" id="terceiraTab"> Sem Prescrições emitidas </div>
+            </div>
 
         </div>
 
-        <div class="row mt-5 opcoes">
-            <div class="col-lg-6">
-                <div class="row">
-                    <img src="../imagens/fazerAgendamento.png" alt="Img" />
-                </div>
-                <div class="row">
-                    <h3 class="mt-3">Fazer Agendamento</h3>
-                </div>
-                <div class="row mt-3">
-                    <p>Faça agora um agendamento de consulta e garanta o seu bem estar e saúde.</p>
-                </div>
-                <div class="row mt-3">
-                    <button type="button" class="btn btn-primary">Agendar Consulta.</button>
-                </div>
-            </div>
-            <div class="col-lg-6">
 
-                <div class="row">
-                    <img src="../imagens/meusagendamentos.png" alt="Img" />
-                </div>
-                <div class="row">
-                    <h3 class="mt-3">Meus Agendamentos</h3>
-                </div>
-                <div class="row mt-3">
-                    <p>Tenha acesso aos seus agendamentos e não perca uma consulta.</p>
-                </div>
-                <div class="row mt-3">
-                    <button type="button" class="btn btn-primary">Ver Agendamentos.</button>
-                </div>
-
-            </div>
-        </div>
         <script src="../js/script.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(".nav.nav-tabs li").on("click", function() {
+                $(".nav-link.active").removeClass("active");
+                $(this).children("a").addClass("active");
+
+                const id = $(this).children("a").attr("href");
+                $(".tab-pane.fade").removeClass("show");
+                $(".tab-pane.fade").removeClass("active");
+
+
+                const element = document.getElementById(id.substr(1))
+                element.classList = element.classList + " show active"
+
+
+
+            })
+        </script>
 </body>
 
 </html>

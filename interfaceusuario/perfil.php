@@ -7,6 +7,7 @@
     <title> Interface do Usuário </title>
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -64,7 +65,9 @@
     </div>
     </div>
     <div class="conteudoInterfaceUsuario perfilUsuario">
-    <div class="row">
+
+
+        <div class="row">
             <div class="col-lg-12">
                 <h1>Dados do Utilizador</h1>
             </div>
@@ -118,6 +121,7 @@
             </div>
         </div>
         <script src="../js/script.js"></script>
+
 </body>
 
 </html>

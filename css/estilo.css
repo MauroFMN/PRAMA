@@ -724,7 +724,7 @@
             }
             
             .conteudoInterfaceUsuario {
-                padding: 200px 400px;
+                padding: 120px 400px;
                 width: 100%;
             }
             
@@ -763,4 +763,13 @@
             .conteudoInterfaceUsuario .opcoes button {
                 margin: 0 auto;
                 width: 30%;
+            }
+            
+            .userNavItem {
+                width: 33%;
+                text-align: center;
+            }
+            
+            .userNameTitle {
+                margin-bottom: 100px;
             }

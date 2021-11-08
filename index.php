@@ -16,7 +16,7 @@ include 'connexao.php';
             <a href="#hospitais">Hospitais</a>
             <a href="#pacientes">Pacientes</a>
             <a href="#sobre">Sobre</a>
-            <a href="#Registo" class="direita" onclick="document.getElementById('reg').style.display='block'; myFunction()">Registar</a> 
+            <a href="#Registo" class="direita" onclick="document.getElementById('reg').style.display='block'; myFunction()">Registar</a>
             <a href="#Login" class="direita" onclick="document.getElementById('login').style.display='block'; myFunction()">Entrar</a>
             <a href="javascript:void(0);" style="font-size: 15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -174,7 +174,7 @@ include 'connexao.php';
                                 <hr>
                                 <label for="nomeUH"><strong>Nome da Unidade Hospitalar</strong></label>
                                 <input type="text" placeholder="Escreva o Nome da Unidade Hospitalar" name="nomeUH" id="nomeUH">
-                            <?php } ?> 
+                            <?php } ?>
                             <label for="tlf"><strong>Telefone</strong></label>
                             <input type="tel" placeholder="Nº de Telefone" name="tlf" id="tlf" required>
                             <?php if ($_GET["p"] == "2") { ?>
@@ -216,7 +216,7 @@ include 'connexao.php';
                             <label for="email"><strong>Email</strong></label>
                             <input type="text" placeholder="Insira o Email" name="email" id="email">
                             <label for="password"><strong>Password</strong></label>
-                            <input type="password" placeholder="Insira a Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="A Password deve conter um número, uma letra minúscula e uma maiúscula no mínimo e tem que ter no mínimo 6 caracteres" required>
+                            <input type="password" placeholder="Insira a Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             <div id="message">A password deve ter <strong id="letter">uma letra minúscula</strong>, <strong id="capital">uma maiúscula</strong>, <strong id="number">um número</strong> e deve ter no <strong id="length">mínimo 8 caracteres!</strong></div>
                             <label for="password-repeat"><strong>Confirme a Password</strong></label>
                             <input type="password" placeholder="Insira Novamente a Password" name="password-repeat" id="password-repeat" required>
@@ -226,9 +226,9 @@ include 'connexao.php';
                     </form>
                 <?php } ?>
             </div>
-        </div>        
+        </div>
         <!-- Rorapé -->
-        <footer class="contentor centro french-blue">  
+        <footer class="contentor centro french-blue">
             <div>
                 <span>&copy;Todos os Direitos Reservados à Universidade Metodista de Angola</span>
             </div>

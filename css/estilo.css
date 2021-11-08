@@ -614,10 +614,6 @@ input[type=tel]:focus {
     margin: 18px;
 }
 
-.areatrabalho{
-    background-color: black;
-}
-
 #message {
     display:none;
     background: #f1f1f1;

@@ -1,0 +1,50 @@
+        .conteudoInterfaceUsuario {
+            padding: 120px 400px;
+            width: 100%;
+        }
+        
+        .conteudoInterfaceUsuario.perfilUsuario {
+            padding: 100px 400px;
+            width: 100%;
+        }
+        
+        .imagemPerfil {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+        
+        .dadosUtilizador {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .conteudoInterfaceUsuario h1 {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .conteudoInterfaceUsuario .opcoes img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        
+        .conteudoInterfaceUsuario .opcoes h3,
+        .conteudoInterfaceUsuario .opcoes p {
+            text-align: center;
+        }
+        
+        .conteudoInterfaceUsuario .opcoes button {
+            margin: 0 auto;
+            width: 30%;
+        }
+        
+        .userNavItem {
+            width: 33%;
+            text-align: center;
+        }
+        
+        .userNameTitle {
+            margin-bottom: 100px;
+        }

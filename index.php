@@ -281,13 +281,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <?php } ?>
                             <label for="tlf"><strong>Telefone</strong></label>
                             <input type="tel" placeholder="Nº de Telefone" name="tlf" id="tlf" required>
-                            <?php if ($_GET["p"] == "2") { ?>
-                                <br>
-                                <label for="nOrdem"><strong>Nº da Ordem dos Médicos</strong></label>
-                                <input type="text" placeholder="Insira o Número da Ordem dos Médicos" name="nOrdem" id="nOrdem">
-                                <label for="esp"><strong>Especialidade</strong></label>
-                                <select id="esp" name="esp[]" class="form-select" multiple aria-label="multiple select example">
-                                <?php 
+                            <?php if ($_GET["p"] == "2") { 
+                                echo '<br>';
+                                echo '<label for="nOrdem"><strong>Nº da Ordem dos Médicos</strong></label>';
+                                echo '<input type="text" placeholder="Insira o Número da Ordem dos Médicos" name="nOrdem" id="nOrdem">';
+                                echo '<label for="esp"><strong>Especialidade</strong></label>';
+                                echo '<select id="esp" name="esp[]" class="form-select" multiple aria-label="multiple select example">';
+                                 
                                         $especialidadessql = "SELECT codEspecialidade, nome FROM especialidade";
                                             
                                         $especialidadesresult = mysqli_query($mysqli,$especialidadessql);
@@ -297,16 +297,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         
                                         echo "<option value=".$row["codEspecialidade"].">".$row['nome']."</option>";
                                         }
-                                        echo "</table>";
 
-                                        mysqli_close($con);
-                                    ?>    
-                                </select>
-                            <?php } ?>
-                            <?php if ($_GET["p"] == "3") { ?>
+                                        // mysqli_close($mysqli);
+                                        
+                                echo '</select>';
+                            } if ($_GET["p"] == "3") { ?>
                                 <br>
                                 <label for="sector"><strong>Sector no SNS</strong></label>
                                 <select id="sector" name="sector" onchange="alterarSubsector(this.value)">
+                                    <option >Selecionar...</option>
                                     <option value="publico">Sector Público</option>
                                     <option value="privado">Sector Privado</option>
                                     <option value="tradicional">Sector de Medicina Tradicional</option>
@@ -316,14 +315,61 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 
                                 <label for="subsector"><strong>Subsector do SNS</strong></label>
                                 <select name="subsector" id="subsector">
-                                   
+                                    
                                     <!-- Sector Privado -->
                                 </select>
                                 <br>
                                 <label for="npac"><strong>Nº de Pacientes atendidos Diáriamente</strong></label>
                                 <input type="number" placeholder="Insira o nº" name="npac" id="npac">
-                            <?php } ?>
+                                <?php } ?>
+                                <br>
+                                <label for="provincia"><strong>Provincia</strong></label>
+                                <br/>
+                                <select id="provincia" name="provincia" onchange="carregarMunicipios(this.value)">
+                                    <option >Selecionar...</option>
+                                    <?php 
+                                // reabrirConexao();
+                                $provinciaSql = "SELECT codProvincia, nome FROM provincia";
+                                
+                                $provinciaResult = mysqli_query($mysqli,$provinciaSql);
+                                
+                                while($row    = mysqli_fetch_assoc($provinciaResult))
+                                {
+                                    
+                                    echo "<option value=".$row["codProvincia"].">".$row['nome']."</option>";
+                                }
+                                // mysqli_close($mysqli);
+                                ?>
+                            </select>
                             <br>
+                            <label for="Municipio"><strong>Municipio</strong></label>
+                            <br/>
+                            <select id="municipio" name="municipio" onchange="" disabled>
+                                <option >Selecionar...</option>
+                                <?php 
+                                
+                                // reabrirConexao();
+                                
+                                $municipioSql = "SELECT codMunicipio, codProvincia, nome FROM municipio";
+                                
+                                $municipioResult = mysqli_query($mysqli,$municipioSql);
+                                
+                                while($row    = mysqli_fetch_assoc($municipioResult))
+                                {
+                                        echo "<option value=".$row["codMunicipio"]." id=".$row["codProvincia"].">".$row['nome']."</option>";
+                                    }
+                                // mysqli_close($mysqli);
+                                ?>
+                            </select>
+                            <br>
+                            <label for="bairro"><strong>Bairro</strong></label>
+                            <input type="text" placeholder="Escreva o Nome do seu bairro" name="bairro" id="bairro">
+
+                            <br>
+                            <label for="rua"><strong>Rua</strong></label>
+                            <input type="text" placeholder="Escreva o Nome da sua rua" name="rua" id="rua">
+                            <br/>
+
                             <label for="email"><strong>Email</strong></label>
                             <input type="text" placeholder="Insira o Email" name="email" id="email">
                             <label for="password"><strong>Password</strong></label>
@@ -385,6 +431,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     .attr("value", value).text(key));
                 });
             }
+            
+            function carregarMunicipios(codProvincia){
+                $("#municipio").removeAttr("disabled");
+                console.log($("#municipio")[0].options)
+                for(let i = 0; i<$("#municipio")[0].options.length; i++){
+                        $("#municipio")[0].options[i].classList = "";
+                    
+                }
+                for(let i = 0; i<$("#municipio")[0].options.length; i++){
+                    if($("#municipio")[0].options[i].id !== codProvincia){
+                        $("#municipio")[0].options[i].classList = "d-none";
+                    }
+                }
+            }
+
         </script>
         <footer class="contentor centro french-blue">
             <div>

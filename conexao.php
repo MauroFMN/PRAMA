@@ -19,6 +19,10 @@
     exit();
   }
 
+
+  function reabrirConexao() {
+      $mysqli->connect($db_host, $db_user, $db_password, $db_db);
+  }
   // echo 'Success: A proper connection to MySQL was made.';
   // echo '<br>';
   // echo 'Host information: '.$mysqli->host_info;

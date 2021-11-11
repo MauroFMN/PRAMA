@@ -1,9 +1,9 @@
 <?php
   $db_host = 'localhost';
   $db_user = 'root';
-  $db_password = 'root';
-  $db_db = 'pramaN';
-  $db_port = 8889;
+  $db_password = '';
+  $db_db = 'praman';
+  $db_port = 3306;
 
   $mysqli = new mysqli(
     $db_host,
@@ -19,13 +19,13 @@
     exit();
   }
 
-  echo 'Success: A proper connection to MySQL was made.';
-  echo '<br>';
-  echo 'Host information: '.$mysqli->host_info;
-  echo '<br>';
-  echo 'Protocol version: '.$mysqli->protocol_version;
-  $senha = "12345";
-  $senhaCripto= md5($senha);
-  echo 'senhaCripto'.$senhaCripto;
-  $mysqli->close();
+  // echo 'Success: A proper connection to MySQL was made.';
+  // echo '<br>';
+  // echo 'Host information: '.$mysqli->host_info;
+  // echo '<br>';
+  // echo 'Protocol version: '.$mysqli->protocol_version;
+  // $senha = "1234567Prama";
+  // $senhaCripto= md5($senha);
+  // echo 'senhaCripto'.$senhaCripto;
+  // $mysqli->close();
 ?>

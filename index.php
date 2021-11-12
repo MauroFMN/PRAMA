@@ -8,22 +8,22 @@ $nomeUsuario_erro = $senha_erro = $login_erro = "";
 // $especialidadesSelecionadas
 
         // if($especialidadestmt = mysqli_prepare($mysqli, $especialidadessql)){
-            
+
         //     if(mysqli_stmt_execute($especialidadestmt)){
-        //         mysqli_stmt_store_result($especialidadestmt);                
+        //         mysqli_stmt_store_result($especialidadestmt);
         //     }
         // }
 
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+
     if(empty(trim($_POST["uname"]))){
         $nomeUsuario_erro = "Introduza o nome de usuario.";
     } else{
         $username = trim($_POST["uname"]);
     }
-    
+
     if(empty(trim($_POST["psw"]))){
         $senha_erro = "Introduza uma senha valida";
     } else{
@@ -31,29 +31,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
 
-    
+
     if(empty($nomeUsuario_erro) && empty($senha_erro)){
         $sql = "SELECT idPessoa, nomeUtilizador, tipoUser FROM pessoa WHERE nomeUtilizador = ? and password = ?";
-	
-        
+
+
         if($stmt = mysqli_prepare($mysqli, $sql)){
             mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-            
+
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
+
+                if(mysqli_stmt_num_rows($stmt) == 1){
                     mysqli_stmt_bind_result($stmt, $idPessoa, $nomeUtilizador, $tipoUser);
                     if(mysqli_stmt_fetch($stmt)){
                         echo($idPessoa);
                         echo($nomeUtilizador);
                         echo($tipoUser);
                         session_start();
-                            
+
                         $_SESSION["logado"] = true;
                         $_SESSION["id"] = $id;
-                        $_SESSION["nomeusuario"] = $username;                            
-                            
+                        $_SESSION["nomeusuario"] = $username;
+
                         header("location: interfaceusuario/index.php");
                     }
                     $login_erro = "Invalid username or password.";
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
+
     // Close connection
     mysqli_close($mysqli);
 }
@@ -85,14 +85,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </head>
     <body>
         <div class="navegador" id="myTopnav">
-            <a href="#principal" id="logotipo"></a>
+            <a href="index.php" id="logotipo"></a>
             <a href="#medicos" onclick="myFunction();">Médicos</a>
-            <a href="#hospitais">Hospitais</a>
-            <a href="#pacientes">Pacientes</a>
-            <a href="#sobre">Sobre</a>
+            <a href="#hospitais" onclick="myFunction();">Hospitais</a>
+            <a href="#pacientes" onclick="myFunction();">Pacientes</a>
+            <a href="#sobre" onclick="myFunction();">Sobre</a>
             <a href="#Registo" class="direita" onclick="document.getElementById('reg').style.display='block'; myFunction()">Registar</a>
             <a href="#Login" class="direita" onclick="document.getElementById('login').style.display='block'; myFunction()">Entrar</a>
-            <a href="javascript:void(0);" style="font-size: 15px;" class="icon" onclick="myFunction()">&#9776;</a>
+            <a href="javascript:void(0);" style="font-size: 17px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
         <!-- Tela de Login -->
         <div id="login" class="tela-login cartao">
@@ -157,7 +157,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="centro row seccaoConteudoTelaApresentacao" style="background: white!important " >
                 <div class="col-12">
                     <h1>Vantagens do PRAMA</h1>
-                </div>  
+                </div>
 
                 <div class="row icons-container pb-5 pt-5">
                     <div class="col-lg-3 col-sm-6 mb-sm-4 col-xs-12 mb-xs-4">
@@ -193,9 +193,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="col-lg-3 col-sm-6">
                         <img src="imagens/Unknown-7.png" style="width:100%;" alt="">
                     </div>
-                    
+
                 <div class="col-lg-9 col-sm-6">
-                
+
                     <div class="conteudo">
                         <p>Os diretores gerais podem registar as instituições que dirigem, os médicos e indicar os serviços de especialidades praticados.</p>
                         <p>Permite contar com uma avaliação especializada à distância, cujo investimento é realizado conforme a necessidade</p>
@@ -281,25 +281,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <?php } ?>
                             <label for="tlf"><strong>Telefone</strong></label>
                             <input type="tel" placeholder="Nº de Telefone" name="tlf" id="tlf" required>
-                            <?php if ($_GET["p"] == "2") { 
+                            <?php if ($_GET["p"] == "2") {
                                 echo '<br>';
                                 echo '<label for="nOrdem"><strong>Nº da Ordem dos Médicos</strong></label>';
                                 echo '<input type="text" placeholder="Insira o Número da Ordem dos Médicos" name="nOrdem" id="nOrdem">';
                                 echo '<label for="esp"><strong>Especialidade</strong></label>';
                                 echo '<select id="esp" name="esp[]" class="form-select" multiple aria-label="multiple select example">';
-                                 
+
                                         $especialidadessql = "SELECT codEspecialidade, nome FROM especialidade";
-                                            
+
                                         $especialidadesresult = mysqli_query($mysqli,$especialidadessql);
 
                                         while($row    = mysqli_fetch_assoc($especialidadesresult))
                                         {
-                                        
+
                                         echo "<option value=".$row["codEspecialidade"].">".$row['nome']."</option>";
                                         }
 
                                         // mysqli_close($mysqli);
-                                        
+
                                 echo '</select>';
                             } if ($_GET["p"] == "3") { ?>
                                 <br>
@@ -312,10 +312,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     <option value="deficicão" selected>Seleccione o sector da UH</option>
                                 </select>
                                 <br>
-                                
+
                                 <label for="subsector"><strong>Subsector do SNS</strong></label>
                                 <select name="subsector" id="subsector">
-                                    
+
                                     <!-- Sector Privado -->
                                 </select>
                                 <br>
@@ -327,15 +327,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <br/>
                                 <select id="provincia" name="provincia" onchange="carregarMunicipios(this.value)">
                                     <option >Selecionar...</option>
-                                    <?php 
+                                    <?php
                                 // reabrirConexao();
                                 $provinciaSql = "SELECT codProvincia, nome FROM provincia";
-                                
+
                                 $provinciaResult = mysqli_query($mysqli,$provinciaSql);
-                                
+
                                 while($row    = mysqli_fetch_assoc($provinciaResult))
                                 {
-                                    
+
                                     echo "<option value=".$row["codProvincia"].">".$row['nome']."</option>";
                                 }
                                 // mysqli_close($mysqli);
@@ -346,14 +346,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <br/>
                             <select id="municipio" name="municipio" onchange="" disabled>
                                 <option >Selecionar...</option>
-                                <?php 
-                                
+                                <?php
+
                                 // reabrirConexao();
-                                
+
                                 $municipioSql = "SELECT codMunicipio, codProvincia, nome FROM municipio";
-                                
+
                                 $municipioResult = mysqli_query($mysqli,$municipioSql);
-                                
+
                                 while($row    = mysqli_fetch_assoc($municipioResult))
                                 {
                                         echo "<option value=".$row["codMunicipio"]." id=".$row["codProvincia"].">".$row['nome']."</option>";
@@ -422,22 +422,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }else{
                     el.attr('disabled','true');
                 }
-              
 
-                
+
+
                 el.empty();
                 $.each(opcoesSubsector, function(key,value) {
                 el.append($("<option></option>")
                     .attr("value", value).text(key));
                 });
             }
-            
+
             function carregarMunicipios(codProvincia){
                 $("#municipio").removeAttr("disabled");
                 console.log($("#municipio")[0].options)
                 for(let i = 0; i<$("#municipio")[0].options.length; i++){
                         $("#municipio")[0].options[i].classList = "";
-                    
+
                 }
                 for(let i = 0; i<$("#municipio")[0].options.length; i++){
                     if($("#municipio")[0].options[i].id !== codProvincia){
@@ -452,6 +452,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span>&copy;Todos os Direitos Reservados à Universidade Metodista de Angola</span>
             </div>
         </footer>
-        <script src="js/script.js"></>
+        <script src="js/script.js"></script>
+        <script src="js/mensagem.js"></script>
     </body>
 </html>

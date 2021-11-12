@@ -651,6 +651,16 @@ input[type=tel]:focus {
     margin: 20px;
 }
 
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
 .valid {
     color: green;
 }

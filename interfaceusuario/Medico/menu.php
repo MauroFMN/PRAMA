@@ -23,13 +23,13 @@
             </a>
             <span class="tooltip">Os Meus Pacientes</span>
         </li>
-        <!--li>
-            <a href="#chat">
-                <i class="fab fa-whatsapp" ></i>
+        <li>
+            <a href="consulta.php">
+                <i class="fas fa-laptop-medical"></i>
                 <span class="links_name">Chat</span>
             </a>
-            <span class="tooltip">Chat</span>
-        </li-->
+            <span class="tooltip">Consulta</span>
+        </li>
         <li>
             <a href="perfil.php">
                 <i class="far fa-user" ></i>
@@ -37,13 +37,13 @@
             </a>
             <span class="tooltip">Perfil</span>
         </li>
-        <li>
+        <!--li>
             <a href="#definições">
                 <i class="fas fa-cog"></i>
                 <span class="links_name">Definições</span>
             </a>
             <span class="tooltip">definições</span>
-        </li>
+        </li-->
         <li class="profile">
             <div class="profile-details">
                 <div class="name_job">
@@ -54,6 +54,7 @@
             <a href="../../index.php">
                 <i class="fas fa-sign-out-alt" id="log_out" ></i>
             </a>
+            <span class="tooltip">Sair</span>
         </li>
     </ul>
 </div>

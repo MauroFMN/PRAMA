@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
+        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
         <script src="../../js/jquery-3.6.0.min.js"></script>
     </head>
     <body>
@@ -94,6 +95,7 @@
         </section>
         <script src="../../js/script.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/chat.js"></script>
         <script>
             $(".nav.nav-tabs li").on("click", function () {
                 $(".nav-link.active").removeClass("active");

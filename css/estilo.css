@@ -646,8 +646,6 @@ input[type=tel]:focus {
 
 .home-section .text {
     display: inline-block;
-    /*font-size: 25px;
-    font-weight: 500;*/
     margin: 20px;
 }
 
@@ -659,6 +657,10 @@ input[type=tel]:focus {
   padding: 20px;
   margin-top: 10px;
   font-size: 12px;
+}
+
+.row .formulario{
+  width: 80%;
 }
 
 .valid {

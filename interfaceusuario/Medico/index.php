@@ -56,7 +56,7 @@
                                     <div class="row mt-3">
                                         <p><?php
                                             if (condition) {
-                                                echo "Não tem prescrições médicas.";
+                                                echo "Não passou prescrição médica.";
                                             } else {
                                                 // code...
                                             }

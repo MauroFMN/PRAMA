@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Paciente </title>
+        <title>Perfil do Paciente</title>
         <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
+        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -17,9 +18,9 @@
                         <h1>Perfil</h1>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-5">
                     <div class="formulario">
-                        <form class="formPerfil">
+                        <form class="formRegElm">
                             <label for="nome">Nome:</label>
                             <input type="text" name="nome" id="nome">
                             <label>Data de Nascimento:</label>
@@ -67,7 +68,7 @@
             </div>
         </section>
         <script src="../../js/script.js"></script>
-
+        <script src="../../js/chat.js"></script>
     </body>
 
 </html>

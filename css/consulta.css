@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width:768px) {
-  .column {
+  .column, .column form textarea {
     width: 100%;
   }
 }

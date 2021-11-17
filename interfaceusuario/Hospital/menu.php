@@ -10,7 +10,7 @@
             <span class="tooltip">Pesquisar</span>
         </li>
         <li>
-            <a href="#main">
+            <a href="index.php">
                 <i class="fas fa-th-large"></i>
                 <span class="links_name">Área de Trabalho</span>
             </a>

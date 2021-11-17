@@ -26,7 +26,7 @@
         <li>
             <a href="consulta.php">
                 <i class="fas fa-laptop-medical"></i>
-                <span class="links_name">Chat</span>
+                <span class="links_name">Consulta</span>
             </a>
             <span class="tooltip">Consulta</span>
         </li>
@@ -44,13 +44,6 @@
             </a>
             <span class="tooltip">Perfil</span>
         </li>
-        <!--li>
-            <a href="#definições">
-                <i class="fas fa-cog"></i>
-                <span class="links_name">Definições</span>
-            </a>
-            <span class="tooltip">definições</span>
-        </li-->
         <li class="profile">
             <div class="profile-details">
                 <div class="name_job">

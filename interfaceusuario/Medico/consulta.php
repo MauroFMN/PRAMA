@@ -45,6 +45,10 @@
                     <input type="text" name="" value="">
                     <label for="">Tipo Sanguíneo</label>
                     <input type="text" name="" value="">
+                    <label for="">Antecedentes Patológicos Familiares</label>
+                    <textarea name="name" rows="4" cols="30"></textarea>
+                    <label for="">Antecedentes Patológicos Pessoais</label>
+                    <textarea name="name" rows="4" cols="30"></textarea>
                     <label for="">Exame Físico</label>
                     <textarea name="name" rows="4" cols="30"></textarea>
                   </form>
@@ -52,25 +56,48 @@
 
                 <div class="column">
                   <form>
-                    <label for="">Antecedentes Patológicos Familiares</label>
-                    <textarea name="name" rows="4" cols="30"></textarea>
-                    <label for="">Antecedentes Patológicos Pessoais</label>
-                    <textarea name="name" rows="4" cols="30"></textarea>
                     <label for="">Motivo da Consulta</label>
                     <textarea name="name" rows="4" cols="30"></textarea>
-                  </form>
-                </div>
-
-                <div class="column">
-                  <form>
                     <label for="">Diagnóstico Provável</label>
                     <textarea name="name" rows="4" cols="30"></textarea>
                     <label for="">Histórico da Doença Atual</label>
-                    <textarea name="name" rows="4" cols="30"></textarea>
+                    <textarea name="name" rows="5" cols="30"></textarea>
+                    <label for="">Prescrição Médica</label>
+                    <input type="radio" name="" value="">
+                    <label for="">Requisição Médica</label>
+                    <input type="radio" name="" value="">
+                    <textarea name="name" rows="5" cols="30"></textarea
                   </form>
                 </div>
+
+                <!--div class="column">
+                  <form>
+
+                  </form>
+                </div-->
               </div>
             </div>
+        </section>
+        <section class="wrapper" id="chat">
+          <div class="chat-area">
+            <header>
+              <?php  ?>
+              <span class="fechar back-icon" onClick="this.parentElement.style.display = 'none'; location = '?p='"><i class="far fa-times-circle"></i></span>
+              <img src="" alt="">
+              <div class="details">
+                <span><?php  ?></span>
+                <p><?php  ?></p>
+              </div>
+            </header>
+            <div class="chat-box">
+
+            </div>
+            <form action="#" class="typing-area">
+              <input type="text" class="incoming_id" name="incoming_id" value="<?php  ?>" hidden>
+              <input type="text" name="menssagem" placeholder="Escreva aqui a sua mensagem..." autocomplete="off">
+              <button type="button" name="button"><i class="fab fa-telegram-plane"></i></button>
+            </form>
+          </div>
         </section>
         <script src="../../js/script.js"></script>
     </body>

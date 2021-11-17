@@ -31,6 +31,11 @@
                                 <option value="">Prefiro não informar</option>
                             </select>
                             <label>Númeno da Ordem:</label>
+                            <select class="" name="">
+                              <option value=""></option>
+                            </select>
+                            <label for="">Local de Trabalho</label>
+                            <input type="text" name="" value="">
                             <input type="text" name="">
                             <label for="email">Email:</label>
                             <input type="email" name="email" id="email" value="exemplo@exemplo.com">
@@ -40,6 +45,12 @@
                             <input type="text" name="">
                             <label>Password:</label>
                             <input type="password" name="">
+                            <hr>
+                            <label for="">Horário de Atendimento</label>
+                            <hr>
+                            <label for="">Dias da Semana</label><br>
+                            <label for="">Hora inicio</label><br>
+                            <label for="">Hora Fim</label>
                             <div class="centro">
                                 <input type="submit" class="botao verde" value="Editar">
                             </div>

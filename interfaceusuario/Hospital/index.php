@@ -11,7 +11,7 @@
     </head>
     <body>
         <?php include_once 'menu.php'; ?>
-        <section class="home-section" id="main">
+        <section class="home-section">
             <div class="text">
                 <div class="row userNameTitle">
                     <div class="col-lg-12">
@@ -38,7 +38,7 @@
                                             ?></p>
                                     </div>
                                     <div class="row mt-3">
-                                        <button type="button" class="btn btn-primary w-50">Adicionar Médico</button>
+                                        <button type="button" class="btn btn-primary w-50" >Adicionar Médico</button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

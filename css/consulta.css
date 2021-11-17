@@ -1,4 +1,34 @@
-.consulta{
-  margin: 0;
-  display: grid;
+.topnav {
+  overflow: hidden;
+  background-color: white;
+}
+
+.topnav .elm {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav button{
+  border-radius: 7px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:768px) {
+  .column {
+    width: 100%;
+  }
 }

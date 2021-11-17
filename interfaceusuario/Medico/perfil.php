@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
+        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>

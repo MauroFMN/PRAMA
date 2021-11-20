@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Nov-2021 às 12:17
+-- Tempo de geração: 20-Nov-2021 às 16:28
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -84,7 +84,17 @@ INSERT INTO `email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
 (2, 2, NULL, 'exemplo2@exemplo.com'),
 (3, 3, NULL, 'exemplo3@exemplo.com'),
 (4, 4, NULL, 'exemplo4@exemplo.com'),
-(5, NULL, 1, 'clinicaexemplo1@exemplo.com');
+(5, NULL, 1, 'clinicaexemplo1@exemplo.com'),
+(7, 8, NULL, 'google@gmail.com'),
+(8, 9, NULL, 'franciscokinaile@gmail.com'),
+(9, 10, NULL, 'franciscopedro@gmail.com'),
+(10, 11, NULL, 'fernandoassis@gmail.com'),
+(11, 12, NULL, 'fernandoassis@gmail.com'),
+(12, 13, NULL, 'fernandaassis@gmail.com'),
+(13, 14, NULL, 'fernandaassis@gmail.com'),
+(14, 15, NULL, 'erigui@gmail.com'),
+(15, 16, NULL, 'armando@gmail.com'),
+(16, 17, NULL, 'nuduma@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -171,7 +181,95 @@ CREATE TABLE `especialidademedico` (
 
 INSERT INTO `especialidademedico` (`numOrdem`, `codEspecialidade`) VALUES
 ('numOrdem01', 1),
-('numOrdem01', 1);
+('numOrdem01', 1),
+('MEDICOORDEM', 1),
+('NUMERO46', 1),
+('NUMERO46', 2),
+('NUMERO46', 3),
+('NUMERO46', 4),
+('Medicina123', 1),
+('Medicina123', 2),
+('Medicina123', 3),
+('MedicoPraJA', 2),
+('MedicoPraJA', 3),
+('MedicoPraJA', 4),
+('PraJa', 1),
+('PraJa', 2),
+('PraJa', 3),
+('PraJa', 4),
+('PraJa', 5),
+('PraJa', 6),
+('PraJa', 7),
+('PraJa', 8),
+('PraJa', 9),
+('PraJa', 10),
+('PraJa', 11),
+('PraJa', 12),
+('PraJa', 13),
+('PraJa', 14),
+('PraJa', 15),
+('PraJa', 16),
+('PraJa', 17),
+('PraJa', 18),
+('PraJa', 19),
+('PraJa', 20),
+('PraJa', 21),
+('PraJa', 22),
+('PraJa', 23),
+('PraJa', 24),
+('PraJa', 25),
+('PraJa', 26),
+('PraJa', 27),
+('PraJa', 28),
+('PraJa', 29),
+('PraJa', 30),
+('PraJa', 31),
+('PraJa', 32),
+('PraJa', 33),
+('PraJa', 34),
+('PraJa', 35),
+('PraJa', 36),
+('PraJa', 37),
+('PraJa', 38),
+('PraJa', 39),
+('PraJa', 40),
+('PraJa', 41),
+('PraJa', 42),
+('PraJa', 43),
+('PraJa', 44),
+('PraJa', 45),
+('PraJa', 46),
+('PraJa', 47),
+('PraJa', 48),
+('PraJa', 49),
+('PraJa', 50),
+('PraJa', 51);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `horariomedico`
+--
+
+CREATE TABLE `horariomedico` (
+  `codHorarioMedico` int(11) NOT NULL,
+  `diaSemana` varchar(40) NOT NULL,
+  `horarioAtendimento` varchar(400) NOT NULL,
+  `numOrdem` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `horariomedico`
+--
+
+INSERT INTO `horariomedico` (`codHorarioMedico`, `diaSemana`, `horarioAtendimento`, `numOrdem`) VALUES
+(1, 'Segunda', '00:00, 01:00, 02:00, 03:00, ', 'PraJa'),
+(2, 'Terça', '00:00, 01:00, 02:00, 03:00, 04:00, 05:00, 06:00, 07:00, 08:00, 09:00, 10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 17:00, 18:00, 19:00, 20:00, 21:00, 22:00, 23:00, ', 'PraJa'),
+(3, 'Quarta', '00:00, 01:00, 02:00, 03:00, 04:00, 05:00, 06:00, 07:00, 08:00, 09:00, 10:00, 11:00, 12:00, 13:00, ', 'PraJa'),
+(4, 'Quinta', '00:00, 01:00, 02:00, 03:00, ', 'PraJa'),
+(5, 'Sexta', '10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 17:00, 18:00, 19:00, 20:00, 21:00, 22:00, ', 'PraJa'),
+(6, 'Sabado', '00:00, 01:00, 02:00, ', 'PraJa'),
+(7, 'Domingo', '', 'PraJa');
 
 -- --------------------------------------------------------
 
@@ -181,15 +279,23 @@ INSERT INTO `especialidademedico` (`numOrdem`, `codEspecialidade`) VALUES
 
 CREATE TABLE `medico` (
   `numOrdem` varchar(20) NOT NULL,
-  `idPessoa` int(11) DEFAULT NULL
+  `idPessoa` int(11) DEFAULT NULL,
+  `descricao` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `medico`
 --
 
-INSERT INTO `medico` (`numOrdem`, `idPessoa`) VALUES
-('numOrdem01', 4);
+INSERT INTO `medico` (`numOrdem`, `idPessoa`, `descricao`) VALUES
+('Medicina123', 15, 'Trabalhador com mais de 20 anos de experiência, mas só tenho 19 anos.'),
+('MEDICOORDEM', 10, ''),
+('MedicoPraJA', 16, 'Medico profissional com mais de 20 anos de experiência, mas só tenho 19 anos.'),
+('Numero45', 11, ''),
+('NUMERO46', 14, ''),
+('NUMERO47', 13, ''),
+('numOrdem01', 4, ''),
+('PraJa', 17, 'Novo profissional de saúde');
 
 -- --------------------------------------------------------
 
@@ -417,20 +523,32 @@ CREATE TABLE `pessoa` (
   `estCivil` varchar(25) DEFAULT NULL,
   `tipoSang` varchar(10) DEFAULT NULL,
   `tipoUser` varchar(20) DEFAULT NULL,
-  `enderco` varchar(100) NOT NULL,
-  `codMunicipio` int(11) NOT NULL
+  `endereco` varchar(100) NOT NULL,
+  `codMunicipio` int(11) NOT NULL,
+  `documentoIdentificacao` varchar(100) NOT NULL,
+  `numeroDocumento` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `enderco`, `codMunicipio`) VALUES
-(1, 'MauroM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Mauro Neto', 60, '1986-06-15', 'Masculino', 'Solteiro', NULL, 'Paciente', '', 92),
-(2, 'ErmelindaVD', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 'Paciente', '', 92),
-(3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92),
-(4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92),
-(5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92);
+INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES
+(1, 'MauroM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Mauro Neto', 60, '1986-06-15', 'Masculino', 'Solteiro', NULL, 'Paciente', '', 92, '', ''),
+(2, 'ErmelindaVD', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 'Paciente', '', 92, '', ''),
+(3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92, '', ''),
+(4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92, '', ''),
+(5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92, '', ''),
+(8, 'google', '4f9ef1d0cf4e38201de35048c98fe51b', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', ''),
+(9, 'pacientedecostume', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045'),
+(10, 'franciscopedro', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Paciente', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904'),
+(11, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
+(12, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
+(13, 'fernandaassis2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039'),
+(14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039'),
+(15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Paciente', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990'),
+(16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Paciente', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908'),
+(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902');
 
 -- --------------------------------------------------------
 
@@ -522,7 +640,17 @@ INSERT INTO `telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUE
 (2, NULL, 2, 911111112),
 (3, NULL, 3, 911111113),
 (4, NULL, 4, 911111114),
-(5, 1, NULL, 222222221);
+(5, 1, NULL, 222222221),
+(7, NULL, 8, 912334555),
+(8, NULL, 9, 987778999),
+(9, NULL, 10, 988990234),
+(10, NULL, 11, 98889099),
+(11, NULL, 12, 98889099),
+(12, NULL, 13, 988899899),
+(13, NULL, 14, 988899899),
+(14, NULL, 15, 988898),
+(15, NULL, 16, 98878987),
+(16, NULL, 17, 8789);
 
 -- --------------------------------------------------------
 
@@ -603,6 +731,13 @@ ALTER TABLE `especialidade`
 --
 ALTER TABLE `especialidademedico`
   ADD KEY `codEspecialidade` (`codEspecialidade`),
+  ADD KEY `numOrdem` (`numOrdem`);
+
+--
+-- Índices para tabela `horariomedico`
+--
+ALTER TABLE `horariomedico`
+  ADD PRIMARY KEY (`codHorarioMedico`),
   ADD KEY `numOrdem` (`numOrdem`);
 
 --
@@ -705,13 +840,19 @@ ALTER TABLE `consulta`
 -- AUTO_INCREMENT de tabela `email`
 --
 ALTER TABLE `email`
-  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `especialidade`
 --
 ALTER TABLE `especialidade`
   MODIFY `codEspecialidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT de tabela `horariomedico`
+--
+ALTER TABLE `horariomedico`
+  MODIFY `codHorarioMedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens`
@@ -729,7 +870,7 @@ ALTER TABLE `parente`
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `prescricao`
@@ -747,7 +888,7 @@ ALTER TABLE `rua`
 -- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
-  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `unhospitalar`
@@ -787,6 +928,12 @@ ALTER TABLE `especialidademedico`
   ADD CONSTRAINT `especialidademedico_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`),
   ADD CONSTRAINT `especialidademedico_ibfk_2` FOREIGN KEY (`codEspecialidade`) REFERENCES `especialidade` (`codEspecialidade`),
   ADD CONSTRAINT `especialidademedico_ibfk_3` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`);
+
+--
+-- Limitadores para a tabela `horariomedico`
+--
+ALTER TABLE `horariomedico`
+  ADD CONSTRAINT `horariomedico_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`);
 
 --
 -- Limitadores para a tabela `medico`

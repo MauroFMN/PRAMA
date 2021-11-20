@@ -20,7 +20,7 @@
                         <h1>Área de Trabalho</h1>
                     </div>
                 </div>
-                <div class="row mt-5">
+                <div class="row mt-5 w-100">
                     <ul class="nav nav-tabs">
                         <li class="nav-item userNavItem">
                             <a href="#primeiraTab" class="nav-link  active" role="tab" data-toggle="tab">Consultas</a>
@@ -37,13 +37,7 @@
                             <div class="row mt-5 opcoes">
                                 <div class="col-lg-12">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            if (condition) {
-                                                echo "Não tem Marcações";
-                                            } else {
-                                                // code...
-                                            }
-                                            ?></p>
+                                        <p></p>
                                     </div>
                                     <div class="row mt-3">
                                         <!--button type="button" class="btn btn-primary w-50">Marcar Consulta.</button-->
@@ -55,13 +49,7 @@
                             <div class="row mt-5 opcoes">
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            if (condition) {
-                                                echo "Não passou prescrição médica.";
-                                            } else {
-                                                // code...
-                                            }
-                                            ?></p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>
@@ -70,13 +58,8 @@
                             <div class="row mt-5 opcoes">
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            if (condition) {
-                                                echo "Histórico de consultas vazio.";
-                                            } else {
-                                                // code...
-                                            }
-                                            ?></p>
+                                        <p>
+                                           </p>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +85,9 @@
         </section>
         <script src="../../js/script.js"></script>
         <script>
-            $(".nav.nav-tabs li").on("click", function () {
+            // console.log("Medico")
+            $(".nav.nav-tabs li").on("click", function (e) {
+                console.log("Element",e)
                 $(".nav-link.active").removeClass("active");
                 $(this).children("a").addClass("active");
 

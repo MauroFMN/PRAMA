@@ -53,8 +53,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION["logado"] = true;
                         $_SESSION["id"] = $id;
                         $_SESSION["nomeusuario"] = $username;
+                        $_SESSION["tipoUser"] = $tipoUser;
 
-                        header("location: interfaceusuario/index.php");
+                        if($tipoUser == "Paciente"){
+                            header("location: interfaceusuario/Paciente/index.php");
+                        }
+                        if($tipoUser == "Medico"){
+                            header("location: interfaceusuario/Medico/index.php");
+                        }
+                        if($tipoUser == "Director"){
+                            header("location: interfaceusuario/Hospital/index.php");
+                        }
                     }
                     $login_erro = "Invalid username or password.";
                 } else{

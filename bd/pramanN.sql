@@ -1,60 +1,74 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 20-Nov-2021 às 12:17
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 8.0.10
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Banco de dados: `pramaN`
+-- Banco de dados: `praman`
 --
-CREATE DATABASE IF NOT EXISTS `pramaN` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `pramaN`;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Bairro`
+-- Estrutura da tabela `bairro`
 --
 
-CREATE TABLE `Bairro` (
+CREATE TABLE `bairro` (
   `codBairro` int(11) NOT NULL,
   `codMunicipio` int(11) DEFAULT NULL,
   `nomeBairro` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Bairro`
+-- Extraindo dados da tabela `bairro`
 --
 
-INSERT INTO `Bairro` (`codBairro`, `codMunicipio`, `nomeBairro`) VALUES
+INSERT INTO `bairro` (`codBairro`, `codMunicipio`, `nomeBairro`) VALUES
 (1, 92, 'Cassenda');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Consulta`
+-- Estrutura da tabela `consulta`
 --
 
-CREATE TABLE `Consulta` (
+CREATE TABLE `consulta` (
   `codConsulta` int(11) NOT NULL,
   `numOrdem` varchar(20) DEFAULT NULL,
   `codEspecialidade` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
-  `data` date DEFAULT NULL,
-  `hora` time DEFAULT NULL,
+  `dataConsulta` datetime DEFAULT NULL,
   `preço` float DEFAULT NULL,
   `diagnosticoProvavel` varchar(255) DEFAULT NULL,
   `motivoConsulta` varchar(255) DEFAULT NULL,
   `resumoSindromico` varchar(255) DEFAULT NULL,
   `antPatFamiliares` varchar(255) DEFAULT NULL,
   `antPatPessoais` varchar(255) DEFAULT NULL,
-  `historicoDoencaAtual` varchar(255) DEFAULT NULL
+  `historicoDoencaAtual` varchar(255) DEFAULT NULL,
+  `estadoConsulta` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Email`
+-- Estrutura da tabela `email`
 --
 
-CREATE TABLE `Email` (
+CREATE TABLE `email` (
   `codEmail` int(11) NOT NULL,
   `idPessoa` int(11) DEFAULT NULL,
   `codHospital` int(11) DEFAULT NULL,
@@ -62,10 +76,10 @@ CREATE TABLE `Email` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Email`
+-- Extraindo dados da tabela `email`
 --
 
-INSERT INTO `Email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
+INSERT INTO `email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
 (1, 1, NULL, 'exemplo1@exemplo.com'),
 (2, 2, NULL, 'exemplo2@exemplo.com'),
 (3, 3, NULL, 'exemplo3@exemplo.com'),
@@ -75,19 +89,19 @@ INSERT INTO `Email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Especialidade`
+-- Estrutura da tabela `especialidade`
 --
 
-CREATE TABLE `Especialidade` (
+CREATE TABLE `especialidade` (
   `codEspecialidade` int(11) NOT NULL,
   `nome` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Especialidade`
+-- Extraindo dados da tabela `especialidade`
 --
 
-INSERT INTO `Especialidade` (`codEspecialidade`, `nome`) VALUES
+INSERT INTO `especialidade` (`codEspecialidade`, `nome`) VALUES
 (1, 'Clínico Geral'),
 (2, 'Anatomia Patológica'),
 (3, 'Anestesiologia'),
@@ -143,69 +157,71 @@ INSERT INTO `Especialidade` (`codEspecialidade`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `EspecialidadeMedico`
+-- Estrutura da tabela `especialidademedico`
 --
 
-CREATE TABLE `EspecialidadeMedico` (
+CREATE TABLE `especialidademedico` (
   `numOrdem` varchar(20) DEFAULT NULL,
   `codEspecialidade` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `EspecialidadeMedico`
+-- Extraindo dados da tabela `especialidademedico`
 --
 
-INSERT INTO `EspecialidadeMedico` (`numOrdem`, `codEspecialidade`) VALUES
+INSERT INTO `especialidademedico` (`numOrdem`, `codEspecialidade`) VALUES
+('numOrdem01', 1),
 ('numOrdem01', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Medico`
+-- Estrutura da tabela `medico`
 --
 
-CREATE TABLE `Medico` (
+CREATE TABLE `medico` (
   `numOrdem` varchar(20) NOT NULL,
   `idPessoa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Medico`
+-- Extraindo dados da tabela `medico`
 --
 
-INSERT INTO `Medico` (`numOrdem`, `idPessoa`) VALUES
+INSERT INTO `medico` (`numOrdem`, `idPessoa`) VALUES
 ('numOrdem01', 4);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Mensagens`
+-- Estrutura da tabela `mensagens`
 --
 
-CREATE TABLE `Mensagens` (
+CREATE TABLE `mensagens` (
   `idMensagen` int(11) NOT NULL,
   `idPessoa` int(11) NOT NULL,
   `idPessoa1` int(11) NOT NULL,
-  `msg` varchar(1000) NOT NULL
+  `msg` varchar(1000) NOT NULL,
+  `dataEnvio` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Municipio`
+-- Estrutura da tabela `municipio`
 --
 
-CREATE TABLE `Municipio` (
+CREATE TABLE `municipio` (
   `codMunicipio` int(11) NOT NULL,
   `codProvincia` int(11) DEFAULT NULL,
   `nome` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Municipio`
+-- Extraindo dados da tabela `municipio`
 --
 
-INSERT INTO `Municipio` (`codMunicipio`, `codProvincia`, `nome`) VALUES
+INSERT INTO `municipio` (`codMunicipio`, `codProvincia`, `nome`) VALUES
 (1, 1, 'Dande'),
 (2, 1, 'Dembos'),
 (3, 1, 'Nambuangongo'),
@@ -374,10 +390,10 @@ INSERT INTO `Municipio` (`codMunicipio`, `codProvincia`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Parente`
+-- Estrutura da tabela `parente`
 --
 
-CREATE TABLE `Parente` (
+CREATE TABLE `parente` (
   `idParente` int(11) NOT NULL,
   `idPessoa1` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
@@ -387,12 +403,11 @@ CREATE TABLE `Parente` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Pessoa`
+-- Estrutura da tabela `pessoa`
 --
 
-CREATE TABLE `Pessoa` (
+CREATE TABLE `pessoa` (
   `idPessoa` int(11) NOT NULL,
-  `codProvincia` int(11) DEFAULT NULL,
   `nomeUtilizador` varchar(100) DEFAULT NULL,
   `password` varchar(150) DEFAULT NULL,
   `nome` varchar(200) DEFAULT NULL,
@@ -401,27 +416,29 @@ CREATE TABLE `Pessoa` (
   `genero` varchar(25) DEFAULT NULL,
   `estCivil` varchar(25) DEFAULT NULL,
   `tipoSang` varchar(10) DEFAULT NULL,
-  `tipoUser` int(11) DEFAULT NULL
+  `tipoUser` varchar(20) DEFAULT NULL,
+  `enderco` varchar(100) NOT NULL,
+  `codMunicipio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Pessoa`
+-- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `Pessoa` (`idPessoa`, `codProvincia`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`) VALUES
-(1, 11, 'MauroM', '1234567Prama', 'Mauro Neto', 60, '1986-06-15', 'Masculino', 'Solteiro', NULL, 1),
-(2, 11, 'ErmelindaVD', '1234567Prama', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 1),
-(3, 11, 'RosalinaM', '1234567Prama', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 1),
-(4, 11, 'EvaldoM', '1234567Prama', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 2),
-(5, 11, 'AntonioN', '1234567Prama', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 3);
+INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `enderco`, `codMunicipio`) VALUES
+(1, 'MauroM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Mauro Neto', 60, '1986-06-15', 'Masculino', 'Solteiro', NULL, 'Paciente', '', 92),
+(2, 'ErmelindaVD', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 'Paciente', '', 92),
+(3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92),
+(4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92),
+(5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Prescricao`
+-- Estrutura da tabela `prescricao`
 --
 
-CREATE TABLE `Prescricao` (
+CREATE TABLE `prescricao` (
   `tipo` varchar(50) DEFAULT NULL,
   `descricao` varchar(250) DEFAULT NULL,
   `codPrescricao` int(11) NOT NULL,
@@ -431,19 +448,19 @@ CREATE TABLE `Prescricao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Provincia`
+-- Estrutura da tabela `provincia`
 --
 
-CREATE TABLE `Provincia` (
+CREATE TABLE `provincia` (
   `codProvincia` int(11) NOT NULL,
   `nome` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Provincia`
+-- Extraindo dados da tabela `provincia`
 --
 
-INSERT INTO `Provincia` (`codProvincia`, `nome`) VALUES
+INSERT INTO `provincia` (`codProvincia`, `nome`) VALUES
 (1, 'Bengo'),
 (2, 'Benguela'),
 (3, 'Bié'),
@@ -466,10 +483,10 @@ INSERT INTO `Provincia` (`codProvincia`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Rua`
+-- Estrutura da tabela `rua`
 --
 
-CREATE TABLE `Rua` (
+CREATE TABLE `rua` (
   `codRua` int(11) NOT NULL,
   `nomeRua` varchar(50) DEFAULT NULL,
   `numeroRua` varchar(10) DEFAULT NULL,
@@ -477,19 +494,19 @@ CREATE TABLE `Rua` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Rua`
+-- Extraindo dados da tabela `rua`
 --
 
-INSERT INTO `Rua` (`codRua`, `nomeRua`, `numeroRua`, `codBairro`) VALUES
+INSERT INTO `rua` (`codRua`, `nomeRua`, `numeroRua`, `codBairro`) VALUES
 (1, NULL, 'Rua 3', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Telefone`
+-- Estrutura da tabela `telefone`
 --
 
-CREATE TABLE `Telefone` (
+CREATE TABLE `telefone` (
   `coTelefone` int(11) NOT NULL,
   `codHospital` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
@@ -497,10 +514,10 @@ CREATE TABLE `Telefone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Telefone`
+-- Extraindo dados da tabela `telefone`
 --
 
-INSERT INTO `Telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUES
+INSERT INTO `telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUES
 (1, NULL, 1, 911111111),
 (2, NULL, 2, 911111112),
 (3, NULL, 3, 911111113),
@@ -510,230 +527,232 @@ INSERT INTO `Telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Trabalhar`
+-- Estrutura da tabela `trabalhar`
 --
 
-CREATE TABLE `Trabalhar` (
+CREATE TABLE `trabalhar` (
   `numOrdem` varchar(20) DEFAULT NULL,
   `codHospital` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `Trabalhar`
+-- Extraindo dados da tabela `trabalhar`
 --
 
-INSERT INTO `Trabalhar` (`numOrdem`, `codHospital`) VALUES
+INSERT INTO `trabalhar` (`numOrdem`, `codHospital`) VALUES
+('numOrdem01', 1),
 ('numOrdem01', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `UnHospitalar`
+-- Estrutura da tabela `unhospitalar`
 --
 
-CREATE TABLE `UnHospitalar` (
+CREATE TABLE `unhospitalar` (
   `nomeUnHosp` varchar(150) DEFAULT NULL,
   `codHospital` int(11) NOT NULL,
-  `codProvincia` int(11) DEFAULT NULL,
-  `idPessoa` int(11) DEFAULT NULL
+  `idPessoa` int(11) DEFAULT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `codMunicipio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `UnHospitalar`
+-- Extraindo dados da tabela `unhospitalar`
 --
 
-INSERT INTO `UnHospitalar` (`nomeUnHosp`, `codHospital`, `codProvincia`, `idPessoa`) VALUES
-('Clínica Exemplo1', 1, 11, 5);
+INSERT INTO `unhospitalar` (`nomeUnHosp`, `codHospital`, `idPessoa`, `endereco`, `codMunicipio`) VALUES
+('Clínica Exemplo1', 1, 5, 'Rua', 92);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `Bairro`
+-- Índices para tabela `bairro`
 --
-ALTER TABLE `Bairro`
+ALTER TABLE `bairro`
   ADD PRIMARY KEY (`codBairro`),
   ADD KEY `codMunicipio` (`codMunicipio`);
 
 --
--- Índices para tabela `Consulta`
+-- Índices para tabela `consulta`
 --
-ALTER TABLE `Consulta`
+ALTER TABLE `consulta`
   ADD PRIMARY KEY (`codConsulta`),
   ADD KEY `numOrdem` (`numOrdem`),
   ADD KEY `idPessoa` (`idPessoa`),
   ADD KEY `codEspecialidade` (`codEspecialidade`);
 
 --
--- Índices para tabela `Email`
+-- Índices para tabela `email`
 --
-ALTER TABLE `Email`
+ALTER TABLE `email`
   ADD PRIMARY KEY (`codEmail`),
   ADD KEY `idPessoa` (`idPessoa`),
   ADD KEY `codHospital` (`codHospital`);
 
 --
--- Índices para tabela `Especialidade`
+-- Índices para tabela `especialidade`
 --
-ALTER TABLE `Especialidade`
+ALTER TABLE `especialidade`
   ADD PRIMARY KEY (`codEspecialidade`);
 
 --
--- Índices para tabela `EspecialidadeMedico`
+-- Índices para tabela `especialidademedico`
 --
-ALTER TABLE `EspecialidadeMedico`
+ALTER TABLE `especialidademedico`
   ADD KEY `codEspecialidade` (`codEspecialidade`),
   ADD KEY `numOrdem` (`numOrdem`);
 
 --
--- Índices para tabela `Medico`
+-- Índices para tabela `medico`
 --
-ALTER TABLE `Medico`
+ALTER TABLE `medico`
   ADD PRIMARY KEY (`numOrdem`),
   ADD KEY `idPessoa` (`idPessoa`);
 
 --
--- Índices para tabela `Mensagens`
+-- Índices para tabela `mensagens`
 --
-ALTER TABLE `Mensagens`
+ALTER TABLE `mensagens`
   ADD PRIMARY KEY (`idMensagen`),
   ADD KEY `idPessoa` (`idPessoa`),
   ADD KEY `idPessoa1` (`idPessoa1`);
 
 --
--- Índices para tabela `Municipio`
+-- Índices para tabela `municipio`
 --
-ALTER TABLE `Municipio`
+ALTER TABLE `municipio`
   ADD PRIMARY KEY (`codMunicipio`),
   ADD KEY `codProvincia` (`codProvincia`);
 
 --
--- Índices para tabela `Parente`
+-- Índices para tabela `parente`
 --
-ALTER TABLE `Parente`
+ALTER TABLE `parente`
   ADD PRIMARY KEY (`idParente`),
   ADD KEY `idPessoa` (`idPessoa`),
   ADD KEY `idPessoa1` (`idPessoa1`);
 
 --
--- Índices para tabela `Pessoa`
+-- Índices para tabela `pessoa`
 --
-ALTER TABLE `Pessoa`
+ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`idPessoa`),
-  ADD KEY `codProvincia` (`codProvincia`);
+  ADD KEY `codMunicipio` (`codMunicipio`);
 
 --
--- Índices para tabela `Prescricao`
+-- Índices para tabela `prescricao`
 --
-ALTER TABLE `Prescricao`
+ALTER TABLE `prescricao`
   ADD PRIMARY KEY (`codPrescricao`),
   ADD KEY `codConsulta` (`codConsulta`);
 
 --
--- Índices para tabela `Provincia`
+-- Índices para tabela `provincia`
 --
-ALTER TABLE `Provincia`
+ALTER TABLE `provincia`
   ADD PRIMARY KEY (`codProvincia`);
 
 --
--- Índices para tabela `Rua`
+-- Índices para tabela `rua`
 --
-ALTER TABLE `Rua`
+ALTER TABLE `rua`
   ADD PRIMARY KEY (`codRua`),
   ADD KEY `codBairro` (`codBairro`);
 
 --
--- Índices para tabela `Telefone`
+-- Índices para tabela `telefone`
 --
-ALTER TABLE `Telefone`
+ALTER TABLE `telefone`
   ADD PRIMARY KEY (`coTelefone`),
   ADD KEY `codHospital` (`codHospital`),
   ADD KEY `idPessoa` (`idPessoa`);
 
 --
--- Índices para tabela `Trabalhar`
+-- Índices para tabela `trabalhar`
 --
-ALTER TABLE `Trabalhar`
+ALTER TABLE `trabalhar`
   ADD KEY `numOrdem` (`numOrdem`),
   ADD KEY `codHospital` (`codHospital`);
 
 --
--- Índices para tabela `UnHospitalar`
+-- Índices para tabela `unhospitalar`
 --
-ALTER TABLE `UnHospitalar`
+ALTER TABLE `unhospitalar`
   ADD PRIMARY KEY (`codHospital`),
-  ADD KEY `codProvincia` (`codProvincia`),
-  ADD KEY `idPessoa` (`idPessoa`);
+  ADD KEY `idPessoa` (`idPessoa`),
+  ADD KEY `codMunicipio` (`codMunicipio`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT de tabela `Bairro`
+-- AUTO_INCREMENT de tabela `bairro`
 --
-ALTER TABLE `Bairro`
+ALTER TABLE `bairro`
   MODIFY `codBairro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `Consulta`
+-- AUTO_INCREMENT de tabela `consulta`
 --
-ALTER TABLE `Consulta`
+ALTER TABLE `consulta`
   MODIFY `codConsulta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `Email`
+-- AUTO_INCREMENT de tabela `email`
 --
-ALTER TABLE `Email`
+ALTER TABLE `email`
   MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `Especialidade`
+-- AUTO_INCREMENT de tabela `especialidade`
 --
-ALTER TABLE `Especialidade`
+ALTER TABLE `especialidade`
   MODIFY `codEspecialidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT de tabela `Mensagens`
+-- AUTO_INCREMENT de tabela `mensagens`
 --
-ALTER TABLE `Mensagens`
+ALTER TABLE `mensagens`
   MODIFY `idMensagen` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `Parente`
+-- AUTO_INCREMENT de tabela `parente`
 --
-ALTER TABLE `Parente`
+ALTER TABLE `parente`
   MODIFY `idParente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `Pessoa`
+-- AUTO_INCREMENT de tabela `pessoa`
 --
-ALTER TABLE `Pessoa`
+ALTER TABLE `pessoa`
   MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `Prescricao`
+-- AUTO_INCREMENT de tabela `prescricao`
 --
-ALTER TABLE `Prescricao`
+ALTER TABLE `prescricao`
   MODIFY `codPrescricao` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `Rua`
+-- AUTO_INCREMENT de tabela `rua`
 --
-ALTER TABLE `Rua`
+ALTER TABLE `rua`
   MODIFY `codRua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `Telefone`
+-- AUTO_INCREMENT de tabela `telefone`
 --
-ALTER TABLE `Telefone`
+ALTER TABLE `telefone`
   MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `UnHospitalar`
+-- AUTO_INCREMENT de tabela `unhospitalar`
 --
-ALTER TABLE `UnHospitalar`
+ALTER TABLE `unhospitalar`
   MODIFY `codHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -741,95 +760,100 @@ ALTER TABLE `UnHospitalar`
 --
 
 --
--- Limitadores para a tabela `Bairro`
+-- Limitadores para a tabela `bairro`
 --
-ALTER TABLE `Bairro`
-  ADD CONSTRAINT `bairro_ibfk_1` FOREIGN KEY (`codMunicipio`) REFERENCES `Municipio` (`codMunicipio`);
+ALTER TABLE `bairro`
+  ADD CONSTRAINT `bairro_ibfk_1` FOREIGN KEY (`codMunicipio`) REFERENCES `municipio` (`codMunicipio`);
 
 --
--- Limitadores para a tabela `Consulta`
+-- Limitadores para a tabela `consulta`
 --
-ALTER TABLE `Consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `Medico` (`numOrdem`),
-  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`),
-  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`codEspecialidade`) REFERENCES `Especialidade` (`codEspecialidade`);
+ALTER TABLE `consulta`
+  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`),
+  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
+  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`codEspecialidade`) REFERENCES `especialidade` (`codEspecialidade`);
 
 --
--- Limitadores para a tabela `Email`
+-- Limitadores para a tabela `email`
 --
-ALTER TABLE `Email`
-  ADD CONSTRAINT `email_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`),
-  ADD CONSTRAINT `email_ibfk_2` FOREIGN KEY (`codHospital`) REFERENCES `UnHospitalar` (`codHospital`);
+ALTER TABLE `email`
+  ADD CONSTRAINT `email_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
+  ADD CONSTRAINT `email_ibfk_2` FOREIGN KEY (`codHospital`) REFERENCES `unhospitalar` (`codHospital`);
 
 --
--- Limitadores para a tabela `EspecialidadeMedico`
+-- Limitadores para a tabela `especialidademedico`
 --
-ALTER TABLE `EspecialidadeMedico`
-  ADD CONSTRAINT `especialidademedico_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `Medico` (`numOrdem`),
-  ADD CONSTRAINT `especialidademedico_ibfk_2` FOREIGN KEY (`codEspecialidade`) REFERENCES `Especialidade` (`codEspecialidade`),
-  ADD CONSTRAINT `especialidademedico_ibfk_3` FOREIGN KEY (`numOrdem`) REFERENCES `Medico` (`numOrdem`);
+ALTER TABLE `especialidademedico`
+  ADD CONSTRAINT `especialidademedico_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`),
+  ADD CONSTRAINT `especialidademedico_ibfk_2` FOREIGN KEY (`codEspecialidade`) REFERENCES `especialidade` (`codEspecialidade`),
+  ADD CONSTRAINT `especialidademedico_ibfk_3` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`);
 
 --
--- Limitadores para a tabela `Medico`
+-- Limitadores para a tabela `medico`
 --
-ALTER TABLE `Medico`
-  ADD CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`);
+ALTER TABLE `medico`
+  ADD CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
 
 --
--- Limitadores para a tabela `Mensagens`
+-- Limitadores para a tabela `mensagens`
 --
-ALTER TABLE `Mensagens`
-  ADD CONSTRAINT `mensagens_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`),
-  ADD CONSTRAINT `mensagens_ibfk_2` FOREIGN KEY (`idPessoa1`) REFERENCES `Pessoa` (`idPessoa`);
+ALTER TABLE `mensagens`
+  ADD CONSTRAINT `mensagens_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
+  ADD CONSTRAINT `mensagens_ibfk_2` FOREIGN KEY (`idPessoa1`) REFERENCES `pessoa` (`idPessoa`);
 
 --
--- Limitadores para a tabela `Municipio`
+-- Limitadores para a tabela `municipio`
 --
-ALTER TABLE `Municipio`
-  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`codProvincia`) REFERENCES `Provincia` (`codProvincia`);
+ALTER TABLE `municipio`
+  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`codProvincia`) REFERENCES `provincia` (`codProvincia`);
 
 --
--- Limitadores para a tabela `Parente`
+-- Limitadores para a tabela `parente`
 --
-ALTER TABLE `Parente`
-  ADD CONSTRAINT `parente_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`),
-  ADD CONSTRAINT `parente_ibfk_2` FOREIGN KEY (`idPessoa1`) REFERENCES `Pessoa` (`idPessoa`);
+ALTER TABLE `parente`
+  ADD CONSTRAINT `parente_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
+  ADD CONSTRAINT `parente_ibfk_2` FOREIGN KEY (`idPessoa1`) REFERENCES `pessoa` (`idPessoa`);
 
 --
--- Limitadores para a tabela `Pessoa`
+-- Limitadores para a tabela `pessoa`
 --
-ALTER TABLE `Pessoa`
-  ADD CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`codProvincia`) REFERENCES `Provincia` (`codProvincia`);
+ALTER TABLE `pessoa`
+  ADD CONSTRAINT `pessoa_ibfk_2` FOREIGN KEY (`codMunicipio`) REFERENCES `municipio` (`codMunicipio`);
 
 --
--- Limitadores para a tabela `Prescricao`
+-- Limitadores para a tabela `prescricao`
 --
-ALTER TABLE `Prescricao`
-  ADD CONSTRAINT `prescricao_ibfk_1` FOREIGN KEY (`codConsulta`) REFERENCES `Consulta` (`codConsulta`);
+ALTER TABLE `prescricao`
+  ADD CONSTRAINT `prescricao_ibfk_1` FOREIGN KEY (`codConsulta`) REFERENCES `consulta` (`codConsulta`);
 
 --
--- Limitadores para a tabela `Rua`
+-- Limitadores para a tabela `rua`
 --
-ALTER TABLE `Rua`
-  ADD CONSTRAINT `rua_ibfk_1` FOREIGN KEY (`codBairro`) REFERENCES `Bairro` (`codBairro`);
+ALTER TABLE `rua`
+  ADD CONSTRAINT `rua_ibfk_1` FOREIGN KEY (`codBairro`) REFERENCES `bairro` (`codBairro`);
 
 --
--- Limitadores para a tabela `Telefone`
+-- Limitadores para a tabela `telefone`
 --
-ALTER TABLE `Telefone`
-  ADD CONSTRAINT `telefone_ibfk_1` FOREIGN KEY (`codHospital`) REFERENCES `UnHospitalar` (`codHospital`),
-  ADD CONSTRAINT `telefone_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`);
+ALTER TABLE `telefone`
+  ADD CONSTRAINT `telefone_ibfk_1` FOREIGN KEY (`codHospital`) REFERENCES `unhospitalar` (`codHospital`),
+  ADD CONSTRAINT `telefone_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
 
 --
--- Limitadores para a tabela `Trabalhar`
+-- Limitadores para a tabela `trabalhar`
 --
-ALTER TABLE `Trabalhar`
-  ADD CONSTRAINT `trabalhar_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `Medico` (`numOrdem`),
-  ADD CONSTRAINT `trabalhar_ibfk_2` FOREIGN KEY (`codHospital`) REFERENCES `UnHospitalar` (`codHospital`);
+ALTER TABLE `trabalhar`
+  ADD CONSTRAINT `trabalhar_ibfk_1` FOREIGN KEY (`numOrdem`) REFERENCES `medico` (`numOrdem`),
+  ADD CONSTRAINT `trabalhar_ibfk_2` FOREIGN KEY (`codHospital`) REFERENCES `unhospitalar` (`codHospital`);
 
 --
--- Limitadores para a tabela `UnHospitalar`
+-- Limitadores para a tabela `unhospitalar`
 --
-ALTER TABLE `UnHospitalar`
-  ADD CONSTRAINT `unhospitalar_ibfk_1` FOREIGN KEY (`codProvincia`) REFERENCES `Provincia` (`codProvincia`),
-  ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `Pessoa` (`idPessoa`);
+ALTER TABLE `unhospitalar`
+  ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
+  ADD CONSTRAINT `unhospitalar_ibfk_3` FOREIGN KEY (`codMunicipio`) REFERENCES `municipio` (`codMunicipio`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

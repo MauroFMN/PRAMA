@@ -12,8 +12,8 @@ body {
     box-sizing: border-box;
 }
 
-input[type=text],
-input[type=password] {
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 15px;
     margin: 5px 0;
@@ -24,8 +24,8 @@ input[type=password] {
     border-radius: 7px;
 }
 
-input[type=date],
-input[type=tel],
+input[type="date"],
+input[type="tel"],
 select {
     padding: 10px;
     margin: 5px 0;
@@ -36,10 +36,10 @@ select {
     display: inline-block;
 }
 
-input[type=text]:focus,
-input[type=password]:focus,
-input[type=date]:focus,
-input[type=tel]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus {
     background-color: #ddd;
     border: 3px solid #555;
     outline: none;
@@ -64,7 +64,7 @@ input[type=tel]:focus {
     padding-bottom: 4px;
     text-transform: uppercase;
     color: black;
-    letter-spacing: .4px;
+    letter-spacing: 0.4px;
 }
 
 .info {
@@ -106,20 +106,20 @@ input[type=tel]:focus {
 
 .icons-container .icons {
     border: 2px solid black;
-    box-shadow: .5rem .5rem 0 rgba(0, 0, 0, .2);
+    box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.2);
     border-radius: 7px;
     text-align: center;
     padding: 2.5px;
     height: 160px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
 }
 
 .icons-container .icons h3 {
     font-size: 2rem;
     color: black;
-    padding: .4rem 0;
+    padding: 0.4rem 0;
 }
 
 .icons-container .icons p {
@@ -132,7 +132,7 @@ input[type=tel]:focus {
     overflow: hidden;
     display: block;
     margin: auto;
-    text-align: center!important;
+    text-align: center !important;
     padding: 0.01em 16px;
     color: white;
 }
@@ -143,7 +143,7 @@ input[type=tel]:focus {
     top: 0;
     width: 100%;
     overflow: hidden;
-    background-color: #0072B5;
+    background-color: #0072b5;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -186,7 +186,7 @@ input[type=tel]:focus {
     display: none;
     position: absolute;
     right: 0;
-    background-color: #0072B5;
+    background-color: #0072b5;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -226,7 +226,7 @@ input[type=tel]:focus {
 }
 
 .direita {
-    float: right!important;
+    float: right !important;
 }
 
 .cartao {
@@ -234,11 +234,11 @@ input[type=tel]:focus {
 }
 
 .hide {
-    display: none!important;
+    display: none !important;
 }
 
 .hide.mostrar {
-    display: block!important
+    display: block !important;
 }
 
 .tela-login {
@@ -250,14 +250,14 @@ input[type=tel]:focus {
     border: 3px solid #f1f1f1;
     z-index: 10;
     border-radius: 7px;
-    background-color: #0072B5;
+    background-color: #0072b5;
 }
 
 .form-tela-login {
     max-width: 350px;
     padding: 10px;
     background-color: white;
-    display: table
+    display: table;
 }
 
 .rod-tela-login {
@@ -337,7 +337,7 @@ input[type=tel]:focus {
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
-    color: white!important;
+    color: white !important;
 }
 
 .registo a {
@@ -451,7 +451,7 @@ input[type=tel]:focus {
     top: -20px;
     left: calc(100% + 15px);
     z-index: 3;
-    background: #0072B5;
+    background: #0072b5;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     padding: 6px 12px;
     border-radius: 4px;
@@ -485,14 +485,14 @@ input[type=tel]:focus {
     border: none;
     border-radius: 7px;
     transition: all 0.5s ease;
-    background: #0072B5;
+    background: #0072b5;
 }
 
 .sidebar.open input {
-    padding: 0 20px 0 50px!important;
-    width: 100%!important;
+    padding: 0 20px 0 50px !important;
+    width: 100% !important;
     opacity: 1;
-    background: whitesmoke!important;
+    background: whitesmoke !important;
 }
 
 .sidebar .bx-search {
@@ -501,9 +501,9 @@ input[type=tel]:focus {
     left: 0;
     transform: translateY(-50%);
     font-size: 22px;
-    color: #FFF;
+    color: #fff;
     cursor: pointer;
-    background: #0072B5;
+    background: #0072b5;
     transition: all 0.4s ease;
 }
 
@@ -533,7 +533,7 @@ input[type=tel]:focus {
 }
 
 .sidebar li a:hover {
-    background: #FFF;
+    background: #fff;
 }
 
 .sidebar li a .links_name {
@@ -571,7 +571,7 @@ input[type=tel]:focus {
     left: 0;
     bottom: -8px;
     padding: 10px 14px;
-    background: #FFF;
+    background: #fff;
     transition: all 0.5s ease;
     overflow: hidden;
 }
@@ -630,7 +630,7 @@ input[type=tel]:focus {
 
 .home-section {
     position: relative;
-    background: #E4E9F7;
+    background: #e4e9f7;
     min-height: 100vh;
     top: 0;
     left: 78px;
@@ -645,22 +645,21 @@ input[type=tel]:focus {
 }
 
 .home-section .text {
-    display: inline-block;
-    margin: 20px;
+    margin: 0 20px;
 }
 
 #message {
-  display: none;
-  background: #f1f1f1;
-  color: #000;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
-  font-size: 12px;
+    display: none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+    font-size: 12px;
 }
 
-.row .formulario{
-  width: 80%;
+.row .formulario {
+    width: 80%;
 }
 
 .valid {
@@ -673,16 +672,16 @@ input[type=tel]:focus {
 
 .french-blue {
     color: #fff;
-    background-color: #0072B5;
+    background-color: #0072b5;
 }
 
 .verde {
-    color: #fff!important;
-    background-color: #00a170!important;
+    color: #fff !important;
+    background-color: #00a170 !important;
 }
 
 .vermelho {
-    color: #fff!important;
+    color: #fff !important;
     background-color: #cc0000;
 }
 
@@ -696,23 +695,23 @@ input[type=tel]:focus {
 }
 
 .l {
-    font-size: 18px!important;
+    font-size: 18px !important;
 }
 
 .xl {
-    font-size: 24px!important;
+    font-size: 24px !important;
 }
 
 .margem-superior {
-    margin-top: 16px!important;
+    margin-top: 16px !important;
 }
 
 .largura-padding {
-    padding: 12px 24px!important;
+    padding: 12px 24px !important;
 }
 
 .largura {
-    font-size: 18px!important;
+    font-size: 18px !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -733,12 +732,12 @@ input[type=tel]:focus {
         top: 0;
     }
     .navegador.responsive a {
-        float: none!important;
+        float: none !important;
         display: block;
         text-align: left;
     }
     .navegador.responsive .dropdown {
-        float: none!important;
+        float: none !important;
     }
     .navegador.responsive .dropdown-content {
         position: relative;
@@ -768,7 +767,7 @@ input[type=tel]:focus {
 }
 
 .seccaoConteudoTelaApresentacao {
-    padding-left: 50px!important;
-    padding-right: 50px!important;
-    margin-top: 20px!important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    margin-top: 20px !important;
 }

@@ -1,0 +1,60 @@
+.cartao-medico{
+  display: flex;
+  width: 100%;
+  height: auto;
+  text-align: left;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+
+.cartao-medico .separador{
+  padding: 20px 20px;
+}
+
+.info{
+  width: auto;
+  display: inline-block;
+  background-color: #808080;
+  color: white;
+  padding: 0 10px;
+  text-align: center;
+  border-radius: 7px;
+  margin: 10px 0;
+}
+
+.info-medico{
+  width: 100%;
+  border-right: 1px solid #ddd;
+}
+
+.detalhes-medico{
+  height: 100px;
+}
+
+.calendario{
+  display: block;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th, td{
+  text-align: left;
+  padding: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .cartao-medico{
+    display: block;
+  }
+  .info-medico{
+    border-right: none;
+  }
+  table{
+    width: 100%;
+  }
+}

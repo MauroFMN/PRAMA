@@ -40,8 +40,8 @@
         <li class="profile">
             <div class="profile-details">
                 <div class="name_job">
-                    <div class="name"><b>Mauro Neto</b></div>
-                    <div class="job">Dj</div>
+                    <div class="name">Nome Paciente</b></div>
+                    <div class="job">Profissão Paciente</div>
                 </div>
             </div>
             <a href="../../index.php">
@@ -57,15 +57,15 @@
       <span class="fechar back-icon" onClick="this.parentElement.style.display = 'none'; location = '?p='"><i class="far fa-times-circle"></i></span>
       <img src="" alt="">
       <div class="details">
-        <span><?php  ?></span>
-        <p><?php  ?></p>
+        <span></span>
+        <p></p>
       </div>
     </header>
     <div class="chat-box">
 
     </div>
     <form action="#" class="typing-area">
-      <input type="text" class="incoming_id" name="incoming_id" value="<?php  ?>" hidden>
+      <input type="text" class="incoming_id" name="incoming_id" value="" hidden>
       <input type="text" name="menssagem" placeholder="Escreva aqui a sua mensagem..." autocomplete="off">
       <button type="button" name="button"><i class="fab fa-telegram-plane"></i></button>
     </form>

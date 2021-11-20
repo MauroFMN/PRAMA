@@ -1,3 +1,4 @@
+<?php include 'conexao.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
     <head>
@@ -46,7 +47,7 @@
                                             ?></p>
                                     </div>
                                     <div class="row mt-3">
-                                        <button type="button" class="btn btn-primary w-50">Marcar Consulta.</button>
+                                        <button type="button" class="btn btn-primary w-50"><a href="consulta.php" style="text-decoration: none; color: white;">Marcar Consulta.</a></button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

@@ -1,24 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 20-Nov-2021 às 16:28
--- Versão do servidor: 10.4.21-MariaDB
--- versão do PHP: 8.0.10
+-- Host: localhost:8889
+-- Tempo de geração: 23-Nov-2021 às 13:11
+-- Versão do servidor: 5.7.32
+-- versão do PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Banco de dados: `praman`
+-- Banco de dados: `pramaN`
 --
 
 -- --------------------------------------------------------
@@ -180,7 +173,6 @@ CREATE TABLE `especialidademedico` (
 --
 
 INSERT INTO `especialidademedico` (`numOrdem`, `codEspecialidade`) VALUES
-('numOrdem01', 1),
 ('numOrdem01', 1),
 ('MEDICOORDEM', 1),
 ('NUMERO46', 1),
@@ -668,7 +660,6 @@ CREATE TABLE `trabalhar` (
 --
 
 INSERT INTO `trabalhar` (`numOrdem`, `codHospital`) VALUES
-('numOrdem01', 1),
 ('numOrdem01', 1);
 
 -- --------------------------------------------------------
@@ -999,8 +990,3 @@ ALTER TABLE `trabalhar`
 ALTER TABLE `unhospitalar`
   ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
   ADD CONSTRAINT `unhospitalar_ibfk_3` FOREIGN KEY (`codMunicipio`) REFERENCES `municipio` (`codMunicipio`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

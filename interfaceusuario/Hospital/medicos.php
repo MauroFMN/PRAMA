@@ -13,21 +13,20 @@
         <?php include_once "menu.php"; ?>
         <section class="home-section" id="medicos">
             <div class="text">
-              <div class="row userNameTitle">
-                  <div class="col-lg-12">
-                      <h1>Médicos</h1>
-                  </div>
-                  <div class="row mt-5">
-                    <?php if (condition) {
-                      echo "Nenhum médico inscrito como funcionário.";
-                    } else {
-                      // code...
-                    }
-                     ?>
-                  </div>
-              </div>
-              <div class="row mt-5">
-              <div>
+                <div class="row userNameTitle">
+                    <div class="col-lg-12">
+                        <h1>Médicos</h1>
+                    </div>
+                    <div class="row mt-5">
+                        <?php
+                        if (condition) {
+                            echo "Nenhum médico inscrito como funcionário.";
+                        } else {
+                            // code...
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </section>
         <script src="../../js/script.js"></script>

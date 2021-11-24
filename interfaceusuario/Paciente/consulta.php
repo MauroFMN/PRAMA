@@ -29,7 +29,7 @@
                           <img src="../../imagens/" alt="" style="width: 100px; height: 100px;">
                         </div>
                         <div class="separador info-medico">
-                          <h3><?php echo $rows['nome']; ?></h3>
+                          <h4><?php echo $rows['nome']; ?></h4>
                           <?php
                           $esp = "SELECT * FROM especialidade esp JOIN especialidademedico espm ON(esp.codEspecialidade = espm.codEspecialidade) JOIN medico med ON(espm.numOrdem = med.numOrdem) WHERE idPessoa = {$rows['idPessoa']}";
                           $listaesp = mysqli_query($mysqli,$esp);
@@ -45,7 +45,7 @@
                              ?></p>
                           </div>
                           <?php
-                          $unh = "SELECT * FROM unhospitalar unh JOIN trabalhar trab ON(unh.codHospital = trab.codHospital) JOIN medico med ON(trab.numOrdem = med.numOrdem) WHERE idPessoa = {$rows['idPessoa']}";
+                          $unh = "SELECT * FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) WHERE numOrdem = '{$rows["numOrdem"]}'";
                           $listunh = mysqli_query($mysqli,$unh);
                           while ($lunh = mysqli_fetch_assoc($listunh)) { ?>
                             <span class="info"><?php echo $lunh['nomeUnHosp']; ?></span>
@@ -53,7 +53,7 @@
                         </div>
                       <div class="separador calendario">
                         <div class="centro">
-                          <h3>Horário de Atendimento</h3>
+                          <h5>Horário de Atendimento</h5>
                         </div>
                         <div>
                           <table>
@@ -68,7 +68,7 @@
                       </div>
                     </div>
                   </div>
-                  <?php  }?>
+                  <?php } ?>
               </div>
               <div class="row mt-5">
               <div>

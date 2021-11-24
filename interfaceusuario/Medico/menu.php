@@ -31,7 +31,7 @@
             <span class="tooltip">Consulta</span>
         </li>
         <li>
-            <a href="#chat" onclick="document.getElementById('chat').style.display='block';">
+            <a href="#chat" onclick="document.getElementById('chat').style.display = 'block';">
                 <i class="fab fa-whatsapp" ></i>
                 <span class="links_name">Chat</span>
             </a>
@@ -59,23 +59,22 @@
     </ul>
 </div>
 <section class="wrapper" id="chat">
-  <div class="chat-area">
-    <header>
-      <?php  ?>
-      <span class="fechar back-icon" onClick="this.parentElement.style.display = 'none'; location = '?p='"><i class="far fa-times-circle"></i></span>
-      <img src="" alt="">
-      <div class="details">
-        <span><?php  ?></span>
-        <p><?php  ?></p>
-      </div>
-    </header>
-    <div class="chat-box">
+    <div class="chat-area">
+        <header>
+            <?php ?>
+            <img src="" alt="">
+            <div class="details">
+                <span><?php ?></span>
+                <p><?php ?></p>
+            </div>
+        </header>
+        <div class="chat-box">
 
+        </div>
+        <form action="#" class="typing-area">
+            <input type="text" class="incoming_id" name="incoming_id" value="<?php ?>" hidden>
+            <input type="text" name="menssagem" placeholder="Escreva aqui a sua mensagem..." autocomplete="off">
+            <button type="button" name="button"><i class="fab fa-telegram-plane"></i></button>
+        </form>
     </div>
-    <form action="#" class="typing-area">
-      <input type="text" class="incoming_id" name="incoming_id" value="<?php  ?>" hidden>
-      <input type="text" name="menssagem" placeholder="Escreva aqui a sua mensagem..." autocomplete="off">
-      <button type="button" name="button"><i class="fab fa-telegram-plane"></i></button>
-    </form>
-  </div>
 </section>

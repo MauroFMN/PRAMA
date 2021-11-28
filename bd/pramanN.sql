@@ -533,14 +533,14 @@ INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, 
 (5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92, '', ''),
 (8, 'google', '4f9ef1d0cf4e38201de35048c98fe51b', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', ''),
 (9, 'pacientedecostume', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045'),
-(10, 'franciscopedro', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Paciente', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904'),
-(11, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
+(10, 'franciscopedro', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Medico', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904'),
+(11, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Medico', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
 (12, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
-(13, 'fernandaassis2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039'),
-(14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039'),
-(15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Paciente', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990'),
-(16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Paciente', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908'),
-(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902');
+(13, 'fernandaassis2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039'),
+(14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039'),
+(15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Medico', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990'),
+(16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Medico', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908'),
+(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902');
 
 -- --------------------------------------------------------
 
@@ -736,6 +736,7 @@ ALTER TABLE `horariomedico`
 --
 ALTER TABLE `medico`
   ADD PRIMARY KEY (`numOrdem`),
+  ADD UNIQUE KEY `numOrdem` (`numOrdem`),
   ADD KEY `idPessoa` (`idPessoa`);
 
 --

@@ -26,10 +26,7 @@
                             <a href="#primeiraTab" class="nav-link  active" role="tab" data-toggle="tab">Consultas</a>
                         </li>
                         <li class="nav-item userNavItem">
-                            <a href="#segundaTab" class="nav-link " role="tab" data-toggle="tab">Prescrições</a>
-                        </li>
-                        <li class="nav-item userNavItem">
-                            <a href="#terceiraTab" class="nav-link " role="tab" data-toggle="tab">Histórico</a>
+                            <a href="#segundaTab" class="nav-link " role="tab" data-toggle="tab">Histórico</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -39,9 +36,6 @@
                                     <div class="row mt-3">
                                         <p></p>
                                     </div>
-                                    <div class="row mt-3">
-                                        <!--button type="button" class="btn btn-primary w-50">Marcar Consulta.</button-->
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -50,16 +44,6 @@
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
                                         <p></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade mt-3" role="tabpanel" id="terceiraTab">
-                            <div class="row mt-5 opcoes">
-                                <div class="col-lg-6">
-                                    <div class="row mt-3">
-                                        <p>
-                                           </p>
                                     </div>
                                 </div>
                             </div>

@@ -37,7 +37,6 @@
                             </select>
                             <label for="">Local de Trabalho</label>
                             <input type="text" name="" value="">
-                            <input type="text" name="">
                             <label for="email">Email:</label>
                             <input type="email" name="email" id="email" value="exemplo@exemplo.com">
                             <label>Telefone:</label>
@@ -60,7 +59,7 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>2ª Feira</td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">08:00</option>
                                                 <option value="08:00">09:00</option>
@@ -77,7 +76,7 @@
                                                 <option value="08:00">20:00</option>
                                             </select>
                                         </td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">09:00</option>
                                                 <option value="08:00">10:00</option>
@@ -97,7 +96,7 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>3ª Feira</td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">08:00</option>
                                                 <option value="08:00">09:00</option>
@@ -114,7 +113,7 @@
                                                 <option value="08:00">20:00</option>
                                             </select>
                                         </td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">09:00</option>
                                                 <option value="08:00">10:00</option>
@@ -134,7 +133,7 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>4ª Feira</td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">08:00</option>
                                                 <option value="08:00">09:00</option>
@@ -151,7 +150,7 @@
                                                 <option value="08:00">20:00</option>
                                             </select>
                                         </td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">09:00</option>
                                                 <option value="08:00">10:00</option>
@@ -171,7 +170,7 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>5ª Feira</td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">08:00</option>
                                                 <option value="08:00">09:00</option>
@@ -188,7 +187,7 @@
                                                 <option value="08:00">20:00</option>
                                             </select>
                                         </td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">09:00</option>
                                                 <option value="08:00">10:00</option>
@@ -208,7 +207,7 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>6ª Feira</td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">08:00</option>
                                                 <option value="08:00">09:00</option>
@@ -225,7 +224,7 @@
                                                 <option value="08:00">20:00</option>
                                             </select>
                                         </td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">09:00</option>
                                                 <option value="08:00">10:00</option>
@@ -245,7 +244,7 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>Sábado</td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">08:00</option>
                                                 <option value="08:00">09:00</option>
@@ -262,7 +261,7 @@
                                                 <option value="08:00">20:00</option>
                                             </select>
                                         </td>
-                                        <td><select style="width: 100px;">
+                                        <td><select style="width: auto;">
                                                 <option value=""></option>
                                                 <option value="08:00">09:00</option>
                                                 <option value="08:00">10:00</option>

@@ -29,7 +29,7 @@ textarea {
 }
 
 
-/* 
+/*
 input[type="date"],
 input[type="tel"],
 select {
@@ -769,6 +769,9 @@ input[type="tel"]:focus {
     }
     .formulario {
         width: 80%;
+    }
+    .formulario .formRegElm input, .formulario .formRegElm select{
+      width: 100%;
     }
 }
 

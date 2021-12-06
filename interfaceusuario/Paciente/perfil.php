@@ -51,15 +51,41 @@
                             </select>
                           <?php } ?>
                             <label>Município:</label>
+                            <?php
+                             $sql = "SELECT * from municipio WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
+                             $dadosMuni = mysqli_query($mysqli,$sql);
+                             while ($municipio = mysqli_fetch_assoc($dadosMuni)) {?>
                             <select disabled>
-                                <option value="">Selecione o Município</option>
+                                <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
                             </select>
-                            <label>Bairro:</label>
-                            <input type="text" name="" disabled>
-                            <label>Nome da Rua:</label>
-                            <input type="text" name="" disabled>
-                            <label>Número da Rua</label>
-                            <input type="text" name="" disabled>
+                          <?php } ?>
+                          <?php
+                           $sql = "SELECT * from bairro WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
+                           $dadosBairro = mysqli_query($mysqli,$sql);
+                           while ($bairro = mysqli_fetch_assoc($dadosBairro)) {?>
+                            <label for="nomeBairro">Bairro:</label>
+                            <input type="text" name="nomeBairro" id="nomeBairro" value="<?php echo $bairro['nomeBairro']; ?>" disabled>
+                          <?php
+                           $sql = "SELECT * from rua WHERE codBairro = {$bairro['codBairro']}";
+                           $dadosRua = mysqli_query($mysqli,$sql);
+                             while ($rua = mysqli_fetch_assoc($dadosRua)) {?>
+                            <label for="nomeRua">Nome da Rua:</label>
+                            <input type="text" name="nomeRua" id="nomeRua" value="<?php
+                            if (!empty($rua['nomeRua'])) {
+                              echo $rua['nomeRua'];
+                            } else {
+                              echo "-";
+                            }
+                             ?>" disabled>
+                            <label for="numeroRua">Número da Rua</label>
+                            <input type="text" name="numeroRua" id="numeroRua" value="<?php
+                            if (!empty($rua['numeroRua'])) {
+                              echo $rua['numeroRua'];
+                            } else {
+                              echo "-";
+                            }
+                             ?>" disabled>
+                          <?php }} ?>
                             <?php
                             $sql = "SELECT endereco FROM email WHERE idPessoa = {$_SESSION["idPessoa"]}";
                             $email = mysqli_query($mysqli,$sql);

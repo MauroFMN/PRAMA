@@ -1,3 +1,4 @@
+<?php include '../../conexao.php'; ?>
 <div class="sidebar french-blue">
     <div class="logo-details">
         <img src="../../imagens/Logomarca-Pramaactualizada.png" alt="Logotipo" class="icon1">

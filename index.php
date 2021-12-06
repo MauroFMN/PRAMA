@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
                         session_start();
 
                         $_SESSION["logado"] = true;
-                        $_SESSION["id"] = $id;
+                        $_SESSION["idPessoa"] = $idPessoa;
                         $_SESSION["nomeusuario"] = $username;
                         $_SESSION["tipoUser"] = $tipoUser;
 
@@ -271,14 +271,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
       </div>
     </div>
   </section>
-  <section id="medicos" style="background-color: whitesmoke;">
+  <section id="medicos" style="background-color: whitesmoke;" >
     <div class="row seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1>Como funciona para os médicos?</h1>
+        <h1 class="titulo">Como funciona para os médicos?</h1>
 
       </div>
       <div class="col-lg-9 col-sm-6">
-        <div class="conteudo ">
+        <div class="conteudo">
           <p>Com o PRAMA, os médicos conseguem acessar os dados e os resultados dos exames médicos de forma rápida e em
             qualquer local com um dispositivo conectado a internet, sem precisar realizar um atendimento prévio para
             entender o histórico do paciente</p>
@@ -290,12 +290,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
       </div>
       <div class="col-lg-3 col-sm-6">
         <img src="imagens/Unknown.png" style="width:100%;" alt="">
-
       </div>
     </div>
-    <div class="centro row seccaoConteudoTelaApresentacao" style="background: white!important ">
+    <div class="row seccaoConteudoTelaApresentacao" style="background: white!important ">
       <div class="col-12">
-        <h1>Vantagens do PRAMA</h1>
+        <h1 class="titulo">Vantagens do PRAMA</h1>
       </div>
 
       <div class="row icons-container pb-5 pt-5">
@@ -322,17 +321,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
       </div>
     </div>
   </section>
-  <section id="hospitais" style="background-color: whitesmoke;">
+  <section id="hospitais" style="background-color: whitesmoke;" >
 
     <div class="row seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1>Para as Unidades Hospitalares</h1>
-
+        <h1 class="titulo">Para as Unidades Hospitalares</h1>
       </div>
       <div class="col-lg-3 col-sm-6">
         <img src="imagens/Unknown-7.png" style="width:100%;" alt="">
       </div>
-
       <div class="col-lg-9 col-sm-6">
 
         <div class="conteudo">
@@ -345,11 +342,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
     </div>
 
   </section>
-  <section id="pacientes">
+  <section id="pacientes" >
 
     <div class="row seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1>Vantagens para os Pacientes</h1>
+        <h1 class="titulo">Vantagens para os Pacientes</h1>
       </div>
       <div class="col-lg-9 col-sm-6">
         <div class="conteudo">
@@ -366,10 +363,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
       </div>
     </div>
   </section>
-  <section id="sobre" style="background-color: whitesmoke;">
+  <section id="sobre" style="background-color: whitesmoke;" >
     <div class="row seccaoConteudoTelaApresentacao mb-5">
       <div class="col-12">
-        <h1>Sobre Nós</h1>
+        <h1 class="titulo">Sobre Nós</h1>
       </div>
       <div class="col-lg-3 col-sm-6">
         <img src="imagens/images.jpeg" style="width:100%;" alt="">

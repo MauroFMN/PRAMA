@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Tempo de geração: 23-Nov-2021 às 13:11
+-- Tempo de geração: 06-Dez-2021 às 15:28
 -- Versão do servidor: 5.7.32
 -- versão do PHP: 7.4.12
 
@@ -87,7 +87,8 @@ INSERT INTO `email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
 (13, 14, NULL, 'fernandaassis@gmail.com'),
 (14, 15, NULL, 'erigui@gmail.com'),
 (15, 16, NULL, 'armando@gmail.com'),
-(16, 17, NULL, 'nuduma@gmail.com');
+(16, 17, NULL, 'nuduma@gmail.com'),
+(17, 18, NULL, 'domingasM@email.co.ao');
 
 -- --------------------------------------------------------
 
@@ -540,7 +541,8 @@ INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, 
 (14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039'),
 (15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Medico', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990'),
 (16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Medico', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908'),
-(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902');
+(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902'),
+(18, 'DomingasM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Domingas Torres Cordeiro da Mata', 95, '1966-05-26', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Rua dos Quarteis', 97, 'Bilhete de Identidade', '005044589LA050');
 
 -- --------------------------------------------------------
 
@@ -642,7 +644,8 @@ INSERT INTO `telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUE
 (13, NULL, 14, 988899899),
 (14, NULL, 15, 988898),
 (15, NULL, 16, 98878987),
-(16, NULL, 17, 8789);
+(16, NULL, 17, 8789),
+(17, NULL, 18, 912345678);
 
 -- --------------------------------------------------------
 
@@ -832,7 +835,7 @@ ALTER TABLE `consulta`
 -- AUTO_INCREMENT de tabela `email`
 --
 ALTER TABLE `email`
-  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `especialidade`
@@ -862,7 +865,7 @@ ALTER TABLE `parente`
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `prescricao`
@@ -880,7 +883,7 @@ ALTER TABLE `rua`
 -- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
-  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `unhospitalar`

@@ -43,8 +43,7 @@ session_start();
         </li>
         <li class="profile">
           <?php
-          $idusuario = $_SESSION["idPessoa"];
-          $sql = "SELECT * FROM pessoa WHERE idPessoa = {$idusuario}";
+          $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
           $dados = mysqli_query($mysqli,$sql);
           while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
           

@@ -42,7 +42,7 @@
                             <label>Nome da Mãe:</label>
                             <input type="text" name="" disabled>
                             <?php
-                             $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = $dadosusuario['codMunicipio']";
+                             $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
                              $dadosProv = mysqli_query($mysqli,$sql);
                              while ($provincia = mysqli_fetch_assoc($dadosProv)) {?>
                             <label>Província:</label>

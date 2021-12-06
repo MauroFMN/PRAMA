@@ -37,9 +37,17 @@
                           ?>
                           <div class="grupo-especialidades">
                           <?php
-                          while ($lesp = mysqli_fetch_assoc($listaesp)) { ?>
-                            <p class="especialidades-medico"><?php echo $lesp['nome']; ?></p>
-                          <?php } ?>
+                          $rowsEsp = mysqli_num_rows($listaesp);
+                          if($rowsEsp>0){
+                            while ($lesp = mysqli_fetch_assoc($listaesp)) { ?>
+                              <p class="especialidades-medico"><?php echo $lesp['nome']; ?></p>
+                            <?php }
+                          } else{
+                            ?>
+                            <p class="especialidades-medico">Clínico Geral</p>
+                            <?php
+                          }?>
+                         
                           </div>
                           <div class="detalhes-medico">
                             <p><?php if (!empty($rows['descricao'])) {
@@ -58,17 +66,35 @@
                       </div>
                       <div class="col-lg-3">
                       <div class="centro">
-                          <h5>Horário de Atendimento</h5>
+                          <h5 class="mb-3">Horário de Atendimento</h5>
                         </div>
-                        <div>
-                          <table>
-                            <tr>
-                              <th></th>
-                            </tr>
-                            <tr>
-                              <td></td>
-                            </tr>
-                          </table>
+                        <div class="containerHorario">
+                        <?php
+                          $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE idPessoa = {$rows['idPessoa']}";
+                          $listaHorarioAtendimento = mysqli_query($mysqli,$horarioAtendimento);
+
+                          ?>
+                          <?php
+                          $rowsHorario = mysqli_num_rows($listaHorarioAtendimento);
+                          if($rowsHorario>0){
+                            while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) { ?>
+                            <div class="col-lg-3">
+                            <p class="" style="margin-right: 15px"><?php echo $listHorario['diaSemana']; ?></p>
+                            <?php 
+                            $horariosExp = explode(",",$listHorario["horarioAtendimento"]);
+                            foreach($horariosExp as $chave => $valor){
+                              echo $valor;
+                            }
+                            ?>
+                            </div>
+                            <?php }
+                          } else{
+                            ?>
+                            <div class="col-lg-12">
+                              <p style="text-align: center">Sem Horários Disponíveis</p>
+                            </div>
+                            <?php
+                          }?>
                         </div>
                       </div>
                         <!-- <div class="centro separador">

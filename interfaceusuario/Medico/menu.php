@@ -46,16 +46,22 @@
             <span class="tooltip">Perfil</span>
         </li>
         <li class="profile">
-            <div class="profile-details">
-                <div class="name_job">
-                    <div class="name"><b>Dr. Mauro Neto</b></div>
-                    <div class="job">Clinico Geral</div>
-                </div>
+        <?php
+          $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
+          $dados = mysqli_query($mysqli,$sql);
+          while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
+          
+            <div class="profile-details" style="height: 100%;">
+                <div class="row">
+                    <div class="col-lg-12"><p class="name"><?php echo $dadosusuario["nome"]; ?></b></p></div>
+                    <div class="col-lg-3">
+                        <a href="../../index.php">
+                            <i class="fas fa-sign-out-alt" id="log_out" ></i>
+                        </a>
+                    </div>                    
+                </div>    
             </div>
-            <a href="../../index.php">
-                <i class="fas fa-sign-out-alt" id="log_out" ></i>
-            </a>
-            <span class="tooltip">Sair</span>
+            <?php } ?>
         </li>
     </ul>
 </div>

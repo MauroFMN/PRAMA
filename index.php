@@ -13,8 +13,7 @@ $nomeUsuario_erro = $senha_erro = $login_erro = "";
 //         mysqli_stmt_store_result($especialidadestmt);
 //     }
 // }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
+  if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 1) {
     $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Paciente','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "')";
 
     if (mysqli_query($mysqli, $sql)) {
@@ -41,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
     }
-} else if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 2) {
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 2) {
     $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Medico','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "')";
 
     if (mysqli_query($mysqli, $sql)) {
@@ -130,9 +129,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
     }
-} else if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 3) {
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 3) {
     echo "<script> alert(3)</script>";
-} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+} 
+else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty(trim($_POST["uname"]))) {
         $nomeUsuario_erro = "Introduza o nome de usuario.";
@@ -248,16 +248,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
         <h2>A plataforma de telemedicina gratuíta. Mais tecnologia no acesso a saúde.</h2>
       </div>
     </div>
-    <div class="row seccaoConteudoTelaApresentacao">
+    <div class="row m-0 seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1 class="titulo">Atendimento rápido e eficiente</h1>
+        <h1 class="titulo mt-2 mb-2">Atendimento rápido e eficiente</h1>
 
       </div>
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-3 col-sm-12">
         <img src="imagens/Unknown-8.png" style="width:100%;" alt="">
 
       </div>
-      <div class="col-lg-9 col-sm-6">
+      <div class="col-lg-9 col-sm-12">
 
         <div class="conteudo">
           <p>Com o PRAMA, os médicos conseguem acessar os dados e os resultados dos exames médicos de forma rápida e em
@@ -272,12 +272,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
     </div>
   </section>
   <section id="medicos" style="background-color: whitesmoke;" >
-    <div class="row seccaoConteudoTelaApresentacao">
+    <div class="row m-0 seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1 class="titulo">Como funciona para os médicos?</h1>
+        <h1 class="titulo mt-2 mb-2">Como funciona para os médicos?</h1>
 
       </div>
-      <div class="col-lg-9 col-sm-6">
+      <div class="col-lg-9 col-sm-12">
         <div class="conteudo">
           <p>Com o PRAMA, os médicos conseguem acessar os dados e os resultados dos exames médicos de forma rápida e em
             qualquer local com um dispositivo conectado a internet, sem precisar realizar um atendimento prévio para
@@ -288,32 +288,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
             paciente confirme, remarque ou cancele sua consulta on-line – atualizando a agenda automaticamente.</p>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-3 col-sm-12">
         <img src="imagens/Unknown.png" style="width:100%;" alt="">
       </div>
     </div>
-    <div class="row seccaoConteudoTelaApresentacao" style="background: white!important ">
+    <div class="row m-0 seccaoConteudoTelaApresentacao" style="background: white!important ">
       <div class="col-12">
-        <h1 class="titulo">Vantagens do PRAMA</h1>
+        <h1 class="titulo mt-2 mb-2">Vantagens do PRAMA</h1>
       </div>
 
-      <div class="row icons-container pb-5 pt-5">
-        <div class="col-lg-3 col-sm-6 mb-sm-4 col-xs-12 mb-xs-4">
+      <div class="row m-0 icons-container pb-5 pt-5">
+        <div class="col-lg-3 col-sm-12 mb-sm-4 col-xs-12 mb-xs-4">
           <div class="icons">
             <p>Telemedicina para médicos, pacientes e unidades hospitalares</p>
           </div>
         </div>
-        <div class="col-lg-3 col-sm-6 mb-sm-4 col-xs-12 mb-xs-4">
+        <div class="col-lg-3 col-sm-12 mb-sm-4 col-xs-12 mb-xs-4">
           <div class="icons">
             <p>Consultas por chat em qualquer lugar com internet</p>
           </div>
         </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12 mb-xs-4">
+        <div class="col-lg-3 col-sm-12 mb-sm-4 col-xs-12 mb-xs-4">
           <div class="icons">
             <p>Acesso por computador, tablet e smarthphone</p>
           </div>
         </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12 mb-xs-4">
+        <div class="col-lg-3 col-sm-12 col-xs-12">
           <div class="icons">
             <p>Histórico de consultas completo dos pacientes</p>
           </div>
@@ -323,14 +323,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
   </section>
   <section id="hospitais" style="background-color: whitesmoke;" >
 
-    <div class="row seccaoConteudoTelaApresentacao">
+    <div class="row m-0 seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1 class="titulo">Para as Unidades Hospitalares</h1>
+        <h1 class="titulo mt-2 mb-2">Para as Unidades Hospitalares</h1>
       </div>
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-3 col-sm-12">
         <img src="imagens/Unknown-7.png" style="width:100%;" alt="">
       </div>
-      <div class="col-lg-9 col-sm-6">
+      <div class="col-lg-9 col-sm-12">
 
         <div class="conteudo">
           <p>Os diretores gerais podem registar as instituições que dirigem, os médicos e indicar os serviços de
@@ -344,11 +344,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
   </section>
   <section id="pacientes" >
 
-    <div class="row seccaoConteudoTelaApresentacao">
+    <div class="row m-0 seccaoConteudoTelaApresentacao">
       <div class="col-12">
-        <h1 class="titulo">Vantagens para os Pacientes</h1>
+        <h1 class="titulo mt-2 mb-2">Vantagens para os Pacientes</h1>
       </div>
-      <div class="col-lg-9 col-sm-6">
+      <div class="col-lg-9 col-sm-12">
         <div class="conteudo">
           <p>Qualquer clínica pode oferecer atendimento multidisciplinar. Afinal, o diagnóstico é feito à distância e
             por um especialista da área, que garante um diagnóstico mais preciso.</p>
@@ -358,20 +358,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET["p"] == 1) {
             que fica armazenado na base de dados do PRAMA, podendo ser consultado a qualquer momento.</p>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-3 col-sm-12">
         <img src="imagens/Unknown-10.png" style="width:100%;" alt="">
       </div>
     </div>
   </section>
   <section id="sobre" style="background-color: whitesmoke;" >
-    <div class="row seccaoConteudoTelaApresentacao mb-5">
+    <div class="row m-0 seccaoConteudoTelaApresentacao mb-5">
       <div class="col-12">
-        <h1 class="titulo">Sobre Nós</h1>
+        <h1 class="titulo mt-2 mb-2">Sobre Nós</h1>
       </div>
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-3 col-sm-12">
         <img src="imagens/images.jpeg" style="width:100%;" alt="">
       </div>
-      <div class="col-lg-9 col-sm-6">
+      <div class="col-lg-9 col-sm-12">
         <div class="conteudo">
           <p>Somos uma plataforma de cuidados em saúde que valoriza os médicos, os pacientes e amplia o acesso à saúde,
             com atendimento humanizado.</p>

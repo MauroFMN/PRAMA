@@ -1,3 +1,4 @@
+console.log("Google")
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "navegador") {
@@ -20,10 +21,15 @@ let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
 
-closeBtn.addEventListener("click", ()=>{
-  sidebar.classList.toggle("open");
-});
+if(closeBtn){
+    
+    closeBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("open");
+    });
+}
+if(searchBtn){
 
-searchBtn.addEventListener("click", ()=>{
-  sidebar.classList.toggle("open");
-});
+    searchBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("open");
+    });
+}

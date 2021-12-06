@@ -1,4 +1,4 @@
-.cartao-medico{
+.cartao-medico {
   display: flex;
   width: 100%;
   height: auto;
@@ -6,13 +6,15 @@
   border-radius: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
+
+  margin: 0 auto;
 }
 
-.cartao-medico .separador{
+.cartao-medico .separador {
   padding: 20px 20px;
 }
 
-.info{
+.info {
   width: auto;
   display: inline-block;
   background-color: #808080;
@@ -23,35 +25,54 @@
   margin: 10px 0;
 }
 
-.info-medico{
+.info-medico {
   width: 100%;
   border-right: 1px solid #ddd;
 }
 
-.detalhes-medico{
+.detalhes-medico {
   height: 100px;
 }
 
-.calendario{
+.calendario {
   display: block;
 }
 
-table{
+table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
 
-th, td{
+th,
+td {
   text-align: left;
   padding: 3px;
 }
 
 @media screen and (max-width: 768px) {
-  .cartao-medico{
+  .cartao-medico {
     display: block;
   }
-  .info-medico{
+  .info-medico {
     border-right: none;
   }
+}
+
+.grupo-especialidades {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  margin-top: top;
+}
+.especialidades-medico {
+  margin-right: 10px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    background: gray;
+    padding: 24px 2px;
+    border-radius: 21px;
+    color: white;
+    padding: 2px 25px;
 }

@@ -38,11 +38,11 @@
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
                                         <p><?php
-                                            if (condition) {
-                                                echo "Ainda não tem consulta marcada.";
-                                            } else {
-                                                // code...
-                                            }
+                                            // if (condition) {
+                                            //     echo "Ainda não tem consulta marcada.";
+                                            // } else {
+                                            //     // code...
+                                            // }
                                             ?></p>
                                     </div>
                                     <div class="row mt-3">
@@ -64,11 +64,11 @@
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
                                         <p><?php
-                                            if (condition) {
-                                                echo "Não tem prescrições médicas.";
-                                            } else {
-                                                // code...
-                                            }
+                                            // if (condition) {
+                                            //     echo "Não tem prescrições médicas.";
+                                            // } else {
+                                            //     // code...
+                                            // }
                                             ?></p>
                                     </div>
                                 </div>
@@ -79,11 +79,11 @@
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
                                         <p><?php
-                                            if (condition) {
-                                                echo "Histórico de consultas vazio.";
-                                            } else {
-                                                // code...
-                                            }
+                                            // if (condition) {
+                                            //     echo "Histórico de consultas vazio.";
+                                            // } else {
+                                            //     // code...
+                                            // }
                                             ?></p>
                                     </div>
                                 </div>

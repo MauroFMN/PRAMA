@@ -20,7 +20,7 @@
                   </div>
                   <div class="col-lg-12">
                   <?php
-                  $medicos = "select * from medico join pessoa on (medico.idPessoa = pessoa.idPessoa) order by nome";
+                  $medicos = "SELECT * FROM medico JOIN pessoa on (medico.idPessoa = pessoa.idPessoa) order by nome";
                   $listamedicos = mysqli_query($mysqli,$medicos);
                   while($rows = mysqli_fetch_assoc($listamedicos)){ ?>
                   <div class="row mt-5">
@@ -47,7 +47,7 @@
                             <p class="especialidades-medico">Clínico Geral</p>
                             <?php
                           }?>
-                         
+
                           </div>
                           <div class="detalhes-medico">
                             <p><?php if (!empty($rows['descricao'])) {
@@ -80,7 +80,7 @@
                             while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) { ?>
                             <div class="col-lg-3">
                             <p class="" style="margin-right: 15px"><?php echo $listHorario['diaSemana']; ?></p>
-                            <?php 
+                            <?php
                             $horariosExp = explode(",",$listHorario["horarioAtendimento"]);
                             foreach($horariosExp as $chave => $valor){
                               echo $valor;
@@ -101,16 +101,16 @@
                           <img src="../../imagens/" alt="" style="width: 100px; height: 100px;">
                         </div> -->
                         <!-- <div class="separador info-medico">
-                          
+
                         </div> -->
                       <!-- <div class="separador calendario">
-                        
+
                       </div> -->
                     </div>
                   </div>
                   <?php } ?>
                   </div>
-                  
+
               </div>
               <div class="row mt-5">
               <div>

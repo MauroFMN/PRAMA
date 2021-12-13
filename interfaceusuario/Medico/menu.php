@@ -1,4 +1,7 @@
-<?php include '../../conexao.php'; ?>
+<?php
+include '../../conexao.php';
+session_start(); 
+?>
 <div class="sidebar french-blue">
     <div class="logo-details">
         <img src="../../imagens/Logomarca-Pramaactualizada.png" alt="Logotipo" class="icon1">
@@ -46,11 +49,11 @@
             <span class="tooltip">Perfil</span>
         </li>
         <li class="profile">
-        <?php
+          <?php
           $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
           $dados = mysqli_query($mysqli,$sql);
           while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
-          
+
             <div class="profile-details" style="height: 100%;">
                 <div class="row">
                     <div class="col-lg-12"><p class="name"><?php echo $dadosusuario["nome"]; ?></b></p></div>
@@ -58,8 +61,8 @@
                         <a href="../../index.php">
                             <i class="fas fa-sign-out-alt" id="log_out" ></i>
                         </a>
-                    </div>                    
-                </div>    
+                    </div>
+                </div>
             </div>
             <?php } ?>
         </li>

@@ -29,13 +29,11 @@
                             <div class="row mt-5 opcoes">
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            if (condition) {
-                                                echo "Não exitem médicos registados.";
-                                            } else {
-                                                // code...
-                                            }
-                                            ?></p>
+                                        <div>
+                                          <?php
+
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="row mt-3">
                                         <button type="button" class="btn btn-primary w-50" >Adicionar Médico</button>
@@ -43,13 +41,11 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            if (condition) {
-                                                echo "Não existem médicos filiados a unidade hospitalar.";
-                                            } else {
-                                                // code...
-                                            }
-                                            ?></p>
+                                      <div>
+                                        <?php
+
+                                          ?>
+                                      </div>
                                     </div>
                                     <div class="row mt-3">
                                         <button type="button" class="btn btn-primary w-50">Ver Médicos</button>

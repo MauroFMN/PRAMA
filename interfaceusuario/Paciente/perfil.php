@@ -37,10 +37,26 @@
                             <select disabled>
                                 <option value="<?php echo $dadosusuario['estCivil']; ?>"><?php echo $dadosusuario['estCivil']; ?></option>
                             </select>
+                            <?php
+                            $sql1 = "SELECT * FROM parente WHERE idPessoa = {$dadosusuario['idPessoa']}";
+                            $parente = mysqli_query($mysqli,$sql1);
+                            if (mysqli_num_rows($parente) == 0) {
+                              $nomePai = '-';
+                              $nomeMae = '-';
+                            } else {
+                              while ($dadosParente = mysqli_fetch_assoc($parente)) {
+                                $sql2 = "SELECT * FROM pessoa WHERE idPessoa = {$dadosParente['idPessoa1']}";
+                                $parente1 = mysqli_query($mysqli,$sql2);
+                                while ($infoParente = mysqli_fetch_assoc($parente1)) {
+                                  if ($dadosParente['grau'] == 'Pai') {
+                                    $nomePai = $infoParente['nome'];
+                                  } else {
+                                    $nomeMae = $infoParente['nome'];
+                                  }}}} ?>
                             <label>Nome do Pai:</label>
-                            <input type="text" name="" disabled>
+                            <input type="text" name="" value="<?php echo $nomePai; ?>" disabled>
                             <label>Nome da Mãe:</label>
-                            <input type="text" name="" disabled>
+                            <input type="text" name="" value="<?php echo $nomeMae; ?>" disabled>
                             <?php
                              $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
                              $dadosProv = mysqli_query($mysqli,$sql);
@@ -103,7 +119,7 @@
                             <label for="nomeUtilizador">Nome de Utilizador:</label>
                             <input type="text" name="nomeUtilizador" id="nomeUtilizador" placeholder="<?php echo $dadosusuario['nomeUtilizador']; ?>"disabled>
                             <label for="password">Password:</label>
-                            <input type="password" name="password" id="password" placeholder="********" disabled>
+                            <input type="password" name="password" id="password" value="<?php echo $dadosusuario[password]; ?>" disabled>
                             <div class="centro">
                                 <input type="submit" class="botao verde" value="Editar">
                             </div>

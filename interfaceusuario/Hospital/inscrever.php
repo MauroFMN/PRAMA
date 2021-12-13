@@ -34,16 +34,12 @@
                           </select><br>
                           <label>Númeno da Ordem:</label>
                           <input type="text" name=""><br>
-                          <?php
-                          echo '<label for="esp">Especialidade</label>';
-                          echo '<select id="esp" name="esp[]" class="form-select" multiple aria-label="multiple select example">';
-                          $especialidadessql = "SELECT codEspecialidade, nome FROM especialidade";
-                          $especialidadesresult = mysqli_query($mysqli, $especialidadessql);
-                          while ($row    = mysqli_fetch_assoc($especialidadesresult)) {
-                              echo "<option value=" . $row["codEspecialidade"] . ">" . $row['nome'] . "</option>";
-                          } ?>
-                          <label for="">Local de Trabalho:</label>
-                          <input type="text" name="" value=""><br>
+                          <label for="">Especialidade</label>
+                          <select class="" name="">
+                            <option value="Clínico Geral">Clínico Geral</option>
+                          </select>
+                          <!--label for="">Local de Trabalho:</label>
+                          <input type="text" name="" value="" --><br>
                           <label for="email">Email:</label>
                           <input type="email" name="email" id="email" placeholder="exemplo@exemplo.com">
                           <label>Telefone:</label>

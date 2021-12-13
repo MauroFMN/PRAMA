@@ -37,13 +37,22 @@
                             <div class="row mt-5 opcoes">
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            // if (condition) {
-                                            //     echo "Ainda não tem consulta marcada.";
-                                            // } else {
-                                            //     // code...
-                                            // }
-                                            ?></p>
+                                        <div>
+                                          <?php
+                                             $sql = "SELECT * FROM consulta WHERE idPessoa = {$_SESSION["idPessoa"]}";
+                                             $numConsultas = mysqli_query($mysqli,$sql);
+                                             if (mysqli_num_rows($numConsultas) == 0) {
+                                               echo "Não tem consulta marcada!";
+                                             } else {
+                                               while ($row = mysqli_fetch_assoc($numConsultas)) {
+                                                 if ($row['estadoConsulta'] == 'Ativo') {
+                                                   $ativo++;
+                                                 }
+                                               }
+                                               echo "Tem ". $ativo ." consultas marcadas";
+                                             }
+                                          ?>
+                                          </div>
                                     </div>
                                     <div class="row mt-3">
                                         <button type="button" class="btn btn-primary w-50"><a href="consulta.php" style="text-decoration: none; color: white;">Marcar Consulta.</a></button>
@@ -51,7 +60,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p>Tenha acesso aos seus agendamentos e não perca uma consulta.</p>
+                                        <div><?php echo "Tenha acesso aos seus agendamentos e não perca uma consulta."; ?></div>
                                     </div>
                                     <div class="row mt-3">
                                         <button type="button" class="btn btn-primary w-50">Ver Agendamentos.</button>
@@ -63,13 +72,9 @@
                             <div class="row mt-5 opcoes">
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
-                                        <p><?php
-                                            // if (condition) {
-                                            //     echo "Não tem prescrições médicas.";
-                                            // } else {
-                                            //     // code...
-                                            // }
-                                            ?></p>
+                                        <div>
+                                          <?php echo "Fazer como na marcação de consulta!"; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -79,11 +84,7 @@
                                 <div class="col-lg-6">
                                     <div class="row mt-3">
                                         <p><?php
-                                            // if (condition) {
-                                            //     echo "Histórico de consultas vazio.";
-                                            // } else {
-                                            //     // code...
-                                            // }
+                                              echo "Criar uma tabela para listar as consultas!";
                                             ?></p>
                                     </div>
                                 </div>

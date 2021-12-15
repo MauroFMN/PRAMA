@@ -40,6 +40,7 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="tel"],
+input[type="number"],
 select,
 textarea {
   width: 100%;
@@ -68,7 +69,8 @@ select {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
-input[type="tel"]:focus {
+input[type="tel"]:focus,
+input[type="number"]:focus {
   background-color: #ddd;
   border: 3px solid #555;
   outline: none;
@@ -628,16 +630,16 @@ input[type="tel"]:focus {
 }
 
 .sidebar li.profile .name {
-    font-size: 15px;
-    font-weight: 400;
-    color: black;
-    white-space: nowrap;
-    width: 85%;
-    height: 100%;
-    white-space: inherit;
-    text-align: center;
-    margin: auto;
-    padding-right: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  color: black;
+  white-space: nowrap;
+  width: 85%;
+  height: 100%;
+  white-space: inherit;
+  text-align: center;
+  margin: auto;
+  padding-right: 30px;
 }
 
 .sidebar .profile #log_out {

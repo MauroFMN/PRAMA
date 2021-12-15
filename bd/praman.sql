@@ -1,17 +1,24 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Tempo de geração: 06-Dez-2021 às 15:28
--- Versão do servidor: 5.7.32
--- versão do PHP: 7.4.12
+-- Host: 127.0.0.1
+-- Tempo de geração: 15-Dez-2021 às 17:28
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Banco de dados: `pramaN`
+-- Banco de dados: `praman`
 --
 
 -- --------------------------------------------------------
@@ -88,7 +95,8 @@ INSERT INTO `email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
 (14, 15, NULL, 'erigui@gmail.com'),
 (15, 16, NULL, 'armando@gmail.com'),
 (16, 17, NULL, 'nuduma@gmail.com'),
-(17, 18, NULL, 'domingasM@email.co.ao');
+(17, 18, NULL, 'domingasM@email.co.ao'),
+(18, 19, NULL, 'belashospitalpark@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -519,30 +527,32 @@ CREATE TABLE `pessoa` (
   `endereco` varchar(100) NOT NULL,
   `codMunicipio` int(11) NOT NULL,
   `documentoIdentificacao` varchar(100) NOT NULL,
-  `numeroDocumento` varchar(100) NOT NULL
+  `numeroDocumento` varchar(100) NOT NULL,
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES
-(1, 'MauroM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Mauro Neto', 60, '1986-06-15', 'Masculino', 'Solteiro', NULL, 'Paciente', '', 92, '', ''),
-(2, 'ErmelindaVD', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 'Paciente', '', 92, '', ''),
-(3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92, '', ''),
-(4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92, '', ''),
-(5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92, '', ''),
-(8, 'google', '4f9ef1d0cf4e38201de35048c98fe51b', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', ''),
-(9, 'pacientedecostume', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045'),
-(10, 'franciscopedro', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Medico', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904'),
-(11, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Medico', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
-(12, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022'),
-(13, 'fernandaassis2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039'),
-(14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039'),
-(15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Medico', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990'),
-(16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Medico', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908'),
-(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902'),
-(18, 'DomingasM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Domingas Torres Cordeiro da Mata', 95, '1966-05-26', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Rua dos Quarteis', 97, 'Bilhete de Identidade', '005044589LA050');
+INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`, `foto`) VALUES
+(1, 'MauroM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Mauro Neto', 60, '1986-06-15', 'Masculino', 'Solteiro', NULL, 'Paciente', '', 92, '', '', ''),
+(2, 'ErmelindaVD', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 'Paciente', '', 92, '', '', ''),
+(3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92, '', '', ''),
+(4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92, '', '', ''),
+(5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92, '', '', ''),
+(8, 'google', '4f9ef1d0cf4e38201de35048c98fe51b', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', '', ''),
+(9, 'pacientedecostume', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045', ''),
+(10, 'franciscopedro', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Medico', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904', ''),
+(11, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Medico', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022', ''),
+(12, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022', ''),
+(13, 'fernandaassis2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039', ''),
+(14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039', ''),
+(15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Medico', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990', ''),
+(16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Medico', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908', ''),
+(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902', ''),
+(18, 'DomingasM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Domingas Torres Cordeiro da Mata', 95, '1966-05-26', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Rua dos Quarteis', 97, 'Bilhete de Identidade', '005044589LA050', ''),
+(19, 'belashospitalpark', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Belas Hospital Park', NULL, NULL, NULL, NULL, NULL, 'UHospitalar', 'Belas de Luanda', 98, 'NIF', '10998899', '');
 
 -- --------------------------------------------------------
 
@@ -645,7 +655,8 @@ INSERT INTO `telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUE
 (14, NULL, 15, 988898),
 (15, NULL, 16, 98878987),
 (16, NULL, 17, 8789),
-(17, NULL, 18, 912345678);
+(17, NULL, 18, 912345678),
+(18, NULL, 19, 987778999);
 
 -- --------------------------------------------------------
 
@@ -672,19 +683,20 @@ INSERT INTO `trabalhar` (`numOrdem`, `codHospital`) VALUES
 --
 
 CREATE TABLE `unhospitalar` (
-  `nomeUnHosp` varchar(150) DEFAULT NULL,
   `codHospital` int(11) NOT NULL,
   `idPessoa` int(11) DEFAULT NULL,
-  `endereco` varchar(100) NOT NULL,
-  `codMunicipio` int(11) NOT NULL
+  `sectorSNS` varchar(200) NOT NULL,
+  `subsectorSNS` varchar(200) NOT NULL,
+  `nPacientesDiario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `unhospitalar`
 --
 
-INSERT INTO `unhospitalar` (`nomeUnHosp`, `codHospital`, `idPessoa`, `endereco`, `codMunicipio`) VALUES
-('Clínica Exemplo1', 1, 5, 'Rua', 92);
+INSERT INTO `unhospitalar` (`codHospital`, `idPessoa`, `sectorSNS`, `subsectorSNS`, `nPacientesDiario`) VALUES
+(1, 5, '', '', 0),
+(2, 19, 'publico', 'SS das FAA', 78);
 
 --
 -- Índices para tabelas despejadas
@@ -812,8 +824,7 @@ ALTER TABLE `trabalhar`
 --
 ALTER TABLE `unhospitalar`
   ADD PRIMARY KEY (`codHospital`),
-  ADD KEY `idPessoa` (`idPessoa`),
-  ADD KEY `codMunicipio` (`codMunicipio`);
+  ADD KEY `idPessoa` (`idPessoa`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -835,7 +846,7 @@ ALTER TABLE `consulta`
 -- AUTO_INCREMENT de tabela `email`
 --
 ALTER TABLE `email`
-  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `especialidade`
@@ -865,7 +876,7 @@ ALTER TABLE `parente`
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `prescricao`
@@ -883,13 +894,13 @@ ALTER TABLE `rua`
 -- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
-  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `unhospitalar`
 --
 ALTER TABLE `unhospitalar`
-  MODIFY `codHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
@@ -992,5 +1003,9 @@ ALTER TABLE `trabalhar`
 -- Limitadores para a tabela `unhospitalar`
 --
 ALTER TABLE `unhospitalar`
-  ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
-  ADD CONSTRAINT `unhospitalar_ibfk_3` FOREIGN KEY (`codMunicipio`) REFERENCES `municipio` (`codMunicipio`);
+  ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

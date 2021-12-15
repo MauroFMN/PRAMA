@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+        <link rel="stylesheet" type="text/css" href="../../css/paciente.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -19,12 +20,40 @@
                     </div>
                     <div class="row mt-5">
                         <?php
-                        if (condition) {
-                            echo "Nenhum paciente marcou consulta.";
-                        } else {
-                            // code...
-                        }
-                        ?>
+                        $sql = "SELECT * FROM medico WHERE idPessoa = {$_SESSION["idPessoa"]}";
+                        $dados = mysqli_query($mysqli,$sql);
+                        while ($row = mysqli_fetch_assoc($dados)) {
+                          $sql1 = "SELECT * FROM consulta WHERE numOrdem = '{$row['numOrdem']}'";
+                          $dados1 = mysqli_query($mysqli,$sql1);
+                          if (mysqli_num_rows($dados1) != 0) {
+                            while ($row1 = mysqli_fetch_assoc($dados1)) {
+                              $sql2 = "SELECT * FROM pessoa WHERE idPessoa = {$row1['idPessoa']}";
+                              $dados2 = mysqli_query($mysqli,$sql2);
+                              while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                                <div class="card">
+                                  <?php if (false) { ?>
+                                    <span><i class="fas fa-user"></i></span>
+                                <?php  } else { ?>
+                                  <img src="<?php  ?>" alt="img" style="width:100%">
+                              <?php } ?>
+
+                                <h1><?php echo $row2['nome']; ?></h1>
+                                <p class="title"><?php echo $row2['daraNasc']; ?></p>
+                                <p></p>
+                                <div style="margin: 24px 0;">
+                                  <a href="#"><i class="fa fa-dribbble"></i></a>
+                                  <a href="#"><i class="fa fa-twitter"></i></a>
+                                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                                  <a href="#"><i class="fa fa-facebook"></i></a>
+                                </div>
+                                <p><button>Ver Informações</button></p>
+                              </div>
+                            <?php  }
+                            }
+                          } else {
+                            echo "Nenhum paciente marcou consulta com o Doutor.";
+                          }
+                        } ?>
                     </div>
                 </div>
             </div>

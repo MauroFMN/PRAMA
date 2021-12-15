@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Dez-2021 às 17:28
+-- Tempo de geração: 15-Dez-2021 às 17:40
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -541,16 +541,16 @@ INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, 
 (3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92, '', '', ''),
 (4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92, '', '', ''),
 (5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92, '', '', ''),
-(8, 'google', '4f9ef1d0cf4e38201de35048c98fe51b', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', '', ''),
-(9, 'pacientedecostume', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045', ''),
-(10, 'franciscopedro', '4f9ef1d0cf4e38201de35048c98fe51b', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Medico', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904', ''),
-(11, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Medico', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022', ''),
-(12, 'fernandoassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022', ''),
-(13, 'fernandaassis2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039', ''),
-(14, 'fernandaassis', '4f9ef1d0cf4e38201de35048c98fe51b', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039', ''),
-(15, 'paulinha', '4f9ef1d0cf4e38201de35048c98fe51b', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Medico', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990', ''),
-(16, 'armando2', '4f9ef1d0cf4e38201de35048c98fe51b', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Medico', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908', ''),
-(17, 'nduma', '4f9ef1d0cf4e38201de35048c98fe51b', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902', ''),
+(8, 'google', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', '', ''),
+(9, 'pacientedecostume', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045', ''),
+(10, 'franciscopedro', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Medico', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904', ''),
+(11, 'fernandoassis', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Medico', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022', ''),
+(12, 'fernandoassis', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Fernando de Assis', 56, '1992-10-12', 'Masculino', 'Viuvo', 'A-', 'Paciente', 'Rua Matala Kizema', 3, 'Bilhete de Identidade', '009808007LA022', ''),
+(13, 'fernandaassis2', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99839009LA039', ''),
+(14, 'fernandaassis', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Fernanda Assis', 67, '1992-09-12', 'Femenino', 'Solteiro', 'AB-', 'Medico', 'Cazengo', 96, 'Bilhete de Identidade', '99889009LA039', ''),
+(15, 'paulinha', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Paula Almeida Andrade', 56, '1990-02-12', 'Femenino', 'Viuvo', 'AB+', 'Medico', 'Benfica de Luanda', 92, 'Bilhete de Identidade', '0098990', ''),
+(16, 'armando2', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Armando Francisco', 89, '1999-11-12', 'Masculino', 'Casado', 'AB+', 'Medico', 'Bairro das Ingombotas', 92, 'Bilhete de Identidade', '9989908', ''),
+(17, 'nduma', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Pedro Nduma', 89, '2000-09-19', 'Masculino', 'Solteiro', 'B+', 'Medico', 'Icolo e Bengo - Quissama', 93, 'Bilhete de Identidade', '009889LA03902', ''),
 (18, 'DomingasM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Domingas Torres Cordeiro da Mata', 95, '1966-05-26', 'Femenino', 'Solteiro', 'AB-', 'Paciente', 'Rua dos Quarteis', 97, 'Bilhete de Identidade', '005044589LA050', ''),
 (19, 'belashospitalpark', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Belas Hospital Park', NULL, NULL, NULL, NULL, NULL, 'UHospitalar', 'Belas de Luanda', 98, 'NIF', '10998899', '');
 

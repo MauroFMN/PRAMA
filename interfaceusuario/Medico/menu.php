@@ -59,7 +59,7 @@ session_start();
                         <div class="name"><b><?php echo $dadosusuario["nome"]; ?></b></div>
                     </div>
                 </div>
-                <a href="../index.php">
+                <a href="../../index.php">
                     <i class="fas fa-sign-out-alt" id="log_out"></i>
                 </a>
 

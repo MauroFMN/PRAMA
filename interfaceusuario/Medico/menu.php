@@ -1,15 +1,15 @@
 <?php
 include '../../conexao.php';
-session_start(); 
+session_start();
 ?>
 <div class="sidebar french-blue">
     <div class="logo-details">
         <img src="../../imagens/Logomarca-Pramaactualizada.png" alt="Logotipo" class="icon1">
-        <i class="fas fa-bars" id="btn" ></i>
+        <i class="fas fa-bars" id="btn"></i>
     </div>
     <ul class="nav-list">
         <li>
-            <i class="fas fa-search bx-search" ></i>
+            <i class="fas fa-search bx-search"></i>
             <input type="text" placeholder="Pesquisar...">
             <span class="tooltip">Pesquisar</span>
         </li>
@@ -36,35 +36,36 @@ session_start();
         </li>
         <li>
             <a href="#chat" onclick="document.getElementById('chat').style.display = 'block';">
-                <i class="fab fa-whatsapp" ></i>
+                <i class="fab fa-whatsapp"></i>
                 <span class="links_name">Chat</span>
             </a>
             <span class="tooltip">Chat</span>
         </li>
         <li>
             <a href="perfil.php">
-                <i class="far fa-user" ></i>
+                <i class="far fa-user"></i>
                 <span class="links_name">Perfil</span>
             </a>
             <span class="tooltip">Perfil</span>
         </li>
         <li class="profile">
-          <?php
-          $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
-          $dados = mysqli_query($mysqli,$sql);
-          while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
-
-            <div class="profile-details" style="height: 100%;">
-                <div class="row">
-                    <div class="col-lg-12"><p class="name"><?php echo $dadosusuario["nome"]; ?></b></p></div>
-                    <div class="col-lg-3">
-                        <a href="../../index.php">
-                            <i class="fas fa-sign-out-alt" id="log_out" ></i>
-                        </a>
+            <?php
+            $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
+            $dados = mysqli_query($mysqli, $sql);
+            while ($dadosusuario = mysqli_fetch_assoc($dados)) {
+            ?>
+                <div class="profile-details">
+                    <div class="name_job">
+                        <div class="name"><b><?php echo $dadosusuario["nome"]; ?></b></div>
                     </div>
                 </div>
-            </div>
-            <?php } ?>
+                <a href="../index.php">
+                    <i class="fas fa-sign-out-alt" id="log_out"></i>
+                </a>
+
+            <?php
+            }
+            ?>
         </li>
     </ul>
 </div>

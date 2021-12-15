@@ -21,22 +21,23 @@ session_start();
             <span class="tooltip">Área de Trabalho</span>
         </li>
         <li class="profile">
-        <?php
-          $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
-          $dados = mysqli_query($mysqli,$sql);
-          while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
-
-            <div class="profile-details" style="height: 100%;">
-                <div class="row">
-                    <div class="col-lg-12"><p class="name"><?php echo $dadosusuario["nome"]; ?></b></p></div>
-                    <div class="col-lg-3">
-                        <a href="../../index.php">
-                            <i class="fas fa-sign-out-alt" id="log_out" ></i>
-                        </a>
+            <?php
+            $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
+            $dados = mysqli_query($mysqli, $sql);
+            while ($dadosusuario = mysqli_fetch_assoc($dados)) {
+            ?>
+                <div class="profile-details">
+                    <div class="name_job">
+                        <div class="name"><b><?php echo $dadosusuario["nome"]; ?></b></div>
                     </div>
                 </div>
-            </div>
-            <?php } ?>
+                <a href="../index.php">
+                    <i class="fas fa-sign-out-alt" id="log_out"></i>
+                </a>
+
+            <?php
+            }
+            ?>
         </li>
     </ul>
 </div>

@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Perfil do Médico</title>
-        <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
-        <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../../css/all.css">
-        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
-        <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
-    </head>
-    <body>
-        <?php include_once "menu.php"; ?>
-        <section class="home-section" style="background-color: white;"id="perfil">
-            <div class="text">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Perfil</h1>
-                    </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Médico</title>
+    <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
+</head>
+
+<body>
+    <?php include_once "menu.php"; ?>
+    <section class="home-section" style="background-color: white;" id="perfil">
+        <div class="text">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Perfil</h1>
                 </div>
-                <div class="row mt-5">
-                    <div class="formulario">
-                      <?php $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
-                      $dados = mysqli_query($mysqli,$sql);
-                      while ($row = mysqli_fetch_assoc($dados)) { ?>
+            </div>
+            <div class="row mt-5">
+                <div class="formulario">
+                    <?php $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
+                    $dados = mysqli_query($mysqli, $sql);
+                    while ($row = mysqli_fetch_assoc($dados)) { ?>
                         <form class="formRegElm">
                             <label for="nome">Nome:</label>
                             <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" disabled>
@@ -35,17 +37,18 @@
                                 <option value="<?php echo $row['genero']; ?>"><?php echo $row['genero']; ?></option>
                             </select>
                             <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
-                            $dados1 = mysqli_query($mysqli,$sql1);
+                            $dados1 = mysqli_query($mysqli, $sql1);
                             while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                            <label for="numOrdem">Númeno da Ordem:</label>
-                            <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
-                            <label for="nome">Especialidade:</label>
-                          <?php
-                          $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem = {$row1['numOrdem']}";
-                          $dados2 = mysqli_query($mysqli,$sql2);
-                          while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                            <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" disabled>
-                          <?php }}?>
+                                <label for="numOrdem">Númeno da Ordem:</label>
+                                <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
+                                <label for="nome">Especialidade:</label>
+                                <?php
+                                $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem ='{$row1['numOrdem']}'";
+                                $dados2 = mysqli_query($mysqli, $sql2);
+                                while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                                    <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" disabled>
+                            <?php }
+                            } ?>
                             <label for="">Local de Trabalho</label>
                             <input type="text" name="" value="">
                             <label for="email">Email:</label>
@@ -289,13 +292,13 @@
                                 <input type="submit" class="botao verde" value="Editar">
                             </div>
                         </form>
-                      <?php } ?>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
-        </section>
-        <script src="../../js/script.js"></script>
+        </div>
+    </section>
+    <script src="../../js/script.js"></script>
 
-    </body>
+</body>
 
 </html>

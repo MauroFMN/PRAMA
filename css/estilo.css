@@ -12,7 +12,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
   width: 5px;
 }
 
@@ -805,4 +805,23 @@ input[type="number"]:focus {
   padding-left: 50px !important;
   padding-right: 50px !important;
   margin-top: 20px !important;
+}
+
+.divBotaoMarcacaoConsulta {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.divBotaoMarcacaoConsulta a {
+  padding: 6px 25px;
+  color: white;
+  background-color: #00a170;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.divBotaoMarcacaoConsulta a:hover {
+  color: white;
+  text-decoration: none;
 }

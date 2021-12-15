@@ -26,9 +26,9 @@
                     } else {
                       while ($row = mysqli_fetch_assoc($numConsultas)) {
                         $sql1 = "SELECT * FROM pessoa JOIN medico ON(pessoa.idPessoa = medico.idPessoa) WHERE numOrdem = '{$numConsultas['numOrdem']}'";//O valor é uma String
-                        $infoMedico = mysqli_query($mysqli,$$sql1);
+                        $infoMedico = mysqli_query($mysqli,$sql1);
                         while ($rows = mysqli_fetch_assoc($infoMedico)) {?>
-                          iv class="row mt-5">
+                          <div class="row mt-5">
                             <div class="row cartao-medico pb-4 pt-4">
                               <div class="col-lg-2" style="margin: 0 auto;">
                                 <img src="../../imagens/" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">

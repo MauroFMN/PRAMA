@@ -31,12 +31,12 @@
                                     <div class="row mt-3">
                                         <div>
                                           <?php
-
+                                            //Contar o número de médicos que trabalham na unidade hospitalar
                                             ?>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <button type="button" class="btn btn-primary w-50" >Adicionar Médico</button>
+                                        <button type="button" class="btn btn-primary w-50" ><a href="inscrever.php" style="text-decoration: none; color: white;">Adicionar Médico</a></button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -48,7 +48,7 @@
                                       </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <button type="button" class="btn btn-primary w-50">Ver Médicos</button>
+                                        <button type="button" class="btn btn-primary w-50"><a href="medicos.php" style="text-decoration: none; color: white;">Ver Médicos</a></button>
                                     </div>
                                 </div>
                             </div>

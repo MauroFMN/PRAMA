@@ -39,26 +39,36 @@
                             <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
                             $dados1 = mysqli_query($mysqli, $sql1);
                             while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                                <label for="numOrdem">Númeno da Ordem:</label>
-                                <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
-                                <label for="nome">Especialidade:</label>
-                                <?php
-                                $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem ='{$row1['numOrdem']}'";
-                                $dados2 = mysqli_query($mysqli, $sql2);
-                                while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                                    <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" disabled>
-                            <?php }
-                            } ?>
-                            <label for="">Local de Trabalho</label>
-                            <input type="text" name="" value="">
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" value="exemplo@exemplo.com">
-                            <label>Telefone:</label>
-                            <input type="tel" name="" value="9xxxxxxxx">
-                            <label>Nome de Utilizador:</label>
-                            <input type="text" name="">
-                            <label>Password:</label>
-                            <input type="password" name="">
+                            <label for="numOrdem">Númeno da Ordem:</label>
+                            <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
+                          <?php
+                          $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem = '{$row1['numOrdem']}'";
+                          $dados2 = mysqli_query($mysqli,$sql2);
+                          while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                            <label for="nome">Especialidade:</label>
+                            <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" disabled>
+                            <?php $sql3 = "SELECT * FROM unhospitalar uh JOIN trabalhar tr on(uh.codHospital = tr.codHospital) WHERE numOrdem = '{$row1['numOrdem']}'";
+                            $dados3 = mysqli_query($mysqli,$sql3);
+                            while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
+                            <label for="nomeUnHosp">Local de Trabalho</label>
+                            <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nomeUnHosp']; ?>" disabled>
+                          <?php }}}?>
+                          <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
+                          $dados4 = mysqli_query($mysqli,$sql4);
+                          while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
+                            <label for="endereco">Email:</label>
+                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled>
+                          <?php };
+                          $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
+                          $dados5 = mysqli_query($mysqli,$sql5);
+                          while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
+                            <label for="numero">Telefone:</label>
+                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled>
+                          <?php } ?>
+                            <label for="nomeUtilizador">Nome de Utilizador:</label>
+                            <input type="text" name="nomeUtilizador" id="nomeUtilizador" value="<?php echo $row['nomeUtilizador']; ?>" disabled>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" value="<?php echo $row['password']; ?>" disabled>
                             <hr>
                             <h4 class="centro">Horário de Atendimento</h4>
                             <hr>

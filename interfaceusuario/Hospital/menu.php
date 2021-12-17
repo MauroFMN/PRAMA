@@ -20,6 +20,13 @@ session_start();
             </a>
             <span class="tooltip">Área de Trabalho</span>
         </li>
+        <li>
+            <a href="perfil.php">
+                <i class="far fa-user"></i>
+                <span class="links_name">Perfil</span>
+            </a>
+            <span class="tooltip">Perfil</span>
+        </li>
         <li class="profile">
             <?php
             $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";

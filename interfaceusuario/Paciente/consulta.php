@@ -474,7 +474,11 @@
             <div class="row mt-5">
               <div class="row cartao-medico pb-4 pt-4">
                 <div class="col-lg-2" style="margin: 0 auto;">
-                  <img src="../../imagens/" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                    <?php if (!empty($dadosusuario['foto'])) { ?>
+                      <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                    <?php } else{ ?>
+                      <img src="../../imagens/camera-solid.svg" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                    <?php } ?>
                   <div class="divBotaoMarcacaoConsulta">
                     <a className="" href="#marcacaoConsulta" onclick="console.log(document.querySelector('#reg'));document.querySelector('#reg').classList.toggle('d-none');document.querySelector('#reg').classList.toggle('d-block')">Agendar Consulta</a>
                   </div>

@@ -72,7 +72,7 @@ session_start();
 <section class="wrapper" id="chat">
     <div class="chat-area">
         <header>
-            <?php ?>
+            <?php //foto e dados do paciente que está a ser atendido ?>
             <img src="" alt="">
             <div class="details">
                 <span><?php ?></span>

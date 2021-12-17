@@ -30,7 +30,13 @@
                               <div class="row mt-5">
                                 <div class="row cartao-medico pb-4 pt-4">
                                   <div class="col-lg-2" style="margin: 0 auto;">
-                                    <img src="../../imagens/" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                                    <div style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                                      <?php if (!empty($dadosusuario['foto'])) { ?>
+                                        <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="">
+                                      <?php } else{ ?>
+                                        <img src="../../imagens/camera-solid.svg" alt="">
+                                      <?php } ?>
+                                    </div>
                                   </div>
                                   <div class="col-lg-7">
                                   <h4 class="mb-3"><?php echo $rows['nome']; ?></h4>
@@ -65,7 +71,7 @@
                                       $unh = "SELECT * FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) WHERE numOrdem = '{$rows["numOrdem"]}'";
                                       $listunh = mysqli_query($mysqli,$unh);
                                       while ($lunh = mysqli_fetch_assoc($listunh)) { ?>
-                                        <span class="info"><?php echo $lunh['nomeUnHosp']; ?></span>
+                                        <!-- span class="info"><?php echo $lunh['nomeUnHosp']; ?></span -->
                                       <?php } ?>
                                   </div>
                                   <div class="col-lg-3">

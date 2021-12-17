@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+        <link rel="stylesheet" type="text/css" href="../../css/foto.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -25,55 +26,65 @@
                       $dados = mysqli_query($mysqli,$sql);
                       while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
                         <form class="formRegElm">
-                            <label for="nome">Nome:</label>
-                            <input type="text" name="nome" id="nome" value="<?php echo $dadosusuario['nome']; ?>" disabled>
-                            <label for="dataNasc">Data de Nascimento:</label>
-                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $dadosusuario['dataNasc']; ?>" disabled><br>
-                            <label for="genero">Género:</label>
-                            <select disabled>
-                                <option value="<?php echo $dadosusuario['genero']; ?>"><?php echo $dadosusuario['genero']; ?></option>
-                            </select>
-                            <label for>Estado Civil:</label>
-                            <select disabled>
-                                <option value="<?php echo $dadosusuario['estCivil']; ?>"><?php echo $dadosusuario['estCivil']; ?></option>
-                            </select>
-                            <?php
-                            $sql1 = "SELECT * FROM parente WHERE idPessoa = {$dadosusuario['idPessoa']}";
-                            $parente = mysqli_query($mysqli,$sql1);
-                            if (mysqli_num_rows($parente) == 0) {
-                              $nomePai = '-';
-                              $nomeMae = '-';
-                            } else {
-                              while ($dadosParente = mysqli_fetch_assoc($parente)) {
-                                $sql2 = "SELECT * FROM pessoa WHERE idPessoa = {$dadosParente['idPessoa1']}";
-                                $parente1 = mysqli_query($mysqli,$sql2);
-                                while ($infoParente = mysqli_fetch_assoc($parente1)) {
-                                  if ($dadosParente['grau'] == 'Pai') {
-                                    $nomePai = $infoParente['nome'];
-                                  } else {
-                                    $nomeMae = $infoParente['nome'];
-                                  }}}} ?>
-                            <label>Nome do Pai:</label>
-                            <input type="text" name="" value="<?php echo $nomePai; ?>" disabled>
-                            <label>Nome da Mãe:</label>
-                            <input type="text" name="" value="<?php echo $nomeMae; ?>" disabled>
-                            <?php
-                             $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
-                             $dadosProv = mysqli_query($mysqli,$sql);
-                             while ($provincia = mysqli_fetch_assoc($dadosProv)) {?>
-                            <label>Província:</label>
-                            <select disabled>
-                                <option value="<?php echo $provincia['nome']; ?>"><?php echo $provincia['nome']; ?></option>
-                            </select>
+                          <div class="espacoImagem">
+                            <?php if (!empty($dadosusuario['foto'])) { ?>
+                            <div class="conteudoImagem">
+                              <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" id="fotografia">
+                            <?php } else{ ?>
+                              <img src="../../imagens/camera-solid.svg" alt="Selecione uma Imagem" id="fotografia">
+                            </div>
+                            <?php } ?>
+                            <input type="file" name="flimagem" id="flimagem" accept="image/*">
+                          </div>
+                          <label for="nome">Nome:</label>
+                          <input type="text" name="nome" id="nome" value="<?php echo $dadosusuario['nome']; ?>" disabled>
+                          <label for="dataNasc">Data de Nascimento:</label>
+                          <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $dadosusuario['dataNasc']; ?>" disabled><br>
+                          <label for="genero">Género:</label>
+                          <select disabled>
+                              <option value="<?php echo $dadosusuario['genero']; ?>"><?php echo $dadosusuario['genero']; ?></option>
+                          </select>
+                          <label for>Estado Civil:</label>
+                          <select disabled>
+                              <option value="<?php echo $dadosusuario['estCivil']; ?>"><?php echo $dadosusuario['estCivil']; ?></option>
+                          </select>
+                          <?php
+                          $sql1 = "SELECT * FROM parente WHERE idPessoa = {$dadosusuario['idPessoa']}";
+                          $parente = mysqli_query($mysqli,$sql1);
+                          if (mysqli_num_rows($parente) == 0) {
+                            $nomePai = '-';
+                            $nomeMae = '-';
+                          } else {
+                            while ($dadosParente = mysqli_fetch_assoc($parente)) {
+                              $sql2 = "SELECT * FROM pessoa WHERE idPessoa = {$dadosParente['idPessoa1']}";
+                              $parente1 = mysqli_query($mysqli,$sql2);
+                              while ($infoParente = mysqli_fetch_assoc($parente1)) {
+                                if ($dadosParente['grau'] == 'Pai') {
+                                  $nomePai = $infoParente['nome'];
+                                } else {
+                                  $nomeMae = $infoParente['nome'];
+                                }}}} ?>
+                          <label>Nome do Pai:</label>
+                          <input type="text" name="" value="<?php echo $nomePai; ?>" disabled>
+                          <label>Nome da Mãe:</label>
+                          <input type="text" name="" value="<?php echo $nomeMae; ?>" disabled>
+                          <?php
+                           $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
+                           $dadosProv = mysqli_query($mysqli,$sql);
+                           while ($provincia = mysqli_fetch_assoc($dadosProv)) {?>
+                          <label>Província:</label>
+                          <select disabled>
+                              <option value="<?php echo $provincia['nome']; ?>"><?php echo $provincia['nome']; ?></option>
+                          </select>
                           <?php } ?>
-                            <label>Município:</label>
-                            <?php
-                             $sql = "SELECT * from municipio WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
-                             $dadosMuni = mysqli_query($mysqli,$sql);
-                             while ($municipio = mysqli_fetch_assoc($dadosMuni)) {?>
-                            <select disabled>
-                                <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
-                            </select>
+                          <label>Município:</label>
+                          <?php
+                           $sql = "SELECT * from municipio WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
+                           $dadosMuni = mysqli_query($mysqli,$sql);
+                           while ($municipio = mysqli_fetch_assoc($dadosMuni)) {?>
+                          <select disabled>
+                              <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
+                          </select>
                           <?php } ?>
                           <?php
                            $sql = "SELECT * from bairro WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
@@ -131,6 +142,7 @@
         </section>
         <script src="../../js/script.js"></script>
         <script src="../../js/chat.js"></script>
+        <script src="../../js/foto.js"></script>
     </body>
 
 </html>

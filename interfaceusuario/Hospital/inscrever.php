@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
+        <link rel="stylesheet" type="text/css" href="../../css/foto.css">
     </head>
     <body>
         <?php include_once 'menu.php'; ?>
@@ -21,6 +22,16 @@
                     <div class="row mt-5">
                       <div class="formulario">
                         <form class="formRegElm">
+                          <div class="espacoImagem">
+                            <?php if (!empty($dadosusuario['foto'])) { ?>
+                            <div class="conteudoImagem">
+                              <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" id="fotografia">
+                            <?php } else{ ?>
+                              <img src="../../imagens/camera-solid.svg" alt="Selecione uma Imagem" id="fotografia">
+                            </div>
+                            <?php } ?>
+                            <input type="file" name="flimagem" id="flimagem" accept="image/*">
+                          </div>
                           <label for="nome">Nome Completo:</label>
                           <input type="text" name="nome" id="nome" placeholder="Escreva o Nome Completo">
                           <label>Data Nascimento:</label>
@@ -286,5 +297,6 @@
             </div>
         </section>
         <script src="../../js/script.js"></script>
+        <script src="../../js/foto.js"></script>
     </body>
 </html>

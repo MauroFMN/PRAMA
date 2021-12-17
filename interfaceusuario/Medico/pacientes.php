@@ -31,20 +31,17 @@
                               $dados2 = mysqli_query($mysqli,$sql2);
                               while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
                                 <div class="card">
-                                  <?php if (false) { ?>
-                                    <span><i class="fas fa-user"></i></span>
-                                <?php  } else { ?>
-                                  <img src="<?php  ?>" alt="img" style="width:100%">
-                              <?php } ?>
-
+                                  <?php if (!empty($dadosusuario['foto'])) { ?>
+                                    <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
+                                  <?php } else{ ?>
+                                    <img src="../../imagens/camera-solid.svg" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
+                                  <?php } ?>
                                 <h1><?php echo $row2['nome']; ?></h1>
-                                <p class="title"><?php echo $row2['daraNasc']; ?></p>
+                                <p class="title"><?php echo $row2['daraNasc']; //fazer o cálculo da idade ?></p>
                                 <p></p>
                                 <div style="margin: 24px 0;">
-                                  <a href="#"><i class="fa fa-dribbble"></i></a>
-                                  <a href="#"><i class="fa fa-twitter"></i></a>
-                                  <a href="#"><i class="fa fa-linkedin"></i></a>
-                                  <a href="#"><i class="fa fa-facebook"></i></a>
+                                  <?php //colocar informações como: peso, tipo sanguíneo ?>
+
                                 </div>
                                 <p><button>Ver Informações</button></p>
                               </div>

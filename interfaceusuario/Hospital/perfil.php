@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil do Médico</title>
+    <title>Perfil da Unidade Hospitalar</title>
     <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
     <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
@@ -39,7 +39,7 @@
                             <?php } ?>
                             <input type="file" name="flimagem" id="flimagem" accept="image/*">
                           </div>
-                            <label for="nome">Nome:</label>
+                            <label for="nome">Nome da Un.Hospitalar:</label>
                             <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" disabled>
                             <label for="dataNasc">Data de Nascimento:</label>
                             <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" disabled>

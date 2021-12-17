@@ -65,7 +65,7 @@ session_start();
 <section class="wrapper" id="chat">
     <div class="chat-area">
         <header>
-            <?php  ?>
+            <?php //pegar a imagem do médico que o está a atender ?>
             <span class="fechar back-icon" onClick="this.parentElement.style.display = 'none'; location = '?p='"><i class="far fa-times-circle"></i></span>
             <img src="" alt="">
             <div class="details">

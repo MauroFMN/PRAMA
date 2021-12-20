@@ -71,7 +71,7 @@
                                       $unh = "SELECT * FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) WHERE numOrdem = '{$rows["numOrdem"]}'";
                                       $listunh = mysqli_query($mysqli,$unh);
                                       while ($lunh = mysqli_fetch_assoc($listunh)) { ?>
-                                        <!-- span class="info"><?php echo $lunh['nomeUnHosp']; ?></span -->
+                                        <!-- span class="info"><?php //echo $lunh['nomeUnHosp']; ?></span -->
                                       <?php } ?>
                                   </div>
                                   <div class="col-lg-3">

@@ -25,7 +25,7 @@
                       $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
                       $dados = mysqli_query($mysqli,$sql);
                       while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
-                        <form class="formRegElm">
+                        <form id="form" style="display: block;" class="formRegElm">
                           <div class="espacoImagem">
                             <?php if (!empty($dadosusuario['foto'])) { ?>
                             <div class="conteudoImagem">

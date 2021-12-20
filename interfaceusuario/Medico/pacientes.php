@@ -36,10 +36,12 @@
                                   <?php } else{ ?>
                                     <img src="../../imagens/camera-solid.svg" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
                                   <?php } ?>
-                                <h1><?php echo $row2['nome']; ?></h1>
-                                <p class="title"><?php echo $row2['daraNasc']; //fazer o cálculo da idade ?></p>
+                                <h1>Nome: <?php echo $row2['nome']; ?></h1>
+                                <p class="title">Idade: <?php echo $row2['daraNasc']; //fazer o cálculo da idade ?></p>
                                 <p></p>
                                 <div style="margin: 24px 0;">
+                                  Peso:
+                                  Tipo Sanguíneo:
                                   <?php //colocar informações como: peso, tipo sanguíneo ?>
 
                                 </div>
@@ -53,6 +55,12 @@
                         } ?>
                     </div>
                 </div>
+            </div>
+            <div id="reg" class="registo contentor">
+              <span class="fechar" onClick="this.parentElement.style.display = 'none'; location = '?p='">&times;</span><br>
+              <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
+
+              </form>
             </div>
         </section>
         <script src="../../js/script.js"></script>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/all.css">
-    <link rel="stylesheet" type="text/css" href="../../css/chat.css">
     <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
     <link rel="stylesheet" type="text/css" href="../../css/foto.css">
 </head>
@@ -30,64 +29,53 @@
                     while ($row = mysqli_fetch_assoc($dados)) { ?>
                         <form id="form" style="display: block;" class="formRegElm">
                           <div class="espacoImagem">
-                            <?php if (!empty($row['foto'])) { ?>
                             <div class="conteudoImagem">
-                              <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" id="fotografia">
-                            <?php } else{ ?>
-                              <img src="../../imagens/camera-solid.svg" alt="Selecione uma Imagem" id="fotografia">
+                              <?php if (!empty($row['foto'])) {
+                                $foto = $row['foto'];
+                              } else {
+                                $foto = 'camera-solid.svg';
+                              }?>
+                              <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                             </div>
-                            <?php } ?>
-                            <input type="file" name="flimagem" id="flimagem" accept="image/*">
+                            <input type="file" name="foto" id="foto" accept="image/*">
                           </div>
                             <label for="nome">Nome da Un.Hospitalar:</label>
                             <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" disabled>
-                            <label for="dataNasc">Número de Indetificação Fiscal:</label>
-                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['']; ?>" disabled>
-                            <label>Telefone:</label>
-                            <input type="number" name="" value="<?php  ?>">
-                            <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
-                            $dados1 = mysqli_query($mysqli, $sql1);
-                            while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                            <label for="numOrdem">Sectoc no SNS:</label>
-                            <select class="" name="">
-                              <option value=""></option>
+                            <label for="numeroDocumento">Número de Indetificação Fiscal:</label>
+                            <input type="text" name="numeroDocumento" id="numeroDocumento" value="<?php echo $row['numeroDocumento']; ?>" disabled>
+                            <?php
+                             $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$row['codMunicipio']}";
+                             $dadosProv = mysqli_query($mysqli,$sql);
+                             while ($provincia = mysqli_fetch_assoc($dadosProv)) {?>
+                            <label>Província:</label>
+                            <select disabled>
+                                <option value="<?php echo $provincia['nome']; ?>"><?php echo $provincia['nome']; ?></option>
                             </select>
-                          <?php
-                          $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem = '{$row1['numOrdem']}'";
-                          $dados2 = mysqli_query($mysqli,$sql2);
-                          while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                            <label for="nome">Subsector do SNS:</label>
-                            <select class="" name="">
-                              <option value=""></option>
+                            <?php } ?>
+                            <label>Município:</label>
+                            <?php
+                             $sql = "SELECT * from municipio WHERE codMunicipio = {$row['codMunicipio']}";
+                             $dadosMuni = mysqli_query($mysqli,$sql);
+                             while ($municipio = mysqli_fetch_assoc($dadosMuni)) {?>
+                            <select disabled>
+                                <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
                             </select>
-                            <?php $sql3 = "SELECT * FROM unhospitalar uh JOIN trabalhar tr on(uh.codHospital = tr.codHospital) WHERE numOrdem = '{$row1['numOrdem']}'";
-                            $dados3 = mysqli_query($mysqli,$sql3);
-                            while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
-                            <label for="nomeUnHosp">Nº de Pacientes atendidos Diáriamente:</label>
-                            <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nomeUnHosp']; ?>" disabled>
-                          <?php }}}?>
-                          <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
-                          $dados4 = mysqli_query($mysqli,$sql4);
-                          while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
-                            <label for="endereco">Email:</label>
-                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled>
-                          <?php };
-                          $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
-                          $dados5 = mysqli_query($mysqli,$sql5);
-                          while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
-                            <label for="numero">Telefone:</label>
-                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled>
-                          <?php } ?>
-                          <label for="">Província:</label>
-                          <select class="" name="">
-                            <option value=""></option>
-                          </select>
-                          <label for="">Município</label>
-                          <select class="" name="">
-                            <option value=""></option>
-                          </select>
-                          <label for="">Email:</label>
-                          <input type="email" name="" value="<?php  ?>">
+                            <?php } ?>
+
+                              <label for="nomeBairro">Bairro:</label>
+                              <input type="text" name="nomeBairro" id="nomeBairro" value="<?php  ?>" disabled>
+                              <label for="nomeRua">Nome da Rua:</label>
+                              <input type="text" name="nomeRua" id="nomeRua" value="<?php ?>" disabled>
+                              <label for="numeroRua">Número da Rua</label>
+                              <input type="text" name="numeroRua" id="numeroRua" value="<?php  ?>" disabled>
+
+                              <?php
+                              $sql = "SELECT endereco FROM email WHERE idPessoa = {$_SESSION["idPessoa"]}";
+                              $email = mysqli_query($mysqli,$sql);
+                              while ($endereco = mysqli_fetch_assoc($email)) {?>
+                              <label for="email">Email:</label>
+                              <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled>
+                            <?php } ?>
                           <hr>
                           <label for="">Dados de Gestão da Clínica</label>
                           <hr>

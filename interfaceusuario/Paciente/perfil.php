@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
-        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
         <link rel="stylesheet" type="text/css" href="../../css/foto.css">
     </head>
     <body>
@@ -27,14 +26,15 @@
                       while ($dadosusuario = mysqli_fetch_assoc($dados)) { ?>
                         <form id="form" style="display: block;" class="formRegElm">
                           <div class="espacoImagem">
-                            <?php if (!empty($dadosusuario['foto'])) { ?>
                             <div class="conteudoImagem">
-                              <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" id="fotografia">
-                            <?php } else{ ?>
-                              <img src="../../imagens/camera-solid.svg" alt="Selecione uma Imagem" id="fotografia">
+                              <?php if (!empty($row['foto'])) {
+                                $foto = $row['foto'];
+                              } else {
+                                $foto = 'camera-solid.svg';
+                              }?>
+                              <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                             </div>
-                            <?php } ?>
-                            <input type="file" name="flimagem" id="flimagem" accept="image/*">
+                            <input type="file" name="foto" id="foto" accept="image/*">
                           </div>
                           <label for="nome">Nome:</label>
                           <input type="text" name="nome" id="nome" value="<?php echo $dadosusuario['nome']; ?>" disabled>
@@ -141,7 +141,6 @@
             </div>
         </section>
         <script src="../../js/script.js"></script>
-        <script src="../../js/chat.js"></script>
         <script src="../../js/foto.js"></script>
     </body>
 

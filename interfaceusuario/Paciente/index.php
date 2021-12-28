@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
-        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+        <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
         <script src="../../js/jquery-3.6.0.min.js"></script>
     </head>
     <body>
@@ -55,7 +55,7 @@
                                           </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <button type="button" class="btn btn-primary w-50"><a href="consulta.php" style="text-decoration: none; color: white;">Marcar Consulta.</a></button>
+                                        <button type="button" class="btn btn-primary w-50"><a href="consulta.php" style="text-decoration: none; color: white;">Marcar Consulta</a></button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -63,8 +63,30 @@
                                         <div><?php echo "Tenha acesso aos seus agendamentos e não perca uma consulta."; ?></div>
                                     </div>
                                     <div class="row mt-3">
-                                        <button type="button" class="btn btn-primary w-50">Ver Agendamentos.</button>
+                                        <button type="button" class="btn btn-primary w-50" onclick="agendamento()">Ver Agendamentos</button>
                                     </div>
+                                </div>
+                                <div class="hide" id="agendamento">
+                                  <table>
+                                    <tr>
+                                      <th>Data/Hora</th>
+                                      <th>Especialidade</th>
+                                      <th>Médico</th>
+                                      <th>Atendimento</th>
+                                    </tr>
+                                    <tr>
+                                      <td>01/01/2022 10:00</td>
+                                      <td>Clinica Geral</td>
+                                      <td>Evaldo Miranda</td>
+                                      <td>Telemedicina</td>
+                                    </tr>
+                                    <tr>
+                                      <td>01/02/2022 10:00</td>
+                                      <td>Cardiologia</td>
+                                      <td>Evaldo Miranda</td>
+                                      <td>Presencial</td>
+                                    </tr>
+                                  </table>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +118,6 @@
         </section>
         <script src="../../js/script.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/chat.js"></script>
         <script>
             $(".nav.nav-tabs li").on("click", function () {
                 $(".nav-link.active").removeClass("active");

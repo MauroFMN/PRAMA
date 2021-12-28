@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
-        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
         <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
     </head>
     <body>

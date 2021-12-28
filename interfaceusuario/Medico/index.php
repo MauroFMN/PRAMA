@@ -8,7 +8,6 @@
         <link rel="stylesheet" type="text/css" href="../../css/interfaceusuario.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
-        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
         <script src="../../js/jquery-3.6.0.min.js"></script>
     </head>
     <body>

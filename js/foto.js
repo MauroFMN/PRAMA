@@ -1,5 +1,5 @@
 let foto = document.getElementById('fotografia');
-let file = document.getElementById('flimagem');
+let file = document.getElementById('foto');
 foto.addEventListener('click',() =>{
   file.click();
 });

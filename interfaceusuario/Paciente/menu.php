@@ -28,7 +28,7 @@ session_start();
             <span class="tooltip">Os Meus Médicos</span>
         </li>
         <li>
-            <a href="#chat" onclick="document.getElementById('chat').style.display='block';">
+            <a href="#chat" onclick="">
                 <i class="fab fa-whatsapp"></i>
                 <span class="links_name">Chat</span>
             </a>
@@ -62,24 +62,3 @@ session_start();
         </li>
     </ul>
 </div>
-<section class="wrapper" id="chat">
-    <div class="chat-area">
-        <header>
-            <?php //pegar a imagem do médico que o está a atender ?>
-            <span class="fechar back-icon" onClick="this.parentElement.style.display = 'none'; location = '?p='"><i class="far fa-times-circle"></i></span>
-            <img src="" alt="">
-            <div class="details">
-                <span></span>
-                <p></p>
-            </div>
-        </header>
-        <div class="chat-box">
-
-        </div>
-        <form action="#" class="typing-area">
-            <input type="text" class="incoming_id" name="incoming_id" value="" hidden>
-            <input type="text" name="menssagem" placeholder="Escreva aqui a sua mensagem..." autocomplete="off">
-            <button type="button" name="button"><i class="fab fa-telegram-plane"></i></button>
-        </form>
-    </div>
-</section>

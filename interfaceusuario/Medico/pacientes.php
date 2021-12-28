@@ -7,8 +7,8 @@
         <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
-        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
         <link rel="stylesheet" type="text/css" href="../../css/paciente.css">
+        <link rel="stylesheet" type="text/css" href="../../css/foto.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -31,13 +31,14 @@
                               $dados2 = mysqli_query($mysqli,$sql2);
                               while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
                                 <div class="card">
-                                  <?php if (!empty($dadosusuario['foto'])) { ?>
-                                    <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
-                                  <?php } else{ ?>
-                                    <img src="../../imagens/camera-solid.svg" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
-                                  <?php } ?>
-                                <h1>Nome: <?php echo $row2['nome']; ?></h1>
-                                <p class="title">Idade: <?php echo $row2['daraNasc']; //fazer o cálculo da idade ?></p>
+                                  <?php if (!empty($dadosusuario['foto'])) {
+                                    $foto = $dadosusuario['foto'];
+                                  } else {
+                                    $foto = 'camera-solid.svg';
+                                  }?>
+                                  <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
+                                <h1><?php echo $row2['nome']; ?></h1>
+                                <p class="title"><?php echo $row2['daraNasc']; //fazer o cálculo da idade ?></p>
                                 <p></p>
                                 <div style="margin: 24px 0;">
                                   Peso:
@@ -45,7 +46,7 @@
                                   <?php //colocar informações como: peso, tipo sanguíneo ?>
 
                                 </div>
-                                <p><button>Ver Informações</button></p>
+                                <p><button onclick="document.getElementById('infoPaciente').style.display='block';">Ver Informações</button></p>
                               </div>
                             <?php  }
                             }
@@ -56,10 +57,20 @@
                     </div>
                 </div>
             </div>
-            <div id="reg" class="registo contentor">
+            <div id="infoPaciente" class="paciente contentor">
               <span class="fechar" onClick="this.parentElement.style.display = 'none'; location = '?p='">&times;</span><br>
               <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
-
+                foto; nome; idade; tipo Sanguíneo; peso; antecedentes patológicos familiares; antecedentes patológicos pessoais;
+                <div class="espacoImagem">
+                  <div class="conteudoImagem">
+                    <?php if (!empty($dadosusuario['foto'])) {
+                      $foto = $dadosusuario['foto'];
+                    } else {
+                      $foto = 'camera-solid.svg';
+                    }?>
+                    <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
+                  </div>
+                </div>
               </form>
             </div>
         </section>

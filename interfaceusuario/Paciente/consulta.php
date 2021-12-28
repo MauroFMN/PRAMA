@@ -8,7 +8,6 @@
   <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
   <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../../css/all.css">
-  <link rel="stylesheet" type="text/css" href="../../css/chat.css">
   <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
 </head>
 
@@ -577,7 +576,6 @@
       $('#myInput').trigger('focus')
     })
   </script>
-  <script src="../../js/chat.js"></script>
 </body>
 
 </html>

@@ -670,7 +670,7 @@ input[type="number"]:focus {
   z-index: 2;
 }
 
-.sidebar.open ~ .home-section {
+.sidebar.open ~ .home-section, .sidebar.open ~ .paciente {
   left: 250px;
   width: calc(100% - 250px);
 }

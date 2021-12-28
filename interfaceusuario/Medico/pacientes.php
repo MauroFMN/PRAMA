@@ -38,7 +38,7 @@
                                   }?>
                                   <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
                                 <h1><?php echo $row2['nome']; ?></h1>
-                                <p class="title"><?php echo $row2['daraNasc']; //fazer o cálculo da idade ?></p>
+                                <p class="title"><?php echo $row2['dataNasc']; //fazer o cálculo da idade ?></p>
                                 <p></p>
                                 <div style="margin: 24px 0;">
                                   Peso:

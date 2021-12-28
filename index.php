@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               $_SESSION["logado"] = true;
               $_SESSION["id"] = $last_id;
               $_SESSION["nomeusuario"] = trim($_POST["nameu"]);
-              $_SESSION["tipoUser"] = 'Paciente';
+              $_SESSION["tipoUser"] = 'Medico';
               //
               header("location: interfaceusuario/Medico/index.php");
             } else {

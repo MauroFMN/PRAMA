@@ -23,14 +23,15 @@
                       <div class="formulario">
                         <form class="formRegElm">
                           <div class="espacoImagem">
-                            <?php if (!empty($dadosusuario['foto'])) { ?>
                             <div class="conteudoImagem">
-                              <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" id="fotografia">
-                            <?php } else{ ?>
-                              <img src="../../imagens/camera-solid.svg" alt="Selecione uma Imagem" id="fotografia">
+                              <?php if (!empty($row['foto'])) {
+                                $foto = $row['foto'];
+                              } else {
+                                $foto = 'camera-solid.svg';
+                              }?>
+                              <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                             </div>
-                            <?php } ?>
-                            <input type="file" name="flimagem" id="flimagem" accept="image/*">
+                            <input type="file" name="foto" id="foto" accept="image/*">
                           </div>
                           <label for="nome">Nome Completo:</label>
                           <input type="text" name="nome" id="nome" placeholder="Escreva o Nome Completo">

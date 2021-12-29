@@ -41,6 +41,7 @@ input[type="password"],
 input[type="date"],
 input[type="tel"],
 input[type="number"],
+input[type="time" i],
 select,
 textarea {
   width: 100%;
@@ -70,6 +71,7 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
 input[type="tel"]:focus,
+input[type="time" i]:focus,
 input[type="number"]:focus {
   background-color: #ddd;
   border: 3px solid #555;
@@ -670,7 +672,8 @@ input[type="number"]:focus {
   z-index: 2;
 }
 
-.sidebar.open ~ .home-section, .sidebar.open ~ .paciente {
+.sidebar.open ~ .home-section,
+.sidebar.open ~ .paciente {
   left: 250px;
   width: calc(100% - 250px);
 }
@@ -815,10 +818,14 @@ input[type="number"]:focus {
 
 .divBotaoMarcacaoConsulta a {
   padding: 6px 25px;
-  color: white;
+  color: white !important;
   background-color: #00a170;
   border-radius: 10px;
   text-decoration: none;
+}
+
+.divBotaoMarcacaoConsulta .inativo {
+  background-color: #919191;
 }
 
 .divBotaoMarcacaoConsulta a:hover {

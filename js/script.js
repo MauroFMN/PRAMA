@@ -17,12 +17,21 @@ window.onchange = function () {
 
 };
 
+function agendamento() {
+  var tabela = getElementById("agendamento");
+  if (tabela.className === "hide") {
+    tabela.className = "mostrar";
+  } else {
+    tabela.className = "hide";
+  }
+};
+
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
 
 if(closeBtn){
-    
+
     closeBtn.addEventListener("click", ()=>{
       sidebar.classList.toggle("open");
     });
@@ -32,4 +41,4 @@ if(searchBtn){
     searchBtn.addEventListener("click", ()=>{
       sidebar.classList.toggle("open");
     });
-}
+};

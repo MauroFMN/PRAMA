@@ -58,11 +58,11 @@
                           while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
                             <label for="nome">Especialidade:</label>
                             <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" disabled>
-                            <?php $sql3 = "SELECT * FROM unhospitalar uh JOIN trabalhar tr on(uh.codHospital = tr.codHospital) WHERE numOrdem = '{$row1['numOrdem']}'";
+                            <?php $sql3 = "SELECT pessoa.nome FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) inner join pessoa on unhospitalar.idPessoa = pessoa.idPessoa WHERE numOrdem = '{$row1['numOrdem']}'";
                             $dados3 = mysqli_query($mysqli,$sql3);
                             while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
                             <label for="nomeUnHosp">Local de Trabalho</label>
-                            <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nomeUnHosp']; ?>" disabled>
+                            <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nome']; ?>" disabled>
                           <?php }}}?>
                           <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
                           $dados4 = mysqli_query($mysqli,$sql4);
@@ -84,229 +84,229 @@
                             <h4 class="centro">Horário de Atendimento</h4>
                             <hr>
                             <div class="dias">
-                                <table>
-                                    <tr>
-                                        <th></th>
-                                        <th>Dias da Semana</th>
-                                        <th>Inico</th>
-                                        <th>Fim</th>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>2ª Feira</td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>3ª Feira</td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>4ª Feira</td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>5ª Feira</td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>6ª Feira</td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>Sábado</td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                                <option value="08:00">14:00</option>
-                                                <option value="08:00">15:00</option>
-                                                <option value="08:00">16:00</option>
-                                                <option value="08:00">17:00</option>
-                                                <option value="08:00">18:00</option>
-                                                <option value="08:00">19:00</option>
-                                                <option value="08:00">20:00</option>
-                                            </select>
-                                        </td>
-                                        <td><select style="width: auto;">
-                                                <option value=""></option>
-                                                <option value="08:00">09:00</option>
-                                                <option value="08:00">10:00</option>
-                                                <option value="08:00">11:00</option>
-                                                <option value="08:00">12:00</option>
-                                                <option value="08:00">13:00</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
+                              <table>
+                                  <tr>
+                                      <th></th>
+                                      <th>Dias da Semana</th>
+                                      <th>Inico</th>
+                                      <th>Fim</th>
+                                  </tr>
+                                  <tr>
+                                      <td><input type="checkbox"></td>
+                                      <td>2ª Feira</td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="08:00">08:00</option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><input type="checkbox"></td>
+                                      <td>3ª Feira</td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="08:00">08:00</option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><input type="checkbox"></td>
+                                      <td>4ª Feira</td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="08:00">08:00</option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><input type="checkbox"></td>
+                                      <td>5ª Feira</td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="08:00">08:00</option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><input type="checkbox"></td>
+                                      <td>6ª Feira</td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="08:00">08:00</option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td><input type="checkbox"></td>
+                                      <td>Sábado</td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="08:00">08:00</option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                              <option value="14:00">14:00</option>
+                                              <option value="15:00">15:00</option>
+                                              <option value="16:00">16:00</option>
+                                              <option value="17:00">17:00</option>
+                                              <option value="18:00">18:00</option>
+                                              <option value="19:00">19:00</option>
+                                              <option value="20:00">20:00</option>
+                                          </select>
+                                      </td>
+                                      <td><select style="width: auto;">
+                                              <option value=""></option>
+                                              <option value="09:00">09:00</option>
+                                              <option value="10:00">10:00</option>
+                                              <option value="11:00">11:00</option>
+                                              <option value="12:00">12:00</option>
+                                              <option value="13:00">13:00</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                              </table>
                             </div>
                             <hr>
                             <div class="centro">

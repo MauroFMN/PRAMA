@@ -1,3 +1,4 @@
+<?php $foto = $nome = $peso = $tiposangue = $idade = $id = "";  ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
     <head>
@@ -9,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/paciente.css">
         <link rel="stylesheet" type="text/css" href="../../css/foto.css">
+        <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -35,18 +37,25 @@
                                     $foto = $dadosusuario['foto'];
                                   } else {
                                     $foto = 'camera-solid.svg';
-                                  }?>
+                                  };
+                                  $nome = $row2['nome'];
+                                  $peso = $row2['peso'];
+                                  $tiposangue = $row2['tipoSang'];
+                                  $id = $row2['idPessoa'];
+                                  $sql3 = "SELECT timestampdiff(year, dataNasc, now()) from pessoa WHERE idPessoa = {$row2['idPessoa']}";
+                                  $dados3 = mysqli_query($mysqli,$sql3);
+                                  while ($row3 = mysqli_fetch_assoc($dados3)) {
+                                    $idade = $row3;
+                                  }
+                                   ?>
                                   <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">
-                                <h1><?php echo $row2['nome']; ?></h1>
-                                <p class="title"><?php echo $row2['dataNasc']; //fazer o cálculo da idade ?></p>
-                                <p></p>
+                                <h1><?php echo $nome; ?></h1>
+                                <p class="title"><?php echo $idade." anos de idade."; ?></p>
                                 <div style="margin: 24px 0;">
-                                  Peso:
-                                  Tipo Sanguíneo:
-                                  <?php //colocar informações como: peso, tipo sanguíneo ?>
-
+                                  <span>Peso:<?php echo $peso." kg."; ?></span>
+                                  <span>Tipo Sanguíneo:<?php echo $tiposangue; ?></span>
                                 </div>
-                                <p><button onclick="document.getElementById('infoPaciente').style.display='block';">Ver Informações</button></p>
+                                <p><button onclick="document.getElementById('infoPaciente').style.display='block';">Ver Perfil</button></p>
                               </div>
                             <?php  }
                             }
@@ -60,15 +69,43 @@
             <div id="infoPaciente" class="paciente contentor">
               <span class="fechar" onClick="this.parentElement.style.display = 'none'; location = '?p='">&times;</span><br>
               <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
-                foto; nome; idade; tipo Sanguíneo; peso; antecedentes patológicos familiares; antecedentes patológicos pessoais;
                 <div class="espacoImagem">
                   <div class="conteudoImagem">
-                    <?php if (!empty($dadosusuario['foto'])) {
-                      $foto = $dadosusuario['foto'];
-                    } else {
-                      $foto = 'camera-solid.svg';
-                    }?>
                     <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
+                  </div>
+                  <div class="dias">
+                    <?php
+                    $sql4 = "SELECT * FROM consulta WHERE idPessoa = {$id}";
+                    $dados4 = mysqli_query($mysqli,$sql4);
+                    if (mysqli_num_rows($dados4) != 0) {
+                      while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
+                    <table>
+                      <tr>
+                        <td>Nome:</td>
+                        <td><?php echo $nome; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Idade:</td>
+                        <td><?php echo $idade; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Tipo Sanguíneo:</td>
+                        <td><?php echo $tiposangue; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Peso:</td>
+                        <td><?php echo $peso." kg."; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Antecedentes Patológicos Familiares:</td>
+                        <td><?php echo $row4['antPatFamiliares']; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Antecedentes Patológios Pessoais:</td>
+                        <td><?php echo $row4['antPatPessoais']; ?></td>
+                      </tr>
+                    </table>
+                    <?php  }}  ?>
                   </div>
                 </div>
               </form>

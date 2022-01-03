@@ -111,7 +111,7 @@
                             <?php }
                           }
                         } else {
-                          echo "Não existem médicos inscritos no(a) ".$_SESSION["nomeUnHosp"].".";
+                          echo "Não existem médicos inscritos";
                         }
                         ?>
                     </div>

@@ -1,24 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 29-Dez-2021 às 17:03
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.0.13
+-- Host: localhost:8889
+-- Tempo de geração: 03-Jan-2022 às 02:37
+-- Versão do servidor: 5.7.32
+-- versão do PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Banco de dados: `praman`
+-- Banco de dados: `pramaN`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +45,7 @@ CREATE TABLE `consulta` (
   `codEspecialidade` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
   `dataConsulta` datetime DEFAULT NULL,
-  `preço` float DEFAULT NULL,
+  `preco` float DEFAULT NULL,
   `diagnosticoProvavel` varchar(255) DEFAULT NULL,
   `motivoConsulta` varchar(255) DEFAULT NULL,
   `resumoSindromico` varchar(255) DEFAULT NULL,
@@ -71,7 +64,6 @@ CREATE TABLE `consulta` (
 CREATE TABLE `email` (
   `codEmail` int(11) NOT NULL,
   `idPessoa` int(11) DEFAULT NULL,
-  `codHospital` int(11) DEFAULT NULL,
   `endereco` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -79,24 +71,24 @@ CREATE TABLE `email` (
 -- Extraindo dados da tabela `email`
 --
 
-INSERT INTO `email` (`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES
-(1, 1, NULL, 'exemplo1@exemplo.com'),
-(2, 2, NULL, 'exemplo2@exemplo.com'),
-(3, 3, NULL, 'exemplo3@exemplo.com'),
-(4, 4, NULL, 'exemplo4@exemplo.com'),
-(5, NULL, 1, 'clinicaexemplo1@exemplo.com'),
-(7, 8, NULL, 'google@gmail.com'),
-(8, 9, NULL, 'franciscokinaile@gmail.com'),
-(9, 10, NULL, 'franciscopedro@gmail.com'),
-(10, 11, NULL, 'fernandoassis@gmail.com'),
-(11, 12, NULL, 'fernandoassis@gmail.com'),
-(12, 13, NULL, 'fernandaassis@gmail.com'),
-(13, 14, NULL, 'fernandaassis@gmail.com'),
-(14, 15, NULL, 'erigui@gmail.com'),
-(15, 16, NULL, 'armando@gmail.com'),
-(16, 17, NULL, 'nuduma@gmail.com'),
-(17, 18, NULL, 'domingasM@email.co.ao'),
-(18, 19, NULL, 'belashospitalpark@gmail.com');
+INSERT INTO `email` (`codEmail`, `idPessoa`, `endereco`) VALUES
+(1, 1, 'exemplo1@exemplo.com'),
+(2, 2, 'exemplo2@exemplo.com'),
+(3, 3, 'exemplo3@exemplo.com'),
+(4, 4, 'exemplo4@exemplo.com'),
+(5, 5, 'clinicaexemplo1@exemplo.com'),
+(7, 8, 'google@gmail.com'),
+(8, 9, 'franciscokinaile@gmail.com'),
+(9, 10, 'franciscopedro@gmail.com'),
+(10, 11, 'fernandoassis@gmail.com'),
+(11, 12, 'fernandoassis@gmail.com'),
+(12, 13, 'fernandaassis@gmail.com'),
+(13, 14, 'fernandaassis@gmail.com'),
+(14, 15, 'erigui@gmail.com'),
+(15, 16, 'armando@gmail.com'),
+(16, 17, 'nuduma@gmail.com'),
+(17, 18, 'domingasM@email.co.ao'),
+(18, 19, 'belashospitalpark@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -630,7 +622,6 @@ INSERT INTO `rua` (`codRua`, `nomeRua`, `numeroRua`, `codBairro`) VALUES
 
 CREATE TABLE `telefone` (
   `coTelefone` int(11) NOT NULL,
-  `codHospital` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
   `numero` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -639,24 +630,24 @@ CREATE TABLE `telefone` (
 -- Extraindo dados da tabela `telefone`
 --
 
-INSERT INTO `telefone` (`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUES
-(1, NULL, 1, 911111111),
-(2, NULL, 2, 911111112),
-(3, NULL, 3, 911111113),
-(4, NULL, 4, 911111114),
-(5, 1, NULL, 222222221),
-(7, NULL, 8, 912334555),
-(8, NULL, 9, 987778999),
-(9, NULL, 10, 988990234),
-(10, NULL, 11, 98889099),
-(11, NULL, 12, 98889099),
-(12, NULL, 13, 988899899),
-(13, NULL, 14, 988899899),
-(14, NULL, 15, 988898),
-(15, NULL, 16, 98878987),
-(16, NULL, 17, 8789),
-(17, NULL, 18, 912345678),
-(18, NULL, 19, 987778999);
+INSERT INTO `telefone` (`coTelefone`, `idPessoa`, `numero`) VALUES
+(1, 1, 911111111),
+(2, 2, 911111112),
+(3, 3, 911111113),
+(4, 4, 911111114),
+(5, 5, 222222221),
+(7, 8, 912334555),
+(8, 9, 987778999),
+(9, 10, 988990234),
+(10, 11, 98889099),
+(11, 12, 98889099),
+(12, 13, 988899899),
+(13, 14, 988899899),
+(14, 15, 988898),
+(15, 16, 98878987),
+(16, 17, 8789),
+(17, 18, 912345678),
+(18, 19, 987778999);
 
 -- --------------------------------------------------------
 
@@ -723,8 +714,7 @@ ALTER TABLE `consulta`
 --
 ALTER TABLE `email`
   ADD PRIMARY KEY (`codEmail`),
-  ADD KEY `idPessoa` (`idPessoa`),
-  ADD KEY `codHospital` (`codHospital`);
+  ADD KEY `idPessoa` (`idPessoa`);
 
 --
 -- Índices para tabela `especialidade`
@@ -809,7 +799,6 @@ ALTER TABLE `rua`
 --
 ALTER TABLE `telefone`
   ADD PRIMARY KEY (`coTelefone`),
-  ADD KEY `codHospital` (`codHospital`),
   ADD KEY `idPessoa` (`idPessoa`);
 
 --
@@ -924,8 +913,7 @@ ALTER TABLE `consulta`
 -- Limitadores para a tabela `email`
 --
 ALTER TABLE `email`
-  ADD CONSTRAINT `email_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
-  ADD CONSTRAINT `email_ibfk_2` FOREIGN KEY (`codHospital`) REFERENCES `unhospitalar` (`codHospital`);
+  ADD CONSTRAINT `email_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
 
 --
 -- Limitadores para a tabela `especialidademedico`
@@ -989,8 +977,7 @@ ALTER TABLE `rua`
 -- Limitadores para a tabela `telefone`
 --
 ALTER TABLE `telefone`
-  ADD CONSTRAINT `telefone_ibfk_1` FOREIGN KEY (`codHospital`) REFERENCES `unhospitalar` (`codHospital`),
-  ADD CONSTRAINT `telefone_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
+  ADD CONSTRAINT `telefone_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
 
 --
 -- Limitadores para a tabela `trabalhar`
@@ -1004,8 +991,3 @@ ALTER TABLE `trabalhar`
 --
 ALTER TABLE `unhospitalar`
   ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

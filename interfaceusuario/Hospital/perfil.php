@@ -44,8 +44,8 @@
                             <label for="numeroDocumento">Número de Indetificação Fiscal:</label>
                             <input type="text" name="numeroDocumento" id="numeroDocumento" value="<?php echo $row['numeroDocumento']; ?>" disabled>
                             <?php
-                             $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$row['codMunicipio']}";
-                             $dadosProv = mysqli_query($mysqli,$sql);
+                             $sql1 = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$row['codMunicipio']}";
+                             $dadosProv = mysqli_query($mysqli,$sql1);
                              while ($provincia = mysqli_fetch_assoc($dadosProv)) {?>
                             <label>Província:</label>
                             <select disabled>
@@ -54,24 +54,27 @@
                             <?php } ?>
                             <label>Município:</label>
                             <?php
-                             $sql = "SELECT * from municipio WHERE codMunicipio = {$row['codMunicipio']}";
-                             $dadosMuni = mysqli_query($mysqli,$sql);
+                             $sql2 = "SELECT * from municipio WHERE codMunicipio = {$row['codMunicipio']}";
+                             $dadosMuni = mysqli_query($mysqli,$sql2);
                              while ($municipio = mysqli_fetch_assoc($dadosMuni)) {?>
                             <select disabled>
                                 <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
                             </select>
-                            <?php } ?>
-
-                              <label for="nomeBairro">Bairro:</label>
-                              <input type="text" name="nomeBairro" id="nomeBairro" value="<?php  ?>" disabled>
-                              <label for="nomeRua">Nome da Rua:</label>
-                              <input type="text" name="nomeRua" id="nomeRua" value="<?php ?>" disabled>
-                              <label for="numeroRua">Número da Rua</label>
-                              <input type="text" name="numeroRua" id="numeroRua" value="<?php  ?>" disabled>
+                          <?php } ?>
+                              <label for="nomeBairro">Endereço:</label>
+                              <input type="text" name="endereco" id="endereco" value="<?php echo $row['endereco']; ?>" disabled>
 
                               <?php
-                              $sql = "SELECT endereco FROM email WHERE idPessoa = {$_SESSION["idPessoa"]}";
-                              $email = mysqli_query($mysqli,$sql);
+                              $sql3 = "SELECT numero FROM `telefone` WHERE idPessoa={$_SESSION["idPessoa"]}";
+                              $dados3 = mysqli_query($mysqli,$sql3);
+                              while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
+                                <label for="numero">Telefone:</label>
+                                <input type="number" name="numero" id="numero"value="<?php echo $row3['numero']; ?>">
+                              <?php } ?>
+
+                              <?php
+                              $sql4 = "SELECT endereco FROM email WHERE idPessoa = {$_SESSION["idPessoa"]}";
+                              $email = mysqli_query($mysqli,$sql4);
                               while ($endereco = mysqli_fetch_assoc($email)) {?>
                               <label for="email">Email:</label>
                               <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled>

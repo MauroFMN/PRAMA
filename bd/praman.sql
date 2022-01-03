@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Dez-2021 às 17:40
+-- Tempo de geração: 29-Dez-2021 às 17:03
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -264,12 +264,12 @@ CREATE TABLE `horariomedico` (
 --
 
 INSERT INTO `horariomedico` (`codHorarioMedico`, `diaSemana`, `horarioAtendimento`, `numOrdem`) VALUES
-(1, 'Segunda', '00:00, 01:00, 02:00, 03:00, ', 'PraJa'),
-(2, 'Terça', '00:00, 01:00, 02:00, 03:00, 04:00, 05:00, 06:00, 07:00, 08:00, 09:00, 10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 17:00, 18:00, 19:00, 20:00, 21:00, 22:00, 23:00, ', 'PraJa'),
-(3, 'Quarta', '00:00, 01:00, 02:00, 03:00, 04:00, 05:00, 06:00, 07:00, 08:00, 09:00, 10:00, 11:00, 12:00, 13:00, ', 'PraJa'),
-(4, 'Quinta', '00:00, 01:00, 02:00, 03:00, ', 'PraJa'),
-(5, 'Sexta', '10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 17:00, 18:00, 19:00, 20:00, 21:00, 22:00, ', 'PraJa'),
-(6, 'Sabado', '00:00, 01:00, 02:00, ', 'PraJa'),
+(1, 'Segunda', '00:00, 03:00, ', 'PraJa'),
+(2, 'Terça', '00:00, 23:00, ', 'PraJa'),
+(3, 'Quarta', '00:00, 13:00, ', 'PraJa'),
+(4, 'Quinta', '00:00, 03:00, ', 'PraJa'),
+(5, 'Sexta', '10:00, 22:00, ', 'PraJa'),
+(6, 'Sabado', '00:00, 02:00, ', 'PraJa'),
 (7, 'Domingo', '', 'PraJa');
 
 -- --------------------------------------------------------
@@ -540,7 +540,7 @@ INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, 
 (2, 'ErmelindaVD', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Ermelinda Van~Dunem', 80, '1987-03-31', 'Femenino', NULL, NULL, 'Paciente', '', 92, '', '', ''),
 (3, 'RosalinaM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Rosalina Congo', 60, '1995-04-01', 'Femenino', 'Solteira', NULL, 'Paciente', '', 92, '', '', ''),
 (4, 'EvaldoM', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Evaldo Miranda', 60, '1995-05-26', 'Masculino', 'Solteiro', NULL, 'Medico', '', 92, '', '', ''),
-(5, 'AntonioN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Antonio Neto', 60, '1987-02-21', 'Masculino', 'Solteiro', NULL, 'Director', '', 92, '', '', ''),
+(5, 'MuralhaN', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Clínica Muralha da China', NULL, NULL, NULL, NULL, NULL, 'UHospitalar', 'Prenda', 92, 'NIF', '1005044598LA051', ''),
 (8, 'google', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Google Com', 15, '2021-04-08', 'Masculino', 'Solteiro', 'B+', 'Paciente', 'Viana de Luanda de Luanda', 97, '', '', ''),
 (9, 'pacientedecostume', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Francisco Kinaile Magalhães', 78, '1994-03-11', 'Masculino', 'Casado', 'A-', 'Paciente', 'Benfica do Cazenga', 96, 'Bilhete de Identidade', '009808007LA045', ''),
 (10, 'franciscopedro', 'f0ba5b711ee0c226c7df8805a7cfeef3', 'Francisco Salomão Pedro', 67, '1996-06-05', 'Masculino', 'Solteiro', 'A+', 'Medico', 'Bairro Luanda', 92, 'Passaporte', '009889LA03904', ''),

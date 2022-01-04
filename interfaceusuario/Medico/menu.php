@@ -34,13 +34,13 @@ session_start();
             </a>
             <span class="tooltip">Consulta</span>
         </li>
-        <li>
+        <!--li>
             <a href="#chat" onclick="">
                 <i class="fab fa-whatsapp"></i>
                 <span class="links_name">Chat</span>
             </a>
             <span class="tooltip">Chat</span>
-        </li>
+        </li-->
         <li>
             <a href="perfil.php">
                 <i class="far fa-user"></i>

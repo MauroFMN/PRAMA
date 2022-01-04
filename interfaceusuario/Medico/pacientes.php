@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/paciente.css">
         <link rel="stylesheet" type="text/css" href="../../css/foto.css">
         <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
+        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -65,50 +66,52 @@
                         } ?>
                     </div>
                 </div>
-            </div>
-            <div id="infoPaciente" class="paciente contentor">
-              <span class="fechar" onClick="this.parentElement.style.display = 'none'; location = '?p='">&times;</span><br>
-              <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
-                <div class="espacoImagem">
-                  <div class="conteudoImagem">
-                    <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
-                  </div>
-                  <div class="dias">
-                    <?php
-                    $sql4 = "SELECT * FROM consulta WHERE idPessoa = {$id}";
-                    $dados4 = mysqli_query($mysqli,$sql4);
-                    if (mysqli_num_rows($dados4) != 0) {
-                      while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
-                    <table>
-                      <tr>
-                        <td>Nome:</td>
-                        <td><?php echo $nome; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Idade:</td>
-                        <td><?php echo $idade; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Tipo Sanguíneo:</td>
-                        <td><?php echo $tiposangue; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Peso:</td>
-                        <td><?php echo $peso." kg."; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Antecedentes Patológicos Familiares:</td>
-                        <td><?php echo $row4['antPatFamiliares']; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Antecedentes Patológios Pessoais:</td>
-                        <td><?php echo $row4['antPatPessoais']; ?></td>
-                      </tr>
-                    </table>
-                    <?php  }}  ?>
-                  </div>
+                <?php include_once "../chat.php" ?>
+                <div id="infoPaciente" class="paciente contentor">
+                  <span class="fechar" onClick="this.parentElement.style.display = 'none'; location = '?p='">&times;</span><br>
+                  <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
+                    <div class="espacoImagem">
+                      <div class="conteudoImagem">
+                        <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
+                      </div>
+                      <div class="dias">
+                        <?php
+                        $sql4 = "SELECT * FROM consulta WHERE idPessoa = {$id}";
+                        $dados4 = mysqli_query($mysqli,$sql4);
+                        if (mysqli_num_rows($dados4) != 0) {
+                          while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
+                        <table>
+                          <tr>
+                            <td>Nome:</td>
+                            <td><?php echo $nome; ?></td>
+                          </tr>
+                          <tr>
+                            <td>Idade:</td>
+                            <td><?php echo $idade; ?></td>
+                          </tr>
+                          <tr>
+                            <td>Tipo Sanguíneo:</td>
+                            <td><?php echo $tiposangue; ?></td>
+                          </tr>
+                          <tr>
+                            <td>Peso:</td>
+                            <td><?php echo $peso." kg."; ?></td>
+                          </tr>
+                          <tr>
+                            <td>Antecedentes Patológicos Familiares:</td>
+                            <td><?php echo $row4['antPatFamiliares']; ?></td>
+                          </tr>
+                          <tr>
+                            <td>Antecedentes Patológios Pessoais:</td>
+                            <td><?php echo $row4['antPatPessoais']; ?></td>
+                          </tr>
+                        </table>
+                        <?php  }}  ?>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </form>
+
             </div>
         </section>
         <script src="../../js/script.js"></script>

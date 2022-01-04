@@ -1,26 +1,40 @@
-#chat{
+.open-button {
+  background: #0072b5;
+  color: white;
+  padding: 2px 15px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  font-size: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%
+}
+
+.form-popup {
   display: none;
   position: fixed;
-  padding: 20px 0 30px 0;
   bottom: 0;
   right: 15px;
   border: 3px solid #f1f1f1;
-  z-index: 10;
-  border-radius: 7px;
-  background: #f7f7f7;
+  z-index: 9;
 }
+
 .wrapper{
   background: #fff;
-  max-width: 350px;
+  max-width: 400px;
   width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
-              0 32px 64px -48px rgba(0,0,0,0.5);
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),0 32px 64px -48px rgba(0,0,0,0.5);
+  bottom: 0;
+  right: 15px;
 }
+
 .chat-area header{
   display: flex;
   align-items: center;
-  padding: 14px 30px;
+  padding: 18px 30px;
 }
 .chat-area header .back-icon{
   color: black;
@@ -109,6 +123,7 @@
 .typing-area button{
   color: #fff;
   width: 55px;
+  height: 45px;
   border: none;
   outline: none;
   background: #0072B5;

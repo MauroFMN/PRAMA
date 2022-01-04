@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../../css/all.css">
   <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
+  <link rel="stylesheet" type="text/css" href="../../css/chat.css">
 </head>
 
 <body>
@@ -210,12 +211,9 @@
             </div>
           <?php } ?>
         </div>
-
       </div>
-      <div class="row mt-5">
-        <div>
-        </div>
-
+      <?php include_once "../chat.php" ?>
+    </div>
   </section>
 
 

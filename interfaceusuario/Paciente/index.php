@@ -11,6 +11,7 @@ $pre = $req = "-"; ?>
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
+        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
         <script src="../../js/jquery-3.6.0.min.js"></script>
     </head>
     <body>
@@ -183,6 +184,7 @@ $pre = $req = "-"; ?>
                         </div>
                     </div>
                 </div>
+                <?php include_once "../chat.php" ?>
             </div>
         </section>
         <script src="../../js/script.js"></script>

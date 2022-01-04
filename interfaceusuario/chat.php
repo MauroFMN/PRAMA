@@ -1,16 +1,19 @@
+<button class="open-button" onclick="openForm()">
+  <i class="fab fa-whatsapp"></i>
+</button>
 
-<div id="chat">
+<div class="form-popup" id="myForm">
   <div class="wrapper">
     <section class="chat-area">
       <header>
         <?php
 
         ?>
-        <a href="" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <img src="php/images/<?php ?>" alt="">
+        <a href="" class="back-icon"><i class="fas fa-times"></i></a>
+        <img src="php/images/<?php //imagem?>" alt="">
         <div class="details">
-          <span><?php  ?></span>
-          <p><?php  ?></p>
+          <span><?php //nome ?></span>
+          <p><?php //estado ou profissão ?></p>
         </div>
       </header>
       <div class="chat-box">
@@ -25,5 +28,13 @@
   </div>
 
   <script src="../../js/chat.js"></script>
+  <script>
+    function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    }
 
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }
+  </script>
 </div>

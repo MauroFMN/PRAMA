@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
+        <link rel="stylesheet" type="text/css" href="../../css/chat.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -109,6 +110,7 @@
                    ?>
                   </div>
               </div>
+              <?php include_once "../chat.php" ?>
             </div>
         </section>
         <script src="../../js/script.js"></script>

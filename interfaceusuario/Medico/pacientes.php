@@ -56,7 +56,7 @@
                                   <span>Peso:<?php echo $peso." kg."; ?></span>
                                   <span>Tipo Sanguíneo:<?php echo $tiposangue; ?></span>
                                 </div>
-                                <p><button onclick="document.getElementById('infoPaciente').style.display='block';">Ver Perfil</button></p>
+                                <p><button class="verPerfil" onclick="document.getElementById('infoPaciente').style.display='block';">Ver Perfil</button></p>
                               </div>
                             <?php  }
                             }
@@ -66,7 +66,6 @@
                         } ?>
                     </div>
                 </div>
-                <?php include_once "../chat.php" ?>
                 <div id="infoPaciente" class="paciente contentor">
                   <span class="fechar" onClick="this.parentElement.style.display = 'none'; location = '?p='">&times;</span><br>
                   <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
@@ -111,7 +110,7 @@
                     </div>
                   </form>
                 </div>
-
+                <?php include_once "../chat.php" ?>
             </div>
         </section>
         <script src="../../js/script.js"></script>

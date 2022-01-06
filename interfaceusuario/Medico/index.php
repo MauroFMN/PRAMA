@@ -151,5 +151,6 @@
                 element.classList = element.classList + " show active"
             })
         </script>
+        <script src="../js/chat.js"></script>
     </body>
 </html>

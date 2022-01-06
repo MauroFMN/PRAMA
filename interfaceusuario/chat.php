@@ -1,4 +1,4 @@
-<button class="open-button" onclick="openForm()">
+<button class="open-button abrirChat" onclick="openForm()">
   <i class="fab fa-whatsapp"></i>
 </button>
 
@@ -10,7 +10,7 @@
 
         ?>
         <a href="" class="back-icon"><i class="fas fa-times"></i></a>
-        <img src="php/images/<?php //imagem?>" alt="">
+        <img src="../../imagens/<?php echo $foto; ?>" alt="">
         <div class="details">
           <span><?php //nome ?></span>
           <p><?php //estado ou profissão ?></p>
@@ -22,19 +22,12 @@
       <form action="#" class="typing-area">
         <input type="text" class="incoming_id" name="incoming_id" value="<?php  ?>" hidden>
         <input type="text" name="message" class="input-field" placeholder="Escreve a mensagem aqui..." autocomplete="off">
-        <button><i class="fab fa-telegram-plane"></i></button>
+        <button class="abrirChat"><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>
-  </div>
-
-  <script src="../../js/chat.js"></script>
-  <script>
+  </div>  <script>
     function openForm() {
     document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-    document.getElementById("myForm").style.display = "none";
     }
   </script>
 </div>

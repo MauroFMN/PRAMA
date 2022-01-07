@@ -1,4 +1,4 @@
-.open-.abrirChat {
+.open-button {
   background: #0072b5;
   color: white;
   padding: 2px 15px;
@@ -10,7 +10,7 @@
   right: 28px;
   font-size: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .form-popup {
@@ -120,7 +120,7 @@
   outline: none;
   border-radius: 5px 0 0 5px;
 }
-.typing-area .abrirChat{
+.typing-area button{
   color: #fff;
   width: 55px;
   height: 45px;
@@ -134,7 +134,7 @@
   border-radius: 0 5px 5px 0;
   transition: all 0.3s ease;
 }
-.typing-area .abrirChat.active{
+.typing-area button.active{
   opacity: 1;
   pointer-events: auto;
 }
@@ -167,7 +167,7 @@
     height: 40px;
     width: calc(100% - 48px);
   }
-  .chat-area form .abrirChat{
+  .chat-area form button{
     width: 45px;
   }
 }

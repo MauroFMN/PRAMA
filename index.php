@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
 
             $sql = "";
 
-            $horarioSegunda = "";
+            /*$horarioSegunda = "";
             foreach ($_POST['segundaF'] as $segundaF) {
               $horarioSegunda .= "" . $segundaF . ", ";
             }
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               $horarioSabado .= "" . $sabado . ", ";
             }
 
-            $sql = "INSERT INTO `horariomedico`(`codHorarioMedico`, `diaSemana`, `horarioAtendimento`, `numOrdem`) values (null, 'Segunda', '" . $horarioSegunda . "', '" . $id . "'), (null, 'Terça', '" . $horarioTerca . "', '" . $id . "'), (null, 'Quarta', '" . $horarioQuarta . "', '" . $id . "'),(null, 'Quinta', '" . $horarioQuinta . "', '" . $id . "'), (null, 'Sexta', '" . $horarioSexta . "', '" . $id . "'), (null, 'Sabado', '" . $horarioSabado . "', '" . $id . "'), (null, 'Domingo', '" . $horarioDomingo . "', '" . $id . "')";
+            $sql = "INSERT INTO `horariomedico`(`codHorarioMedico`, `diaSemana`, `horarioAtendimento`, `numOrdem`) values (null, 'Segunda', '" . $horarioSegunda . "', '" . $id . "'), (null, 'Terça', '" . $horarioTerca . "', '" . $id . "'), (null, 'Quarta', '" . $horarioQuarta . "', '" . $id . "'),(null, 'Quinta', '" . $horarioQuinta . "', '" . $id . "'), (null, 'Sexta', '" . $horarioSexta . "', '" . $id . "'), (null, 'Sabado', '" . $horarioSabado . "', '" . $id . "'), (null, 'Domingo', '" . $horarioDomingo . "', '" . $id . "')";*/
 
 
             if (mysqli_query($mysqli, $sql)) {
@@ -524,7 +524,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
 
               echo '</select>';
 
-              echo '<br>';
+              /*echo '<br>';
               echo '<label for="segundaF"><strong>Horário de Atendimento às Segundas</strong></label>';
               echo '<br>';
               echo '<select id="segundaF" name="segundaF[]" class="form-select" multiple aria-label="multiple select example">';
@@ -733,7 +733,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               echo '<option value="21:00"> 21:00 </option>';
               echo '<option value="22:00"> 22:00 </option>';
               echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
+              echo '</select>';*/
 
 
               echo '<br>';

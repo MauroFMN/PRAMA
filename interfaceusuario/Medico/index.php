@@ -67,6 +67,7 @@
                                                   <td><?php echo $row['dataConsulta']; ?></td>
                                                   <td><button type="button" class="btn btn-primary w-100">Histórico</button></td>
                                                   <td><button type="button" class="btn btn-primary btn-success w-100">Atender</button</td>
+                                                    <!-- Por o estado (online ou offline)-->
                                                 </tr>
                                               <?php }
                                             } ?>

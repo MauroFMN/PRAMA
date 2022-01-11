@@ -37,19 +37,20 @@
                               }?>
                               <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                             </div>
-                            <input type="file" name="foto" id="foto" accept="image/*">
+                            <input type="file" name="foto" id="foto" accept="image/*" disabled>
                           </div>
                             <label for="nome">Nome:</label>
                             <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" disabled>
                             <label for="dataNasc">Data de Nascimento:</label>
-                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" disabled>
+                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" disabled style="width: 15%">
                             <label>Género:</label>
-                            <select disabled>
+                            <select disabled style="width: 25%; height: 50px;">
                                 <option value="<?php echo $row['genero']; ?>"><?php echo $row['genero']; ?></option>
                             </select>
                             <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
                             $dados1 = mysqli_query($mysqli, $sql1);
                             while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
+                              <br>
                             <label for="numOrdem">Númeno da Ordem:</label>
                             <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
                           <?php
@@ -68,14 +69,15 @@
                           $dados4 = mysqli_query($mysqli,$sql4);
                           while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
                             <label for="endereco">Email:</label>
-                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled>
+                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled style="width: 50%;height: 50px;">
                           <?php };
                           $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
                           $dados5 = mysqli_query($mysqli,$sql5);
                           while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
                             <label for="numero">Telefone:</label>
-                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled>
+                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled style="width: 20%">
                           <?php } ?>
+                          <br>
                             <label for="nomeUtilizador">Nome de Utilizador:</label>
                             <input type="text" name="nomeUtilizador" id="nomeUtilizador" value="<?php echo $row['nomeUtilizador']; ?>" disabled>
                             <label for="password">Password:</label>

@@ -61,21 +61,21 @@
                                 <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
                             </select>
                           <?php } ?>
-                              <label for="nomeBairro">Endereço:</label>
+                              <label for="nomeBairro">Bairro:</label>
                               <input type="text" name="endereco" id="endereco" value="<?php echo $row['endereco']; ?>" disabled>
                               <?php
                               $sql4 = "SELECT endereco FROM email WHERE idPessoa = {$_SESSION["idPessoa"]}";
                               $email = mysqli_query($mysqli,$sql4);
                               while ($endereco = mysqli_fetch_assoc($email)) {?>
                               <label for="email">Email:</label>
-                              <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled style="width: 50%;height: 50px;">
+                              <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled style="width: auto;height: 50px;"><br>
                             <?php } ?>
                             <?php
                             $sql3 = "SELECT numero FROM `telefone` WHERE idPessoa={$_SESSION["idPessoa"]}";
                             $dados3 = mysqli_query($mysqli,$sql3);
                             while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
                               <label for="numero">Telefone:</label>
-                              <input type="tel" name="numero" id="numero"value="<?php echo $row3['numero']; ?>" disabled style="width: 20%">
+                              <input type="tel" name="numero" id="numero"value="<?php echo $row3['numero']; ?>" disabled style="width: auto">
                             <?php } ?>
                           <hr>
                           <label for="">Dados de Gestão da Clínica</label>

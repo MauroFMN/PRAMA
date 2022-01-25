@@ -42,7 +42,7 @@
                                           $dados0 = mysqli_query($mysqli,$sql0);
                                           while ($row0 = mysqli_fetch_assoc($dados0)) {
                                             $nOrdem = $row0['numOrdem'];
-                                            $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Ativo'";
+                                            $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Activo'";
                                             $dados = mysqli_query($mysqli,$sql);
                                             if (!empty(mysqli_num_rows($dados))) { ?>
                                               <table>
@@ -67,7 +67,8 @@
                                                   <td><?php echo $row['dataConsulta']; ?></td>
                                                   <td><button type="button" class="btn btn-primary w-100">Histórico</button></td>
                                                   <td><button type="button" class="btn btn-primary btn-success w-100">Atender</button</td>
-                                                    <!-- Por o estado (online ou offline)-->
+                                                    <!-- Por o estado (online ou offline) ou ativar o botão de atendimento quando
+                                                  paciente estiver online e desabilitar quando estive offline -->
                                                 </tr>
                                               <?php }
                                             } ?>

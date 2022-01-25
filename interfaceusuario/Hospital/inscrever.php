@@ -36,9 +36,9 @@
                           <label for="nome">Nome Completo:</label>
                           <input type="text" name="nome" id="nome" placeholder="Escreva o Nome Completo">
                           <label>Data Nascimento:</label>
-                          <input type="date" name="">
+                          <input type="date" name="" style="width: auto;">
                           <label>Género:</label>
-                          <select>
+                          <select style="width: auto;">
                               <option value="">Prefiro não informar</option>
                               <option value="Femenino">Femenino</option>
                               <option value="Masculino">Masculino</option>
@@ -52,9 +52,9 @@
                           <!--label for="">Local de Trabalho:</label>
                           <input type="text" name="" value="" --><br>
                           <label for="email">Email:</label>
-                          <input type="email" name="email" id="email" placeholder="exemplo@exemplo.com">
+                          <input type="email" name="email" id="email" placeholder="exemplo@exemplo.com" style="width: auto; height: 50%"><br>
                           <label>Telefone:</label>
-                          <input type="tel" name="" placeholder="9xxxxxxxx"><br>
+                          <input type="tel" name="" placeholder="9xxxxxxxx" style="width: auto;"><br>
                           <label>Nome de Utilizador:</label>
                           <input type="text" name="" placeholder="Nome do utilizador">
                           <label>Password:</label>

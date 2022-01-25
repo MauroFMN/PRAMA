@@ -40,13 +40,13 @@
                           <label for="nome">Nome:</label>
                           <input type="text" name="nome" id="nome" value="<?php echo $dadosusuario['nome']; ?>" disabled style="width: 94.42%">
                           <label for="dataNasc">Data de Nascimento:</label>
-                          <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $dadosusuario['dataNasc']; ?>" disabled style="width: 15%">
+                          <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $dadosusuario['dataNasc']; ?>" disabled style="width: auto">
                           <label for="genero">Género:</label>
-                          <select disabled style="width: 25%; height: 50px;">
+                          <select disabled style="width: auto; height: 50px;">
                               <option value="<?php echo $dadosusuario['genero']; ?>"><?php echo $dadosusuario['genero']; ?></option>
                           </select>
                           <label for>Estado Civil:</label>
-                          <select disabled style="width: 25%; height: 50px;">
+                          <select disabled style="width: auto; height: 50px;">
                               <option value="<?php echo $dadosusuario['estCivil']; ?>"><?php echo $dadosusuario['estCivil']; ?></option>
                           </select>
                           <?php
@@ -65,6 +65,7 @@
                                 } else {
                                   $nomeMae = $infoParente['nome'];
                                 }}}} ?>
+                                <br>
                           <label>Nome Pai:</label>
                           <input type="text" name="" value="<?php echo $nomePai; ?>" disabled>
                           <label>Nome Mãe:</label>
@@ -121,14 +122,15 @@
                             while ($endereco = mysqli_fetch_assoc($email)) {?>
                               <br>
                             <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled style="width: 50%;height: 50px;">
+                            <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled style="width: auto;height: 50px;">
                           <?php } ?>
                             <?php
                             $sql = "SELECT numero FROM telefone WHERE idPessoa = {$_SESSION["idPessoa"]}";
                             $telefone = mysqli_query($mysqli,$sql);
                             while ($numero = mysqli_fetch_assoc($telefone)) {?>
+                              <br>
                             <label>Telefone:</label>
-                            <input type="tel" name="" value=" <?php echo $numero['numero']; ?>" disabled style="width: 20%">
+                            <input type="tel" name="" value=" <?php echo $numero['numero']; ?>" disabled style="width: auto">
                           <?php } ?>
                           <br>
                             <label for="nomeUtilizador">Nome de Utilizador:</label>

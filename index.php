@@ -448,23 +448,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               echo '<br>';
               echo '<label for="dataNasc"><strong>Data de Nascimento</strong></label>';
               echo '<br>';
-              echo '<input type="date" placeholder="Insira a sua data de Nascimento" name="dataNasc" id="dataNasc">';
+              echo '<input type="date" placeholder="Insira a data de Nascimento" name="dataNasc" id="dataNasc">';
               echo '<br>';
               echo '<label for="docId"><strong>Documento de Identificação</strong></label>';
               echo '<br>';
               echo '<select id="docId" name="docId">';
-              echo '<option>Selecionar...</option>';
+              echo '<option>Seleccione o tipo de documento de identificação</option>';
               echo '<option value="Bilhete de Identidade">Bilhete de Identidade</option>';
               echo '<option value="Passaporte">Passaporte</option>';
               echo '</select>';
               echo '<br>';
-              echo '<label for="numeroDoc"><strong>Numero do Documento</strong></label>';
-              echo '<input type="text" placeholder="Insira o nome de utilizador" name="numeroDoc" id="numeroDoc">';
+              echo '<label for="numeroDoc"><strong>Número do Documento</strong></label>';
+              echo '<input type="text" placeholder="Insira o número do documento de identificação" name="numeroDoc" id="numeroDoc">';
               echo '<br>';
               echo '<label for="genero"><strong>Genero</strong></label>';
               echo '<br>';
               echo '<select id="genero" name="genero">';
-              echo '<option>Selecionar...</option>';
+              echo '<option>Prefiro não informar</option>';
               echo '<option value="Masculino">Masculino</option>';
               echo '<option value="Femenino">Femenino</option>';
               echo '</select>';
@@ -472,18 +472,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               echo '<label for="estadoCivil"><strong>Estado Civil</strong></label>';
               echo '<br>';
               echo '<select id="estadoCivil" name="estadoCivil">';
-              echo '<option>Selecionar...</option>';
-              echo '<option value="Casado">Casado</option>';
-              echo '<option value="Solteiro">Solteiro</option>';
-              echo '<option value="Viuvo">Viuvo</option>';
-              echo '<option value="Divorciado">Divorciado</option>';
+              echo '<option>Prefiro não informar</option>';
+              echo '<option value="Casado">Casado(a)</option>';
+              echo '<option value="Solteiro">Solteiro(a)</option>';
+              echo '<option value="Viuvo">Viuvo(a)</option>';
+              echo '<option value="Divorciado">Divorciado(a)</option>';
               echo '</select>';
 
               echo '<br>';
               echo '<label for="tipoSang"><strong>Tipo Sanguíneo</strong></label>';
               echo '<br>';
               echo '<select id="tipoSang" name="tipoSang">';
-              echo '<option>Selecionar...</option>';
+              echo '<option>Seleccione o tipo sanguíneo</option>';
               echo '<option value="A+">A+</option>';
               echo '<option value="A-">A-</option>';
               echo '<option value="B+">B+</option>';
@@ -499,12 +499,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               <label><strong>Dados da Unidade Hospitalar</strong></label>
               <hr>
               <label for="nomeUH"><strong>Nome da Unidade Hospitalar</strong></label>
-              <input type="text" placeholder="Escreva o Nome da Unidade Hospitalar" name="nomeUH" id="nomeUH">
+              <input type="text" placeholder="Insira o Nome da Unidade Hospitalar" name="nomeUH" id="nomeUH">
               <label for="nIdFiscal"><strong>Número de Identificação Fiscal</strong></label>
-              <input type="number" placeholder="Informe o número de Identificação Fiscal" name="nIdFiscal" id="nIdFiscal">
+              <input type="number" placeholder="Insira o número de Identificação Fiscal" name="nIdFiscal" id="nIdFiscal">
             <?php } ?>
             <label for="tlf"><strong>Telefone</strong></label>
-            <input type="tel" placeholder="Nº de Telefone" name="tlf" id="tlf" required>
+            <input type="tel" placeholder="Insira o nº de Telefone" name="tlf" id="tlf" required>
             <?php if ($_GET["p"] == "2") {
               echo '<br>';
               echo '<label for="nOrdem"><strong>Nº da Ordem dos Médicos</strong></label>';
@@ -749,7 +749,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               <br>
               <label for="sector"><strong>Sector no SNS</strong></label>
               <select id="sector" name="sector" onchange="alterarSubsector(this.value)">
-                <option>Selecionar...</option>
+                <option>Seleccione o sector a que a u. hospitalar pertence</option>
                 <option value="publico">Sector Público</option>
                 <option value="privado">Sector Privado</option>
                 <option value="tradicional">Sector de Medicina Tradicional</option>
@@ -763,8 +763,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
                 <!-- Sector Privado -->
               </select>
               <br>
-              <label for="npac"><strong>Nº de Pacientes atendidos Diáriamente</strong></label>
-              <input type="number" placeholder="Insira o nº" name="npac" id="npac">
+              <label for="npac"><strong>Nº de Pacientes</strong></label>
+              <input type="number" placeholder="Insira o nº de pacientes atendidos diáriamente" name="npac" id="npac">
 
 
 
@@ -773,7 +773,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
             <label for="provincia"><strong>Provincia</strong></label>
             <br />
             <select id="provincia" name="provincia" onchange="carregarMunicipios(this.value)">
-              <option>Selecionar...</option>
+              <option>Seleccione a província</option>
               <?php
               // reabrirConexao();
               $provinciaSql = "SELECT codProvincia, nome FROM provincia";
@@ -788,10 +788,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               ?>
             </select>
             <br>
-            <label for="municipio"><strong>Municipio</strong></label>
+            <label for="municipio"><strong>Município</strong></label>
             <br />
             <select id="municipio" name="municipio" onchange="" disabled>
-              <option>Selecionar...</option>
+              <option>Seleccione o município</option>
               <?php
 
               // reabrirConexao();
@@ -808,7 +808,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
             </select>
             <br>
             <label for="endereco"><strong>Endereco</strong></label>
-            <input type="text" placeholder="Escreva o seu endereco" name="endereco" id="endereco">
+            <input type="text" placeholder="Insira o endereco" name="endereco" id="endereco">
             <br />
 
             <label for="email"><strong>Email</strong></label>

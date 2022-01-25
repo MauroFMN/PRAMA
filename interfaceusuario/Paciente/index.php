@@ -51,11 +51,11 @@ $pre = $req = "-"; ?>
                     } else {
                       $ativo = 0;
                       while ($row = mysqli_fetch_assoc($numConsultas)) {
-                        if ($row['estadoConsulta'] == 'Marcado') {
+                        if ($row['estadoConsulta'] == 'Activo') {
                           $ativo++;
                         }
                       }
-                      echo "Tem " . $ativo . " consultas marcadas";
+                      echo "Tem " . $ativo . " consulta(s) marcadas";
                     }
                     ?>
                   </div>
@@ -69,11 +69,11 @@ $pre = $req = "-"; ?>
                   <div><?php echo "Tenha acesso aos seus agendamentos e não perca uma consulta."; ?></div>
                 </div>
                 <div class="row mt-3">
-                  <button type="button" class="btn btn-primary w-50" onclick="agendamento()">Ver Agendamentos</button>
+                  <button type="button" class="btn btn-primary w-50" onclick="agendamento()">Ver Marcação(ões)</button>
                 </div>
               </div>
               <div class="hide" id="agendamento">
-                <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Ativo'";
+                <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Activo'";
                 $dados1 = mysqli_query($mysqli, $sql1);
                 if (!empty(mysqli_num_rows($dados1))) { ?>
                   <table>
@@ -187,9 +187,6 @@ $pre = $req = "-"; ?>
           </div>
         </div>
       </div>
-      <?php
-      // include_once "../chat.php"
-      ?>
     </div>
   </section>
   <script src="../../js/script.js"></script>

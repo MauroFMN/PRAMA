@@ -8,7 +8,7 @@ if (isset($_GET["horaConsulta"])) {
 
   $dataConsulta =  "" . (string)explode(".", $_GET["dataConsulta"])[1] . "-" . (string)explode(".", $_GET["dataConsulta"])[2] . "-" . (string)explode(".", $_GET["dataConsulta"])[3] . " " . $_GET["horaConsulta"];
 
-  $sql = "INSERT INTO `consulta`(`codConsulta`, `idPessoa`, `numOrdem`, `codEspecialidade`, `dataConsulta`,`estadoConsulta`,`motivoConsulta`) VALUES (null,'" . $_SESSION["idPessoa"] . "','" . $_GET["marcacaoConsulta"] . "','" . $_GET["especialidade"] . "','" . $dataConsulta . "', 'Marcado', '" . $_GET["motivoConsulta"] . "')";
+  $sql = "INSERT INTO `consulta`(`codConsulta`, `idPessoa`, `numOrdem`, `codEspecialidade`, `dataConsulta`,`estadoConsulta`,`motivoConsulta`) VALUES (null,'" . $_SESSION["idPessoa"] . "','" . $_GET["marcacaoConsulta"] . "','" . $_GET["especialidade"] . "','" . $dataConsulta . "', 'Activo', '" . $_GET["motivoConsulta"] . "')";
   echo $sql;
   if (mysqli_query($mysqli, $sql)) {
     header("location: consulta.php");
@@ -90,9 +90,9 @@ if (isset($_GET["horaConsulta"])) {
               case "Sat":
                 $dia = "Sabado";
                 break;
-              case "Sun":
-                $dia = "Domingo";
-                break;
+              //case "Sun":
+                //$dia = "Domingo";
+                //break;
             }
             $horarioMedico = "";
             $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE med.numOrdem = '{$_GET["marcacaoConsulta"]}' and horariomedico.diaSemana = '{$dia}'";
@@ -199,9 +199,9 @@ if (isset($_GET["horaConsulta"])) {
                   case "Sabado":
                     array_push($diasDaSemana, "Sat");
                     break;
-                  case "Domingo":
-                    array_push($diasDaSemana, "Sun");
-                    break;
+                  //case "Domingo":
+                    //array_push($diasDaSemana, "Sun");
+                    //break;
                 }
               }
             }
@@ -263,7 +263,7 @@ if (isset($_GET["horaConsulta"])) {
                     <th>Qui</th>
                     <th>Sex</th>
                     <th>Sab</th>
-                    <th>Dom</th>
+                    <!--th>Dom</th-->
                   </tr>
                   <?php foreach ($weeks as $week => $days) { ?>
                     <tr>

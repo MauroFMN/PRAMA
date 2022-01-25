@@ -1,3 +1,4 @@
+<?php $foto = $idade = ""; ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
     <head>
@@ -9,60 +10,73 @@
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/consulta.css">
         <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+        <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
         <section class="home-section" id="consulta">
             <div class="text">
-                <div class="header">
-                    <div class="col-lg-12">
-                        <h1>Ver forma de usar o perfil do paciente para as consultas, e editar a partir de lá</h1>
-                    </div>
+              <div class="row userNameTitle">
+                <div class="col-lg-12">
+                  <h1>Consulta</h1>
                 </div>
+                <div class="col-lg-12">
+                  <?php // pegar o id do paciente a ser atendido para carregar os dados
+                  $sql = "SELECT * FROM pessoa";
+                  $dados = mysqli_query($mysqli, $sql);
+                  while ($row = mysqli_fetch_assoc($dados)) { ?>
+                    <div class="row mt-5">
+                      <div class="row cartao-medico pb-4 pt-4">
+                        <div class="col-lg-2" style="margin: 0 auto;">
+                          <?php
+                          if (!empty($row['foto'])) {
+                            $foto = $row['foto'];
+                          } else {
+                            $foto = "camera-solid.svg";
+                          } ?>
+                            <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                          <div class="divBotaoMarcacaoConsulta">
+                            <a class="" href="" >Terminar Consulta</a>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <h4 class="mb-3"><?php echo $row['nome']; ?></h4>
 
-                <div class="topnav">
-                    <div class="elm">
-                        <span>Mauro Neto</span>
+                          <div class="grupo-especialidades">
+                            <?php if (!empty($row['dataNasc'])) {
+                              $idade = $row['dataNasc']; //calcular a idade ?>
+                            <p class="especialidades-medico"><?php echo $idade; ?></p>
+                          <?php } if (!empty($row['peso'])) { ?>
+                            <p class="especialidades-medico"><?php echo $row['peso']; ?>kg</p>
+                          <?php } if (!empty($row['genero'])) { ?>
+                            <p class="especialidades-medico"><?php echo $row['genero']; ?></p>
+                          <?php } if (!empty($row['estCivil'])) { ?>
+                            <p class="especialidades-medico"><?php echo $row['estCivil']; ?></p>
+                          <?php } if (!empty($row['tipoSang'])) { ?>
+                              <p class="especialidades-medico"><?php echo $row['tipoSang']; ?></p>
+                            <?php } ?>
+                          </div>
+                          <div class="detalhes-medico">
+                            <p><?php // Pegar os dados do paciente relativos a consulta ?></p>
+                          </div>
+                          <!-- span class="info"><?php //echo $lunh['nome']; ?></span -->
+                        </div>
+                        <div class="col-lg-3">
+                          <!-- div class="centro">
+                            <h5 class="mb-3">Horário de Atendimento</h5>
+                          </div -->
+                          <div class="containerHorario">
+                            <?php ?>
+                              <div class="col-lg-12">
+                                <p style="text-align: center">Ver como tratar das prescrições e das recomendações</p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="elm">
-                        <span>Masculino</span>
-                    </div>
-                    <div class="elm">
-                        <span>35 anos</span>
-                    </div>
-                    <div class="elm">
-                        <span>kg</span>
-                    </div>
-                    <div class="elm">
-                        <span>AB+</span>
-                    </div>
-                    <button type="button" name="button" class="verde direita elm">Terminar</button>
+                  <?php } ?>
                 </div>
-
-                <div class="row">
-                    <div class="column">
-                        <form class="">
-                            <label for="">Exame Físico</label>
-                            <textarea name="name" rows="4" cols="30"></textarea>
-                            <label for="">Motivo da Consulta</label>
-                            <textarea name="name" rows="4" cols="30"></textarea>
-                            <label for="">Diagnóstico Provável</label>
-                            <textarea name="name" rows="4" cols="30"></textarea>
-                        </form>
-                    </div>
-
-                    <div class="column">
-                        <form>
-                            <label for="">Histórico da Doença Atual</label>
-                            <textarea name="name" rows="4" cols="30"></textarea>
-                            <label for="">Prescrição Médica</label>
-                            <input type="radio" checked="checked" name="">
-                            <label for="">Requisição Médica</label>
-                            <input type="radio" name="">
-                            <textarea name="name" rows="5" cols="30"></textarea
-                        </form>
-                    </div>
-                </div>
+              </div>
                 <?php include_once "../chat.php" ?>
             </div>
         </section>

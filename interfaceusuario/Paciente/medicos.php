@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/all.css">
         <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+        <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
     </head>
     <body>
         <?php include_once "menu.php"; ?>
@@ -25,7 +26,7 @@
                       echo "Marque uma consulta para o médico constar na sua lista.";
                     } else {
                       while ($row = mysqli_fetch_assoc($numConsultas)) {
-                        $sql1 = "SELECT * FROM pessoa JOIN medico ON(pessoa.idPessoa = medico.idPessoa) WHERE numOrdem = '{$numConsultas['numOrdem']}'";//O valor é uma String
+                        $sql1 = "SELECT * FROM pessoa JOIN medico ON(pessoa.idPessoa = medico.idPessoa) WHERE numOrdem = '{$row['numOrdem']}'";//O valor é uma String
                         $infoMedico = mysqli_query($mysqli,$sql1);
                         while ($rows = mysqli_fetch_assoc($infoMedico)) {?>
                           <div class="row mt-5">

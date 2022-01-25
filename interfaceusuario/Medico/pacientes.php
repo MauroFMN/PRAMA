@@ -46,7 +46,7 @@
                                   $sql3 = "SELECT timestampdiff(year, dataNasc, now()) from pessoa WHERE idPessoa = {$row2['idPessoa']}";
                                   $dados3 = mysqli_query($mysqli,$sql3);
                                   while ($row3 = mysqli_fetch_assoc($dados3)) {
-                                    $idade = $row3;
+                                    $idade = $row2['dataNasc'];
                                   }
                                    ?>
                                   <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">

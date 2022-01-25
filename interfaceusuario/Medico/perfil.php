@@ -42,9 +42,9 @@
                             <label for="nome">Nome:</label>
                             <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" disabled>
                             <label for="dataNasc">Data de Nascimento:</label>
-                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" disabled style="width: 15%">
+                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" disabled style="width: auto">
                             <label>Género:</label>
-                            <select disabled style="width: 25%; height: 50px;">
+                            <select disabled style="width: auto; height: 50px;">
                                 <option value="<?php echo $row['genero']; ?>"><?php echo $row['genero']; ?></option>
                             </select>
                             <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
@@ -69,13 +69,13 @@
                           $dados4 = mysqli_query($mysqli,$sql4);
                           while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
                             <label for="endereco">Email:</label>
-                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled style="width: 50%;height: 50px;">
+                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled style="width: auto;height: 50px;"><br>
                           <?php };
                           $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
                           $dados5 = mysqli_query($mysqli,$sql5);
                           while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
                             <label for="numero">Telefone:</label>
-                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled style="width: 20%">
+                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled style="width: auto">
                           <?php } ?>
                           <br>
                             <label for="nomeUtilizador">Nome de Utilizador:</label>
@@ -127,6 +127,7 @@
                                               <option value="18:00">18:00</option>
                                               <option value="19:00">19:00</option>
                                               <option value="20:00">20:00</option>
+                                              <option value="20:00">21:00</option>
                                           </select>
                                       </td>
                                   </tr>
@@ -164,6 +165,7 @@
                                               <option value="18:00">18:00</option>
                                               <option value="19:00">19:00</option>
                                               <option value="20:00">20:00</option>
+                                              <option value="20:00">21:00</option>
                                           </select>
                                       </td>
                                   </tr>
@@ -201,6 +203,7 @@
                                               <option value="18:00">18:00</option>
                                               <option value="19:00">19:00</option>
                                               <option value="20:00">20:00</option>
+                                              <option value="20:00">21:00</option>
                                           </select>
                                       </td>
                                   </tr>
@@ -238,6 +241,7 @@
                                               <option value="18:00">18:00</option>
                                               <option value="19:00">19:00</option>
                                               <option value="20:00">20:00</option>
+                                              <option value="20:00">21:00</option>
                                           </select>
                                       </td>
                                   </tr>
@@ -275,6 +279,7 @@
                                               <option value="18:00">18:00</option>
                                               <option value="19:00">19:00</option>
                                               <option value="20:00">20:00</option>
+                                              <option value="20:00">21:00</option>
                                           </select>
                                       </td>
                                   </tr>
@@ -289,13 +294,6 @@
                                               <option value="11:00">11:00</option>
                                               <option value="12:00">12:00</option>
                                               <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
                                           </select>
                                       </td>
                                       <td><select style="width: auto;">
@@ -305,6 +303,7 @@
                                               <option value="11:00">11:00</option>
                                               <option value="12:00">12:00</option>
                                               <option value="13:00">13:00</option>
+                                              <option value="20:00">14:00</option>
                                           </select>
                                       </td>
                                   </tr>

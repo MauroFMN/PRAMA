@@ -65,8 +65,7 @@
                                                   <td><?php echo $row2['nome']; ?></td>
                                                   <?php }  ?>
                                                   <td><?php echo $row['dataConsulta']; ?></td>
-                                                  <td><button type="button" class="btn btn-primary w-100">Histórico</button></td>
-                                                  <td><button type="button" class="btn btn-primary btn-success w-100">Atender</button</td>
+                                                  <td><button type="button" class="btn btn-primary w-100">Histórico</button><button type="button" class="btn btn-primary btn-success w-100">Atender</button></td>
                                                     <!-- Por o estado (online ou offline) ou ativar o botão de atendimento quando
                                                   paciente estiver online e desabilitar quando estive offline -->
                                                 </tr>

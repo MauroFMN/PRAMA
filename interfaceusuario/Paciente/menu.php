@@ -1,6 +1,8 @@
 <?php
 include '../../conexao.php';
-session_start();
+if (session_id() == '') {
+    session_start();
+}
 ?>
 <div class="sidebar french-blue">
     <div class="logo-details">

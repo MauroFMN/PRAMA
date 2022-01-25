@@ -143,8 +143,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
           if (session_status() === PHP_SESSION_NONE) {
             session_start();
           }
+
           $_SESSION["logado"] = true;
-          $_SESSION["id"] = $last_id;
+          $_SESSION["idPessoa"] = $last_id;
           $_SESSION["nomeusuario"] = trim($_POST["nameu"]);
           $_SESSION["tipoUser"] = 'UHospitalar';
           //

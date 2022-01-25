@@ -1,3 +1,23 @@
+<?php
+include '../../conexao.php';
+if (session_id() == '') {
+  session_start();
+}
+
+if (isset($_GET["horaConsulta"])) {
+
+  $dataConsulta =  "" . (string)explode(".", $_GET["dataConsulta"])[1] . "-" . (string)explode(".", $_GET["dataConsulta"])[2] . "-" . (string)explode(".", $_GET["dataConsulta"])[3] . " " . $_GET["horaConsulta"];
+
+  $sql = "INSERT INTO `consulta`(`codConsulta`, `idPessoa`, `numOrdem`, `codEspecialidade`, `dataConsulta`,`estadoConsulta`,`motivoConsulta`) VALUES (null,'" . $_SESSION["idPessoa"] . "','" . $_GET["marcacaoConsulta"] . "','" . $_GET["especialidade"] . "','" . $dataConsulta . "', 'Marcado', '" . $_GET["motivoConsulta"] . "')";
+  echo $sql;
+  if (mysqli_query($mysqli, $sql)) {
+    header("location: consulta.php");
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 
@@ -14,77 +34,312 @@
 
 <body>
 
-  <?php include_once "menu.php"; ?>
+  <?php include_once "menu.php";
+
+  function getDates($year)
+  {
+    $dates = array();
+
+    date("L", mktime(0, 0, 0, 7, 7, $year)) ? $days = 366 : $days = 365;
+    for ($i = 1; $i <= $days; $i++) {
+      $month = date('m', mktime(0, 0, 0, 1, $i, $year));
+      $wk = date('W', mktime(0, 0, 0, 1, $i, $year));
+      $wkDay = date('D', mktime(0, 0, 0, 1, $i, $year));
+      $day = date('d', mktime(0, 0, 0, 1, $i, $year));
+
+      $dates[$month][$wk][$wkDay] = $day;
+    }
+
+    return $dates;
+  }
+  ?>
 
 
-  <?php if (!empty($_GET["marcacaoConsulta"])) { ?>
+  <?php if (!empty($_GET["marcacaoConsulta"]) && empty($_GET["horaConsulta"])) { ?>
     <div class="formularioMarcacaoConsulta">
       <form id="form" class="formulario" style="display: block;" action="" method="post" target="_self" autocomplete="on">
 
+
         <div class="formRegElm">
           <h1>Marcação de Consulta</h1>
-          <label><strong>Especialidades</strong></label>
-          <br />
+
           <?php
-          $esp = "SELECT * FROM especialidade esp JOIN especialidademedico espm ON(esp.codEspecialidade = espm.codEspecialidade) JOIN medico med ON(espm.numOrdem = med.numOrdem) where med.numOrdem = '{$_GET["marcacaoConsulta"]}'";
-          $listaesp = mysqli_query($mysqli, $esp);
+          if (isset($_GET["passo"]) && $_GET["passo"] == 2) {
 
-          $rowsEsp = mysqli_num_rows($listaesp);
-          if ($rowsEsp > 0) {
-            while ($lesp = mysqli_fetch_assoc($listaesp)) { ?>
+          ?>
+            <label><strong>Horário da Consulta</strong></label>
+            <?php
+            $diaSemana = explode(".", $_GET["dataConsulta"]);
+            $dia = "";
+            switch ($diaSemana[0]) {
+              case "Mon":
+                $dia = "Segunda";
+                break;
+              case "Tue":
+                $dia = "Terça";
+                break;
+              case "Wed":
+                $dia = "Quarta";
+                break;
+              case "Thu":
+                $dia = "Quinta";
+                break;
+              case "Fri":
+                $dia = "Sexta";
+                break;
+              case "Sat":
+                $dia = "Sabado";
+                break;
+              case "Sun":
+                $dia = "Domingo";
+                break;
+            }
+            $horarioMedico = "";
+            $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE med.numOrdem = '{$_GET["marcacaoConsulta"]}' and horariomedico.diaSemana = '{$dia}'";
+            $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
+            while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) {
+              $horarioMedico = $listHorario['horarioAtendimento'];
+            }
+            $horarioDividido = explode(", ", $horarioMedico);
 
-              <input for="<?php echo $lesp['nome']; ?>" type="radio" name="especialidadeSelecionada" value="<?php echo $lesp['nome']; ?>" id="<?php echo $lesp['nome']; ?>" />
-              <label style="margin-left: 5px; margin-bottom: 5px" for=""><?php echo $lesp['nome']; ?></label>
+            $horaInicial = (int)explode(":", $horarioDividido[0])[0];
+            $horaFinal = (int)explode(":", $horarioDividido[1])[0];
 
 
-              <br />
-            <?php }
-          } else {
+            if ($horaInicial < $horaFinal) {
+              for ($i = $horaInicial; $i < $horaFinal; $i++) {
             ?>
-            <input type="checkbox" name="especialidadesSelecionadas[]" value="Clínico Geral" id="Clínico Geral" />;
-            <label for="Clínico Geral">Clínico Geral</label>
+                <br />
+                <input type="radio" name="horaConsulta" value=<?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?> id="horaConsulta" />
+                <label for="horaConsulta">
+                  <?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?>
+                </label>
+              <?php
+              }
+            } else {
+              $npassou24 = true;
+              for ($i = $horaInicial; $npassou24 || $i < $horaFinal; $i++) {
 
+              ?>
+                <br />
+                <input type="radio" name="horaConsulta" value=<?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?> id="horaConsulta" />
+                <label for="horaConsulta">
+                  <?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?>
+                </label>
+              <?php
+                if ($i == 24) {
+                  $npassou24 = false;
+                  $i = 0;
+                }
+              }
+              ?>
+
+            <?php
+
+            }
+
+            ?>
+            <br />
+            <label><strong>Motivo da Consulta</strong></label>
+            <textarea rows="4" cols="50" name="motivoConsulta" id="motivoConsulta"></textarea>
+            <div class="divBotaoMarcarConsulta">
+              <p class="">Marcar Consulta</p>
+            </div>
           <?php
-          }
-
-
-          $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE med.numOrdem = '{$_GET["marcacaoConsulta"]}'";
-          $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
-
+          } else {
           ?>
+            <label><strong>Especialidade da Consulta</strong></label>
+            <br />
+            <?php
+            $esp = "SELECT * FROM especialidade esp JOIN especialidademedico espm ON(esp.codEspecialidade = espm.codEspecialidade) JOIN medico med ON(espm.numOrdem = med.numOrdem) where med.numOrdem = '{$_GET["marcacaoConsulta"]}'";
+            $listaesp = mysqli_query($mysqli, $esp);
+
+            $rowsEsp = mysqli_num_rows($listaesp);
+            if ($rowsEsp > 0) {
+              while ($lesp = mysqli_fetch_assoc($listaesp)) { ?>
+                <!-- <div style="display: flex; flex-direction: row;"> -->
+                <input for="<?php echo $lesp['nome']; ?>" type="radio" name="especialidadeSelecionada" value="<?php echo $lesp['codEspecialidade']; ?>" id="<?php echo $lesp['nome']; ?>" />
+                <label style="margin-left: 5px; margin-bottom: 5px" for=""><?php echo $lesp['nome']; ?></label>
+                <!-- </div> -->
 
 
-          <?php
+                <br />
+              <?php }
+            } else {
+              ?>
+              <input type="radio" name="especialidadeSelecionada" value="Clínico Geral" id="Clínico Geral" />;
+              <label for="Clínico Geral">Clínico Geral</label>
 
-          while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) {
-            $horariosExp = explode(",", $listHorario["horarioAtendimento"]);
-            if (isset($horariosExp) && sizeof($horariosExp) > 1) {
-          ?>
+            <?php
+            }
 
-              <div class="row mt-3">
-                <div class="md-6 sm-12"><?php
-                                        echo '<input type="radio" id="' . $listHorario['diaSemana'] . '" name="diaSemana" value="' . $listHorario['diaSemana'] . '">';
-                                        echo '<label style="margin-left: 10px" for="' . $listHorario['diaSemana'] . '">' . $listHorario['diaSemana'] . '</label><br>';
-                                        ?></div>
-                <div class="md-6 sm-12">
+
+            $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE med.numOrdem = '{$_GET["marcacaoConsulta"]}'";
+            $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
+            $diasDaSemana = array();
+            while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) {
+              $horariosExp = explode(",", $listHorario["horarioAtendimento"]);
+              if (isset($horariosExp) && sizeof($horariosExp) > 1) {
+                switch ($listHorario['diaSemana']) {
+                  case "Segunda":
+                    array_push($diasDaSemana, "Mon");
+                    break;
+                  case "Terça":
+                    array_push($diasDaSemana, "Tue");
+                    break;
+                  case "Quarta":
+                    array_push($diasDaSemana, "Wed");
+                    break;
+                  case "Quinta":
+                    array_push($diasDaSemana, "Thu");
+                    break;
+                  case "Sexta":
+                    array_push($diasDaSemana, "Fri");
+                    break;
+                  case "Sabado":
+                    array_push($diasDaSemana, "Sat");
+                    break;
+                  case "Domingo":
+                    array_push($diasDaSemana, "Sun");
+                    break;
+                }
+              }
+            }
+            ?>
+            <label><strong>Data da Consulta</strong></label>
+            <?php $dates = getDates(date("y"));
+
+            $mes = 1;
+            foreach ($dates as $month => $weeks) {
+              if (date("m") == $mes || date("m") + 1 == $mes) { ?>
+                <p class="w-100 " style="text-align: center; font-weight: bold;">
                   <?php
 
-                  echo '<input type="time" id="appt" name="appt"
-         min="' . $horariosExp[0] . '" max="' . substr($horariosExp[1], 1) . '" required>';
-
+                  switch ($mes) {
+                    case 1:
+                      echo "Janeiro";
+                      break;
+                    case 2:
+                      echo "Fevereiro";
+                      break;
+                    case 3:
+                      echo "Março";
+                      break;
+                    case 4:
+                      echo "Abril";
+                      break;
+                    case 5:
+                      echo "Maio";
+                      break;
+                    case 6:
+                      echo "Junho";
+                      break;
+                    case 7:
+                      echo "Julho";
+                      break;
+                    case 8:
+                      echo "Agosto";
+                      break;
+                    case 9:
+                      echo "Setembro";
+                      break;
+                    case 10:
+                      echo "Outubro";
+                      break;
+                    case 11:
+                      echo "Novembro";
+                      break;
+                    case 12:
+                      echo "Dezembro";
+                      break;
+                  }
                   ?>
+                </p>
+                <table>
+                  <tr>
+                    <th>Seg</th>
+                    <th>Ter</th>
+                    <th>Qua</th>
+                    <th>Qui</th>
+                    <th>Sex</th>
+                    <th>Sab</th>
+                    <th>Dom</th>
+                  </tr>
+                  <?php foreach ($weeks as $week => $days) { ?>
+                    <tr>
+                      <?php foreach ($diasDaSemana as $day) { ?>
+                        <td>
 
+                          <?php
+                          if (date("m") == $mes) {
+                            if (isset($days[$day]) && $days[$day] > date("d")) {
+                          ?>
+                              <input type="radio" name="dataConsulta" value=<?php echo $day . '.' . $days[$day] . '.' . $mes . '.' . date("y") ?> id="Clínico Geral" />
+                            <?php
+                              echo $days[$day];
+                            } else {
+                              echo '-';
+                            }
+                          } else {
+                            if (isset($days[$day])) {
+                            ?>
+                              <input type="radio" name="dataConsulta" value=<?php echo $day . '.' . $days[$day] . '.' . $mes . '.' . date("y") ?> id="Clínico Geral" />
+                          <?php
+                              echo ($days[$day]);
+                            } else {
+                              echo '-';
+                            }
+                          }
+                          ?>
+                        </td>
+                      <?php } ?>
+                    </tr>
+                  <?php } ?>
+                </table>
+              <?php $mes = $mes + 1;
+              } ?>
+            <?php
+            }
+            ?>
+
+
+            <?php
+
+            while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) {
+              $horariosExp = explode(",", $listHorario["horarioAtendimento"]);
+              if (isset($horariosExp) && sizeof($horariosExp) > 1) {
+            ?>
+
+                <div class="row mt-3">
+
+
+                  <div class="md-6 sm-12">
+                    <?php
+                    echo '<input type="radio" id="' . $listHorario['diaSemana'] . '" name="diaSemana" value="' . $listHorario['diaSemana'] . '">';
+                    echo '<label style="margin-left: 10px" for="' . $listHorario['diaSemana'] . '">' . $listHorario['diaSemana'] . '</label><br>';
+                    ?>
+                  </div>
+                  <div class="md-6 sm-12">
+                    <?php
+
+                    echo '<input type="time" id="appt" name="appt" min="' . $horariosExp[0] . '" max="' . substr($horariosExp[1], 1) . '" required>';
+
+                    ?>
+
+                  </div>
                 </div>
-              </div>
-          <?php }
-          } ?>
+            <?php }
+            } ?>
+
+            <div class="divBotaoSeguinte">
+              <p class="">Seguinte</p>
+            </div>
+          <?php
+          }
+          ?>
 
 
-
-
-
-
-          <input type="submit" class="botao verde l" style="width: 100%;" value="Marcar Consulta" name="fpaciente">
+          <!-- <input type="submit" class="botao verde l" style="width: 100%;" value="Seguinte" name="fpaciente"> -->
         </div>
       </form>
     </div>
@@ -130,6 +385,7 @@
                   </div>
                 </div>
                 <div class="col-lg-7">
+
                   <h4 class="mb-3"><?php echo $rows['nome']; ?></h4>
                   <?php
                   $esp = "SELECT * FROM especialidade esp JOIN especialidademedico espm ON(esp.codEspecialidade = espm.codEspecialidade) JOIN medico med ON(espm.numOrdem = med.numOrdem) WHERE idPessoa = {$rows['idPessoa']}";
@@ -216,9 +472,30 @@
     </div>
   </section>
 
+  <script>
+    const botaoSeguinte = document.querySelector(".divBotaoSeguinte");
+    const botaoMarcarConsulta = document.querySelector(".divBotaoMarcarConsulta");
+    if (botaoSeguinte) {
+      botaoSeguinte.addEventListener("click", () => {
+        const especialidade = document.querySelector('input[name="especialidadeSelecionada"]:checked').value;
+        const dataConsulta = document.querySelector('input[name="dataConsulta"]:checked').value;
 
+        window.location.href += "&passo=2&especialidade=" + especialidade + "&dataConsulta=" + dataConsulta;
+
+      })
+    }
+    if (botaoMarcarConsulta) {
+
+      botaoMarcarConsulta.addEventListener("click", () => {
+        const horarioConsulta = document.querySelector('input[name="horaConsulta"]:checked').value;
+        const motivoConsulta = document.getElementById("motivoConsulta").value;
+        window.location.href += "&horaConsulta=" + horarioConsulta + "&motivoConsulta=" + motivoConsulta;
+      })
+    }
+  </script>
   <script src="../../js/script.js"></script>
-<script src="../js/chat.js"></script>
+  <script src="../../js/chat.js"></script>
+
 </body>
 
 </html>

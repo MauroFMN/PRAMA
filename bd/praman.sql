@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Tempo de geração: 03-Jan-2022 às 02:37
+-- Tempo de geração: 25-Jan-2022 às 15:43
 -- Versão do servidor: 5.7.32
 -- versão do PHP: 7.4.12
 
@@ -54,6 +54,13 @@ CREATE TABLE `consulta` (
   `historicoDoencaAtual` varchar(255) DEFAULT NULL,
   `estadoConsulta` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `consulta`
+--
+
+INSERT INTO `consulta` (`codConsulta`, `numOrdem`, `codEspecialidade`, `idPessoa`, `dataConsulta`, `preco`, `diagnosticoProvavel`, `motivoConsulta`, `resumoSindromico`, `antPatFamiliares`, `antPatPessoais`, `historicoDoencaAtual`, `estadoConsulta`) VALUES
+(2, 'PraJa', 17, 1, '2026-01-22 10:00:00', NULL, NULL, 'Apenas para testar a marcação das consultas.', NULL, NULL, NULL, NULL, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -256,13 +263,12 @@ CREATE TABLE `horariomedico` (
 --
 
 INSERT INTO `horariomedico` (`codHorarioMedico`, `diaSemana`, `horarioAtendimento`, `numOrdem`) VALUES
-(1, 'Segunda', '00:00, 03:00, ', 'PraJa'),
-(2, 'Terça', '00:00, 23:00, ', 'PraJa'),
-(3, 'Quarta', '00:00, 13:00, ', 'PraJa'),
-(4, 'Quinta', '00:00, 03:00, ', 'PraJa'),
-(5, 'Sexta', '10:00, 22:00, ', 'PraJa'),
-(6, 'Sabado', '00:00, 02:00, ', 'PraJa'),
-(7, 'Domingo', '', 'PraJa');
+(1, 'Segunda', '08:00, 11:00, ', 'PraJa'),
+(2, 'Terça', '08:00, 16:00, ', 'PraJa'),
+(3, 'Quarta', '08:00, 13:00, ', 'PraJa'),
+(4, 'Quinta', '08:00, 11:00, ', 'PraJa'),
+(5, 'Sexta', '10:00, 21:00, ', 'PraJa'),
+(6, 'Sabado', '08:00, 12:00, ', 'PraJa');
 
 -- --------------------------------------------------------
 
@@ -829,7 +835,7 @@ ALTER TABLE `bairro`
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `codConsulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `email`

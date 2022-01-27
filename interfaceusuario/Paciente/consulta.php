@@ -6,7 +6,7 @@ if (session_id() == '') {
 
 if (isset($_GET["horaConsulta"])) {
 
-  $dataConsulta =  "" . (string)explode(".", $_GET["dataConsulta"])[1] . "-" . (string)explode(".", $_GET["dataConsulta"])[2] . "-" . (string)explode(".", $_GET["dataConsulta"])[3] . " " . $_GET["horaConsulta"];
+  $dataConsulta =  "" . (string)explode(".", $_GET["dataConsulta"])[3] . "-" . (string)explode(".", $_GET["dataConsulta"])[2] . "-" . (string)explode(".", $_GET["dataConsulta"])[1] . " " . $_GET["horaConsulta"];
 
   $sql = "INSERT INTO `consulta`(`codConsulta`, `idPessoa`, `numOrdem`, `codEspecialidade`, `dataConsulta`,`estadoConsulta`,`motivoConsulta`) VALUES (null,'" . $_SESSION["idPessoa"] . "','" . $_GET["marcacaoConsulta"] . "','" . $_GET["especialidade"] . "','" . $dataConsulta . "', 'Activo', '" . $_GET["motivoConsulta"] . "')";
   echo $sql;
@@ -90,7 +90,7 @@ if (isset($_GET["horaConsulta"])) {
               case "Sat":
                 $dia = "Sabado";
                 break;
-              //case "Sun":
+                //case "Sun":
                 //$dia = "Domingo";
                 //break;
             }
@@ -199,7 +199,7 @@ if (isset($_GET["horaConsulta"])) {
                   case "Sabado":
                     array_push($diasDaSemana, "Sat");
                     break;
-                  //case "Domingo":
+                    //case "Domingo":
                     //array_push($diasDaSemana, "Sun");
                     //break;
                 }

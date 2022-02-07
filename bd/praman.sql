@@ -59,9 +59,6 @@ CREATE TABLE `consulta` (
 -- Extraindo dados da tabela `consulta`
 --
 
-INSERT INTO `consulta` (`codConsulta`, `numOrdem`, `codEspecialidade`, `idPessoa`, `dataConsulta`, `preco`, `diagnosticoProvavel`, `motivoConsulta`, `resumoSindromico`, `antPatFamiliares`, `antPatPessoais`, `historicoDoencaAtual`, `estadoConsulta`) VALUES
-(2, 'PraJa', 17, 1, '2026-01-22 10:00:00', NULL, NULL, 'Apenas para testar a marcação das consultas.', NULL, NULL, NULL, NULL, 'Activo');
-
 -- --------------------------------------------------------
 
 --

@@ -208,10 +208,10 @@ if (isset($_GET["horaConsulta"])) {
             ?>
             <label><strong>Data da Consulta</strong></label>
             <?php $dates = getDates(date("y"));
-
-            $mes = 1;
+            
+            $mes = date("m");
             foreach ($dates as $month => $weeks) {
-              if (date("m") == $mes || date("m") + 1 == $mes) { ?>
+              if ($month == $mes) { ?>
                 <p class="w-100 " style="text-align: center; font-weight: bold;">
                   <?php
 
@@ -297,6 +297,9 @@ if (isset($_GET["horaConsulta"])) {
                   <?php } ?>
                 </table>
               <?php $mes = $mes + 1;
+              if(date("m")+1<$mes){
+                break;
+              }
               } ?>
             <?php
             }
@@ -359,7 +362,7 @@ if (isset($_GET["horaConsulta"])) {
           while ($rows = mysqli_fetch_assoc($listamedicos)) { ?>
             <div class="row mt-5">
               <div class="row cartao-medico pb-4 pt-4">
-                <div class="col-lg-2" style="margin: 0 auto;">
+                <div class="col-lg-3" style="margin: 0 auto;">
                   <?php if (!empty($dadosusuario['foto'])) { ?>
                     <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
                   <?php } else { ?>
@@ -384,7 +387,7 @@ if (isset($_GET["horaConsulta"])) {
 
                   </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-6">
 
                   <h4 class="mb-3"><?php echo $rows['nome']; ?></h4>
                   <?php

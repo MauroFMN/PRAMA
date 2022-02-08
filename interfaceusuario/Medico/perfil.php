@@ -64,7 +64,7 @@
                             while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
                             <label for="nomeUnHosp">Local de Trabalho</label>
                             <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nome']; ?>" disabled>
-                          <?php }}}?>
+                          <?php }}?>
                           <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
                           $dados4 = mysqli_query($mysqli,$sql4);
                           while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
@@ -86,7 +86,31 @@
                             <h4 class="centro">Horário de Atendimento</h4>
                             <hr>
                             <div class="dias">
-                              <table>
+                              <?php
+                              $sql6 = "SELECT * from horariomedico WHERE numOrdem = '{$row1['numOrdem']}'";
+                              $dados6 = mysqli_query($mysqli,$sql6);
+                              if(!empty(mysqli_num_rows($dados6))){ ?>
+                                <table>
+                                    <tr>
+                                        <th>Dias da Semana</th>
+                                        <th>Inico</th>
+                                        <th>Fim</th>
+                                    </tr>
+                                <?php
+                                while ($row6 = mysqli_fetch_assoc($dados6)) {
+                                  $horarioMedico = $row6['horarioAtendimento'];
+                                  $horarioDividido = explode(", ", $horarioMedico); ?>
+                                      <tr>
+                                          <td><?php echo $row6['diaSemana']; ?></td>
+                                          <td><?php echo $horarioDividido[0]; ?></td>
+                                          <td><?php echo $horarioDividido[1]; ?></td>
+                                      </tr>
+                              <?php } ?>
+                              </table>
+                              <?php } else {
+                                echo "Sem horário disponível";
+                              } ?>
+                              <!--table>
                                   <tr>
                                       <th></th>
                                       <th>Dias da Semana</th>
@@ -307,14 +331,14 @@
                                           </select>
                                       </td>
                                   </tr>
-                              </table>
+                              </table -->
                             </div>
                             <hr>
                             <div class="centro">
                                 <input type="submit" class="botao verde" value="Editar">
                             </div>
                         </form>
-                    <?php } ?>
+                    <?php }} ?>
                 </div>
             </div>
         </div>

@@ -43,10 +43,15 @@
                                   $peso = $row2['peso'];
                                   $tiposangue = $row2['tipoSang'];
                                   $id = $row2['idPessoa'];
-                                  $sql3 = "SELECT timestampdiff(year, dataNasc, now()) from pessoa WHERE idPessoa = {$row2['idPessoa']}";
+                                  $sql3 = "SELECT * from pessoa WHERE idPessoa = {$row2['idPessoa']}";
                                   $dados3 = mysqli_query($mysqli,$sql3);
                                   while ($row3 = mysqli_fetch_assoc($dados3)) {
-                                    $idade = $row2['dataNasc'];
+                                    $ano = explode("-",$row2['dataNasc']);
+                                  }
+                                  if (date('m') != $ano[1] && date('d') != $ano[2]) {
+                                    $idade = date('Y') - $ano[0] - 1;
+                                  }else {
+                                    $idade = date('Y') - $ano[0];
                                   }
                                    ?>
                                   <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto;">

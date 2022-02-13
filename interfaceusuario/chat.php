@@ -10,9 +10,9 @@
 
         ?>
         <a href="" class="back-icon"><i class="fas fa-times"></i></a>
-        <img src="php/images/<?php //imagem?>" alt="">
+        <!--img src="php/images/<?php //imagem?>" alt=""-->
         <div class="details">
-          <span><?php //nome ?></span>
+          <span><?php echo $row['nome']; ?></span>
           <p><?php //estado ou profissão ?></p>
         </div>
       </header>
@@ -25,7 +25,8 @@
         <button><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>
-  </div>  <script>
+  </div>
+  <script>
     function openForm() {
     document.getElementById("myForm").style.display = "block";
     }

@@ -12,6 +12,7 @@ $pre = $req = "-"; ?>
   <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../../css/all.css">
   <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
+  <link rel="stylesheet" type="text/css" href="../../css/chat.css">
   <script src="../../js/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -72,8 +73,8 @@ $pre = $req = "-"; ?>
                   <button type="button" class="btn btn-primary w-50" onclick="agendamento()">Ver Marcação(ões)</button>
                 </div>
               </div>
-              <div class="hide" id="agendamento">
-                <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Activo'";
+              <div class="" id="agendamento">
+                <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Activo' order by dataConsulta";
                 $dados1 = mysqli_query($mysqli, $sql1);
                 if (!empty(mysqli_num_rows($dados1))) { ?>
                   <table>
@@ -84,23 +85,24 @@ $pre = $req = "-"; ?>
                       <th>Atendimento</th>
                     </tr>
                     <?php while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                      <tr>
-                        <td><?php echo $row1['dataConsulta']; ?></td>
-                        <?php $dados2 = mysqli_query($mysqli, "SELECT * from especialidade WHERE codEspecialidade = {$row1['codEspecialidade']}");
-                        while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                          <td><?php echo $row2['nome']; ?></td>
-                          <?php };
-                        $dados3 = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$row1['numOrdem']}'");
-                        while ($row3 = mysqli_fetch_assoc($dados3)) {
-                          $dados4 = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$row3['idPessoa']}");
-                          while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
-                            <td><?php echo $row4['nome']; ?></td>
-                        <?php }
-                        } ?>
-                        <td>Telemedicina</td>
-                      </tr>
+                    <tr>
+                      <td><?php echo $row1['dataConsulta']; ?></td>
+                      <?php $dados2 = mysqli_query($mysqli, "SELECT * from especialidade WHERE codEspecialidade = {$row1['codEspecialidade']}");
+                      while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                        <td><?php echo $row2['nome']; ?></td>
+                        <?php };
+                      $dados3 = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$row1['numOrdem']}'");
+                      while ($row3 = mysqli_fetch_assoc($dados3)) {
+                        $dados4 = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$row3['idPessoa']}");
+                        while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
+                          <td><?php echo $row4['nome']; ?></td>
+                      <?php }
+                      } ?>
+                      <td>Telemedicina</td>
+                    </tr>
+                  <?php } ?>
                   </table>
-              <?php }
+              <?php
                   } else {
                     echo "Não tem consulta(s) marcada(s). ";
                   } ?>
@@ -187,6 +189,7 @@ $pre = $req = "-"; ?>
           </div>
         </div>
       </div>
+      <?php include "../chat.php" ?>
     </div>
   </section>
   <script src="../../js/script.js"></script>

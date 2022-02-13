@@ -208,7 +208,7 @@ if (isset($_GET["horaConsulta"])) {
             ?>
             <label><strong>Data da Consulta</strong></label>
             <?php $dates = getDates(date("y"));
-            
+
             $mes = date("m");
             foreach ($dates as $month => $weeks) {
               if ($month == $mes) { ?>
@@ -377,11 +377,11 @@ if (isset($_GET["horaConsulta"])) {
 
                     $rowsHorario = mysqli_num_rows($listaHorarioAtendimento);
                     if ($rowsHorario > 0) {
-                      echo ' <a class="" href="?marcacaoConsulta=' . $rows["numOrdem"] . '" >Agendar Consulta</a>';
+                      echo ' <a class="" href="?marcacaoConsulta=' . $rows["numOrdem"] . '" >Marcar Consulta</a>';
                     } else {
-                      echo ' <a class="inativo">Agendar Consulta</a>';
+                      echo ' <a class="inativo">Marcar Consulta</a>';
                     }
-
+ 
 
                     ?>
 
@@ -471,7 +471,6 @@ if (isset($_GET["horaConsulta"])) {
           <?php } ?>
         </div>
       </div>
-      <?php include_once "../chat.php" ?>
     </div>
   </section>
 

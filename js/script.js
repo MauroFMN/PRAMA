@@ -19,7 +19,7 @@ window.onchange = function () {
 
 function agendamento() {
   var tabela = getElementById("agendamento");
-  if (tabela.className === "hide") {
+  if (tabela.className == "hide") {
     tabela.className = "mostrar";
   } else {
     tabela.className = "hide";

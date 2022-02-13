@@ -28,7 +28,7 @@
                             <a href="#primeiraTab" class="nav-link  active" role="tab" data-toggle="tab">Consultas</a>
                         </li>
                         <li class="nav-item userNavItem">
-                            <a href="#segundaTab" class="nav-link " role="tab" data-toggle="tab">Histórico</a>
+                            <a href="#segundaTab" class="nav-link " role="tab" data-toggle="tab">Histórico de consultas</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -42,7 +42,7 @@
                                           $dados0 = mysqli_query($mysqli,$sql0);
                                           while ($row0 = mysqli_fetch_assoc($dados0)) {
                                             $nOrdem = $row0['numOrdem'];
-                                            $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Activo'";
+                                            $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Activo' ORDER BY dataConsulta";
                                             $dados = mysqli_query($mysqli,$sql);
                                             if (!empty(mysqli_num_rows($dados))) { ?>
                                               <table>
@@ -65,7 +65,7 @@
                                                   <td><?php echo $row2['nome']; ?></td>
                                                   <?php }  ?>
                                                   <td><?php echo $row['dataConsulta']; ?></td>
-                                                  <td><button type="button" class="btn btn-primary w-100">Histórico</button><button type="button" class="btn btn-primary btn-success w-100">Atender</button></td>
+                                                  <td><a href="pacientes.php?paciente=<?php echo $row['idPessoa']?>" class="btn btn-primary w-100">Histórico</a><a href="consulta.php?id_usuario=<?php echo $row['idPessoa'] ?>" class="btn btn-primary btn-success w-100">Atender</a></td>
                                                     <!-- Por o estado (online ou offline) ou ativar o botão de atendimento quando
                                                   paciente estiver online e desabilitar quando estive offline -->
                                                 </tr>
@@ -113,7 +113,7 @@
                                             <?php } ?>
                                           </table>
                                         <?php }else {
-                                          echo "O histórico está vazio.";
+                                          echo "O histórico de consultas está vazio.";
                                         } ?>
                                         </div>
                                     </div>
@@ -122,7 +122,6 @@
                         </div>
                     </div>
                 </div>
-                <?php include_once "../chat.php" ?>
             </div>
         </section>
         <section class="home-section hide" id="pacientes">

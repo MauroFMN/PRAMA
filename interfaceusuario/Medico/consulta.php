@@ -15,16 +15,17 @@
     <body>
         <?php include_once "menu.php"; ?>
         <section class="home-section" id="consulta">
+          <?php
+          $id_usuario = mysqli_real_escape_string($mysqli, $_GET['id_usuario']);
+          $sql = "SELECT * FROM pessoa WHERE idPessoa = {$id_usuario}";
+          $dados = mysqli_query($mysqli, $sql);
+          while ($row = mysqli_fetch_assoc($dados)) { ?>
             <div class="text">
               <div class="row userNameTitle">
                 <div class="col-lg-12">
                   <h1>Consulta</h1>
                 </div>
                 <div class="col-lg-12">
-                  <?php // pegar o id do paciente a ser atendido para carregar os dados
-                  $sql = "SELECT * FROM pessoa";
-                  $dados = mysqli_query($mysqli, $sql);
-                  while ($row = mysqli_fetch_assoc($dados)) { ?>
                     <div class="row mt-5">
                       <div class="row cartao-medico pb-4 pt-4">
                         <div class="col-lg-2" style="margin: 0 auto;">
@@ -44,16 +45,21 @@
 
                           <div class="grupo-especialidades">
                             <?php if (!empty($row['dataNasc'])) {
-                              $idade = $row['dataNasc']; //calcular a idade ?>
-                            <p class="especialidades-medico"><?php echo $idade; ?></p>
+                              $ano = explode("-",$row['dataNasc']);
+                              if (date('m') != $ano[1] && date('d') != $ano[2]) {
+                                $idade = date('Y') - $ano[0] - 1;
+                              }else {
+                                $idade = date('Y') - $ano[0];
+                              } ?>
+                            <p class="especialidades-medico">Idade: <?php echo $idade; ?></p>
                           <?php } if (!empty($row['peso'])) { ?>
-                            <p class="especialidades-medico"><?php echo $row['peso']; ?>kg</p>
+                            <p class="especialidades-medico">Peso: <?php echo $row['peso']; ?>kg</p>
                           <?php } if (!empty($row['genero'])) { ?>
-                            <p class="especialidades-medico"><?php echo $row['genero']; ?></p>
+                            <p class="especialidades-medico">Genero: <?php echo $row['genero']; ?></p>
                           <?php } if (!empty($row['estCivil'])) { ?>
-                            <p class="especialidades-medico"><?php echo $row['estCivil']; ?></p>
+                            <p class="especialidades-medico">Est.Civil: <?php echo $row['estCivil']; ?></p>
                           <?php } if (!empty($row['tipoSang'])) { ?>
-                              <p class="especialidades-medico"><?php echo $row['tipoSang']; ?></p>
+                              <p class="especialidades-medico">Tipo Sanguíneo: <?php echo $row['tipoSang']; ?></p>
                             <?php } ?>
                           </div>
                           <div class="detalhes-medico">
@@ -74,11 +80,11 @@
                         </div>
                       </div>
                     </div>
-                  <?php } ?>
                 </div>
               </div>
                 <?php include_once "../chat.php" ?>
             </div>
+            <?php } ?>
         </section>
         <script src="../../js/script.js"></script>
         <script src="../js/chat.js"></script>

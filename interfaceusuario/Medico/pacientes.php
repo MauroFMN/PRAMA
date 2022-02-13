@@ -28,7 +28,7 @@
           $sql = "SELECT * FROM medico WHERE idPessoa = {$_SESSION["idPessoa"]}";
           $dados = mysqli_query($mysqli, $sql);
           while ($row = mysqli_fetch_assoc($dados)) {
-            $sql1 = "SELECT * FROM consulta WHERE numOrdem = '{$row['numOrdem']}'group by idPessoa";
+            $sql1 = "SELECT * FROM consulta WHERE numOrdem = '{$row['numOrdem']}' group by idPessoa";
             $dados1 = mysqli_query($mysqli, $sql1);
             if (mysqli_num_rows($dados1) != 0) {
               while ($row1 = mysqli_fetch_assoc($dados1)) {

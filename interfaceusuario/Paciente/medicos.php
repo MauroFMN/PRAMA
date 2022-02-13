@@ -53,7 +53,7 @@
                     } else {
                       echo ' <a class="inativo">Marcar Consulta</a>';
                     }
- 
+
 
                     ?>
 

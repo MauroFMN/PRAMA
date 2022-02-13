@@ -6,21 +6,18 @@
   <div class="wrapper">
     <section class="chat-area">
       <header>
-        <?php
-
-        ?>
         <a href="" class="back-icon"><i class="fas fa-times"></i></a>
         <!--img src="php/images/<?php //imagem?>" alt=""-->
         <div class="details">
           <span><?php echo $row['nome']; ?></span>
-          <p><?php //estado ou profissão ?></p>
+          <!--p><?php //estado ou profissão ?></p-->
         </div>
       </header>
       <div class="chat-box">
 
       </div>
       <form action="#" class="typing-area">
-        <input type="text" class="incoming_id" name="incoming_id" value="<?php  ?>" hidden>
+        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $id_usuario; ?>" hidden>
         <input type="text" name="message" class="input-field" placeholder="Escreve a mensagem aqui..." autocomplete="off">
         <button><i class="fab fa-telegram-plane"></i></button>
       </form>

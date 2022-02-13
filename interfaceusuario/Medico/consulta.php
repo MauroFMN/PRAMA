@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="row mt-5">
                       <div class="row cartao-medico pb-4 pt-4">
-                        <div class="col-lg-2" style="margin: 0 auto;">
+                        <div class="col-lg-3" style="margin: 0 auto;">
                           <?php
                           if (!empty($row['foto'])) {
                             $foto = $row['foto'];
@@ -37,10 +37,10 @@
                           } ?>
                             <img src="../../imagens/<?php echo $foto; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
                           <div class="divBotaoMarcacaoConsulta">
-                            <a class="" href="" >Terminar Consulta</a>
+                            <a class="" href="">Terminar Consulta</a>
                           </div>
                         </div>
-                        <div class="col-lg-7">
+                        <div class="col-lg-6">
                           <h4 class="mb-3"><?php echo $row['nome']; ?></h4>
 
                           <div class="grupo-especialidades">
@@ -68,9 +68,9 @@
                           <!-- span class="info"><?php //echo $lunh['nome']; ?></span -->
                         </div>
                         <div class="col-lg-3">
-                          <!-- div class="centro">
-                            <h5 class="mb-3">Horário de Atendimento</h5>
-                          </div -->
+                          <!--div class="centro">
+                            <h5 class="mb-3">Prescrições/Recomendações</h5>
+                          </div-->
                           <div class="containerHorario">
                             <?php ?>
                               <div class="col-lg-12">
@@ -87,6 +87,5 @@
             <?php } ?>
         </section>
         <script src="../../js/script.js"></script>
-        <script src="../js/chat.js"></script>
     </body>
 </html>

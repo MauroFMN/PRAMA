@@ -73,7 +73,7 @@ $pre = $req = "-"; ?>
                   <button type="button" class="btn btn-primary w-50" onclick="agendamento()">Ver Marcação(ões)</button>
                 </div>
               </div>
-              <div class="" id="agendamento">
+              <div class="hide" id="agendamento">
                 <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Activo' order by dataConsulta";
                 $dados1 = mysqli_query($mysqli, $sql1);
                 if (!empty(mysqli_num_rows($dados1))) { ?>
@@ -96,16 +96,13 @@ $pre = $req = "-"; ?>
                         $dados4 = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$row3['idPessoa']}");
                         while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
                           <td><?php echo $row4['nome']; ?></td>
-                      <?php }
-                      } ?>
                       <td>Telemedicina</td>
+                      <td><a href="?id_usuario=<?php echo $row3['idPessoa'] ?>" style="color:black"><i class="fab fa-whatsapp" style="font-size:20px"></i></a></td>
+                      <td><a href="#" style="color:red"><i class="fas fa-times" style="font-size:20px"></i></a></td>
                     </tr>
-                  <?php } ?>
+                  <?php }}} ?>
                   </table>
-              <?php
-                  } else {
-                    echo "Não tem consulta(s) marcada(s). ";
-                  } ?>
+              <?php } ?>
               </div>
             </div>
           </div>
@@ -189,7 +186,17 @@ $pre = $req = "-"; ?>
           </div>
         </div>
       </div>
-      <?php include "../chat.php" ?>
+      <?php
+      if (!empty($_GET['id_usuario'])) {
+        $id_usuario = mysqli_real_escape_string($mysqli, $_GET['id_usuario']);
+        $sql = "SELECT * FROM pessoa WHERE idPessoa = {$id_usuario}";
+        $dados = mysqli_query($mysqli, $sql);
+        if (!empty(mysqli_num_rows($dados))) {
+          while ($row = mysqli_fetch_assoc($dados)) {
+            include_once "../chat.php";
+          }
+        }
+      } ?>
     </div>
   </section>
   <script src="../../js/script.js"></script>

@@ -1,3 +1,11 @@
+<?php
+    if(isset($_SESSION["idPessoa"])){
+      $outgoing_id = $_SESSION["idPessoa"];
+      if(!empty($message)){
+          $sql = mysqli_query($mysqli, "INSERT INTO mensagens (idPessoa, idPessoa1, msg, dataEnvio)
+                                      VALUES ({$id_usuario}, {$outgoing_id},'" . trim($_POST["message"]) . "', date('Y-m-d'))") or die();
+      }
+    } ?>
 <button class="open-button" onclick="openForm()">
   <i class="fab fa-whatsapp"></i>
 </button>
@@ -28,4 +36,5 @@
     document.getElementById("myForm").style.display = "block";
     }
   </script>
+  <script src="../js/chat.js"></script>
 </div>

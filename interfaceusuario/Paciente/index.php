@@ -70,7 +70,7 @@ $pre = $req = "-"; ?>
                   <div><?php echo "Tenha acesso aos seus agendamentos e não perca uma consulta."; ?></div>
                 </div>
                 <div class="row mt-3">
-                  <button type="button" class="btn btn-primary w-50" onclick="agendamento()">Ver Marcação(ões)</button>
+                  <button type="button" class="btn btn-primary w-50" onclick="document.getElementById('agendamento').classList=='hide'?document.getElementById('agendamento').classList='':document.getElementById('agendamento').classList='hide'">Ver Marcação(ões)</button>
                 </div>
               </div>
               <div class="hide" id="agendamento">
@@ -85,24 +85,26 @@ $pre = $req = "-"; ?>
                       <th>Atendimento</th>
                     </tr>
                     <?php while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                    <tr>
-                      <td><?php echo $row1['dataConsulta']; ?></td>
-                      <?php $dados2 = mysqli_query($mysqli, "SELECT * from especialidade WHERE codEspecialidade = {$row1['codEspecialidade']}");
-                      while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                        <td><?php echo $row2['nome']; ?></td>
-                        <?php };
-                      $dados3 = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$row1['numOrdem']}'");
-                      while ($row3 = mysqli_fetch_assoc($dados3)) {
-                        $dados4 = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$row3['idPessoa']}");
-                        while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
-                          <td><?php echo $row4['nome']; ?></td>
-                      <td>Telemedicina</td>
-                      <td><a href="?id_usuario=<?php echo $row3['idPessoa'] ?>" style="color:black"><i class="fab fa-whatsapp" style="font-size:20px"></i></a></td>
-                      <td><a href="#" style="color:red"><i class="fas fa-times" style="font-size:20px"></i></a></td>
-                    </tr>
-                  <?php }}} ?>
+                      <tr>
+                        <td><?php echo $row1['dataConsulta']; ?></td>
+                        <?php $dados2 = mysqli_query($mysqli, "SELECT * from especialidade WHERE codEspecialidade = {$row1['codEspecialidade']}");
+                        while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                          <td><?php echo $row2['nome']; ?></td>
+                          <?php };
+                        $dados3 = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$row1['numOrdem']}'");
+                        while ($row3 = mysqli_fetch_assoc($dados3)) {
+                          $dados4 = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$row3['idPessoa']}");
+                          while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
+                            <td><?php echo $row4['nome']; ?></td>
+                            <td>Telemedicina</td>
+                            <td><a href="?id_usuario=<?php echo $row3['idPessoa'] ?>" style="color:black"><i class="fab fa-whatsapp" style="font-size:20px"></i></a></td>
+                            <td><a href="#" style="color:red"><i class="fas fa-times" style="font-size:20px"></i></a></td>
+                      </tr>
+                <?php }
+                        }
+                      } ?>
                   </table>
-              <?php } ?>
+                <?php } ?>
               </div>
             </div>
           </div>

@@ -54,9 +54,17 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
         ?>
       </div>
       <form class="typing-area">
-        <input type="text" class="incoming_id" name="id_usuario" value="<?php echo $id_usuario; ?>" hidden>
-        <input type="text" name="message" class="input-field" placeholder="Escreve a mensagem aqui..." autocomplete="off">
-        <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+        <input type="text" class="incoming_id" name="id_usuario" id="userId" value="<?php echo $id_usuario; ?>" hidden>
+        <input type="text" name="message" class="input-field" id="msg" placeholder="Escreve a mensagem aqui..." autocomplete="off">
+        <div onclick="enviar()" style="width: 16%; background: #a7c4de; border-radius: 1px; margin: 5px 0; cursor: pointer;"><i class="fab fa-telegram-plane" style="font-size: 24px; text-align: center;
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+"></i></div>
       </form>
     </section>
   </div>
@@ -67,6 +75,16 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
 
     function openForm() {
       document.getElementById("myForm").style.display = "block";
+    }
+
+    function enviar() {
+      const id_usuario = document.getElementById("userId").value;
+      const message = document.getElementById("msg").value;
+      if (!message) {
+        return;
+      } else {
+        location.search = "?id_usuario=" + id_usuario + "&message=" + message;
+      }
     }
   </script>
   <script src="../js/chat.js"></script>

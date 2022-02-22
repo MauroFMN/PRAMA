@@ -28,7 +28,7 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
                 ?></p-->
         </div>
       </header>
-      <div class="chat-box">
+      <div class="chat-box" id="chat-box">
         <?php
         if (isset($_GET["id_usuario"])) {
           $sql = "SELECT * FROM mensagens WHERE (idPessoa = {$_SESSION["idPessoa"]} and idPessoa1 = {$_GET["id_usuario"]}) or (idPessoa = {$_GET["id_usuario"]} and idPessoa1 = {$_SESSION["idPessoa"]})";
@@ -39,13 +39,17 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
             while ($row = mysqli_fetch_assoc($mensagens)) {
               if ($_SESSION["idPessoa"] == $row["idPessoa"]) {
         ?>
-                <p style="background: #669bcb8a;text-align: right;float: right;padding: 10px;border-radius: 10px;width: 73%; margin-bottom: 0;"><?php echo $row["msg"]; ?></p>
-                <p style="/* background: #669bcb8a; */text-align: right;float: right;/* padding: 10px; */border-radius: 10px;width: 73%;font-size: 9px;; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
+                <div>
+                  <p style="background: #669bcb8a;text-align: right;margin-left: 30%!important;padding: 10px;border-radius: 10px;width: 73%; margin-bottom: 0;"><?php echo $row["msg"]; ?></p>
+                  <p style="/* background: #669bcb8a; */text-align: right;margin-left: 30%!important;/* padding: 10px; */border-radius: 10px;width: 73%;font-size: 9px;; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
+                </div>
               <?php
               } else {
               ?>
-                <p style="background: #669bcb8a;text-align: left;padding: 10px;border-radius: 10px;width: 73%; margin-bottom: 0;"><?php echo $row["msg"]; ?></p>
-                <p style="/* background: #669bcb8a; */text-align: left;/* padding: 10px; */border-radius: 10px;width: 73%;font-size: 9px; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
+                <div>
+                  <p style="background: #669bcb8a;text-align: left;padding: 10px;border-radius: 10px;width: 73%; margin-bottom: 0;"><?php echo $row["msg"]; ?></p>
+                  <p style="/* background: #669bcb8a; */text-align: left;/* padding: 10px; */border-radius: 10px;width: 73%;font-size: 9px; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
+                </div>
         <?php
               }
             }
@@ -71,10 +75,16 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
   <script>
     if (document.location.search.includes("id")) {
       document.getElementById("myForm").style.display = "block";
+      document.getElementById("chat-box").scroll({
+        top: document.getElementById("chat-box").scrollHeight
+      })
     };
 
     function openForm() {
       document.getElementById("myForm").style.display = "block";
+      document.getElementById("chat-box").scroll({
+        top: document.getElementById("chat-box").scrollHeight
+      })
     }
 
     function enviar() {
@@ -86,6 +96,10 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
         location.search = "?id_usuario=" + id_usuario + "&message=" + message;
       }
     }
+    if (document.location.search.includes("message")) {
+      const id_usuario = document.getElementById("userId").value;
+      location.search = "?id_usuario=" + id_usuario;
+    };
   </script>
   <script src="../js/chat.js"></script>
 </div>

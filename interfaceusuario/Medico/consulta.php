@@ -70,11 +70,22 @@
                     <?php } ?>
                   </div>
                   <div class="detalhes-medico">
-                    <p><?php // Pegar os dados do paciente relativos a consulta 
-                        ?></p>
+                    <br>
+                    <form class="" action="index.html" method="post">
+                      <label for="">Antecedentes Patológicos Familiares</label>
+                      <textarea name="name" rows="8" cols="80"></textarea>
+                      <label for="">Antecedentes Patológicos Pessoais</label>
+                      <textarea name="name" rows="8" cols="80"></textarea>
+                      <label for="">Motivo da Consulta</label>
+                      <textarea name="name" rows="8" cols="80"></textarea>
+                      <label for="">Histórico da Doença Actual</label>
+                      <textarea name="name" rows="8" cols="80"></textarea>
+                      <label for="">Resumo Sindrómico</label>
+                      <textarea name="name" rows="8" cols="80"></textarea>
+                      <label for="">Diagnóstico Provável</label>
+                      <textarea name="name" rows="8" cols="80"></textarea>
+                    </form>
                   </div>
-                  <!-- span class="info"><?php //echo $lunh['nome']; 
-                                          ?></span -->
                 </div>
                 <div class="col-lg-3">
                   <!--div class="centro">
@@ -83,7 +94,13 @@
                   <div class="containerHorario">
                     <?php ?>
                     <div class="col-lg-12">
-                      <p style="text-align: center">Ver como tratar das prescrições e das recomendações</p>
+                      <form class="centro" action="index.html" method="post">
+                        <label for="">Prescrição</label>
+                        <textarea name="name" rows="8" cols="80"></textarea>
+                        <br>
+                        <label for="">Recomendação</label>
+                        <textarea name="name" rows="8" cols="80"></textarea>
+                      </form>
                     </div>
                   </div>
                 </div>

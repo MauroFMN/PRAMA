@@ -28,7 +28,7 @@
           $sql = "SELECT * FROM medico WHERE idPessoa = {$_SESSION["idPessoa"]}";
           $dados = mysqli_query($mysqli, $sql);
           while ($row = mysqli_fetch_assoc($dados)) {
-            $sql1 = "SELECT * FROM consulta WHERE numOrdem = '{$row['numOrdem']}' group by idPessoa";
+            $sql1 = "SELECT idPessoa FROM consulta WHERE numOrdem = '{$row['numOrdem']}' group by idPessoa";
             $dados1 = mysqli_query($mysqli, $sql1);
             if (mysqli_num_rows($dados1) != 0) {
               while ($row1 = mysqli_fetch_assoc($dados1)) {
@@ -45,12 +45,8 @@
                     $peso = $row2['peso'];
                     $tiposangue = $row2['tipoSang'];
                     $id = $row2['idPessoa'];
-                    $sql3 = "SELECT * from pessoa WHERE idPessoa = {$row2['idPessoa']}";
-                    $dados3 = mysqli_query($mysqli, $sql3);
-                    while ($row3 = mysqli_fetch_assoc($dados3)) {
-                      $ano = explode("-", $row2['dataNasc']);
-                    }
-                    if (date('m') != $ano[1] && date('d') != $ano[2]) {
+                    $ano = explode("-", $row2['dataNasc']);
+                    if (date('m') != $ano[1] || date('d') != $ano[2]) {
                       $idade = date('Y') - $ano[0] - 1;
                     } else {
                       $idade = date('Y') - $ano[0];
@@ -126,7 +122,6 @@
       <?php
       }
       ?>
-
     </div>
   </section>
   <script src="../../js/script.js"></script>

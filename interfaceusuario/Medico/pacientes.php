@@ -101,7 +101,7 @@
                       $idade = date('Y') - $ano[0];
                     }
                     ?>
-                    
+
                     <tr>
                     <td>Nome: <?php echo $nome; ?></td>
                   </tr>
@@ -115,7 +115,7 @@
                     <td>Peso: <?php echo $peso . " kg."; ?></td>
                   </tr>
                   <?php
-                  }  
+                  }
                   ?>
                   <tr>
                     <td>Antecedentes Patológicos Familiares:
@@ -125,7 +125,7 @@
                       } ?>
                   </tr>
                   <tr>
-                    <td>Antecedentes Patológios Pessoais:
+                    <td>Antecedentes Patológios Pessoais:</td>
                       <?php
                       while ($row4 = mysqli_fetch_assoc($dados4)) {
                         echo $row4['antPatPessoais']." |";

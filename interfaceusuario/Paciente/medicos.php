@@ -22,14 +22,13 @@
         </div>
         <div class="col-lg-12">
           <?php
-          $sql = "SELECT * FROM consulta WHERE idPessoa = {$_SESSION["idPessoa"]}  group by numOrdem";
-
+          $sql = "SELECT numOrdem FROM consulta WHERE idPessoa = {$_SESSION["idPessoa"]}  group by numOrdem";
           $numConsultas = mysqli_query($mysqli, $sql);
           if (mysqli_num_rows($numConsultas) == 0) {
             echo "Marque uma consulta para o médico constar na sua lista.";
           } else {
             while ($row = mysqli_fetch_assoc($numConsultas)) {
-              $sql1 = "SELECT * FROM pessoa JOIN medico ON(pessoa.idPessoa = medico.idPessoa) WHERE numOrdem = '{$row['numOrdem']}'"; //O valor é uma String
+              $sql1 = "SELECT * FROM pessoa JOIN medico ON(pessoa.idPessoa = medico.idPessoa) WHERE numOrdem = '{$row['numOrdem']}'";
               $listaMedicos = mysqli_query($mysqli, $sql1);
               while ($rows = mysqli_fetch_assoc($listaMedicos)) { ?>
                 <div class="row mt-5">

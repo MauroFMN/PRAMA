@@ -45,11 +45,7 @@
                     $peso = $row2['peso'];
                     $tiposangue = $row2['tipoSang'];
                     $id = $row2['idPessoa'];
-                    $sql3 = "SELECT * from pessoa WHERE idPessoa = {$row2['idPessoa']}";
-                    $dados3 = mysqli_query($mysqli, $sql3);
-                    while ($row3 = mysqli_fetch_assoc($dados3)) {
                       $ano = explode("-", $row2['dataNasc']);
-                    }
                     if (date('m') != $ano[1] && date('d') != $ano[2]) {
                       $idade = date('Y') - $ano[0] - 1;
                     } else {
@@ -86,11 +82,27 @@
             </div>
             <div class="dias" style="margin: 0 100px">
               <?php
-              $sql4 = "SELECT * FROM consulta WHERE idPessoa = {$id}";
+              $sql4 = "SELECT * FROM consulta WHERE idPessoa = {$_GET["paciente"]}";
+              $sql5 = "SELECT * FROM pessoa WHERE idPessoa = {$_GET["paciente"]}";
               $dados4 = mysqli_query($mysqli, $sql4);
               if (mysqli_num_rows($dados4) != 0) { ?>
-                <table>
-                  <tr>
+              <table>
+                  <?php
+                  $dados5 = mysqli_query($mysqli, $sql5);
+                  while ($row5 = mysqli_fetch_assoc($dados5)) {
+                    $nome = $row5['nome'];
+                    $peso = $row5['peso'];
+                    $tiposangue = $row5['tipoSang'];
+                    $id = $row5['idPessoa'];
+                    $ano = explode("-", $row5['dataNasc']);
+                    if (date('m') != $ano[1] && date('d') != $ano[2]) {
+                      $idade = date('Y') - $ano[0] - 1;
+                    } else {
+                      $idade = date('Y') - $ano[0];
+                    }
+                    ?>
+                    
+                    <tr>
                     <td>Nome: <?php echo $nome; ?></td>
                   </tr>
                   <tr>
@@ -102,7 +114,9 @@
                   <tr>
                     <td>Peso: <?php echo $peso . " kg."; ?></td>
                   </tr>
-
+                  <?php
+                  }  
+                  ?>
                   <tr>
                     <td>Antecedentes Patológicos Familiares:
                       <?php

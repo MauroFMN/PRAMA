@@ -101,7 +101,7 @@
                       $idade = date('Y') - $ano[0];
                     }
                     ?>
-                    
+
                     <tr>
                     <td>Nome: <?php echo $nome; ?></td>
                   </tr>
@@ -115,20 +115,24 @@
                     <td>Peso: <?php echo $peso . " kg."; ?></td>
                   </tr>
                   <?php
-                  }  
+                  }
                   ?>
                   <tr>
                     <td>Antecedentes Patológicos Familiares:
                       <?php
                       while ($row4 = mysqli_fetch_assoc($dados4)) {
-                        echo $row4['antPatFamiliares']." |";
+                        if (!empty($row4['antPatFamiliares'])) {
+                          echo $row4['antPatFamiliares']." |";
+                        }
                       } ?>
                   </tr>
                   <tr>
-                    <td>Antecedentes Patológios Pessoais:
+                    <td>Antecedentes Patológios Pessoais:</td>
                       <?php
                       while ($row4 = mysqli_fetch_assoc($dados4)) {
-                        echo $row4['antPatPessoais']." |";
+                        if (!empty($row4['antPatPessoais'])) {
+                          echo $row4['antPatPessoais']." |";
+                        }
                       } ?>
                     </td>
                   </tr>

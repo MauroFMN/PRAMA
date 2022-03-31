@@ -30,17 +30,6 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
       </header>
       <div class="chat-box" id="chat-box">
         <?php
-        function setInterval($f, $milliseconds)
-        {
-          $seconds = (int)$milliseconds / 1000;
-          while (true) {
-            $f();
-            sleep($seconds);
-          }
-        }
-        setInterval(function () {
-          echo "hi!\n";
-        }, 1000);
         if (isset($_GET["id_usuario"])) {
           $sql = "SELECT * FROM mensagens WHERE (idPessoa = {$_SESSION["idPessoa"]} and idPessoa1 = {$_GET["id_usuario"]}) or (idPessoa = {$_GET["id_usuario"]} and idPessoa1 = {$_SESSION["idPessoa"]})";
           $mensagens = mysqli_query($mysqli, $sql);

@@ -96,6 +96,21 @@ if (isset($_GET["horaConsulta"])) {
             }
             $horarioMedico = "";
             $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE med.numOrdem = '{$_GET["marcacaoConsulta"]}' and horariomedico.diaSemana = '{$dia}'";
+
+            $horariosOcupados = [];
+
+
+            $dataConsulta =  "" . (string)explode(".", $_GET["dataConsulta"])[3] . "-" . (string)explode(".", $_GET["dataConsulta"])[2] . "-" . (string)explode(".", $_GET["dataConsulta"])[1];
+
+            $sqlHorariosOcupados = "SELECT dataConsulta from consulta WHERE dataConsulta>='" . $dataConsulta . "' && dataConsulta<='" . $dataConsulta . " 23:59:59" . "'";
+            $listaHorariosOcupados = mysqli_query($mysqli, $sqlHorariosOcupados);
+            while ($row = mysqli_fetch_assoc($listaHorariosOcupados)) {
+              $horasHMS = explode(" ", $row['dataConsulta'])[1];
+              $horasMS = explode(":", $horasHMS)[0] . ":" . explode(":", $horasHMS)[1];
+              array_push($horariosOcupados, $horasMS);
+            }
+
+
             $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
             while ($listHorario = mysqli_fetch_assoc($listaHorarioAtendimento)) {
               $horarioMedico = $listHorario['horarioAtendimento'];
@@ -106,38 +121,51 @@ if (isset($_GET["horaConsulta"])) {
             $horaFinal = (int)explode(":", $horarioDividido[1])[0];
 
 
+            $horarioEscrever = [];
+
             if ($horaInicial < $horaFinal) {
               for ($i = $horaInicial; $i < $horaFinal; $i++) {
+                $hora = (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00');
+                if (in_array($hora, $horariosOcupados)) {
+                  continue;
+                } else {
+                  array_push($horarioEscrever, $hora);
+                }
             ?>
-                <br />
-                <input type="radio" name="horaConsulta" value=<?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?> id="horaConsulta" />
-                <label for="horaConsulta">
-                  <?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?>
-                </label>
               <?php
               }
             } else {
               $npassou24 = true;
               for ($i = $horaInicial; $npassou24 || $i < $horaFinal; $i++) {
-
-              ?>
-                <br />
-                <input type="radio" name="horaConsulta" value=<?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?> id="horaConsulta" />
-                <label for="horaConsulta">
-                  <?php echo (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00'); ?>
-                </label>
-              <?php
+                $hora = (int)strlen($i) == 1 ? '0' . $i . ':00' : ($i == 24 ? "00:00" : $i . ':00');
+                if (in_array($hora, $horariosOcupados)) {
+                  continue;
+                } else {
+                  array_push($horarioEscrever, $hora);
+                }
                 if ($i == 24) {
                   $npassou24 = false;
                   $i = 0;
                 }
               }
-              ?>
-
-            <?php
-
             }
 
+            if (count($horarioEscrever)) {
+              for ($i = 0; $i < count($horarioEscrever); $i++) {
+              ?>
+                <br />
+                <input type="radio" name="horaConsulta" value=<?php echo $horarioEscrever[$i]; ?> id="horaConsulta" />
+                <label for="horaConsulta">
+                  <?php echo $horarioEscrever[$i];
+                  ?>
+                </label>
+              <?php
+              }
+            } else {
+              ?>
+              <p>Não há vagas disponíveis para este dia.</p>
+            <?php
+            }
             ?>
             <br />
             <label><strong>Motivo da Consulta</strong></label>
@@ -297,9 +325,9 @@ if (isset($_GET["horaConsulta"])) {
                   <?php } ?>
                 </table>
               <?php $mes = $mes + 1;
-              if(date("m")+1<$mes){
-                break;
-              }
+                if (date("m") + 1 < $mes) {
+                  break;
+                }
               } ?>
             <?php
             }
@@ -381,7 +409,7 @@ if (isset($_GET["horaConsulta"])) {
                     } else {
                       echo ' <a class="inativo">Marcar Consulta</a>';
                     }
- 
+
 
                     ?>
 

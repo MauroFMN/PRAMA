@@ -144,7 +144,8 @@
               <label for="password">Password:</label>
               <input type="password" name="password" id="password" value="<?php echo $dadosusuario["password"]; ?>" disabled>
               <div class="centro">
-                <input type="submit" class="botao verde" value="Editar" onclick="">
+                <input type="submit" class="botao verde" value="Editar" onclick="editar()" id="botaoEditar">
+                <input type="submit" class="botao vermelho hide" value="Guardar" onclick="editar()" id="botaoSalvar">
               </div>
             </form>
           <?php } ?>
@@ -154,6 +155,7 @@
   </section>
   <script src="../../js/script.js"></script>
   <script src="../../js/foto.js"></script>
+  <script src="../../js/perfil.js"></script>
 </body>
 
 </html>

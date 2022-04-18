@@ -54,19 +54,6 @@ textarea {
   border-radius: 7px;
 }
 
-/*
-input[type="date"],
-input[type="tel"],
-select {
-    padding: 10px;
-    margin: 5px 0;
-    border: none;
-    box-sizing: border-box;
-    background: #f1f1f1;
-    border-radius: 7px;
-    display: inline-block;
-} */
-
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
@@ -125,16 +112,6 @@ input[type="number"]:focus {
   margin-left: 15px;
   margin-right: 20px;
 }
-
-/* .icons-container {
-    margin-left: 10px;
-    margin-right: 15px;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-    padding-top: 4rem;
-    padding-bottom: 5rem;
-} */
 
 .icons-container .icons {
   border: 2px solid black;

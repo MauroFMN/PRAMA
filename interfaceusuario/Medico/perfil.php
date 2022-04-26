@@ -28,89 +28,90 @@
                     $dados = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_assoc($dados)) { ?>
                         <form style="display: block;" class="formRegElm">
-                          <div class="espacoImagem">
-                            <div class="conteudoImagem">
-                              <?php if (!empty($row['foto'])) {
-                                $foto = $row['foto'];
-                              } else {
-                                $foto = 'camera-solid.svg';
-                              }?>
-                              <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
+                            <div class="espacoImagem">
+                                <div class="conteudoImagem">
+                                    <?php if (!empty($row['foto'])) {
+                                        $foto = $row['foto'];
+                                    } else {
+                                        $foto = 'camera-solid.svg';
+                                    } ?>
+                                    <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
+                                </div>
+                                <input type="file" name="foto" id="foto" accept="image/*" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
                             </div>
-                            <input type="file" name="foto" id="foto" accept="image/*" disabled>
-                          </div>
                             <label for="nome">Nome:</label>
-                            <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" disabled>
+                            <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
                             <label for="dataNasc">Data de Nascimento:</label>
-                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" disabled style="width: auto">
+                            <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
                             <label>Género:</label>
-                            <select disabled style="width: auto; height: 50px;">
+                            <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto; height: 50px;">
                                 <option value="<?php echo $row['genero']; ?>"><?php echo $row['genero']; ?></option>
                             </select>
                             <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
                             $dados1 = mysqli_query($mysqli, $sql1);
                             while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                              <br>
-                            <label for="numOrdem">Númeno da Ordem:</label>
-                            <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
-                          <?php
-                          $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem = '{$row1['numOrdem']}'";
-                          $dados2 = mysqli_query($mysqli,$sql2);
-                          while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                            <label for="nome">Especialidade:</label>
-                            <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" disabled>
-                            <?php $sql3 = "SELECT pessoa.nome FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) inner join pessoa on unhospitalar.idPessoa = pessoa.idPessoa WHERE numOrdem = '{$row1['numOrdem']}'";
-                            $dados3 = mysqli_query($mysqli,$sql3);
-                            while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
-                            <label for="nomeUnHosp">Local de Trabalho</label>
-                            <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nome']; ?>" disabled>
-                          <?php }}?>
-                          <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
-                          $dados4 = mysqli_query($mysqli,$sql4);
-                          while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
-                            <label for="endereco">Email:</label>
-                            <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" disabled style="width: auto;height: 50px;"><br>
-                          <?php };
-                          $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
-                          $dados5 = mysqli_query($mysqli,$sql5);
-                          while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
-                            <label for="numero">Telefone:</label>
-                            <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" disabled style="width: auto">
-                          <?php } ?>
-                          <br>
-                            <label for="nomeUtilizador">Nome de Utilizador:</label>
-                            <input type="text" name="nomeUtilizador" id="nomeUtilizador" value="<?php echo $row['nomeUtilizador']; ?>" disabled>
-                            <label for="password">Password:</label>
-                            <input type="password" name="password" id="password" value="<?php echo $row['password']; ?>" disabled>
-                            <hr>
-                            <h4 class="centro">Horário de Atendimento</h4>
-                            <hr>
-                            <div class="dias">
-                              <?php
-                              $sql6 = "SELECT * from horariomedico WHERE numOrdem = '{$row1['numOrdem']}'";
-                              $dados6 = mysqli_query($mysqli,$sql6);
-                              if(!empty(mysqli_num_rows($dados6))){ ?>
-                                <table>
-                                    <tr>
-                                        <th>Dias da Semana</th>
-                                        <th>Inico</th>
-                                        <th>Fim</th>
-                                    </tr>
+                                <br>
+                                <label for="numOrdem">Númeno da Ordem:</label>
+                                <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
                                 <?php
-                                while ($row6 = mysqli_fetch_assoc($dados6)) {
-                                  $horarioMedico = $row6['horarioAtendimento'];
-                                  $horarioDividido = explode(", ", $horarioMedico); ?>
-                                      <tr>
-                                          <td><?php echo $row6['diaSemana']; ?></td>
-                                          <td><?php echo $horarioDividido[0]; ?></td>
-                                          <td><?php echo $horarioDividido[1]; ?></td>
-                                      </tr>
-                              <?php } ?>
-                              </table>
-                              <?php } else {
-                                echo "Sem horário disponível";
-                              } ?>
-                              <!--table>
+                                $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem = '{$row1['numOrdem']}'";
+                                $dados2 = mysqli_query($mysqli, $sql2);
+                                while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                                    <label for="nome">Especialidade:</label>
+                                    <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
+                                    <?php $sql3 = "SELECT pessoa.nome FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) inner join pessoa on unhospitalar.idPessoa = pessoa.idPessoa WHERE numOrdem = '{$row1['numOrdem']}'";
+                                    $dados3 = mysqli_query($mysqli, $sql3);
+                                    while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
+                                        <label for="nomeUnHosp">Local de Trabalho</label>
+                                        <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
+                                <?php }
+                                } ?>
+                                <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
+                                $dados4 = mysqli_query($mysqli, $sql4);
+                                while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
+                                    <label for="endereco">Email:</label>
+                                    <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto;height: 50px;"><br>
+                                <?php };
+                                $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
+                                $dados5 = mysqli_query($mysqli, $sql5);
+                                while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
+                                    <label for="numero">Telefone:</label>
+                                    <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
+                                <?php } ?>
+                                <br>
+                                <label for="nomeUtilizador">Nome de Utilizador:</label>
+                                <input type="text" name="nomeUtilizador" id="nomeUtilizador" value="<?php echo $row['nomeUtilizador']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" id="password" value="<?php echo $row['password']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
+                                <hr>
+                                <h4 class="centro">Horário de Atendimento</h4>
+                                <hr>
+                                <div class="dias">
+                                    <?php
+                                    $sql6 = "SELECT * from horariomedico WHERE numOrdem = '{$row1['numOrdem']}'";
+                                    $dados6 = mysqli_query($mysqli, $sql6);
+                                    if (!empty(mysqli_num_rows($dados6))) { ?>
+                                        <table>
+                                            <tr>
+                                                <th>Dias da Semana</th>
+                                                <th>Inico</th>
+                                                <th>Fim</th>
+                                            </tr>
+                                            <?php
+                                            while ($row6 = mysqli_fetch_assoc($dados6)) {
+                                                $horarioMedico = $row6['horarioAtendimento'];
+                                                $horarioDividido = explode(", ", $horarioMedico); ?>
+                                                <tr>
+                                                    <td><?php echo $row6['diaSemana']; ?></td>
+                                                    <td><?php echo $horarioDividido[0]; ?></td>
+                                                    <td><?php echo $horarioDividido[1]; ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </table>
+                                    <?php } else {
+                                        echo "Sem horário disponível";
+                                    } ?>
+                                    <!--table>
                                   <tr>
                                       <th></th>
                                       <th>Dias da Semana</th>
@@ -332,13 +333,25 @@
                                       </td>
                                   </tr>
                               </table -->
-                            </div>
-                            <hr>
-                            <div class="centro">
-                                <input type="submit" class="botao verde" value="Editar">
-                            </div>
+                                </div>
+                                <hr>
+                                <div class="centro">
+                                    <?php
+                                    if (isset($_GET['editar'])) {
+                                    ?>
+                                        <a href="?salvar" class="botao verde" value="Editar" id="botaoEditar">Guardar</a>
+                                        <a href="?" class="botao vermelho">Cancelar</a>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <a href="?editar" class="botao verde" value="Editar" id="botaoEditar">Editar</a>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
                         </form>
-                    <?php }} ?>
+                <?php }
+                        } ?>
                 </div>
             </div>
         </div>

@@ -37,18 +37,18 @@
                   } ?>
                   <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                 </div>
-                <input type="file" name="foto" id="foto" accept="image/*" disabled>
+                <input type="file" name="foto" id="foto" accept="image/*" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               </div>
               <label for="nome">Nome:</label>
-              <input type="text" name="nome" id="nome" value="<?php echo $dadosusuario['nome']; ?>" disabled style="width: 94.42%">
+              <input type="text" name="nome" id="nome" value="<?php echo $dadosusuario['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: 94.42%">
               <label for="dataNasc">Data de Nascimento:</label>
-              <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $dadosusuario['dataNasc']; ?>" disabled style="width: auto">
+              <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $dadosusuario['dataNasc']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
               <label for="genero">Género:</label>
-              <select disabled style="width: auto; height: 50px;">
+              <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto; height: 50px;">
                 <option value="<?php echo $dadosusuario['genero']; ?>"><?php echo $dadosusuario['genero']; ?></option>
               </select>
               <label for>Estado Civil:</label>
-              <select disabled style="width: auto; height: 50px;">
+              <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto; height: 50px;">
                 <option value="<?php echo $dadosusuario['estCivil']; ?>"><?php echo $dadosusuario['estCivil']; ?></option>
               </select>
               <?php
@@ -72,15 +72,15 @@
               } ?>
               <br>
               <label>Nome Pai:</label>
-              <input type="text" name="" value="<?php echo $nomePai; ?>" disabled>
+              <input type="text" name="" value="<?php echo $nomePai; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               <label>Nome Mãe:</label>
-              <input type="text" name="" value="<?php echo $nomeMae; ?>" disabled>
+              <input type="text" name="" value="<?php echo $nomeMae; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               <?php
               $sql = "SELECT provincia.nome from provincia JOIN municipio ON(provincia.codProvincia = municipio.codProvincia) WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
               $dadosProv = mysqli_query($mysqli, $sql);
               while ($provincia = mysqli_fetch_assoc($dadosProv)) { ?>
                 <label>Província:</label>
-                <select disabled style="height: 50px;">
+                <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="height: 50px;">
                   <option value="<?php echo $provincia['nome']; ?>"><?php echo $provincia['nome']; ?></option>
                 </select>
               <?php } ?>
@@ -89,7 +89,7 @@
               $sql = "SELECT * from municipio WHERE codMunicipio = {$dadosusuario['codMunicipio']}";
               $dadosMuni = mysqli_query($mysqli, $sql);
               while ($municipio = mysqli_fetch_assoc($dadosMuni)) { ?>
-                <select disabled style="height: 50px;">
+                <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="height: 50px;">
                   <option value="<?php echo $municipio['nome']; ?>"><?php echo $municipio['nome']; ?></option>
                 </select>
               <?php } ?>
@@ -99,7 +99,7 @@
               while ($bairro = mysqli_fetch_assoc($dadosBairro)) { ?>
                 <br>
                 <label for="nomeBairro">Bairro:</label>
-                <input type="text" name="nomeBairro" id="nomeBairro" value="<?php echo $bairro['nomeBairro']; ?>" disabled>
+                <input type="text" name="nomeBairro" id="nomeBairro" value="<?php echo $bairro['nomeBairro']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
                 <?php
                 $sql = "SELECT * from rua WHERE codBairro = {$bairro['codBairro']}";
                 $dadosRua = mysqli_query($mysqli, $sql);
@@ -111,7 +111,7 @@
                                                                         } else {
                                                                           echo "-";
                                                                         }
-                                                                        ?>" disabled>
+                                                                        ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
                   <label for="numeroRua">Número da Rua</label>
                   <input type="text" name="numeroRua" id="numeroRua" value="<?php
                                                                             if (!empty($rua['numeroRua'])) {
@@ -119,7 +119,7 @@
                                                                             } else {
                                                                               echo "-";
                                                                             }
-                                                                            ?>" disabled>
+                                                                            ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               <?php }
               } ?>
               <?php
@@ -128,7 +128,7 @@
               while ($endereco = mysqli_fetch_assoc($email)) { ?>
                 <br>
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" disabled style="width: auto;height: 50px;">
+                <input type="email" name="email" id="email" value="<?php echo $endereco['endereco']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto;height: 50px;">
               <?php } ?>
               <?php
               $sql = "SELECT numero FROM telefone WHERE idPessoa = {$_SESSION["idPessoa"]}";
@@ -136,16 +136,26 @@
               while ($numero = mysqli_fetch_assoc($telefone)) { ?>
                 <br>
                 <label>Telefone:</label>
-                <input type="tel" name="" value=" <?php echo $numero['numero']; ?>" disabled style="width: auto">
+                <input type="tel" name="" value=" <?php echo $numero['numero']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
               <?php } ?>
               <br>
               <label for="nomeUtilizador">Nome de Utilizador:</label>
-              <input type="text" name="nomeUtilizador" id="nomeUtilizador" placeholder="<?php echo $dadosusuario['nomeUtilizador']; ?>" disabled>
+              <input type="text" name="nomeUtilizador" id="nomeUtilizador" placeholder="<?php echo $dadosusuario['nomeUtilizador']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               <label for="password">Password:</label>
-              <input type="password" name="password" id="password" value="<?php echo $dadosusuario["password"]; ?>" disabled>
+              <input type="password" name="password" id="password" value="<?php echo $dadosusuario["password"]; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               <div class="centro">
-                <input type="submit" class="botao verde" value="Editar" onclick="editar()" id="botaoEditar">
-                <input type="submit" class="botao vermelho hide" value="Guardar" onclick="editar()" id="botaoSalvar">
+                <?php
+                if (isset($_GET['editar'])) {
+                ?>
+                  <a href="?salvar" class="botao verde" value="Editar" id="botaoEditar">Guardar</a>
+                  <a href="?" class="botao vermelho">Cancelar</a>
+                <?php
+                } else {
+                ?>
+                  <a href="?editar" class="botao verde" value="Editar" id="botaoEditar">Editar</a>
+                <?php
+                }
+                ?>
               </div>
             </form>
           <?php } ?>

@@ -3,13 +3,6 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
   $sql = "INSERT INTO `mensagens`(`idPessoa`, `idPessoa1`, `msg`, `dataEnvio`) VALUES (" . $_SESSION["idPessoa"] . "," . $_GET["id_usuario"] . ",'" . trim($_GET["message"]) . "','" . date('Y-m-d h:i:s') . "')";
   mysqli_query($mysqli, $sql);
 }
-// if(isset($_SESSION["idPessoa"])){
-//   $outgoing_id = $_SESSION["idPessoa"];
-//   if(!empty($message)){
-//       $sql = mysqli_query($mysqli, "INSERT INTO mensagens (idPessoa, idPessoa1, msg, dataEnvio)
-//                                   VALUES ({$id_usuario}, {$outgoing_id},'" . trim($_POST["message"]) . "', date('Y-m-d'))") or die();
-//   }
-// } 
 ?>
 <button class="open-button" onclick="openForm()">
   <i class="fab fa-whatsapp"></i>

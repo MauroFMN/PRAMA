@@ -141,7 +141,6 @@
 
   <script src="../../js/script.js"></script>
   <script>
-    // console.log("Medico")
     $(".nav.nav-tabs li").on("click", function(e) {
       console.log("Element", e)
       $(".nav-link.active").removeClass("active");

@@ -1,18 +1,9 @@
 <?php
 include 'conexao.php';
 
-
 $username = $password = "";
 $nomeUsuario_erro = $senha_erro = $login_erro = "";
 
-// $especialidadesSelecionadas
-
-// if($especialidadestmt = mysqli_prepare($mysqli, $especialidadessql)){
-
-//     if(mysqli_stmt_execute($especialidadestmt)){
-//         mysqli_stmt_store_result($especialidadestmt);
-//     }
-// }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == "1") {
   $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Paciente','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "')";
 
@@ -66,39 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
           if (mysqli_query($mysqli, $sql)) {
 
             $sql = "";
-
-            /*$horarioSegunda = "";
-            foreach ($_POST['segundaF'] as $segundaF) {
-              $horarioSegunda .= "" . $segundaF . ", ";
-            }
-
-            $horarioTerca = "";
-            foreach ($_POST['tercaF'] as $tercaF) {
-              $horarioTerca .= "" . $tercaF . ", ";
-            }
-
-            $horarioQuarta = "";
-            foreach ($_POST['quartaF'] as $quartaF) {
-              $horarioQuarta .= "" . $quartaF . ", ";
-            }
-
-            $horarioQuinta = "";
-            foreach ($_POST['quintaF'] as $quintaF) {
-              $horarioQuinta .= "" . $quintaF . ", ";
-            }
-
-            $horarioSexta = "";
-            foreach ($_POST['sextaF'] as $sextaF) {
-              $horarioSexta .= "" . $sextaF . ", ";
-            }
-
-            $horarioSabado = "";
-            foreach ($_POST['sabado'] as $sabado) {
-              $horarioSabado .= "" . $sabado . ", ";
-            }
-
-            $sql = "INSERT INTO `horariomedico`(`codHorarioMedico`, `diaSemana`, `horarioAtendimento`, `numOrdem`) values (null, 'Segunda', '" . $horarioSegunda . "', '" . $id . "'), (null, 'Terça', '" . $horarioTerca . "', '" . $id . "'), (null, 'Quarta', '" . $horarioQuarta . "', '" . $id . "'),(null, 'Quinta', '" . $horarioQuinta . "', '" . $id . "'), (null, 'Sexta', '" . $horarioSexta . "', '" . $id . "'), (null, 'Sabado', '" . $horarioSabado . "', '" . $id . "'), (null, 'Domingo', '" . $horarioDomingo . "', '" . $id . "')";*/
-
 
             if (mysqli_query($mysqli, $sql)) {
 
@@ -219,12 +177,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
       } else {
         echo "Ocorreu um erro.";
       }
-
       // Close statement
       mysqli_stmt_close($stmt);
     }
   }
-
   // Close connection
   mysqli_close($mysqli);
 }
@@ -524,219 +480,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
               // mysqli_close($mysqli);
 
               echo '</select>';
-
-              /*echo '<br>';
-              echo '<label for="segundaF"><strong>Horário de Atendimento às Segundas</strong></label>';
-              echo '<br>';
-              echo '<select id="segundaF" name="segundaF[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
-
-
-              echo '<br>';
-              echo '<label for="tercaF"><strong>Horário de Atendimento às Terças</strong></label>';
-              echo '<br>';
-              echo '<select id="tercaF" name="tercaF[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
-
-
-              echo '<br>';
-              echo '<label for="quartaF"><strong>Horário de Atendimento às Quartas</strong></label>';
-              echo '<br>';
-              echo '<select id="quartaF" name="quartaF[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
-
-
-              echo '<br>';
-              echo '<label for="quintaF"><strong>Horário de Atendimento às Quintas</strong></label>';
-              echo '<br>';
-              echo '<select id="quintaF" name="quintaF[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
-
-
-              echo '<br>';
-              echo '<label for="sextaF"><strong>Horário de Atendimento às Sextas </strong></label>';
-              echo '<br>';
-              echo '<select id="sextaF" name="sextaF[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
-
-
-
-              echo '<br>';
-              echo '<label for="sabado"><strong>Horário de Atendimento aos Sábados</strong></label>';
-              echo '<br>';
-              echo '<select id="sabado" name="sabado[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';
-
-
-
-              echo '<br>';
-              echo '<label for="domingo"><strong>Horário de Atendimento aos Domingos</strong></label>';
-              echo '<br>';
-              echo '<select id="domingo" name="domingo[]" class="form-select" multiple aria-label="multiple select example">';
-              echo '<option value="00:00"> 00:00 </option>';
-              echo '<option value="01:00"> 01:00 </option>';
-              echo '<option value="02:00"> 02:00 </option>';
-              echo '<option value="03:00"> 03:00 </option>';
-              echo '<option value="04:00"> 04:00 </option>';
-              echo '<option value="05:00"> 05:00 </option>';
-              echo '<option value="06:00"> 06:00 </option>';
-              echo '<option value="07:00"> 07:00 </option>';
-              echo '<option value="08:00"> 08:00 </option>';
-              echo '<option value="09:00"> 09:00 </option>';
-              echo '<option value="10:00"> 10:00 </option>';
-              echo '<option value="11:00"> 11:00 </option>';
-              echo '<option value="12:00"> 12:00 </option>';
-              echo '<option value="13:00"> 13:00 </option>';
-              echo '<option value="14:00"> 14:00 </option>';
-              echo '<option value="16:00"> 16:00 </option>';
-              echo '<option value="17:00"> 17:00 </option>';
-              echo '<option value="18:00"> 18:00 </option>';
-              echo '<option value="19:00"> 19:00 </option>';
-              echo '<option value="20:00"> 20:00 </option>';
-              echo '<option value="21:00"> 21:00 </option>';
-              echo '<option value="22:00"> 22:00 </option>';
-              echo '<option value="23:00"> 23:00 </option>';
-              echo '</select>';*/
-
-
               echo '<br>';
               echo '<label for="descricaoMedico"><strong>Descrição Profissional</strong></label>';
               echo '<br>';
@@ -837,20 +580,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
   </div>
   <!-- Rorapé -->
   <script>
-    // $("#sector").on("change", function (e) {
-    //     alert
-    //                 // $(".nav-link.active").removeClass("active");
-    //                 // $(this).children("a").addClass("active");
-
-    //                 // const id = $(this).children("a").attr("href");
-    //                 // $(".tab-pane.fade").removeClass("show");
-    //                 // $(".tab-pane.fade").removeClass("active");
-
-
-    //                 // const element = document.getElementById(id.substr(1))
-    //                 // element.classList = element.classList + " show active"
-    //             })
-
     function alterarSubsector(sector) {
       let opcoesSubsector;
       let el = $("#subsector");

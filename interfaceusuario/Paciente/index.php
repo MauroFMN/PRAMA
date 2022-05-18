@@ -42,7 +42,7 @@ $pre = $req = "-"; ?>
             <div class="row mt-5 opcoes">
               <div class="col-lg-6">
                 <div class="row mt-3">
-                  <div class="">
+                  <div>
                     <?php
                     $idPaciente = $_SESSION["idPessoa"];
                     $sql = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente}";
@@ -122,66 +122,51 @@ $pre = $req = "-"; ?>
           </div>
           <div class="tab-pane fade mt-3" role="tabpanel" id="terceiraTab">
             <div class="row mt-5 opcoes">
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <div class="row mt-3">
-                  <?php
-                  $sql = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Atendido' or estadoConsulta = 'Cancelada'";
-                  $dados = mysqli_query($mysqli, $sql);
-                  if (!empty(mysqli_num_rows($dados))) { ?>
-                    <table>
-                      <tr>
-                        <th>Data/Hora</th>
-                        <th>Especialidade</th>
-                        <th>Médico</th>
-                        <th>Motivo consulta</th>
-                        <th>Diagnóstico</th>
-                        <th>Prescrição médica</th>
-                        <th>Requisição médica</th>
-                        <th>Preço</th>
-                      </tr>
-                      <?php while ($row = mysqli_fetch_assoc($dados)) { ?>
+                  <div>
+                    <?php
+                    $sql = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Atendida' or estadoConsulta = 'Cancelada' order by dataConsulta";
+                    $dados = mysqli_query($mysqli, $sql);
+                    if (!empty(mysqli_num_rows($dados))) { ?>
+                      <table>
                         <tr>
-                          <td><?php echo $row['dataConsulta']; ?></td>
-                          <?php
-                          $sql1 = "SELECT * from especialidade WHERE codEspecialidade = {$row['codEspecialidade']}";
-                          $dados1 = mysqli_query($mysqli, $sql1);
-                          while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
-                            <td><?php echo $row['nome']; ?></td>
-                            <?php };
-                          $sql2 = "SELECT * FROM medico WHERE numOrdem = '{$row['numOrdem']}'";
-                          $dados2 = mysqli_query($mysqli, $sql2);
-                          while ($row2 = mysqli_fetch_assoc($dados2)) {
-                            $sql3 = "SELECT * from pessoa WHERE idPessoa = {$row2['idPessoa']}";
-                            $dados3 = mysqli_query($mysqli, $sql3);
-                            while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
-                              <td><?php echo $row3['nome']; ?></td>
-                          <?php }
-                          } ?>
-                          <td><?php echo $row['motivoConsulta']; ?></td>
-                          <td><?php echo $row['diagnosticoProvavel']; ?></td>
-                          <?php
-                          $sql4 = "SELECT * FROM prescricao WHERE codConsulta = {$row['codConsulta']}";
-                          $dados4 = mysqli_query($mysqli, $sql4);
-                          if (!empty($dados4)) {
-                            while ($row4 = mysqli_fetch_assoc($dados4)) {
-                              if ($row4['tipo'] == 'Prescrição') {
-                                $pre = $row4['descricao'];
-                              } else {
-                                if ($row4['tipo'] == 'Rquisição') {
-                                  $req = $row4['descricao'];
-                                }
-                              }
-                            }
-                          } ?>
-                          <td><?php echo $pre; ?></td>
-                          <td><?php echo $req; ?></td>
-                          <td><?php echo $row['preco']; ?></td>
+                          <th>Data/Hora</th>
+                          <th>Especialidade</th>
+                          <th>Médico</th>
+                          <th>Motivo consulta</th>
+                          <th>Diagnóstico</th>
+                          <th>Preço(Kz)</th>
+                          <th>Status</th>
                         </tr>
-                    <?php }
-                    } else {
-                      echo "O histórico de consultas está vazio.";
-                    }
-                    ?>
+                        <?php while ($row = mysqli_fetch_assoc($dados)) { ?>
+                          <tr>
+                            <td><?php echo $row['dataConsulta']; ?></td>
+                            <?php
+                            $sql1 = "SELECT * from especialidade WHERE codEspecialidade = {$row['codEspecialidade']}";
+                            $dados1 = mysqli_query($mysqli, $sql1);
+                            while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
+                              <td><?php echo $row1['nome']; ?></td>
+                              <?php };
+                            $sql2 = "SELECT * FROM medico WHERE numOrdem = '{$row['numOrdem']}'";
+                            $dados2 = mysqli_query($mysqli, $sql2);
+                            while ($row2 = mysqli_fetch_assoc($dados2)) {
+                              $sql3 = "SELECT * from pessoa WHERE idPessoa = {$row2['idPessoa']}";
+                              $dados3 = mysqli_query($mysqli, $sql3);
+                              while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
+                                <td><?php echo $row3['nome']; ?></td>
+                            <?php }
+                            } ?>
+                            <td><?php echo $row['motivoConsulta']; ?></td>
+                            <td><?php echo $row['diagnosticoProvavel']; ?></td>
+                            <td><?php echo $row['preco']; ?></td>
+                            <td><?php echo $row['estadoConsulta']; ?></td>
+                          </tr>
+                      <?php }
+                      } else {
+                        echo "O histórico de consultas está vazio.";
+                      } ?>
+                    </div>
                 </div>
               </div>
             </div>

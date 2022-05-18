@@ -3,7 +3,7 @@ let file = document.getElementById('foto');
 foto.addEventListener('click',() =>{
   file.click();
 });
-file.addEventListener('alterar',() =>{
+file.addEventListener('change',() =>{
   if (file.files.length != 0) {
     let reader = new FileReader();
     reader.onload = () =>{

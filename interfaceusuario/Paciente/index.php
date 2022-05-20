@@ -1,4 +1,4 @@
-<?php $idPaciente = $codConsulta = "";
+<?php $idPaciente = "";
 $pre = $req = "-"; ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -113,8 +113,45 @@ $pre = $req = "-"; ?>
               <div class="col-lg-6">
                 <div class="row mt-3">
                   <div>
-                    <?php //tipo(prescrição), descrição (textArea), codPrescricao, codConsulta
-                    echo "Fazer como na marcação de consulta!"; ?>
+                    <?php
+                    $consulta = mysqli_query($mysqli, "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} AND estadoConsulta = 'Atendida' ORDER BY dataConsulta");
+                    if (!empty(mysqli_num_rows($consulta))){
+                      while ($rowc = mysqli_fetch_assoc($consulta)) {
+                        $presc = mysqli_query($mysqli, "SELECT * FROM prescricao WHERE codConsulta = {$rowc['codConsulta']}");
+                        if (!empty(mysqli_num_rows($presc))) {
+                          while ($rowp = mysqli_fetch_assoc($presc)) { ?>
+                            <div>
+                              <form action="">
+                                <label for="">Tipo:</label>
+                                <input type="text" value="<?php echo $rowp['tipo'];?>" disabled>
+                                <label for="">Data:</label>
+                                <?php $data = explode(" ", $rowc['dataConsulta'])?>
+                                <input type="text" value="<?php echo $data[0];?>" disabled>
+                                <label for="">Médico:</label>
+                                <?php
+                                $doc = "";
+                                $med = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$rowc['numOrdem']}'");
+                                while ($rowm = mysqli_fetch_assoc($med)) {
+                                  $pess = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$rowm['idPessoa']}");
+                                  while ($rowps = mysqli_fetch_assoc($pess)) {
+                                    $doc = $rowps['nome'];
+                                  }
+                                }
+                                ?>
+                                <input type="text" value="<?php echo $doc ?>"disabled>
+                                <label for="">Descrição:</label>
+                                <textarea cols="30" rows="10"><?php echo $rowp['descricao'];?></textarea>
+                              </form>
+                            </div>
+                          <?php }
+                        }else {
+                          echo "Não existem prescrições ou recomendaçoes.";
+                        }
+                      }
+                    }else{
+                      echo "Não existem prescrições ou recomendaçoes."; 
+                    }
+                    ?>
                   </div>
                 </div>
               </div>

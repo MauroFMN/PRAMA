@@ -1,18 +1,27 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Tempo de geração: 25-Jan-2022 às 15:43
--- Versão do servidor: 5.7.32
--- versão do PHP: 7.4.12
+-- Tempo de geração: 23-Maio-2022 às 04:21
+-- Versão do servidor: 5.7.34
+-- versão do PHP: 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Banco de dados: `pramaN`
+-- Banco de dados: `praman`
 --
+CREATE DATABASE IF NOT EXISTS `praman` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `praman`;
 
 -- --------------------------------------------------------
 
@@ -20,11 +29,14 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `bairro`
 --
 
-CREATE TABLE `bairro` (
-  `codBairro` int(11) NOT NULL,
+DROP TABLE IF EXISTS `bairro`;
+CREATE TABLE IF NOT EXISTS `bairro` (
+  `codBairro` int(11) NOT NULL AUTO_INCREMENT,
   `codMunicipio` int(11) DEFAULT NULL,
-  `nomeBairro` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nomeBairro` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codBairro`),
+  KEY `codMunicipio` (`codMunicipio`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `bairro`
@@ -39,8 +51,9 @@ INSERT INTO `bairro` (`codBairro`, `codMunicipio`, `nomeBairro`) VALUES
 -- Estrutura da tabela `consulta`
 --
 
-CREATE TABLE `consulta` (
-  `codConsulta` int(11) NOT NULL,
+DROP TABLE IF EXISTS `consulta`;
+CREATE TABLE IF NOT EXISTS `consulta` (
+  `codConsulta` int(11) NOT NULL AUTO_INCREMENT,
   `numOrdem` varchar(20) DEFAULT NULL,
   `codEspecialidade` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
@@ -52,12 +65,26 @@ CREATE TABLE `consulta` (
   `antPatFamiliares` varchar(255) DEFAULT NULL,
   `antPatPessoais` varchar(255) DEFAULT NULL,
   `historicoDoencaAtual` varchar(255) DEFAULT NULL,
-  `estadoConsulta` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `estadoConsulta` varchar(20) NOT NULL,
+  PRIMARY KEY (`codConsulta`),
+  KEY `numOrdem` (`numOrdem`),
+  KEY `idPessoa` (`idPessoa`),
+  KEY `codEspecialidade` (`codEspecialidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `consulta`
 --
+
+INSERT INTO `consulta` (`codConsulta`, `numOrdem`, `codEspecialidade`, `idPessoa`, `dataConsulta`, `preco`, `diagnosticoProvavel`, `motivoConsulta`, `resumoSindromico`, `antPatFamiliares`, `antPatPessoais`, `historicoDoencaAtual`, `estadoConsulta`) VALUES
+(3, 'PraJa', 14, 1, '2022-02-17 10:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Cancelada'),
+(4, 'PraJa', 1, 1, '2022-03-31 08:00:00', 1500, 'Gripe', 'Dores de cabeça, nos músculos e nariz a pingar.', 'Gripe', NULL, NULL, NULL, 'Atendida'),
+(5, 'PraJa', 15, 18, '2022-03-31 09:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Activo'),
+(6, 'PraJa', 38, 2, '2022-03-31 09:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Activo'),
+(7, 'PraJa', 1, 1, '2022-04-01 10:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Activo'),
+(8, 'PraJa', 2, 1, '2022-04-01 10:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Activo'),
+(9, 'PraJa', 1, 18, '2022-04-07 10:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Activo'),
+(10, 'PraJa', 1, 18, '2022-04-07 08:00:00', NULL, NULL, '', NULL, NULL, NULL, NULL, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -65,11 +92,14 @@ CREATE TABLE `consulta` (
 -- Estrutura da tabela `email`
 --
 
-CREATE TABLE `email` (
-  `codEmail` int(11) NOT NULL,
+DROP TABLE IF EXISTS `email`;
+CREATE TABLE IF NOT EXISTS `email` (
+  `codEmail` int(11) NOT NULL AUTO_INCREMENT,
   `idPessoa` int(11) DEFAULT NULL,
-  `endereco` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `endereco` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`codEmail`),
+  KEY `idPessoa` (`idPessoa`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `email`
@@ -100,10 +130,12 @@ INSERT INTO `email` (`codEmail`, `idPessoa`, `endereco`) VALUES
 -- Estrutura da tabela `especialidade`
 --
 
-CREATE TABLE `especialidade` (
-  `codEspecialidade` int(11) NOT NULL,
-  `nome` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `especialidade`;
+CREATE TABLE IF NOT EXISTS `especialidade` (
+  `codEspecialidade` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`codEspecialidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `especialidade`
@@ -168,9 +200,12 @@ INSERT INTO `especialidade` (`codEspecialidade`, `nome`) VALUES
 -- Estrutura da tabela `especialidademedico`
 --
 
-CREATE TABLE `especialidademedico` (
+DROP TABLE IF EXISTS `especialidademedico`;
+CREATE TABLE IF NOT EXISTS `especialidademedico` (
   `numOrdem` varchar(20) DEFAULT NULL,
-  `codEspecialidade` int(11) DEFAULT NULL
+  `codEspecialidade` int(11) DEFAULT NULL,
+  KEY `codEspecialidade` (`codEspecialidade`),
+  KEY `numOrdem` (`numOrdem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -248,12 +283,15 @@ INSERT INTO `especialidademedico` (`numOrdem`, `codEspecialidade`) VALUES
 -- Estrutura da tabela `horariomedico`
 --
 
-CREATE TABLE `horariomedico` (
-  `codHorarioMedico` int(11) NOT NULL,
+DROP TABLE IF EXISTS `horariomedico`;
+CREATE TABLE IF NOT EXISTS `horariomedico` (
+  `codHorarioMedico` int(11) NOT NULL AUTO_INCREMENT,
   `diaSemana` varchar(40) NOT NULL,
   `horarioAtendimento` varchar(400) NOT NULL,
-  `numOrdem` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `numOrdem` varchar(20) NOT NULL,
+  PRIMARY KEY (`codHorarioMedico`),
+  KEY `numOrdem` (`numOrdem`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `horariomedico`
@@ -273,10 +311,14 @@ INSERT INTO `horariomedico` (`codHorarioMedico`, `diaSemana`, `horarioAtendiment
 -- Estrutura da tabela `medico`
 --
 
-CREATE TABLE `medico` (
+DROP TABLE IF EXISTS `medico`;
+CREATE TABLE IF NOT EXISTS `medico` (
   `numOrdem` varchar(20) NOT NULL,
   `idPessoa` int(11) DEFAULT NULL,
-  `descricao` varchar(200) NOT NULL
+  `descricao` varchar(200) NOT NULL,
+  PRIMARY KEY (`numOrdem`),
+  UNIQUE KEY `numOrdem` (`numOrdem`),
+  KEY `idPessoa` (`idPessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -299,13 +341,37 @@ INSERT INTO `medico` (`numOrdem`, `idPessoa`, `descricao`) VALUES
 -- Estrutura da tabela `mensagens`
 --
 
-CREATE TABLE `mensagens` (
-  `idMensagen` int(11) NOT NULL,
+DROP TABLE IF EXISTS `mensagens`;
+CREATE TABLE IF NOT EXISTS `mensagens` (
+  `idMensagen` int(11) NOT NULL AUTO_INCREMENT,
   `idPessoa` int(11) NOT NULL,
   `idPessoa1` int(11) NOT NULL,
   `msg` varchar(1000) NOT NULL,
-  `dataEnvio` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dataEnvio` datetime NOT NULL,
+  PRIMARY KEY (`idMensagen`),
+  KEY `idPessoa` (`idPessoa`),
+  KEY `idPessoa1` (`idPessoa1`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `mensagens`
+--
+
+INSERT INTO `mensagens` (`idMensagen`, `idPessoa`, `idPessoa1`, `msg`, `dataEnvio`) VALUES
+(1, 17, 1, 'Boa tarde Sr. Mauro', '2022-02-22 04:56:27'),
+(2, 1, 17, 'Boa tarde Dr.Nduma', '2022-02-22 04:56:56'),
+(3, 17, 1, 'Boa tarde Sr. Mauro', '2022-02-22 04:57:08'),
+(4, 1, 17, 'Boa tarde Dr.Nduma', '2022-02-22 04:57:18'),
+(5, 17, 1, 'Boa tarde Sr. Mauro', '2022-02-22 04:57:20'),
+(6, 1, 17, 'Boa tarde Dr.Nduma', '2022-02-22 04:57:22'),
+(7, 17, 1, 'Boa tarde Sr. Mauro', '2022-02-22 04:57:29'),
+(8, 1, 17, 'Boa tarde Dr.Nduma', '2022-02-22 04:57:31'),
+(9, 17, 1, 'Boa tarde Sr. Mauro', '2022-02-22 05:00:57'),
+(10, 17, 1, 'Boa tarde Sr. Mauro', '2022-02-22 05:00:59'),
+(11, 1, 17, 'Boa noite doutor...', '2022-02-22 06:14:14'),
+(12, 17, 1, 'Boa noite Sr. Mauro', '2022-02-22 06:16:02'),
+(13, 17, 1, 'Em que lhe posso ser útil?', '2022-02-22 06:16:59'),
+(14, 1, 17, 'Era apenas para testar o chat', '2022-02-22 06:17:47');
 
 -- --------------------------------------------------------
 
@@ -313,10 +379,13 @@ CREATE TABLE `mensagens` (
 -- Estrutura da tabela `municipio`
 --
 
-CREATE TABLE `municipio` (
+DROP TABLE IF EXISTS `municipio`;
+CREATE TABLE IF NOT EXISTS `municipio` (
   `codMunicipio` int(11) NOT NULL,
   `codProvincia` int(11) DEFAULT NULL,
-  `nome` varchar(20) DEFAULT NULL
+  `nome` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`codMunicipio`),
+  KEY `codProvincia` (`codProvincia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -495,11 +564,15 @@ INSERT INTO `municipio` (`codMunicipio`, `codProvincia`, `nome`) VALUES
 -- Estrutura da tabela `parente`
 --
 
-CREATE TABLE `parente` (
-  `idParente` int(11) NOT NULL,
+DROP TABLE IF EXISTS `parente`;
+CREATE TABLE IF NOT EXISTS `parente` (
+  `idParente` int(11) NOT NULL AUTO_INCREMENT,
   `idPessoa1` int(11) DEFAULT NULL,
   `idPessoa` int(11) DEFAULT NULL,
-  `grau` varchar(20) DEFAULT NULL
+  `grau` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idParente`),
+  KEY `idPessoa` (`idPessoa`),
+  KEY `idPessoa1` (`idPessoa1`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -508,8 +581,9 @@ CREATE TABLE `parente` (
 -- Estrutura da tabela `pessoa`
 --
 
-CREATE TABLE `pessoa` (
-  `idPessoa` int(11) NOT NULL,
+DROP TABLE IF EXISTS `pessoa`;
+CREATE TABLE IF NOT EXISTS `pessoa` (
+  `idPessoa` int(11) NOT NULL AUTO_INCREMENT,
   `nomeUtilizador` varchar(100) DEFAULT NULL,
   `password` varchar(150) DEFAULT NULL,
   `nome` varchar(200) DEFAULT NULL,
@@ -523,8 +597,10 @@ CREATE TABLE `pessoa` (
   `codMunicipio` int(11) NOT NULL,
   `documentoIdentificacao` varchar(100) NOT NULL,
   `numeroDocumento` varchar(100) NOT NULL,
-  `foto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `foto` varchar(255) NOT NULL,
+  PRIMARY KEY (`idPessoa`),
+  KEY `codMunicipio` (`codMunicipio`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -555,12 +631,22 @@ INSERT INTO `pessoa` (`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, 
 -- Estrutura da tabela `prescricao`
 --
 
-CREATE TABLE `prescricao` (
+DROP TABLE IF EXISTS `prescricao`;
+CREATE TABLE IF NOT EXISTS `prescricao` (
   `tipo` varchar(50) DEFAULT NULL,
   `descricao` varchar(250) DEFAULT NULL,
-  `codPrescricao` int(11) NOT NULL,
-  `codConsulta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `codPrescricao` int(11) NOT NULL AUTO_INCREMENT,
+  `codConsulta` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codPrescricao`),
+  KEY `codConsulta` (`codConsulta`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `prescricao`
+--
+
+INSERT INTO `prescricao` (`tipo`, `descricao`, `codPrescricao`, `codConsulta`) VALUES
+('Prescrição', 'Tomar Anti-Gripine 3x por dia de 8 em 8 horas durante 3 dias.', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -568,9 +654,11 @@ CREATE TABLE `prescricao` (
 -- Estrutura da tabela `provincia`
 --
 
-CREATE TABLE `provincia` (
+DROP TABLE IF EXISTS `provincia`;
+CREATE TABLE IF NOT EXISTS `provincia` (
   `codProvincia` int(11) NOT NULL,
-  `nome` varchar(20) DEFAULT NULL
+  `nome` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`codProvincia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -603,12 +691,15 @@ INSERT INTO `provincia` (`codProvincia`, `nome`) VALUES
 -- Estrutura da tabela `rua`
 --
 
-CREATE TABLE `rua` (
-  `codRua` int(11) NOT NULL,
+DROP TABLE IF EXISTS `rua`;
+CREATE TABLE IF NOT EXISTS `rua` (
+  `codRua` int(11) NOT NULL AUTO_INCREMENT,
   `nomeRua` varchar(50) DEFAULT NULL,
   `numeroRua` varchar(10) DEFAULT NULL,
-  `codBairro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `codBairro` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codRua`),
+  KEY `codBairro` (`codBairro`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `rua`
@@ -623,11 +714,14 @@ INSERT INTO `rua` (`codRua`, `nomeRua`, `numeroRua`, `codBairro`) VALUES
 -- Estrutura da tabela `telefone`
 --
 
-CREATE TABLE `telefone` (
-  `coTelefone` int(11) NOT NULL,
+DROP TABLE IF EXISTS `telefone`;
+CREATE TABLE IF NOT EXISTS `telefone` (
+  `coTelefone` int(11) NOT NULL AUTO_INCREMENT,
   `idPessoa` int(11) DEFAULT NULL,
-  `numero` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `numero` int(11) DEFAULT NULL,
+  PRIMARY KEY (`coTelefone`),
+  KEY `idPessoa` (`idPessoa`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `telefone`
@@ -658,9 +752,12 @@ INSERT INTO `telefone` (`coTelefone`, `idPessoa`, `numero`) VALUES
 -- Estrutura da tabela `trabalhar`
 --
 
-CREATE TABLE `trabalhar` (
+DROP TABLE IF EXISTS `trabalhar`;
+CREATE TABLE IF NOT EXISTS `trabalhar` (
   `numOrdem` varchar(20) DEFAULT NULL,
-  `codHospital` int(11) DEFAULT NULL
+  `codHospital` int(11) DEFAULT NULL,
+  KEY `numOrdem` (`numOrdem`),
+  KEY `codHospital` (`codHospital`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -676,13 +773,16 @@ INSERT INTO `trabalhar` (`numOrdem`, `codHospital`) VALUES
 -- Estrutura da tabela `unhospitalar`
 --
 
-CREATE TABLE `unhospitalar` (
-  `codHospital` int(11) NOT NULL,
+DROP TABLE IF EXISTS `unhospitalar`;
+CREATE TABLE IF NOT EXISTS `unhospitalar` (
+  `codHospital` int(11) NOT NULL AUTO_INCREMENT,
   `idPessoa` int(11) DEFAULT NULL,
   `sectorSNS` varchar(200) NOT NULL,
   `subsectorSNS` varchar(200) NOT NULL,
-  `nPacientesDiario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nPacientesDiario` int(11) NOT NULL,
+  PRIMARY KEY (`codHospital`),
+  KEY `idPessoa` (`idPessoa`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `unhospitalar`
@@ -691,208 +791,6 @@ CREATE TABLE `unhospitalar` (
 INSERT INTO `unhospitalar` (`codHospital`, `idPessoa`, `sectorSNS`, `subsectorSNS`, `nPacientesDiario`) VALUES
 (1, 5, '', '', 0),
 (2, 19, 'publico', 'SS das FAA', 78);
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices para tabela `bairro`
---
-ALTER TABLE `bairro`
-  ADD PRIMARY KEY (`codBairro`),
-  ADD KEY `codMunicipio` (`codMunicipio`);
-
---
--- Índices para tabela `consulta`
---
-ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`codConsulta`),
-  ADD KEY `numOrdem` (`numOrdem`),
-  ADD KEY `idPessoa` (`idPessoa`),
-  ADD KEY `codEspecialidade` (`codEspecialidade`);
-
---
--- Índices para tabela `email`
---
-ALTER TABLE `email`
-  ADD PRIMARY KEY (`codEmail`),
-  ADD KEY `idPessoa` (`idPessoa`);
-
---
--- Índices para tabela `especialidade`
---
-ALTER TABLE `especialidade`
-  ADD PRIMARY KEY (`codEspecialidade`);
-
---
--- Índices para tabela `especialidademedico`
---
-ALTER TABLE `especialidademedico`
-  ADD KEY `codEspecialidade` (`codEspecialidade`),
-  ADD KEY `numOrdem` (`numOrdem`);
-
---
--- Índices para tabela `horariomedico`
---
-ALTER TABLE `horariomedico`
-  ADD PRIMARY KEY (`codHorarioMedico`),
-  ADD KEY `numOrdem` (`numOrdem`);
-
---
--- Índices para tabela `medico`
---
-ALTER TABLE `medico`
-  ADD PRIMARY KEY (`numOrdem`),
-  ADD UNIQUE KEY `numOrdem` (`numOrdem`),
-  ADD KEY `idPessoa` (`idPessoa`);
-
---
--- Índices para tabela `mensagens`
---
-ALTER TABLE `mensagens`
-  ADD PRIMARY KEY (`idMensagen`),
-  ADD KEY `idPessoa` (`idPessoa`),
-  ADD KEY `idPessoa1` (`idPessoa1`);
-
---
--- Índices para tabela `municipio`
---
-ALTER TABLE `municipio`
-  ADD PRIMARY KEY (`codMunicipio`),
-  ADD KEY `codProvincia` (`codProvincia`);
-
---
--- Índices para tabela `parente`
---
-ALTER TABLE `parente`
-  ADD PRIMARY KEY (`idParente`),
-  ADD KEY `idPessoa` (`idPessoa`),
-  ADD KEY `idPessoa1` (`idPessoa1`);
-
---
--- Índices para tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  ADD PRIMARY KEY (`idPessoa`),
-  ADD KEY `codMunicipio` (`codMunicipio`);
-
---
--- Índices para tabela `prescricao`
---
-ALTER TABLE `prescricao`
-  ADD PRIMARY KEY (`codPrescricao`),
-  ADD KEY `codConsulta` (`codConsulta`);
-
---
--- Índices para tabela `provincia`
---
-ALTER TABLE `provincia`
-  ADD PRIMARY KEY (`codProvincia`);
-
---
--- Índices para tabela `rua`
---
-ALTER TABLE `rua`
-  ADD PRIMARY KEY (`codRua`),
-  ADD KEY `codBairro` (`codBairro`);
-
---
--- Índices para tabela `telefone`
---
-ALTER TABLE `telefone`
-  ADD PRIMARY KEY (`coTelefone`),
-  ADD KEY `idPessoa` (`idPessoa`);
-
---
--- Índices para tabela `trabalhar`
---
-ALTER TABLE `trabalhar`
-  ADD KEY `numOrdem` (`numOrdem`),
-  ADD KEY `codHospital` (`codHospital`);
-
---
--- Índices para tabela `unhospitalar`
---
-ALTER TABLE `unhospitalar`
-  ADD PRIMARY KEY (`codHospital`),
-  ADD KEY `idPessoa` (`idPessoa`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `bairro`
---
-ALTER TABLE `bairro`
-  MODIFY `codBairro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `consulta`
---
-ALTER TABLE `consulta`
-  MODIFY `codConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `email`
---
-ALTER TABLE `email`
-  MODIFY `codEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de tabela `especialidade`
---
-ALTER TABLE `especialidade`
-  MODIFY `codEspecialidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
---
--- AUTO_INCREMENT de tabela `horariomedico`
---
-ALTER TABLE `horariomedico`
-  MODIFY `codHorarioMedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de tabela `mensagens`
---
-ALTER TABLE `mensagens`
-  MODIFY `idMensagen` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `parente`
---
-ALTER TABLE `parente`
-  MODIFY `idParente` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de tabela `prescricao`
---
-ALTER TABLE `prescricao`
-  MODIFY `codPrescricao` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `rua`
---
-ALTER TABLE `rua`
-  MODIFY `codRua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `telefone`
---
-ALTER TABLE `telefone`
-  MODIFY `coTelefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de tabela `unhospitalar`
---
-ALTER TABLE `unhospitalar`
-  MODIFY `codHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
@@ -994,3 +892,8 @@ ALTER TABLE `trabalhar`
 --
 ALTER TABLE `unhospitalar`
   ADD CONSTRAINT `unhospitalar_ibfk_2` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

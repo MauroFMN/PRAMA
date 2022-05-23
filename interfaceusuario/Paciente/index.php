@@ -13,6 +13,7 @@ $pre = $req = "-"; ?>
   <link rel="stylesheet" type="text/css" href="../../css/all.css">
   <link rel="stylesheet" type="text/css" href="../../css/marcacao.css">
   <link rel="stylesheet" type="text/css" href="../../css/chat.css">
+  <link rel="stylesheet" type="text/css" href="../../css/prescricao.css">
   <script src="../../js/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -48,7 +49,7 @@ $pre = $req = "-"; ?>
                     $sql = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente}";
                     $numConsultas = mysqli_query($mysqli, $sql);
                     if (mysqli_num_rows($numConsultas) == 0) {
-                      echo "Não tem consulta marcada!";
+                      echo "Não tem consulta marcada.";
                     } else {
                       $ativo = 0;
                       while ($row = mysqli_fetch_assoc($numConsultas)) {
@@ -56,7 +57,12 @@ $pre = $req = "-"; ?>
                           $ativo++;
                         }
                       }
-                      echo "Tem " . $ativo . " consulta(s) marcadas";
+                      if ($ativo != 0) {
+                        echo "Tem " . $ativo . " consulta(s) marcadas";
+                      }else {
+                        echo "Não tem consulta marcada.";
+                      }
+                      
                     }
                     ?>
                   </div>
@@ -104,7 +110,9 @@ $pre = $req = "-"; ?>
                         }
                       } ?>
                   </table>
-                <?php } ?>
+                <?php } else {
+                  echo "Primeiro marque uma consulta.";
+                }?>
               </div>
             </div>
           </div>
@@ -120,27 +128,36 @@ $pre = $req = "-"; ?>
                         $presc = mysqli_query($mysqli, "SELECT * FROM prescricao WHERE codConsulta = {$rowc['codConsulta']}");
                         if (!empty(mysqli_num_rows($presc))) {
                           while ($rowp = mysqli_fetch_assoc($presc)) { ?>
-                            <div>
-                              <form action="">
-                                <label for="">Tipo:</label>
-                                <input type="text" value="<?php echo $rowp['tipo'];?>" disabled>
-                                <label for="">Data:</label>
-                                <?php $data = explode(" ", $rowc['dataConsulta'])?>
-                                <input type="text" value="<?php echo $data[0];?>" disabled>
-                                <label for="">Médico:</label>
-                                <?php
-                                $doc = "";
-                                $med = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$rowc['numOrdem']}'");
-                                while ($rowm = mysqli_fetch_assoc($med)) {
-                                  $pess = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$rowm['idPessoa']}");
-                                  while ($rowps = mysqli_fetch_assoc($pess)) {
-                                    $doc = $rowps['nome'];
+                          <?php $data = explode(" ", $rowc['dataConsulta'])?>
+                          <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 7px; "><?php echo $data[0];?><br><?php echo $rowp['tipo'];?></button>
+                            <div id="id01" class="modal">
+                              <form class="modal-content animate">
+                                <div class="imgcontainer">
+                                  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                </div>
+                                <div class="container">
+                                  <label for="">Tipo:</label>
+                                  <input type="text" value="<?php echo $rowp['tipo'];?>" disabled>
+                                  <label for="">Data:</label>
+                                  <input type="text" value="<?php echo $data[0];?>" disabled>
+                                  <label for="">Médico:</label>
+                                  <?php
+                                  $doc = "";
+                                  $med = mysqli_query($mysqli, "SELECT * FROM medico WHERE numOrdem = '{$rowc['numOrdem']}'");
+                                  while ($rowm = mysqli_fetch_assoc($med)) {
+                                    $pess = mysqli_query($mysqli, "SELECT * FROM pessoa WHERE idPessoa = {$rowm['idPessoa']}");
+                                    while ($rowps = mysqli_fetch_assoc($pess)) {
+                                      $doc = $rowps['nome'];
+                                    }
                                   }
-                                }
-                                ?>
-                                <input type="text" value="<?php echo $doc ?>"disabled>
-                                <label for="">Descrição:</label>
-                                <textarea cols="30" rows="10"><?php echo $rowp['descricao'];?></textarea>
+                                  ?>
+                                  <input type="text" value="<?php echo $doc ?>"disabled>
+                                  <label for="">Descrição:</label>
+                                  <textarea cols="30" rows="10"><?php echo $rowp['descricao'];?></textarea>
+                                </div>
+                                <div class="container" style="background-color:#f1f1f1">
+                                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fechar</button>
+                                </div>
                               </form>
                             </div>
                           <?php }
@@ -161,7 +178,7 @@ $pre = $req = "-"; ?>
             <div class="row mt-5 opcoes">
               <div class="col-lg-12">
                 <div class="row mt-3">
-                  <div>
+                  <div id="agendamento">
                     <?php
                     $sql = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Atendida' or estadoConsulta = 'Cancelada' order by dataConsulta";
                     $dados = mysqli_query($mysqli, $sql);

@@ -31,66 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == 
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
   }
-<<<<<<< HEAD
-=======
-} else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == "2") {
-  $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Medico','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "')";
-
-  if (mysqli_query($mysqli, $sql)) {
-    $last_id = mysqli_insert_id($mysqli);
-    echo "New record created successfully. Last inserted ID is: " . $last_id;
-    $sql = "INSERT INTO `telefone`(`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUES (null, null,'" . $last_id . "','" . trim($_POST["tlf"]) . "')";
-    if (mysqli_query($mysqli, $sql)) {
-      $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES (null,'" . $last_id . "',null, '" . trim($_POST["email"]) . "')";
-      if (mysqli_query($mysqli, $sql)) {
-
-        $sql = "INSERT INTO `medico`(`numOrdem`, `idPessoa`, `descricao`) VALUES ('" . trim($_POST["nOrdem"]) . "','" . $last_id . "','" . trim($_POST["descricaoMedico"]) . "')";
-
-        if (mysqli_query($mysqli, $sql)) {
-          $sql = '';
-
-          foreach ($_POST['esp'] as $esp) {
-            $id = "" . trim($_POST['nOrdem']) . "";
-            $sql .= "('" . $id . "','$esp'),";
-          }
-
-          $sql = "INSERT INTO `especialidademedico`(`numOrdem`, `codEspecialidade`) VALUES" . trim($sql, ",");
-
-          if (mysqli_query($mysqli, $sql)) {
-
-            $sql = "";
-
-            if (mysqli_query($mysqli, $sql)) {
-
-              $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES (null,'" . $last_id . "',null, '" . trim($_POST["email"]) . "')";
-              if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-              }
-              $_SESSION["logado"] = true;
-              $_SESSION["id"] = $last_id;
-              $_SESSION["nomeusuario"] = trim($_POST["nameu"]);
-              $_SESSION["tipoUser"] = 'Medico';
-              //
-              header("location: interfaceusuario/Medico/index.php");
-            } else {
-              echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-            }
-          } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-          }
-        } else {
-          echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-        }
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-      }
-    } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-    }
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-  }
->>>>>>> 0c59e028b0aefd09d31bf41a7a84d6f4fff1d24a
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET["p"]) &&  $_GET["p"] == "3") {
   $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nomeUH"]) . "','UHospitalar','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', 'NIF', '" . trim($_POST["nIdFiscal"]) . "')";
   if (mysqli_query($mysqli, $sql)) {

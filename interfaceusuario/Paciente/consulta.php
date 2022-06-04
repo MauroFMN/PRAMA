@@ -515,7 +515,6 @@ if (isset($_GET["horaConsulta"])) {
       })
     }
     if (botaoMarcarConsulta) {
-
       botaoMarcarConsulta.addEventListener("click", () => {
         const horarioConsulta = document.querySelector('input[name="horaConsulta"]:checked').value;
         const motivoConsulta = document.getElementById("motivoConsulta").value;

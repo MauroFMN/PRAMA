@@ -68,7 +68,7 @@
                                 <?php }  ?>
                                 <td><?php echo $row['dataConsulta']; ?></td>
                                 <?php echo $row['idPessoa'] ?>
-                                <td><a href="pacientes.php?paciente=<?php echo $row['idPessoa']; ?>" class="btn btn-primary w-100">Histórico</a><a href="consulta.php?id_usuario=<?php echo $row['idPessoa']; ?>" class="btn btn-primary btn-success w-100">Atender</a></td>
+                                <td><a href="pacientes.php?paciente=<?php echo $row['idPessoa']; ?>" class="btn btn-primary w-100">Histórico</a><a href="consulta.php?id_consulta=<?php echo $row['codConsulta']; ?>" class="btn btn-primary btn-success w-100">Atender</a></td>
                                 <!-- Por o estado (online ou offline) ou ativar o botão de atendimento quando
                                                   paciente estiver online e desabilitar quando estive offline -->
                               </tr>

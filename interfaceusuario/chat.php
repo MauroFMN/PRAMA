@@ -1,7 +1,32 @@
 <?php
+
+$id_usuario = "";
+if (isset($_GET['id_usuario'])) {
+  $id_usuario = $_GET["id_usuario"];
+} else {
+  $id_usuario = $id_contacto;
+}
+
+if (isset($row["nome"])) {
+  $nome = $row["nome"];
+} else {
+  $nome = $nomeContacto;
+}
+
+
 if (isset($_GET["message"]) && !empty($_GET["message"])) {
-  $sql = "INSERT INTO `mensagens`(`idPessoa`, `idPessoa1`, `msg`, `dataEnvio`) VALUES (" . $_SESSION["idPessoa"] . "," . $_GET["id_usuario"] . ",'" . trim($_GET["message"]) . "','" . date('Y-m-d h:i:s') . "')";
+  $sql = "INSERT INTO `mensagens`(`idPessoa`, `idPessoa1`, `msg`, `dataEnvio`) VALUES (" . $_SESSION["idPessoa"] . "," . $id_usuario . ",'" . trim($_GET["message"]) . "','" . date('Y-m-d h:i:s') . "')";
   mysqli_query($mysqli, $sql);
+?>
+  <script>
+    console.log(location.pathname)
+    console.log(location.search.split("&")[0])
+    // location.search = search.split("&")[0];
+    location.pathname = location.pathname;
+    location.href = location.href.split("?")[0] + location.search.split("&")[0]
+    // location.pathname = location.pathname + location.search.split("&")[0];
+  </script>
+<?php
 }
 // if(isset($_SESSION["idPessoa"])){
 //   $outgoing_id = $_SESSION["idPessoa"];
@@ -23,15 +48,15 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
         <!--img src="php/images/<?php //imagem
                                 ?>" alt=""-->
         <div class="details">
-          <span style="padding-left: 15px;"><?php echo $row['nome']; ?></span>
+          <span style="padding-left: 15px;"><?php echo $nome; ?></span>
           <!--p><?php //estado ou profissão 
                 ?></p-->
         </div>
       </header>
       <div class="chat-box" id="chat-box">
         <?php
-        if (isset($_GET["id_usuario"])) {
-          $sql = "SELECT * FROM mensagens WHERE (idPessoa = {$_SESSION["idPessoa"]} and idPessoa1 = {$_GET["id_usuario"]}) or (idPessoa = {$_GET["id_usuario"]} and idPessoa1 = {$_SESSION["idPessoa"]})";
+        if (isset($id_usuario)) {
+          $sql = "SELECT * FROM mensagens WHERE (idPessoa = {$_SESSION["idPessoa"]} and idPessoa1 = {$id_usuario}) or (idPessoa = {$id_usuario} and idPessoa1 = {$_SESSION["idPessoa"]})";
           $mensagens = mysqli_query($mysqli, $sql);
           if (mysqli_num_rows($mensagens) == 0) {
             echo "Envie uma mensagem para o usuário.";
@@ -93,13 +118,13 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
       if (!message) {
         return;
       } else {
-        location.search = "?id_usuario=" + id_usuario + "&message=" + message;
+        location.search += "&id_usuario=" + id_usuario + "&message=" + message;
       }
     }
-    if (document.location.search.includes("message")) {
-      const id_usuario = document.getElementById("userId").value;
-      location.search = "?id_usuario=" + id_usuario;
-    };
+    // if (document.location.search.includes("message")) {
+    //   const id_usuario = document.getElementById("userId").value;
+    //   location.search += "&id_usuario=" + id_usuario;
+    // };
   </script>
   <script src="../js/chat.js"></script>
 </div>

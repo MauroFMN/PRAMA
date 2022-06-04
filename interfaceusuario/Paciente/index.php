@@ -1,5 +1,19 @@
 <?php $idPaciente = $codConsulta = "";
-$pre = $req = "-"; ?>
+$pre = $req = "-";
+session_start();
+include '../../conexao.php';
+
+
+if (isset($_GET["deleteId"])) {
+  $sql = "DELETE FROM consulta WHERE codConsulta = " . $_GET["deleteId"] . " and idPessoa= " . $_SESSION["idPessoa"] . "";
+  if (mysqli_query($mysqli, $sql)) {
+    header("location: index.php");
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-PT">
 
@@ -74,7 +88,7 @@ $pre = $req = "-"; ?>
                 </div>
               </div>
               <div class="hide" id="agendamento">
-                <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} and estadoConsulta = 'Activo' order by dataConsulta";
+                <?php $sql1 = "SELECT * FROM consulta WHERE idPessoa = {$idPaciente} order by dataConsulta";
                 $dados1 = mysqli_query($mysqli, $sql1);
                 if (!empty(mysqli_num_rows($dados1))) { ?>
                   <table>
@@ -98,7 +112,17 @@ $pre = $req = "-"; ?>
                             <td><?php echo $row4['nome']; ?></td>
                             <td>Telemedicina</td>
                             <td><a href="?id_usuario=<?php echo $row3['idPessoa'] ?>" style="color:black"><i class="fab fa-whatsapp" style="font-size:20px"></i></a></td>
-                            <td><a href="#" style="color:red"><i class="fas fa-times" style="font-size:20px"></i></a></td>
+                            <?php
+                            if ($row1["estadoConsulta"] == "Activo") {
+                            ?>
+                              <td><a href=<?php echo "?deleteId=" . $row1["codConsulta"]; ?> style="color:red"><i class="fas fa-times" style="font-size:20px"></i></a></td>
+                            <?php
+                            } else {
+                            ?>
+                              <td><a href=<?php echo "resumoConsulta.php?id_consulta=" . $row1["codConsulta"]; ?> style=" color:black"><i class="fas fa-file" style="font-size:20px"></i></a></td>
+                            <?php
+                            }
+                            ?>
                       </tr>
                 <?php }
                         }

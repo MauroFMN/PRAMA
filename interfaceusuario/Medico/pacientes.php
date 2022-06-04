@@ -45,7 +45,7 @@
                     $peso = $row2['peso'];
                     $tiposangue = $row2['tipoSang'];
                     $id = $row2['idPessoa'];
-                      $ano = explode("-", $row2['dataNasc']);
+                    $ano = explode("-", $row2['dataNasc']);
                     if (date('m') != $ano[1] && date('d') != $ano[2]) {
                       $idade = date('Y') - $ano[0] - 1;
                     } else {

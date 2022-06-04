@@ -37,7 +37,7 @@
                   } ?>
                   <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                 </div>
-                <input type="file" name="foto" id="foto" accept="image/*">
+                <input type="file" name="foto" id="foto" accept="image/*" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               </div>
               <label for="nome">Nome da Un.Hospitalar:</label>
               <input type="text" name="nome" id="nome" value="<?php echo $row['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>

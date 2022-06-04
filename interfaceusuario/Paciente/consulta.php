@@ -189,8 +189,6 @@ if (isset($_GET["horaConsulta"])) {
                 <input for="<?php echo $lesp['nome']; ?>" type="radio" name="especialidadeSelecionada" value="<?php echo $lesp['codEspecialidade']; ?>" id="<?php echo $lesp['nome']; ?>" />
                 <label style="margin-left: 5px; margin-bottom: 5px" for=""><?php echo $lesp['nome']; ?></label>
                 <!-- </div> -->
-
-
                 <br />
               <?php }
             } else {
@@ -200,8 +198,6 @@ if (isset($_GET["horaConsulta"])) {
 
             <?php
             }
-
-
             $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE med.numOrdem = '{$_GET["marcacaoConsulta"]}'";
             $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
             $diasDaSemana = array();
@@ -368,8 +364,6 @@ if (isset($_GET["horaConsulta"])) {
           <?php
           }
           ?>
-
-
           <!-- <input type="submit" class="botao verde l" style="width: 100%;" value="Seguinte" name="fpaciente"> -->
         </div>
       </form>
@@ -485,16 +479,7 @@ if (isset($_GET["horaConsulta"])) {
                     } ?>
                   </div>
                 </div>
-                <!-- <div class="centro separador">
-                          <img src="../../imagens/" alt="" style="width: 100px; height: 100px;">
-                        </div> -->
-                <!-- <div class="separador info-medico">
-
-                        </div> -->
-                <!-- <div class="separador calendario">
-
-                      </div> -->
-              </div>
+                </div>
             </div>
           <?php } ?>
         </div>

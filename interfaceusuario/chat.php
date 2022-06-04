@@ -28,13 +28,6 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
   </script>
 <?php
 }
-// if(isset($_SESSION["idPessoa"])){
-//   $outgoing_id = $_SESSION["idPessoa"];
-//   if(!empty($message)){
-//       $sql = mysqli_query($mysqli, "INSERT INTO mensagens (idPessoa, idPessoa1, msg, dataEnvio)
-//                                   VALUES ({$id_usuario}, {$outgoing_id},'" . trim($_POST["message"]) . "', date('Y-m-d'))") or die();
-//   }
-// } 
 ?>
 <button class="open-button" onclick="openForm()">
   <i class="fab fa-whatsapp"></i>
@@ -45,8 +38,6 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
     <section class="chat-area">
       <header>
         <p href="" style="cursor: pointer; margin: 0" class="back-icon" onclick="document.getElementById('myForm').style.display='none'" id="fechar"><i class="fas fa-times"></i></p>
-        <!--img src="php/images/<?php //imagem
-                                ?>" alt=""-->
         <div class="details">
           <span style="padding-left: 15px;"><?php echo $nome; ?></span>
           <!--p><?php //estado ou profissão 
@@ -59,21 +50,20 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
           $sql = "SELECT * FROM mensagens WHERE (idPessoa = {$_SESSION["idPessoa"]} and idPessoa1 = {$id_usuario}) or (idPessoa = {$id_usuario} and idPessoa1 = {$_SESSION["idPessoa"]})";
           $mensagens = mysqli_query($mysqli, $sql);
           if (mysqli_num_rows($mensagens) == 0) {
-            echo "Envie uma mensagem para o usuário.";
+            echo "Não exintem mensagens.";
           } else {
             while ($row = mysqli_fetch_assoc($mensagens)) {
-              if ($_SESSION["idPessoa"] == $row["idPessoa"]) {
-        ?>
+              if ($_SESSION["idPessoa"] == $row["idPessoa"]) { ?>
                 <div>
                   <p style="background: #669bcb8a;text-align: right;margin-left: 30%!important;padding: 10px;border-radius: 10px;width: 73%; margin-bottom: 0;"><?php echo $row["msg"]; ?></p>
-                  <p style="/* background: #669bcb8a; */text-align: right;margin-left: 30%!important;/* padding: 10px; */border-radius: 10px;width: 73%;font-size: 9px;; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
+                  <p style="text-align: right;margin-left: 30%!important;border-radius: 10px;width: 73%;font-size: 9px; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
                 </div>
               <?php
               } else {
               ?>
                 <div>
                   <p style="background: #669bcb8a;text-align: left;padding: 10px;border-radius: 10px;width: 73%; margin-bottom: 0;"><?php echo $row["msg"]; ?></p>
-                  <p style="/* background: #669bcb8a; */text-align: left;/* padding: 10px; */border-radius: 10px;width: 73%;font-size: 9px; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
+                  <p style="text-align: left; border-radius: 10px;width: 73%;font-size: 9px; margin-bottom: 10px"><?php echo $row["dataEnvio"]; ?></p>
                 </div>
         <?php
               }
@@ -86,13 +76,7 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
         <input type="text" class="incoming_id" name="id_usuario" id="userId" value="<?php echo $id_usuario; ?>" hidden>
         <input type="text" name="message" class="input-field" id="msg" placeholder="Escreve a mensagem aqui..." autocomplete="off">
         <div onclick="enviar()" style="width: 16%; background: #a7c4de; border-radius: 1px; margin: 5px 0; cursor: pointer;"><i class="fab fa-telegram-plane" style="font-size: 24px; text-align: center;
-    /* margin: 0 auto; */
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    margin-top: 10px;
+    display: flex; justify-content: center; align-content: center; align-items: center; flex-wrap: nowrap; margin-top: 10px;
 "></i></div>
       </form>
     </section>
@@ -126,5 +110,4 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
     //   location.search += "&id_usuario=" + id_usuario;
     // };
   </script>
-  <script src="../js/chat.js"></script>
 </div>

@@ -86,13 +86,13 @@
           </div>
           <div class="tab-pane fade mt-3" role="tabpanel" id="segundaTab">
             <div class="row mt-5 opcoes">
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <div class="row mt-3">
                   <div>
                     <?php
-                    $sql3 = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Atendido'";
-                    $dados3 = mysqli_query($mysqli, $sql3);
-                    if (!empty(mysqli_num_rows($dados3))) { ?>
+                    $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Atendida' OR estadoConsulta = 'Cancelada' ORDER BY dataConsulta";
+                    $dados = mysqli_query($mysqli, $sql);
+                    if (!empty(mysqli_num_rows($dados))) { ?>
                       <table>
                         <tr>
                           <th>Paciente</th>
@@ -100,21 +100,23 @@
                           <th>Data/Hora</th>
                         </tr>
                         <?php
-                        $sql4 = "SELECT * FROM pessoa WHERE idPessoa = {$row['idPessoa']}";
-                        $dados4 = mysqli_query($mysqli, $sql4);
-                        while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
-                          <tr>
-                            <td><?php echo $row4['nome']; ?></td>
-                            <?php
-                            $sql5 = "SELECT * FROM especialidade WHERE codEspecialidade = {$row['codEspecialidade']}";
-                            $dados5 = mysqli_query($mysqli, $sql5);
-                            while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
-                              <td><?php echo $row5['nome']; ?></td>
-                            <?php }  ?>
-                            <td><?php echo $row3['dataConsulta']; ?></td>
-                            <td><button type="button" class="btn btn-primary w-100">Visualizar</button></td>
-                          </tr>
-                        <?php } ?>
+                        while ($row = mysqli_fetch_assoc($dados)) {
+                          $sql1 = "SELECT * FROM pessoa WHERE idPessoa = {$row['idPessoa']}";
+                          $dados1 = mysqli_query($mysqli, $sql1);
+                          while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
+                            <tr>
+                              <td><?php echo $row1['nome']; ?></td>
+                              <?php
+                              $sql2 = "SELECT * FROM especialidade WHERE codEspecialidade = {$row['codEspecialidade']}";
+                              $dados2 = mysqli_query($mysqli, $sql2);
+                              while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
+                                <td><?php echo $row2['nome']; ?></td>
+                              <?php }  ?>
+                              <td><?php echo $row['dataConsulta']; ?></td>
+                              <td><a href="pacientes.php?paciente=<?php echo $row['idPessoa']; ?>" class="btn btn-primary w-100">Histórico</a>
+                            </tr>
+                        <?php }
+                        } ?>
                       </table>
                     <?php } else {
                       echo "O histórico de consultas está vazio.";
@@ -141,7 +143,6 @@
 
   <script src="../../js/script.js"></script>
   <script>
-    // console.log("Medico")
     $(".nav.nav-tabs li").on("click", function(e) {
       console.log("Element", e)
       $(".nav-link.active").removeClass("active");

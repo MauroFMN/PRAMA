@@ -29,20 +29,6 @@ if (session_id() == '') {
             </a>
             <span class="tooltip">Os Meus Pacientes</span>
         </li>
-        <!--li>
-            <a href="consulta.php">
-                <i class="fas fa-laptop-medical"></i>
-                <span class="links_name">Consulta</span>
-            </a>
-            <span class="tooltip">Consulta</span>
-        </li>
-        <li>
-            <a href="#chat" onclick="">
-                <i class="fab fa-whatsapp"></i>
-                <span class="links_name">Chat</span>
-            </a>
-            <span class="tooltip">Chat</span>
-        </li-->
         <li>
             <a href="perfil.php">
                 <i class="far fa-user"></i>

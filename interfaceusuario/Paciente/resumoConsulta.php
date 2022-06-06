@@ -74,44 +74,21 @@ include '../../conexao.php';
 
                       <div class="detalhes-medico" style="height: auto;">
                         <br>
-                        <form class="" action="index.html" method="post">
-                          <label for="">Antecedentes Patológicos Familiares</label>
-                          <textarea name="antPatFamiliares" id="antPatFamiliares" rows="8" cols="80" disabled><?php echo $row["antPatFamiliares"]; ?></textarea>
-                          <label for="">Antecedentes Patológicos Pessoais</label>
-                          <textarea name="antPatPessoais" id="antPatPessoais" rows="8" cols="80" disabled><?php echo $row["antPatPessoais"]; ?></textarea>
-                          <label for="">Motivo da Consulta</label>
-                          <textarea name="motivoConsulta" id="motivoConsulta" rows="8" cols="80" disabled><?php echo $row["motivoConsulta"]; ?></textarea>
-                          <label for="">Histórico da Doença Actual</label>
-                          <textarea name="historicoDoencaAtual" id="historicoDoencaAtual" rows="8" cols="80" disabled><?php echo $row["historicoDoencaAtual"]; ?></textarea>
-                          <label for="">Resumo Sindrómico</label>
-                          <textarea name="resumoSindromico" id="resumoSindromico" rows="8" cols="80" disabled><?php echo $row["resumoSindromico"]; ?></textarea>
-                          <label for="">Diagnóstico Provável</label>
-                          <textarea name="diagnosticoProvavel" id="diagnosticoProvavel" rows="8" cols="80" disabled><?php echo $row["diagnosticoProvavel"]; ?></textarea>
-                        </form>
-                      </div>
-                    </div>
-                    <div class="col-lg-3">
-                      <br>
-                      <div class="containerHorario" style="height: auto;">
-                        <?php ?>
-                        <div class="col-lg-12">
-                          <label for="">Recomendações</label>
-                          <textarea name="recomendacao" id="recomendacao" rows="8" cols="80" disabled><?php echo $row["recomendacao"]; ?></textarea>
-                          <br />
-                          <?php
-                          $sql2 = "SELECT descricao as descricaoPrescricao FROM prescricao WHERE codConsulta = {$id_consulta}";
-                          $dados2 = mysqli_query($mysqli, $sql2);
-                          if (!empty(mysqli_num_rows($dados2))) {
-                            while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                              <label for="">Prescrição</label>
-                              <textarea name="prescricao" id="prescricao" rows="8" cols="80" disabled><?php echo $row2["descricaoPrescricao"]; ?></textarea>
-                            <?php }
-                          } else {
-                            ?>
+                        <label for="">Recomendações</label>
+                        <textarea name="recomendacao" id="recomendacao" rows="8" cols="80" disabled><?php echo $row["recomendacao"]; ?></textarea>
+                        <?php
+                        $sql2 = "SELECT descricao as descricaoPrescricao FROM prescricao WHERE codConsulta = {$id_consulta}";
+                        $dados2 = mysqli_query($mysqli, $sql2);
+                        if (!empty(mysqli_num_rows($dados2))) {
+                          while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
                             <label for="">Prescrição</label>
-                            <textarea name="prescricao" id="prescricao" rows="8" cols="80" disabled></textarea>
-                          <?php } ?>
-                        </div>
+                            <textarea name="prescricao" id="prescricao" rows="8" cols="80" disabled><?php echo $row2["descricaoPrescricao"]; ?></textarea>
+                          <?php }
+                        } else {
+                          ?>
+                          <label for="">Prescrição</label>
+                          <textarea name="prescricao" id="prescricao" rows="8" cols="80" disabled></textarea>
+                        <?php } ?>
                       </div>
                     </div>
                   </div>

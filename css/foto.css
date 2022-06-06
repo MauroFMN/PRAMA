@@ -12,6 +12,7 @@ input[type=file]{
   padding: 10px;
   border: 5px solid black;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 #fotografia{

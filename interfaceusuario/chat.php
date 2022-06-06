@@ -29,7 +29,7 @@ if (isset($_GET["message"]) && !empty($_GET["message"])) {
 <?php
 }
 ?>
-<button class="open-button" onclick="openForm()">
+<button class="open-button" onclick="openForm()" style="max-width: 64px">
   <i class="fab fa-whatsapp"></i>
 </button>
 

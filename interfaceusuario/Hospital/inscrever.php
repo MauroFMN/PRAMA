@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($mysqli, $sql)) {
         $last_id = mysqli_insert_id($mysqli);
-        $sql = "INSERT INTO `telefone`(`coTelefone`, `codHospital`, `idPessoa`, `numero`) VALUES (null, null,'" . $last_id . "','" . trim($_POST["tlf"]) . "')";
+        $sql = "INSERT INTO `telefone`(`coTelefone`, `idPessoa`, `numero`) VALUES (null,'" . $last_id . "','" . trim($_POST["tlf"]) . "')";
         if (mysqli_query($mysqli, $sql)) {
             $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES (null,'" . $last_id . "',null, '" . trim($_POST["email"]) . "')";
             if (mysqli_query($mysqli, $sql)) {
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         if (mysqli_query($mysqli, $sql)) {
 
-                            $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES (null,'" . $last_id . "',null, '" . trim($_POST["email"]) . "')";
+                            $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `endereco`) VALUES (null,'" . $last_id . "','" . trim($_POST["email"]) . "')";
                             if (mysqli_query($mysqli, $sql)) {
                                 $sql = "INSERT INTO trabalhar (numOrdem, codHospital) values ('" . trim($_POST["nOrdem"]) . "'," . $uHospitalar . ")";
                                 if (mysqli_query($mysqli, $sql)) {
@@ -252,6 +252,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for=""><strong>Descrição Médico</strong></label>
                             <textarea name="descricaoMedico"></textarea>
                             <br>
+                            <div class="row">
+                                <label for="nameu"><strong>Horário de Trabalho</strong></label>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-2">
                                     Dias da Semana

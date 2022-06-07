@@ -8,6 +8,9 @@ file.addEventListener('change',() =>{
     let reader = new FileReader();
     reader.onload = () =>{
       foto.src = reader.result;
+      foto.style.width = '90%';
+      foto.style.height = '100%';
+      foto.style.borderRadius = '50%';
     }
     reader.readAsDataURL(file.files[0]);
   } else {

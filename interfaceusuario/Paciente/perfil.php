@@ -35,7 +35,7 @@
                   } else {
                     $foto = 'camera-solid.svg';
                   } ?>
-                  <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia" style="width: 85%; height: 100%; border-radius: 50%">
+                  <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
                 </div>
                 <input type="file" name="foto" id="foto" accept="image/*" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
               </div>
@@ -166,5 +166,4 @@
   <script src="../../js/script.js"></script>
   <script src="../../js/foto.js"></script>
 </body>
-
 </html>

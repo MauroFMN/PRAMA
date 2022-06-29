@@ -5,8 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
 
     $uHospitalar = "";
-    $foto = "";
-
     $sql = "SELECT codHospital FROM unhospitalar WHERE idPessoa = " . $_SESSION['idPessoa'] . "";
 
     $result = mysqli_query($mysqli, $sql);
@@ -17,13 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($_FILES['foto'])){
         $pasta = "../../imagens/";
-        $ficheiro = $pasta . basename($_FILES["foto"]["name"]);
-        if (move_uploaded_file($_FILES["foto"]["tmp_name"], $ficheiro)) {
-            $fofo = $_FILES["foto"]["name"];
-        }
+        $ficheiro = $pasta.basename($_FILES["foto"]["name"]);
+        move_uploaded_file($_FILES["foto"]["tmp_name"], $ficheiro);
     }
 
-    $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`, `foto`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Medico','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "', '$foto')";
+    $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`, `foto`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Medico','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "', '" . trim($_POST["foto"]) . "')";
 
     if (mysqli_query($mysqli, $sql)) {
         $last_id = mysqli_insert_id($mysqli);
@@ -58,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         if (mysqli_query($mysqli, $sql)) {
 
-                            $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `endereco`) VALUES (null,'" . $last_id . "','" . trim($_POST["email"]) . "')";
+                            //$sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `endereco`) VALUES (null,'" . $last_id . "','" . trim($_POST["email"]) . "')";
                             if (mysqli_query($mysqli, $sql)) {
                                 $sql = "INSERT INTO trabalhar (numOrdem, codHospital) values ('" . trim($_POST["nOrdem"]) . "'," . $uHospitalar . ")";
                                 if (mysqli_query($mysqli, $sql)) {

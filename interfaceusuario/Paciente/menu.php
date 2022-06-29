@@ -47,10 +47,9 @@ if (session_id() == '') {
                         <div class="name"><b><?php echo $dadosusuario["nome"]; ?></b></div>
                     </div>
                 </div>
-                <a href="../../index.php">
+                <a href="../logout.php?logout_id=<?php echo $dadosusuario["idPessoa"]; ?>">
                     <i class="fas fa-sign-out-alt" id="log_out"></i>
                 </a>
-
             <?php
             }
             ?>

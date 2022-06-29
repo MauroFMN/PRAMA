@@ -117,17 +117,17 @@ if (isset($_GET['antPatFamiliares']) && isset($_GET["id_consulta"])) {
                         <br>
                         <form class="" action="index.html" method="post">
                           <label for="">Antecedentes Patológicos Familiares</label>
-                          <textarea name="antPatFamiliares" id="antPatFamiliares" rows="8" cols="80"><?php echo $row["antPatFamiliares"]; ?></textarea>
+                          <textarea name="antPatFamiliares" id="antPatFamiliares" rows="5" cols="10"><?php echo $row["antPatFamiliares"]; ?></textarea>
                           <label for="">Antecedentes Patológicos Pessoais</label>
-                          <textarea name="antPatPessoais" id="antPatPessoais" rows="8" cols="80"><?php echo $row["antPatPessoais"]; ?></textarea>
+                          <textarea name="antPatPessoais" id="antPatPessoais" rows="5" cols="10"><?php echo $row["antPatPessoais"]; ?></textarea>
                           <label for="">Motivo da Consulta</label>
-                          <textarea name="motivoConsulta" id="motivoConsulta" rows="8" cols="80"><?php echo $row["motivoConsulta"]; ?></textarea>
+                          <textarea name="motivoConsulta" id="motivoConsulta" rows="5" cols="10"><?php echo $row["motivoConsulta"]; ?></textarea>
                           <label for="">Histórico da Doença Actual</label>
-                          <textarea name="historicoDoencaAtual" id="historicoDoencaAtual" rows="8" cols="80"><?php echo $row["historicoDoencaAtual"]; ?></textarea>
+                          <textarea name="historicoDoencaAtual" id="historicoDoencaAtual" rows="5" cols="10"><?php echo $row["historicoDoencaAtual"]; ?></textarea>
                           <label for="">Resumo Sindrómico</label>
-                          <textarea name="resumoSindromico" id="resumoSindromico" rows="8" cols="80"><?php echo $row["resumoSindromico"]; ?></textarea>
+                          <textarea name="resumoSindromico" id="resumoSindromico" rows="5" cols="10"><?php echo $row["resumoSindromico"]; ?></textarea>
                           <label for="">Diagnóstico Provável</label>
-                          <textarea name="diagnosticoProvavel" id="diagnosticoProvavel" rows="8" cols="80"><?php echo $row["diagnosticoProvavel"]; ?></textarea>
+                          <textarea name="diagnosticoProvavel" id="diagnosticoProvavel" rows="5" cols="10"><?php echo $row["diagnosticoProvavel"]; ?></textarea>
                         </form>
                       </div>
                     </div>

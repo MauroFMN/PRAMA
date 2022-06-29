@@ -90,7 +90,7 @@
                 <div class="row mt-3">
                   <div>
                     <?php
-                    $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Atendida' OR estadoConsulta = 'Cancelada' ORDER BY dataConsulta";
+                    $sql = "SELECT * FROM consulta WHERE numOrdem = '$nOrdem' AND estadoConsulta = 'Encerrado' OR estadoConsulta = 'Cancelada' ORDER BY dataConsulta";
                     $dados = mysqli_query($mysqli, $sql);
                     if (!empty(mysqli_num_rows($dados))) { ?>
                       <table>

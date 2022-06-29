@@ -33,31 +33,24 @@
               while ($rows = mysqli_fetch_assoc($listaMedicos)) { ?>
                 <div class="row mt-5">
                   <div class="row cartao-medico pb-4 pt-4">
-                  <div class="col-lg-3" style="margin: 0 auto;">
-                  <?php if (!empty($dadosusuario['foto'])) { ?>
-                    <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
-                  <?php } else { ?>
-                    <img src="../../imagens/camera-solid.svg" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
-                  <?php } ?>
-                  <div class="divBotaoMarcacaoConsulta">
-                    <?php
-
-
-                    $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE idPessoa = {$rows['idPessoa']}";
-                    $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
-
-                    $rowsHorario = mysqli_num_rows($listaHorarioAtendimento);
-                    if ($rowsHorario > 0) {
-                      echo ' <a class="" href="/prama/interfaceusuario/Paciente/consulta.php?marcacaoConsulta=' . $rows["numOrdem"] . '" >Marcar Consulta</a>';
-                    } else {
-                      echo ' <a class="inativo">Marcar Consulta</a>';
-                    }
-
-
-                    ?>
-
-                  </div>
-                </div>
+                    <div class="col-lg-3" style="margin: 0 auto;">
+                      <?php if (!empty($dadosusuario['foto'])) { ?>
+                        <img src="../../imagens/<?php echo $dadosusuario['foto']; ?>" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                      <?php } else { ?>
+                        <img src="../../imagens/camera-solid.svg" alt="" style="width: 100px; height: 100px; margin: 0 auto; display: flex;">
+                      <?php } ?>
+                      <div class="divBotaoMarcacaoConsulta">
+                        <?php
+                        $horarioAtendimento = "SELECT * FROM `horariomedico` INNER JOIN medico med ON(horariomedico.numOrdem = med.numOrdem) WHERE idPessoa = {$rows['idPessoa']}";
+                        $listaHorarioAtendimento = mysqli_query($mysqli, $horarioAtendimento);
+                        $rowsHorario = mysqli_num_rows($listaHorarioAtendimento);
+                        if ($rowsHorario > 0) {
+                          echo ' <a class="" href="/prama/interfaceusuario/Paciente/consulta.php?marcacaoConsulta=' . $rows["numOrdem"] . '" >Marcar Consulta</a>';
+                        } else {
+                          echo ' <a class="inativo">Marcar Consulta</a>';
+                        } ?>
+                      </div>
+                    </div>
                     <div class="col-lg-6">
                       <h4 class="mb-3"><?php echo $rows['nome']; ?></h4>
                       <?php

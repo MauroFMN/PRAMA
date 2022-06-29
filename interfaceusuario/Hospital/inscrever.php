@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
 
     $uHospitalar = "";
+    $foto = "";
 
     $sql = "SELECT codHospital FROM unhospitalar WHERE idPessoa = " . $_SESSION['idPessoa'] . "";
 
@@ -14,13 +15,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $uHospitalar = $row["codHospital"];
     }
 
-    $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Medico','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "')";
+    if (!empty($_FILES['foto'])){
+        $pasta = "../../imagens/";
+        $ficheiro = $pasta . basename($_FILES["foto"]["name"]);
+        if (move_uploaded_file($_FILES["foto"]["tmp_name"], $ficheiro)) {
+            $fofo = $_FILES["foto"]["name"];
+        }
+    }
+
+    $sql = "INSERT INTO `pessoa`(`idPessoa`, `nomeUtilizador`, `password`, `nome`, `peso`, `dataNasc`, `genero`, `estCivil`, `tipoSang`, `tipoUser`, `endereco`, `codMunicipio`, `documentoIdentificacao`, `numeroDocumento`, `foto`) VALUES (null,'" . trim($_POST["nameu"]) . "','" . md5($_POST["password"]) . "','" . trim($_POST["nome"]) . "','" . trim($_POST["peso"]) . "','" . trim($_POST["dataNasc"]) . "','" . trim($_POST["genero"]) . "','" . trim($_POST["estadoCivil"]) . "','" . trim($_POST["tipoSang"]) . "','Medico','" . trim($_POST["endereco"]) . "','" . trim($_POST["municipio"]) . "', '" . trim($_POST["docId"]) . "', '" . trim($_POST["numeroDoc"]) . "', '$foto')";
 
     if (mysqli_query($mysqli, $sql)) {
         $last_id = mysqli_insert_id($mysqli);
         $sql = "INSERT INTO `telefone`(`coTelefone`, `idPessoa`, `numero`) VALUES (null,'" . $last_id . "','" . trim($_POST["tlf"]) . "')";
         if (mysqli_query($mysqli, $sql)) {
-            $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `codHospital`, `endereco`) VALUES (null,'" . $last_id . "',null, '" . trim($_POST["email"]) . "')";
+            $sql = "INSERT INTO `email`(`codEmail`, `idPessoa`, `endereco`) VALUES (null,'" . $last_id . "','" . trim($_POST["email"]) . "')";
             if (mysqli_query($mysqli, $sql)) {
 
                 $sql = "INSERT INTO `medico`(`numOrdem`, `idPessoa`, `descricao`) VALUES ('" . trim($_POST["nOrdem"]) . "','" . $last_id . "','" . trim($_POST["descricaoMedico"]) . "')";
@@ -108,15 +117,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="row mt-5">
                     <div class="formulario">
-                        <form class="formRegElm" method="POST">
+                        <form class="formRegElm" method="POST" enctype="multipart/form-data">
                             <div class="espacoImagem">
                                 <div class="conteudoImagem">
-                                    <?php if (!empty($row['foto'])) {
-                                        $foto = $row['foto'];
-                                    } else {
-                                        $foto = 'camera-solid.svg';
-                                    } ?>
-                                    <img src="../../imagens/<?php echo $foto; ?>" alt="" id="fotografia">
+                                    <img src="../../imagens/camera-solid.svg" alt="" id="fotografia">
                                 </div>
                                 <input type="file" name="foto" id="foto" accept="image/*">
                             </div>

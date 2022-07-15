@@ -2,6 +2,10 @@
 include '../../conexao.php';
 if (session_id() == '') {
     session_start();
+    /* Os Dir.Gerais vão poder pesquisar por mádicos e serviços de especialidades
+    No resultado da pesquisa deverá aparecer o(s) médico(s), a(s) unidade(s) hospitalar(s) e
+    o(s) serviço(s) de especialidade cujo o nome tem os caracteres inseridos.
+    Nos médicos deverá constar o seu horário de atendimento, o(s) serviço(s) de especialidade que pratica, bem como a opção de marcação da consulta.*/
 }
 ?>
 <div class="sidebar french-blue">

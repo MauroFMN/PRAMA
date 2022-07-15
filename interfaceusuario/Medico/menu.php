@@ -2,6 +2,13 @@
 include '../../conexao.php';
 if (session_id() == '') {
     session_start();
+    /* Os médicos vão poder pesquisar por pacientes, médicos, unidades hospitalares e serviços de especialidades
+    No resultado da pesquisa deverá aparecer o(s) médico(s), a(s) unidade(s) hospitalar(s) e
+    o(s) serviço(s) de especialidade cujo o nome tem os caracteres inseridos.
+    Nos médicos deverá constar o seu horário de atendimento, o(s) serviço(s) de especialidade que pratica, bem como a opção de marcação da consulta.
+    Nas unidades hospitalares deverá constar os serviços de especialidade, o(s) contacto(s) e o endereço.
+    Nos pacientes os médico deverá conseguir ver o histórico de consultas do paciente. Deverá constar informações como o médico que o consultou,
+    as prescrições e recomendações, bem como todas as informações referentes ao estado se saúde do paciente.*/
 }
 ?>
 <div class="sidebar french-blue">

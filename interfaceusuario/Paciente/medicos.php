@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OS Meus Médicos</title>
+  <title>Os Meus Médicos</title>
   <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
   <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../../css/all.css">

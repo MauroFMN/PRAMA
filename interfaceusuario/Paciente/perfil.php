@@ -1,13 +1,26 @@
 <?php
 include '../../conexao.php';
 session_start();
-var_dump($_POST);
-var_dump($_GET);
-var_dump($_SESSION);
+
 if (isset($_POST['nome'])) {
 
+  $sql = "SELECT `password` FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
+  $dados = mysqli_query($mysqli, $sql);
+  $novaSenha = '';
+  while ($dadosusuario = mysqli_fetch_assoc($dados)) {
+    if ($dadosusuario['password'] == $_POST['password']) {
+      $senhaRepetida = true;
+    }
+  }
+  if ($senhaRepetida) {
+    $novaSenha = $_POST['password'];
+  } else {
+    $novaSenha = md5($_POST['password']);
+  }
+
+
   $endereco = "{$_POST['nomeBairro']}, {$_POST['nomeRua']}, {$_POST['numeroRua']}";
-  $sqlPessoa = "UPDATE `pessoa` SET `nomeUtilizador`= '" . $_POST['nomeUtilizador'] . "', `password`= '" . $_POST['password'] . "', foto='{$_POST['foto']}', `nome`= '" . $_POST['nome'] . "', `dataNasc`= '" . $_POST['dataNasc'] . "', `genero`= '" . $_POST['genero'] . "', `estCivil`= '" . $_POST['estadoCivil'] . "', `codMunicipio`= '" . $_POST['municipio'] . "', endereco='{$endereco}' where idPessoa={$_SESSION["idPessoa"]}";
+  $sqlPessoa = "UPDATE `pessoa` SET `nomeUtilizador`= '" . $_POST['nomeUtilizador'] . "', `password`= '" . $novaSenha . "', foto='{$_POST['foto']}', `nome`= '" . $_POST['nome'] . "', `dataNasc`= '" . $_POST['dataNasc'] . "', `genero`= '" . $_POST['genero'] . "', `estCivil`= '" . $_POST['estadoCivil'] . "', `codMunicipio`= '" . $_POST['municipio'] . "', endereco='{$endereco}' where idPessoa={$_SESSION["idPessoa"]}";
   $sqlTelefone = "UPDATE `telefone` SET `numero`= '" . $_POST['telefone'] . "' WHERE coTelefone=" . $_POST['telefoneId'] . "";
   $sqlEmail = "UPDATE `email` set `endereco`='{$_POST['email']}' where codEmail = {$_POST['emailId']}";
 

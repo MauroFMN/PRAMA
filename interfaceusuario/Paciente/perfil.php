@@ -31,10 +31,8 @@ if (isset($_POST['nome'])) {
       $sqlParente = "INSERT into parente (idParente, idPessoa, idPessoa1, grau) values (null, {$_SESSION["idPessoa"]}, {$last_id}, 'Pai')";
       if (mysqli_query($mysqli, $sqlParente)) {
       } else {
-        echo 'error pai 1' . mysqli_error($mysqli);
       }
     } else {
-      echo 'error pai 2' . mysqli_error($mysqli);
     }
   } else if ($_POST['idPai'] != '0' && !empty($_POST['nomePai'])) {
     $sqlPai = "UPDATE pessoa set nome='{$_POST['nomePai']}' where idPessoa={$_POST['idPai']}";
@@ -50,10 +48,8 @@ if (isset($_POST['nome'])) {
       $sqlParente = "INSERT into parente (idParente, idPessoa, idPessoa1, grau) values (null, {$_SESSION["idPessoa"]}, {$last_id}, 'Mae')";
       if (mysqli_query($mysqli, $sqlParente)) {
       } else {
-        echo 'error mae 1' . mysqli_error($mysqli);
       }
     } else {
-      echo 'error mae 2' . mysqli_error($mysqli);
     }
   } else if ($_POST['idMae'] != '0' && !empty($_POST['nomeMae'])) {
     $sqlMae = "UPDATE pessoa set nome='{$_POST['nomeMae']}' where idPessoa={$_POST['idMae']}";

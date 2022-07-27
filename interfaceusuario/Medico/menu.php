@@ -37,6 +37,20 @@ if (session_id() == '') {
             <span class="tooltip">Os Meus Pacientes</span>
         </li>
         <li>
+            <a href="especialidades.php">
+                <i class="far fa-user"></i>
+                <span class="links_name">Especialidades</span>
+            </a>
+            <span class="tooltip">Especialidades</span>
+        </li>
+        <li>
+            <a href="horario.php">
+                <i class="far fa-user"></i>
+                <span class="links_name">Horário</span>
+            </a>
+            <span class="tooltip">Horário</span>
+        </li>
+        <li>
             <a href="perfil.php">
                 <i class="far fa-user"></i>
                 <span class="links_name">Perfil</span>

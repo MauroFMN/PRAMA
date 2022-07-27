@@ -1,3 +1,27 @@
+<?php
+
+include '../../conexao.php';
+session_start();
+
+if (isset($_POST['salvar'])) {
+    $sqlPessoa = "UPDATE `pessoa` SET `nomeUtilizador`= '" . $_POST['nomeUtilizador'] . "', `password`= '" . $novaSenha . "', foto='{$_POST['foto']}', `nome`= '" . $_POST['nome'] . "', `dataNasc`= '" . $_POST['dataNasc'] . "', `genero`= '" . $_POST['genero'] . "' where idPessoa={$_SESSION["idPessoa"]}";
+    $sqlTelefone = "UPDATE `telefone` SET `numero`= '" . $_POST['telefone'] . "' WHERE coTelefone=" . $_POST['telefoneId'] . "";
+    $sqlEmail = "UPDATE `email` set `endereco`='{$_POST['email']}' where codEmail = {$_POST['emailId']}";
+
+    if (mysqli_query($mysqli, $sqlPessoa)) {
+        if (mysqli_query($mysqli, $sqlTelefone)) {
+            if (mysqli_query($mysqli, $sqlEmail)) {
+                header("location: perfil.php");
+            }
+        }
+    }
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 
@@ -27,7 +51,7 @@
                     <?php $sql = "SELECT * FROM pessoa WHERE idPessoa = {$_SESSION["idPessoa"]}";
                     $dados = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_assoc($dados)) { ?>
-                        <form style="display: block;" class="formRegElm">
+                        <form style="display: block;" class="formRegElm" method="post">
                             <div class="espacoImagem">
                                 <div class="conteudoImagem">
                                     <?php if (!empty($row['foto'])) {
@@ -44,7 +68,7 @@
                             <label for="dataNasc">Data de Nascimento:</label>
                             <input type="date" name="dataNasc" id="dataNasc" value="<?php echo $row['dataNasc']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
                             <label>Género:</label>
-                            <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto; height: 50px;">
+                            <select <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto; height: 50px;" name="genero">
                                 <option value="<?php echo $row['genero']; ?>"><?php echo $row['genero']; ?></option>
                             </select>
                             <?php $sql1 = "SELECT * FROM medico WHERE idPessoa = {$row['idPessoa']}";
@@ -52,31 +76,20 @@
                             while ($row1 = mysqli_fetch_assoc($dados1)) { ?>
                                 <br>
                                 <label for="numOrdem">Númeno da Ordem:</label>
-                                <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
-                                <?php
-                                $sql2 = "SELECT * from especialidade esp JOIN especialidademedico espm on(esp.codEspecialidade = espm.codEspecialidade) WHERE numOrdem = '{$row1['numOrdem']}'";
-                                $dados2 = mysqli_query($mysqli, $sql2);
-                                while ($row2 = mysqli_fetch_assoc($dados2)) { ?>
-                                    <label for="nome">Especialidade:</label>
-                                    <input type="text" name="nome" id="nome" value="<?php echo $row2['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
-                                    <?php $sql3 = "SELECT pessoa.nome FROM unhospitalar JOIN trabalhar on(unhospitalar.codHospital = trabalhar.codHospital) inner join pessoa on unhospitalar.idPessoa = pessoa.idPessoa WHERE numOrdem = '{$row1['numOrdem']}'";
-                                    $dados3 = mysqli_query($mysqli, $sql3);
-                                    while ($row3 = mysqli_fetch_assoc($dados3)) { ?>
-                                        <label for="nomeUnHosp">Local de Trabalho</label>
-                                        <input type="text" name="nomeUnHosp" id="nomeUnHosp" value="<?php echo $row3['nome']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
-                                <?php }
-                                } ?>
+                                <input type="text" name="numOrdem" id="numOrdem" value="<?php echo $row1['numOrdem']; ?>" disabled>
                                 <?php $sql4 = "SELECT * FROM email WHERE idPessoa = {$row['idPessoa']}";
                                 $dados4 = mysqli_query($mysqli, $sql4);
                                 while ($row4 = mysqli_fetch_assoc($dados4)) { ?>
                                     <label for="endereco">Email:</label>
-                                    <input type="email" name="endereco" id="endereco" value="<?php echo $row4['endereco']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto;height: 50px;"><br>
+                                    <input type="hidden" name="emailId" value="<?php echo $row4['codEmail'] ?>" />
+                                    <input type="email" name="email" id="endereco" value="<?php echo $row4['endereco']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto;height: 50px;"><br>
                                 <?php };
                                 $sql5 = "SELECT * FROM telefone WHERE idPessoa = {$row['idPessoa']}";
                                 $dados5 = mysqli_query($mysqli, $sql5);
                                 while ($row5 = mysqli_fetch_assoc($dados5)) { ?>
                                     <label for="numero">Telefone:</label>
-                                    <input type="tel" name="numero" id="numero" value="<?php echo $row5['numero']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
+                                    <input type="hidden" name="telefoneId" value="<?php echo $row5['coTelefone'] ?>" />
+                                    <input type="tel" name="telefone" id="numero" value="<?php echo $row5['numero']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?> style="width: auto">
                                 <?php } ?>
                                 <br>
                                 <label for="nomeUtilizador">Nome de Utilizador:</label>
@@ -84,262 +97,11 @@
                                 <label for="password">Password:</label>
                                 <input type="password" name="password" id="password" value="<?php echo $row['password']; ?>" <?php echo isset($_GET['editar']) ? "" : "disabled"; ?>>
                                 <hr>
-                                <h4 class="centro">Horário de Atendimento</h4>
-                                <hr>
-                                <div class="dias">
-                                    <?php
-                                    $sql6 = "SELECT * from horariomedico WHERE numOrdem = '{$row1['numOrdem']}'";
-                                    $dados6 = mysqli_query($mysqli, $sql6);
-                                    if (!empty(mysqli_num_rows($dados6))) { ?>
-                                        <table>
-                                            <tr>
-                                                <th>Dias da Semana</th>
-                                                <th>Inico</th>
-                                                <th>Fim</th>
-                                            </tr>
-                                            <?php
-                                            while ($row6 = mysqli_fetch_assoc($dados6)) {
-                                                $horarioMedico = $row6['horarioAtendimento'];
-                                                $horarioDividido = explode(", ", $horarioMedico); ?>
-                                                <tr>
-                                                    <td><?php echo $row6['diaSemana']; ?></td>
-                                                    <td><?php echo $horarioDividido[0]; ?></td>
-                                                    <td><?php echo $horarioDividido[1]; ?></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
-                                    <?php } else {
-                                        echo "Sem horário disponível";
-                                    } ?>
-                                    <!--table>
-                                  <tr>
-                                      <th></th>
-                                      <th>Dias da Semana</th>
-                                      <th>Inico</th>
-                                      <th>Fim</th>
-                                  </tr>
-                                  <tr>
-                                      <td><input type="checkbox"></td>
-                                      <td>2ª Feira</td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="08:00">08:00</option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                          </select>
-                                      </td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                              <option value="20:00">21:00</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td><input type="checkbox"></td>
-                                      <td>3ª Feira</td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="08:00">08:00</option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                          </select>
-                                      </td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                              <option value="20:00">21:00</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td><input type="checkbox"></td>
-                                      <td>4ª Feira</td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="08:00">08:00</option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                          </select>
-                                      </td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                              <option value="20:00">21:00</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td><input type="checkbox"></td>
-                                      <td>5ª Feira</td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="08:00">08:00</option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                          </select>
-                                      </td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                              <option value="20:00">21:00</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td><input type="checkbox"></td>
-                                      <td>6ª Feira</td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="08:00">08:00</option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                          </select>
-                                      </td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="14:00">14:00</option>
-                                              <option value="15:00">15:00</option>
-                                              <option value="16:00">16:00</option>
-                                              <option value="17:00">17:00</option>
-                                              <option value="18:00">18:00</option>
-                                              <option value="19:00">19:00</option>
-                                              <option value="20:00">20:00</option>
-                                              <option value="20:00">21:00</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td><input type="checkbox"></td>
-                                      <td>Sábado</td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="08:00">08:00</option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                          </select>
-                                      </td>
-                                      <td><select style="width: auto;">
-                                              <option value=""></option>
-                                              <option value="09:00">09:00</option>
-                                              <option value="10:00">10:00</option>
-                                              <option value="11:00">11:00</option>
-                                              <option value="12:00">12:00</option>
-                                              <option value="13:00">13:00</option>
-                                              <option value="20:00">14:00</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                              </table -->
-                                </div>
-                                <hr>
                                 <div class="centro">
                                     <?php
                                     if (isset($_GET['editar'])) {
                                     ?>
-                                        <a href="?salvar" class="botao verde" value="Editar" id="botaoEditar">Guardar</a>
+                                        <Button type="submit" href="?salvar" class="botao verde" name="salvar" id="botaoEditar">Guardar</Button>
                                         <a href="?" class="botao vermelho">Cancelar</a>
                                     <?php
                                     } else {

@@ -1,9 +1,9 @@
 <?php
   $db_host = 'localhost';
   $db_user = 'root';
-  $db_password = 'root';
+  $db_password = '';
   $db_db = 'praman';
-  $db_port = 8889;
+  $db_port = 3306;
 
   $mysqli = new mysqli(
     $db_host,

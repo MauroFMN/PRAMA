@@ -19,7 +19,9 @@ if (session_id() == '') {
     <ul class="nav-list">
         <li>
             <i class="fas fa-search bx-search"></i>
-            <input type="text" placeholder="Pesquisar...">
+            <form action="pesquisar.php" method="GET">
+                <input type="text" name="pesquisa" placeholder="Pesquisar...">
+            </form>
             <span class="tooltip">Pesquisar</span>
         </li>
         <li>
